@@ -1,0 +1,11 @@
+.elementor-1192 .elementor-element.elementor-element-48ac486{margin-top:0px;margin-bottom:60px;padding:50px 0px 0px 0px;}.elementor-widget .tippy-tooltip .tippy-content{text-align:center;}@media(max-width:767px){.elementor-1192 .elementor-element.elementor-element-48ac486{padding:50px 0px 0px 0px;}.elementor-1192 .elementor-element.elementor-element-da733ab > .elementor-element-populated{padding:0px 0px 0px 0px;}}/* Start custom CSS */.uicore-animate.ui-breadcrumb {
+    display: none !important;
+}
+
+h1.uicore-title.uicore-animate.h2 {
+    text-align: center !important;
+}
+
+.uicore-entry-meta {
+    justify-content: center !important;
+}/* End custom CSS */
