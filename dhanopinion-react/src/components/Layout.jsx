@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import GsapGlobalAnimator from './GsapGlobalAnimator'
 
 export default function Layout() {
   const { pathname } = useLocation()
@@ -9,6 +10,7 @@ export default function Layout() {
 
   return (
     <>
+      <GsapGlobalAnimator />
       <Navbar />
       <main style={{ paddingTop: 64 }}>
         <Outlet />

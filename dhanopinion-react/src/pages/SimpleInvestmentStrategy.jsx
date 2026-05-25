@@ -17,9 +17,9 @@ export default function SimpleInvestmentStrategy() {
       <div style={{ position: 'relative' }}>
         <section style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', background: 'var(--black)', position: 'sticky', top: 0, zIndex: 0 }}>
           <div className="wrap">
-            <motion.p {...f()} className="t-overline mb-5">STRATEGY</motion.p>
+            <p className="t-overline mb-5">STRATEGY</p>
             <RevealChar as="h1" text="SIMPLE \n STRATEGY" highlight="STRATEGY" className="t-mega mb-5" />
-            <motion.p {...f(0.3)} className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>A straightforward approach to building and managing your investment portfolio effectively.</motion.p>
+            <p className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>A straightforward approach to building and managing your investment portfolio effectively.</p>
           </div>
         </section>
         <section className="sec" style={{ background: 'var(--void)', position: 'relative', zIndex: 1, boxShadow: '0 -24px 64px rgba(0,0,0,0.6)' }}>
@@ -35,7 +35,7 @@ export default function SimpleInvestmentStrategy() {
       </div>
       <section className="sec" style={{ background: 'var(--pure)', color: 'var(--black)', borderTop: '1px solid var(--hairline)' }}>
         <div className="wrap">
-          <motion.p {...f()} className="t-overline mb-3 tc" style={{ color: 'var(--black)' }}>DEEP DIVES</motion.p>
+          <p className="t-overline mb-3 tc" style={{ color: 'var(--black)' }}>DEEP DIVES</p>
           <RevealChar as="h2" text="Explore Further" className="t-h1 mb-7 tc" style={{ justifyContent: 'center', color: 'var(--black)' }} delay={0.1} />
           <div style={{ marginTop: 40 }}>
             <SpreadCards

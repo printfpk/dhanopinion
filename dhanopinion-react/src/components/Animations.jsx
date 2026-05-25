@@ -1,10 +1,11 @@
-import { motion } from 'framer-motion'
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion';
 
 const elements = { h1: motion.h1, h2: motion.h2, h3: motion.h3, p: motion.p, div: motion.div };
 
 export const HoverFlip = ({ text }) => {
   const words = text.split(' ');
-  
+
   return (
     <motion.span initial="initial" whileHover="hover" style={{ display: 'inline-flex', flexWrap: 'wrap', perspective: 1000 }}>
       {words.map((word, wordIndex) => (
@@ -30,7 +31,7 @@ export const HoverFlip = ({ text }) => {
   );
 };
 
-export const RevealChar = ({ text, highlight = "", className, style, delay = 0, as = 'h2' }) => {
+export const RevealChar = ({ text, highlight = "", highlightStyle, className, style, delay = 0, as = 'h2' }) => {
   const MotionComponent = elements[as] || motion.div;
   const words = text.split(' ');
 
@@ -47,15 +48,15 @@ export const RevealChar = ({ text, highlight = "", className, style, delay = 0, 
 
   const charVariants = {
     hidden: { y: '120%', rotateZ: 5, opacity: 0 },
-    visible: { 
+    visible: {
       y: 0, rotateZ: 0, opacity: 1,
       transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
   return (
-    <MotionComponent 
-      className={className} 
+    <MotionComponent
+      className={className}
       style={{ display: 'flex', flexWrap: 'wrap', ...style }}
       variants={containerVariants}
       initial="hidden"
@@ -66,18 +67,19 @@ export const RevealChar = ({ text, highlight = "", className, style, delay = 0, 
         if (word === '\\n' || word === '\n') {
           return <div key={wordIndex} style={{ flexBasis: '100%', height: 0 }} />;
         }
-        
+
         const isHighlight = highlight && word.toUpperCase().includes(highlight.toUpperCase());
-        const color = isHighlight ? 'var(--gold)' : 'inherit';
-        
+        const charColor = (isHighlight && !highlightStyle) ? 'var(--gold)' : 'inherit';
+        const wrapperStyle = (isHighlight && highlightStyle) ? highlightStyle : {};
+
         return (
-          <span key={wordIndex} style={{ display: 'inline-flex', alignItems: 'center' }}>
+          <span key={wordIndex} style={{ display: 'inline-flex', alignItems: 'center', ...wrapperStyle }}>
             <span style={{ display: 'inline-flex', overflow: 'hidden', paddingBottom: '0.15em', marginBottom: '-0.15em' }}>
               {word.split('').map((char, charIndex) => (
                 <motion.span
                   key={charIndex}
                   variants={charVariants}
-                  style={{ display: 'inline-block', color }}
+                  style={{ display: 'inline-block', color: charColor }}
                 >
                   {char}
                 </motion.span>
@@ -89,6 +91,131 @@ export const RevealChar = ({ text, highlight = "", className, style, delay = 0, 
           </span>
         )
       })}
+    </MotionComponent>
+  );
+};
+
+export const ScrollFillText = ({ text, as = 'h2', className, style }) => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 80%", "end 50%"]
+  });
+
+  const insetRight = useTransform(scrollYProgress, [0, 1], [100, 0]);
+  const clipPath = useMotionTemplate`inset(0 ${insetRight}% 0 0)`;
+
+  const MotionComponent = elements[as] || motion.div;
+
+  return (
+    <div ref={containerRef} style={{ position: 'relative', display: 'inline-block', ...style }}>
+      {/* Base Layer: Gray */}
+      <MotionComponent className={className} style={{ color: 'var(--smoke)', opacity: 0.4, margin: 0 }}>
+        {text}
+      </MotionComponent>
+
+      {/* Top Layer: Blue Gradient */}
+      <MotionComponent
+        className={className}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          margin: 0,
+          backgroundImage: 'linear-gradient(90deg, #0055ff, #83e7ee)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          clipPath,
+          color: 'transparent',
+          width: '100%'
+        }}
+      >
+        {text}
+      </MotionComponent>
+    </div>
+  );
+};
+
+// Individual character component so useTransform hook is called at component top-level
+const ScrollChar = ({ char, scrollYProgress, start, end }) => {
+  const grayOpacity = useTransform(scrollYProgress, [start, end], [1, 0]);
+
+  return (
+    <span style={{ position: 'relative', display: 'inline-block' }}>
+      {/* Invisible spacer for sizing */}
+      <span style={{ visibility: 'hidden' }}>{char}</span>
+      {/* Blue gradient layer (always visible underneath) */}
+      <span
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          backgroundImage: 'linear-gradient(90deg, #0055ff, #83e7ee)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+        }}
+      >
+        {char}
+      </span>
+      {/* Gray overlay that fades out on scroll */}
+      <motion.span
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          color: 'rgba(140,140,140,1)',
+          WebkitTextFillColor: 'rgba(140,140,140,1)',
+          opacity: grayOpacity,
+        }}
+      >
+        {char}
+      </motion.span>
+    </span>
+  );
+};
+
+export const ScrollCharRevealText = ({ text, as = 'h2', className, style }) => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 85%", "end 40%"]
+  });
+
+  const words = text.split(' ');
+  const totalChars = text.replace(/\s/g, '').length;
+
+  const MotionComponent = elements[as] || motion.div;
+  let charCount = 0;
+
+  return (
+    <MotionComponent
+      ref={containerRef}
+      className={className}
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        ...style
+      }}
+    >
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} style={{ display: 'inline-flex', alignItems: 'center' }}>
+          {word.split('').map((char, charIndex) => {
+            const start = charCount / totalChars;
+            const end = (charCount + 1) / totalChars;
+            charCount++;
+            return (
+              <ScrollChar
+                key={charIndex}
+                char={char}
+                scrollYProgress={scrollYProgress}
+                start={start}
+                end={end}
+              />
+            );
+          })}
+          {wordIndex < words.length - 1 && <span>&nbsp;</span>}
+        </span>
+      ))}
     </MotionComponent>
   );
 };

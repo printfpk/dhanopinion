@@ -20,9 +20,9 @@ export default function InvestmentPhilosophy() {
       <div style={{ position: 'relative' }}>
         <section style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', background: 'var(--black)', position: 'sticky', top: 0, zIndex: 0 }}>
           <div className="wrap">
-            <motion.p {...f()} className="t-overline mb-5">PHILOSOPHY</motion.p>
+            <p className="t-overline mb-5">PHILOSOPHY</p>
             <RevealChar as="h1" text="INVESTMENT \n PHILOSOPHY" highlight="PHILOSOPHY" className="t-mega mb-5" />
-            <motion.p {...f(0.3)} className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>Core principles that guide sound investment decisions for long-term wealth creation.</motion.p>
+            <p className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>Core principles that guide sound investment decisions for long-term wealth creation.</p>
           </div>
         </section>
         <section className="sec" style={{ background: 'var(--pure)', minHeight: '100vh', position: 'relative', zIndex: 1, boxShadow: '0 -24px 64px rgba(0,0,0,0.6)' }}>

@@ -26,9 +26,9 @@ export default function InformationCentre() {
     <>
       <section style={{ minHeight: '55vh', display: 'flex', alignItems: 'center', background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
         <div className="wrap">
-          <motion.p {...f()} className="t-overline mb-5">LEARN</motion.p>
+          <p className="t-overline mb-5">LEARN</p>
           <RevealChar as="h1" text="INFORMATION \n CENTRE" highlight="CENTRE" className="t-mega mb-5" />
-          <motion.p {...f(0.2)} className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>Educational resources to deepen your investment knowledge.</motion.p>
+          <p className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>Educational resources to deepen your investment knowledge.</p>
         </div>
       </section>
       <section className="sec" style={{ background: 'var(--void)' }}>

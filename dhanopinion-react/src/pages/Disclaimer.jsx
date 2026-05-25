@@ -8,7 +8,7 @@ export default function Disclaimer() {
     <>
       <section style={{ minHeight: '40vh', display: 'flex', alignItems: 'center', background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
         <div className="wrap">
-          <motion.p {...f()} className="t-overline mb-5">LEGAL</motion.p>
+          <p className="t-overline mb-5">LEGAL</p>
           <RevealChar as="h1" text="DISCLAIMER" className="t-mega" />
         </div>
       </section>

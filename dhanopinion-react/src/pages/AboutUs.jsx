@@ -8,7 +8,7 @@ export default function AboutUs() {
     <>
       <section style={{ minHeight: '55vh', display: 'flex', alignItems: 'center', background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
         <div className="wrap">
-          <motion.p {...f()} className="t-overline mb-5">ABOUT</motion.p>
+          <p className="t-overline mb-5">ABOUT</p>
           <RevealChar as="h1" text="ABOUT \n US" highlight="US" className="t-mega mb-5" />
         </div>
       </section>

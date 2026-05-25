@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Suspense } from 'react'
-import { HoverFlip, RevealChar } from '../components/Animations'
+import { HoverFlip, RevealChar, ScrollFillText, ScrollCharRevealText } from '../components/Animations'
 import { SpreadCards } from '../components/SpreadCards'
 import ParticleSphere from '../components/ParticleSphere'
 
@@ -27,14 +27,26 @@ export default function Home() {
           </div>
 
           <div className="wrap" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', alignItems: 'center', gap: 40, minHeight: '100vh' }}>
+            <div className="g-2" style={{ alignItems: 'center', minHeight: '100vh', padding: '120px 0 60px' }}>
               {/* ── LEFT: text ── */}
               <div>
-                <motion.p {...fade()} className="t-overline" style={{ marginBottom: 32 }}>SIMPLIFY INVESTING</motion.p>
-                <RevealChar as="h1" text="INVESTING \n IS DIFFICULT" highlight="DIFFICULT" className="t-mega" style={{ marginBottom: 32 }} />
-                <motion.p {...fade(0.3)} className="t-body-lg" style={{ maxWidth: 460, marginBottom: 40, color: 'var(--smoke)' }}>
+                <p className="t-overline" style={{ marginBottom: 32 }}>SIMPLIFY INVESTING</p>
+                <RevealChar
+                  as="h1"
+                  text="INVESTING \n IS \n DIFFICULT"
+                  highlight="DIFFICULT"
+                  highlightStyle={{
+                    backgroundImage: 'linear-gradient(90deg, #0055ff, #83e7ee)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    display: 'inline-block'
+                  }}
+                  className="t-mega"
+                  style={{ marginBottom: 32 }}
+                />
+                <p className="t-body-lg" style={{ maxWidth: 460, marginBottom: 40, color: 'var(--smoke)' }}>
                   It need not be. Leverage our research-backed resources and make better investment decisions — simply.
-                </motion.p>
+                </p>
                 <motion.div {...fade(0.4)} style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
                   <Link to="/easy-wins" className="btn btn-gold"><HoverFlip text="Get Started" /></Link>
                   <Link to="/investment-philosophy" className="btn btn-ghost"><HoverFlip text="Explore" /></Link>
@@ -61,11 +73,11 @@ export default function Home() {
           <div className="wrap">
             <div className="g-2" style={{ alignItems: 'center' }}>
               <div>
-                <motion.p {...fade()} className="t-overline mb-5">THE CHALLENGE</motion.p>
+                <p className="t-overline mb-5">THE CHALLENGE</p>
                 <RevealChar as="h2" text="Investment strategy is hard" highlight="hard" className="t-display mb-5" delay={0.1} />
-                <motion.p {...fade(0.4)} className="t-body" style={{ maxWidth: 440 }}>
+                <p className="t-body" style={{ maxWidth: 440 }}>
                   It is difficult for large institutions, and it is even more difficult for individuals because they lack resources, expertise, and time.
-                </motion.p>
+                </p>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
                 {[
@@ -91,16 +103,16 @@ export default function Home() {
         {/* ══════ OUR MISSION ══════ */}
         <section style={{ padding: 'var(--sp-9) 0', background: 'var(--black)', position: 'sticky', top: 0, zIndex: 0, height: '100vh', display: 'flex', alignItems: 'center' }}>
           <div className="wrap tc">
-            <motion.p {...fade()} className="t-overline mb-5">OUR MISSION</motion.p>
-            <RevealChar as="h2" text="We give opinions on effective strategies to help you" highlight="to help you" className="t-h1 mb-6" style={{ maxWidth: 700, margin: '0 auto var(--sp-6)', justifyContent: 'center' }} delay={0.1} />
+            <p className="t-overline mb-5">OUR MISSION</p>
+            <ScrollCharRevealText as="h2" text="We give opinions on effective strategies to help you" className="t-h1 mb-6" style={{ maxWidth: 700, margin: '0 auto var(--sp-6)' }} />
             <motion.div {...fade(0.6)} className="hairline-gold" style={{ margin: '0 auto' }} />
           </div>
         </section>
 
         {/* ══════ STARTING POINTS ══════ */}
-        <section className="sec" style={{ background: 'var(--pure)', color: 'var(--black)', position: 'relative', zIndex: 1, boxShadow: '0 -24px 64px rgba(0,0,0,0.6)' }}>
+        <section className="sec" style={{ background: '#f6f1ed', color: 'var(--black)', position: 'relative', zIndex: 1, boxShadow: '0 -24px 64px rgba(0,0,0,0.6)' }}>
           <div className="wrap">
-            <motion.p {...fade()} className="t-overline mb-3 tc" style={{ color: 'var(--black)' }}>GET STARTED</motion.p>
+            <p className="t-overline mb-3 tc" style={{ color: 'var(--black)' }}>GET STARTED</p>
             <RevealChar as="h2" text="Choose your path" className="t-display mb-8 tc" style={{ justifyContent: 'center', color: 'var(--black)' }} delay={0.1} />
             <div style={{ marginTop: 40 }}>
               <SpreadCards
@@ -126,7 +138,7 @@ export default function Home() {
         <div className="wrap">
           <div className="g-2" style={{ alignItems: 'center' }}>
             <div>
-              <motion.p {...fade()} className="t-overline mb-5">BENEFITS</motion.p>
+              <p className="t-overline mb-5">BENEFITS</p>
               <RevealChar as="h2" text="What you can expect" className="t-h1" delay={0.1} />
             </div>
             <div>
@@ -150,7 +162,7 @@ export default function Home() {
         <div className="wrap">
           <div className="g-2" style={{ alignItems: 'center' }}>
             <div>
-              <motion.p {...fade()} className="t-overline mb-5">REALISTIC EXPECTATIONS</motion.p>
+              <p className="t-overline mb-5">REALISTIC EXPECTATIONS</p>
               <RevealChar as="h2" text="What you should not expect" highlight="not" className="t-h1" delay={0.1} />
             </div>
             <div>
@@ -168,11 +180,11 @@ export default function Home() {
       {/* ══════ WHO IS IT FOR ══════ */}
       <section className="sec" style={{ background: 'var(--black)', borderTop: '1px solid var(--hairline)' }}>
         <div className="wrap">
-          <motion.p {...fade()} className="t-overline mb-5 tc">TARGET AUDIENCE</motion.p>
+          <p className="t-overline mb-5 tc">TARGET AUDIENCE</p>
           <RevealChar as="h2" text="Who is it for?" className="t-h1 mb-7 tc" style={{ justifyContent: 'center' }} delay={0.1} />
-          <motion.p {...fade(0.4)} className="t-body tc mb-7" style={{ maxWidth: 560, margin: '0 auto var(--sp-7)' }}>
+          <p className="t-body tc mb-7" style={{ maxWidth: 560, margin: '0 auto var(--sp-7)' }}>
             Anyone interested in investing. However, particularly individuals looking for guidance on:
-          </motion.p>
+          </p>
           <div className="g-4">
             {['Financial Planning', 'Asset Allocation', 'Fund Selection', 'Tax Optimization'].map((t, i) => (
               <motion.div key={i} {...fade(i * 0.08 + 0.4)} style={{ padding: '32px 24px', border: '1px solid var(--hairline)', textAlign: 'center' }}>
@@ -187,9 +199,9 @@ export default function Home() {
       <section className="teal-band">
         <div className="wrap tc">
           <RevealChar as="h2" text="Ready to begin?" className="t-display mb-5" style={{ color: 'var(--pure)', justifyContent: 'center' }} delay={0.1} />
-          <motion.p {...fade(0.4)} style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', marginBottom: 32, maxWidth: 400, margin: '0 auto 32px' }}>
+          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', marginBottom: 32, maxWidth: 400, margin: '0 auto 32px' }}>
             Start your journey toward simpler, more effective investing.
-          </motion.p>
+          </p>
           <motion.div {...fade(0.5)}>
             <a href="mailto:response@dhanopinion.com" className="btn btn-white"><HoverFlip text="Get in touch" /></a>
           </motion.div>

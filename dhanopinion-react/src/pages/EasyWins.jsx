@@ -18,15 +18,15 @@ export default function EasyWins() {
       <div style={{ position: 'relative' }}>
         <section style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', background: 'var(--black)', position: 'sticky', top: 0, zIndex: 0 }}>
           <div className="wrap">
-            <motion.p {...f()} className="t-overline mb-5">EASY WINS</motion.p>
+            <p className="t-overline mb-5">EASY WINS</p>
             <RevealChar as="h1" text="EASY \n WINS" highlight="WINS" className="t-mega mb-5" />
-            <motion.p {...f(0.3)} className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>Opportunities for benefits without any significant associated downside. Simple actions you can take today.</motion.p>
+            <p className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>Opportunities for benefits without any significant associated downside. Simple actions you can take today.</p>
           </div>
         </section>
         <section className="sec" style={{ background: 'var(--pure)', minHeight: '100vh', position: 'relative', zIndex: 1, boxShadow: '0 -24px 64px rgba(0,0,0,0.6)' }}>
           <div className="wrap">
-            <SpreadCards 
-              items={wins} 
+            <SpreadCards
+              items={wins}
               cols={4}
               className="g-4"
               renderCard={(item) => (

@@ -8,9 +8,9 @@ export default function CaseStudies() {
     <>
       <section style={{ minHeight: '55vh', display: 'flex', alignItems: 'center', background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
         <div className="wrap">
-          <motion.p {...f()} className="t-overline mb-5">CASE STUDIES</motion.p>
+          <p className="t-overline mb-5">CASE STUDIES</p>
           <RevealChar as="h1" text="CASE \n STUDY" highlight="STUDY" className="t-mega mb-5" />
-          <motion.p {...f(0.3)} className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>Real-world investment analysis and recommendations.</motion.p>
+          <p className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>Real-world investment analysis and recommendations.</p>
         </div>
       </section>
 
