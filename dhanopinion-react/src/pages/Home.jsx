@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
+import SplitType from "split-type";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import {
 	HoverFlip,
 	RevealChar,
@@ -9,6 +12,41 @@ import {
 } from "../components/Animations";
 import { SpreadCards } from "../components/SpreadCards";
 import ParticleSphere from "../components/ParticleSphere";
+
+const AnimatedParagraph = ({ text, style, delay = 0.5 }) => {
+	const pRef = useRef(null);
+	useGSAP(() => {
+		if (!pRef.current) return;
+		
+		// Split into lines and words. Lines become the overflow mask.
+		const split = new SplitType(pRef.current, { types: "lines, words" });
+
+		// Make lines act as hidden overflow containers
+		gsap.set(split.lines, { overflow: "hidden", verticalAlign: "top" });
+
+		// Animate words inside each line together, staggered by line index
+		split.lines.forEach((line, index) => {
+			const words = line.querySelectorAll(".word");
+			gsap.from(words, {
+				y: "100%",
+				opacity: 0,
+				duration: 1.2,
+				ease: "power3.out",
+				delay: delay + index * 0.25,
+			});
+		});
+
+		return () => {
+			split.revert();
+		};
+	}, { scope: pRef });
+
+	return (
+		<p ref={pRef} style={style}>
+			{text}
+		</p>
+	);
+};
 
 const fade = (d = 0) => ({
 	initial: { opacity: 0, y: 40 },
@@ -63,38 +101,77 @@ export default function Home() {
 						position: "sticky",
 						top: 0,
 						overflow: "hidden",
-						background: "var(--black)",
+						background: "var(--void)",
 						zIndex: 0,
 					}}
 				>
-					{/* Subtle atmospheric glow */}
+					{/* Modern Mesh + Video Background */}
 					<div
-						style={{ position: "absolute", inset: 0, pointerEvents: "none" }}
+						style={{
+							position: "absolute",
+							inset: 0,
+							zIndex: -1,
+						}}
 					>
-						<div
+						<video
+							autoPlay
+							loop
+							muted
+							playsInline
+							src="https://dhanopinion.com/wp-content/uploads/2023/09/Market-Loop-Background-Video-High-Resolution.mp4"
+							style={{
+								width: "100%",
+								height: "100%",
+								objectFit: "cover",
+								opacity: 0.25,
+								filter: "blur(4px)",
+							}}
+						/>
+						{/* Floating Glowing Orbs */}
+						<motion.div
+							animate={{
+								scale: [1, 1.2, 1],
+								opacity: [0.3, 0.5, 0.3],
+								x: [0, 50, 0],
+								y: [0, -50, 0],
+							}}
+							transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
 							style={{
 								position: "absolute",
 								width: "50vw",
 								height: "50vw",
 								borderRadius: "50%",
-								background:
-									"radial-gradient(circle, rgba(255,107,0,0.07) 0%, transparent 70%)",
+								background: "radial-gradient(circle, rgba(131, 231, 238, 0.15) 0%, transparent 60%)",
 								top: "-10vw",
-								right: "0",
+								right: "10vw",
 								filter: "blur(80px)",
 							}}
 						/>
+						<motion.div
+							animate={{
+								scale: [1, 1.3, 1],
+								opacity: [0.2, 0.4, 0.2],
+								x: [0, -30, 0],
+								y: [0, 30, 0],
+							}}
+							transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+							style={{
+								position: "absolute",
+								width: "40vw",
+								height: "40vw",
+								borderRadius: "50%",
+								background: "radial-gradient(circle, rgba(138, 84, 199, 0.15) 0%, transparent 60%)",
+								bottom: "-10vw",
+								left: "-5vw",
+								filter: "blur(80px)",
+							}}
+						/>
+						{/* Base Gradient Overlay */}
 						<div
 							style={{
 								position: "absolute",
-								width: "30vw",
-								height: "30vw",
-								borderRadius: "50%",
-								background:
-									"radial-gradient(circle, rgba(212,168,83,0.05) 0%, transparent 70%)",
-								bottom: "-5vw",
-								left: "-5vw",
-								filter: "blur(60px)",
+								inset: 0,
+								background: "linear-gradient(135deg, rgba(8,8,8,0.9) 0%, rgba(14,48,48,0.4) 100%)",
 							}}
 						/>
 					</div>
@@ -104,70 +181,170 @@ export default function Home() {
 						style={{ position: "relative", zIndex: 1, width: "100%" }}
 					>
 						<div
-							className="g-2 home-hero-grid"
 							style={{
+								display: "flex",
+								flexWrap: "wrap",
+								gap: "5rem",
 								alignItems: "center",
 								minHeight: "100vh",
 								padding: "120px 0 60px",
 							}}
 						>
 							{/* ── LEFT: text ── */}
-							<div>
-								<p className="t-overline" style={{ marginBottom: 32 }}>
-									SIMPLIFY INVESTING
-								</p>
-								<RevealChar
-									as="h1"
-									text="INVESTING \n IS \n DIFFICULT"
-									highlight="DIFFICULT"
-									highlightStyle={{
-										backgroundImage: "linear-gradient(90deg, #0055ff, #83e7ee)",
-										WebkitBackgroundClip: "text",
-										WebkitTextFillColor: "transparent",
-										display: "inline-block",
-									}}
-									className="t-mega"
-									style={{ marginBottom: 32 }}
-								/>
-								<p
-									className="t-body-lg"
-									style={{
-										maxWidth: 460,
-										marginBottom: 40,
-										color: "var(--smoke)",
-									}}
-								>
-									It need not be. Leverage our research-backed resources and
-									make better investment decisions — simply.
-								</p>
-								<motion.div
-									{...fade(0.4)}
-									style={{ display: "flex", gap: 16, flexWrap: "wrap" }}
-								>
-									<Link to="/easy-wins" className="btn btn-gold">
-										<HoverFlip text="Get Started" />
-									</Link>
-									<Link to="/investment-philosophy" className="btn btn-ghost">
-										<HoverFlip text="Explore" />
-									</Link>
-								</motion.div>
-							</div>
-
-							{/* ── RIGHT: 3D particle sphere ── */}
 							<motion.div
-								initial={{ opacity: 0, scale: 0.8 }}
-								animate={{ opacity: 1, scale: 1 }}
-								transition={{
-									duration: 1.2,
-									ease: [0.16, 1, 0.3, 1],
-									delay: 0.3,
+								initial="hidden"
+								animate="visible"
+								variants={{
+									hidden: { opacity: 0 },
+									visible: {
+										opacity: 1,
+										transition: { staggerChildren: 0.15, delayChildren: 0.2 },
+									}
 								}}
-								className="home-hero-media"
-								style={{ height: "70vh", position: "relative" }}
+								style={{ flex: "1 1 450px" }}
 							>
-								<Suspense fallback={null}>
-									<ParticleSphere />
-								</Suspense>
+								{/* Staggered text animation with blur */}
+								<h1
+									style={{
+										fontSize: "clamp(56px, 7vw, 96px)",
+										fontWeight: 700,
+										lineHeight: 1.05,
+										color: "var(--pure)",
+										marginBottom: "24px",
+										letterSpacing: "-0.03em",
+										display: "flex",
+										flexDirection: "column",
+									}}
+								>
+									<div style={{ overflow: "hidden", paddingBottom: "10px" }}>
+										<motion.span
+											variants={{
+												hidden: { y: "100%", opacity: 0, filter: "blur(10px)" },
+												visible: { y: 0, opacity: 1, filter: "blur(0px)", transition: { type: "spring", damping: 20, stiffness: 80 } }
+											}}
+											style={{ display: "inline-block" }}
+										>
+											Investing is
+										</motion.span>
+									</div>
+									<div style={{ overflow: "hidden", paddingBottom: "20px" }}>
+										<motion.span
+											variants={{
+												hidden: { y: "100%", opacity: 0, filter: "blur(10px)" },
+												visible: { y: 0, opacity: 1, filter: "blur(0px)", transition: { type: "spring", damping: 20, stiffness: 80 } }
+											}}
+											style={{
+												display: "inline-block",
+												background: "linear-gradient(90deg, #a78bfa 0%, #60a5fa 100%)",
+												WebkitBackgroundClip: "text",
+												WebkitTextFillColor: "transparent",
+											}}
+										>
+											Difficult
+										</motion.span>
+									</div>
+								</h1>
+
+								<AnimatedParagraph
+									text="It is difficult for large institutions, and it is even more difficult for individuals because they have less knowledge and resources. You can make it easier by evaluating our suggestions and if you are convinced, implement them."
+									delay={0.8}
+									style={{
+										fontSize: "18px",
+										lineHeight: 1.7,
+										color: "rgba(255, 255, 255, 0.7)",
+										maxWidth: "500px",
+										fontWeight: 400,
+										margin: 0,
+									}}
+								/>
+							</motion.div>
+
+							{/* ── RIGHT: Focus points (Floating Glass Bento Cards) ── */}
+							<motion.div
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ duration: 1, delay: 0.5 }}
+								style={{ flex: "1 1 400px", display: "flex", flexDirection: "column", gap: "24px", perspective: "1000px" }}
+							>
+								{/* Premium Bento Card Header */}
+								<motion.div
+									initial={{ opacity: 0, y: 20, rotateX: 20 }}
+									animate={{ opacity: 1, y: 0, rotateX: 0 }}
+									transition={{ duration: 0.8, delay: 0.6, type: "spring" }}
+									style={{
+										display: "flex",
+										alignItems: "center",
+										gap: "16px",
+										background: "linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%)",
+										backdropFilter: "blur(24px)",
+										border: "1px solid rgba(255, 255, 255, 0.1)",
+										borderRadius: "24px",
+										padding: "20px 32px",
+										width: "fit-content",
+										boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
+									}}
+								>
+									<motion.div
+										animate={{ rotate: 360 }}
+										transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+									>
+										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="url(#paint0_linear)" />
+											<defs>
+												<linearGradient id="paint0_linear" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+													<stop stopColor="#a78bfa" />
+													<stop offset="1" stopColor="#60a5fa" />
+												</linearGradient>
+											</defs>
+										</svg>
+									</motion.div>
+									<h2 style={{ margin: 0, fontSize: "20px", fontWeight: 600, color: "var(--pure)", letterSpacing: "0.02em" }}>
+										We focus on
+									</h2>
+								</motion.div>
+
+								<div style={{ display: "flex", flexDirection: "column", gap: "20px", paddingLeft: "10%" }}>
+									{[
+										"Simple investment strategies that have a logic and can be implemented",
+										"Reducing the clutter of options to a few good ones, saving you time and effort"
+									].map((text, i) => (
+										<motion.div
+											key={i}
+											initial={{ opacity: 0, x: 30 }}
+											animate={{ opacity: 1, x: 0 }}
+											transition={{ duration: 0.8, delay: 0.9 + i * 0.2, type: "spring", stiffness: 80 }}
+											whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+											style={{
+												background: "linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%)",
+												backdropFilter: "blur(24px)",
+												border: "1px solid rgba(255, 255, 255, 0.08)",
+												borderTop: "1px solid rgba(255, 255, 255, 0.15)",
+												borderLeft: "1px solid rgba(255, 255, 255, 0.15)",
+												borderRadius: "32px",
+												padding: "32px 40px",
+												boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
+												position: "relative",
+												overflow: "hidden",
+											}}
+										>
+											{/* Ambient glow inside the card */}
+											<div style={{
+												position: "absolute",
+												top: "-20px",
+												left: "-20px",
+												width: "100px",
+												height: "100px",
+												background: i === 0 ? "rgba(96, 165, 250, 0.2)" : "rgba(167, 139, 250, 0.2)",
+												filter: "blur(40px)",
+												borderRadius: "50%",
+											}} />
+
+											<p style={{ margin: 0, color: "var(--pure)", fontSize: "17px", fontWeight: 400, lineHeight: 1.6, position: "relative", zIndex: 1 }}>
+												{text}
+											</p>
+										</motion.div>
+									))}
+								</div>
 							</motion.div>
 						</div>
 					</div>
