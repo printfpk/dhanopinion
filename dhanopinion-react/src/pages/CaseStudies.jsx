@@ -1,13 +1,57 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { RevealChar } from '../components/Animations'
 
-const f = (d = 0) => ({ initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.15 }, transition: { duration: 0.7, delay: d, ease: [0.16, 1, 0.3, 1] } })
+const cases = [
+  {
+    id: 'case-1',
+    title: 'Case 1',
+    desc: 'Rajeev Agarwal is 30 years old and is married to Aarti who is 29. They have a daughter who is two years old. Rajeev is an engineer employed with a multinational firm and his annual salary is Rs 15 lakhs.',
+    age: 30,
+    equity: 40,
+    risk: 'Average'
+  },
+  {
+    id: 'case-2',
+    title: 'Case 2',
+    desc: 'Sunil, an MNC senior manager has just got promoted as Chief Marketing Officer. He is 47, and his wife Anita, 45 is a homemaker. They have two school going children, a son 14 and a daughter 12.',
+    age: 47,
+    equity: 60,
+    risk: 'High'
+  },
+  {
+    id: 'case-3',
+    title: 'Case 3',
+    desc: 'Jyoti Sharma is 92 years old. She is widowed. She has a pension of 75,000 per year adjusted for inflation. She owns a house which she used to live in and is now rented and generates a rent of 30,000 per month.',
+    age: 92,
+    equity: 10,
+    risk: 'Low'
+  }
+]
 
 export default function CaseStudies() {
+  const [minAge, setMinAge] = useState(0)
+  const [minEquity, setMinEquity] = useState(0)
+  const [risk, setRisk] = useState('Risk Taking Ability')
+
+  const handleReset = () => {
+    setMinAge(0)
+    setMinEquity(0)
+    setRisk('Risk Taking Ability')
+  }
+
+  const filtered = cases.filter(c => {
+    if (c.age < minAge) return false
+    if (c.equity < minEquity) return false
+    if (risk !== 'Risk Taking Ability' && c.risk !== risk) return false
+    return true
+  })
+
   return (
     <>
-      <section style={{ minHeight: '55vh', display: 'flex', alignItems: 'center', background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
-        <div className="wrap">
+      <section style={{ minHeight: '45vh', display: 'flex', alignItems: 'center', background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
+        <div className="wrap pt-8 pb-8">
           <p className="t-overline mb-5">CASE STUDIES</p>
           <RevealChar as="h1" text="CASE \n STUDY" highlight="STUDY" className="t-mega mb-5" />
           <p className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>Real-world investment analysis and recommendations.</p>
@@ -15,56 +59,101 @@ export default function CaseStudies() {
       </section>
 
       <section className="sec" style={{ background: 'var(--void)' }}>
-        <div className="wrap-narrow">
-          <motion.article {...f()}>
-            <div className="hairline-gold mb-7" />
-            <RevealChar as="h2" text="Case 1 — Rajeev Agarwal" highlight="Rajeev Agarwal" className="t-h1 mb-7" delay={0.1} />
-
-            <p className="t-body mb-5" style={{ marginTop: 24 }}>Rajeev Agarwal is 30 years old, married to Aarti (29). They have a two-year-old daughter. Rajeev is an engineer at a multinational firm earning ₹15 lakhs per annum. Aarti is a housewife. They save ₹2 lakhs per year.</p>
-            <p className="t-body mb-7">Current portfolio: ₹2 lakhs in an ICICI savings account for liquidity, ₹3 lakhs in ICICI Prudential Balanced Advantage Fund Growth. Goals: home purchase, retirement, daughter's education and marriage. Risk tolerance: average.</p>
-
-            <div style={{ borderTop: '1px solid var(--hairline)', padding: '32px 0' }}>
-              <RevealChar as="h3" text="Easy Wins Identified" className="t-h2 mb-5" delay={0.1} />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 24, marginTop: 24 }}>
-                {[
-                  { n: '01', t: 'Switch to Direct Fund', d: 'The ICICI Prudential Balanced Advantage Fund has an expense ratio of 1.53%. Direct version: 0.91%. Savings: 0.62% p.a. or ₹1,860 per annum.' },
-                  { n: '02', t: 'Use Liquid Funds', d: 'Move savings from 3% savings account to a liquid fund earning ~6.5%. Additional income: ₹7,420 per annum on ₹2,00,000.' },
-                ].map((w, i) => (
-                  <div key={i} style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--gold)', fontWeight: 600, minWidth: 24, paddingTop: 3 }}>{w.n}</span>
-                    <div>
-                      <h4 className="t-h3 mb-2">{w.t}</h4>
-                      <p className="t-caption" style={{ lineHeight: 1.6 }}>{w.d}</p>
-                    </div>
-                  </div>
-                ))}
+        <div className="wrap" style={{ display: 'flex', gap: '4rem', alignItems: 'flex-start' }}>
+          
+          {/* Sidebar */}
+          <div className="filters-sidebar" style={{ width: '300px', flexShrink: 0, padding: '2rem', background: 'var(--iron)', borderRadius: '12px', position: 'sticky', top: '100px' }}>
+            <h3 style={{ color: 'var(--gold)', marginBottom: '2rem', fontSize: '18px', fontWeight: 500 }}>Filters</h3>
+            
+            <div style={{ marginBottom: '2rem' }}>
+              <label style={{ display: 'block', color: 'var(--gold)', marginBottom: '1rem', fontSize: '14px' }}>Age</label>
+              <input 
+                type="range" 
+                min="0" max="100" 
+                value={minAge} 
+                onChange={e => setMinAge(Number(e.target.value))}
+                style={{ width: '100%', accentColor: 'var(--pure)' }}
+              />
+              <div style={{ textAlign: 'center', marginTop: '0.5rem', color: 'var(--pure)', fontSize: '14px' }}>
+                {minAge} — 100
               </div>
             </div>
 
-            <div style={{ borderTop: '1px solid var(--hairline)', padding: '32px 0' }}>
-              <RevealChar as="h3" text="Asset Allocation" className="t-h2 mb-5" delay={0.1} />
-              <p className="t-body mb-5" style={{ marginTop: 24 }}>Current equity allocation: 40% — quite low for their age. Recommended: <strong style={{ color: 'var(--gold)' }}>75% equity</strong>. Rajeev and Aarti are young — most of their capital is human capital embodied in future earnings capacity.</p>
-            </div>
-
-            <div style={{ borderTop: '1px solid var(--hairline)', padding: '32px 0' }}>
-              <RevealChar as="h3" text="Investment Recommendations" className="t-h2 mb-5" delay={0.1} />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 24 }}>
-                {[
-                  'Switch ₹2,00,000 savings account balances to ICICI Prudential Liquid Fund Direct Growth',
-                  'Sell their Prudential Balanced Fund',
-                  '₹50,000 into Tier 1 NPS (75% Equity, 25% Govt Securities, SBI as provider)',
-                  '₹2,50,000 into SBI Nifty Index ETF Direct Class',
-                ].map((r, i) => (
-                  <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-                    <span style={{ color: 'var(--gold)', fontSize: 14, fontWeight: 700, minWidth: 16 }}>→</span>
-                    <p className="t-body" style={{ color: 'var(--mist)' }}>{r}</p>
-                  </div>
-                ))}
+            <div style={{ marginBottom: '2rem' }}>
+              <label style={{ display: 'block', color: 'var(--gold)', marginBottom: '1rem', fontSize: '14px' }}>Percentage equity exposure</label>
+              <input 
+                type="range" 
+                min="0" max="100" 
+                value={minEquity} 
+                onChange={e => setMinEquity(Number(e.target.value))}
+                style={{ width: '100%', accentColor: 'var(--pure)' }}
+              />
+              <div style={{ textAlign: 'center', marginTop: '0.5rem', color: 'var(--pure)', fontSize: '14px' }}>
+                {minEquity} — 100
               </div>
             </div>
-          </motion.article>
+
+            <div style={{ marginBottom: '2rem' }}>
+              <label style={{ display: 'block', color: 'var(--gold)', marginBottom: '1rem', fontSize: '14px' }}>Risk Taking Ability</label>
+              <select 
+                value={risk} 
+                onChange={e => setRisk(e.target.value)}
+                style={{ width: '100%', padding: '0.75rem', background: 'var(--pure)', border: 'none', borderRadius: '4px', fontSize: '14px', outline: 'none', cursor: 'pointer', color: 'var(--black)' }}
+              >
+                <option>Risk Taking Ability</option>
+                <option>Low</option>
+                <option>Average</option>
+                <option>High</option>
+              </select>
+            </div>
+
+            <button 
+              onClick={handleReset}
+              style={{ width: '100%', padding: '0.75rem', background: '#9d4edd', color: 'var(--pure)', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 500, fontSize: '14px', transition: 'opacity 0.2s' }}
+              onMouseOver={e => e.currentTarget.style.opacity = 0.8}
+              onMouseOut={e => e.currentTarget.style.opacity = 1}
+            >
+              Reset
+            </button>
+          </div>
+
+          {/* List */}
+          <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <AnimatePresence>
+              {filtered.map((c, i) => (
+                <motion.div 
+                  key={c.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ borderBottom: '1px solid var(--hairline)', paddingBottom: '2rem' }}
+                >
+                  <h3 style={{ color: 'var(--gold)', fontSize: '20px', fontWeight: 600, marginBottom: '1rem' }}>{c.title}</h3>
+                  <p className="t-body" style={{ color: 'var(--pure)', marginBottom: '1.5rem', lineHeight: 1.6 }}>{c.desc}</p>
+                  <Link 
+                    to={`/case_study/${c.id}`}
+                    style={{ display: 'inline-block', padding: '0.6rem 1.5rem', background: '#9d4edd', color: 'var(--pure)', borderRadius: '6px', fontSize: '14px', fontWeight: 500, textDecoration: 'none', transition: 'opacity 0.2s' }}
+                    onMouseOver={e => e.currentTarget.style.opacity = 0.8}
+                    onMouseOut={e => e.currentTarget.style.opacity = 1}
+                  >
+                    Read More
+                  </Link>
+                </motion.div>
+              ))}
+              {filtered.length === 0 && (
+                <div style={{ color: 'var(--smoke)', padding: '2rem 0' }}>No case studies match your filters.</div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </section>
+      <style>{`
+        @media (max-width: 768px) {
+          .sec > .wrap { flex-direction: column !important; }
+          .filters-sidebar { width: 100% !important; position: static !important; }
+        }
+      `}</style>
     </>
   )
 }

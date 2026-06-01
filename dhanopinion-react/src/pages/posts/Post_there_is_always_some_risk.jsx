@@ -2,83 +2,46 @@ import PostLayout from '../../components/PostLayout'
 
 export default function Post_there_is_always_some_risk() {
   return (
-    <PostLayout title="Inflation, Real Value and the Money Illusion">
-      <div dangerouslySetInnerHTML={{ __html: `
-		<!-- 1.1 uicore_before_body_content -->	<div class="uicore-body-content">
-		<!-- 1.2 uicore_before_page_content -->		<div id="uicore-page">
-		<div class="uicore-progress-bar"></div>
-        
-        <!-- 1.3 uicore_page -->			<div id="content" class="uicore-content">
-
-			                <header class="uicore uicore-page-title elementor-section elementor-section-boxed"                 >
-
-                                    <div class="uicore-overlay"></div>
-                                    <div class="uicore elementor-container">
-
-                        <p class="uicore-animate ui-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><span itemprop="itemListElement" itemscope
-          itemtype="https://schema.org/ListItem"><a itemprop="item" href="https://dhanopinion.com"><span itemprop="name">Home</span></a><meta itemprop="position" content=" 1" /></span><i class="uicore-separator uicore-i-arrow"></i><span itemprop="itemListElement" itemscope
-          itemtype="https://schema.org/ListItem"><a itemprop="item" href="/blog/"><span itemprop="name">Blog</span></a><meta itemprop="position" content=" 2" /></span><i class="uicore-separator uicore-i-arrow"></i><span itemprop="itemListElement" itemscope
-          itemtype="https://schema.org/ListItem"><a itemprop="item" href="/category/asset-allocation/"><span itemprop="name">Asset Allocation</span></a><meta itemprop="position" content=" 3" /></span><i class="uicore-separator uicore-i-arrow"></i><span itemprop="itemListElement" itemscope
-          itemtype="https://schema.org/ListItem" ><span><span itemprop="name">Inflation, Real Value and the Money Illusion</span><meta itemprop="position" content=" 4" /></span></span></p>
-                            <h1 class="uicore-title uicore-animate h2">
-                                Inflation, Real Value and the Money Illusion                            </h1>
-                            <div class="uicore-animate uicore-entry-meta"><span class="ui-blog-date ui-published">August 4, 2023 </span></div>                    </div>
-
-                </header>
-                <!-- 1.4 uicore_before_content -->
-<div id="primary" class="content-area">
-
-			<div data-elementor-type="single-post" data-elementor-id="1192" class="elementor elementor-1192 elementor-location-single post-1865 post type-post status-publish format-standard hentry category-asset-allocation category-inflation category-investment-strategy tag-exchange-rate tag-inflation tag-purchasing-power" data-elementor-post-type="elementor_library">
-								<section class="elementor-section elementor-top-section elementor-element elementor-element-48ac486 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="48ac486" data-element_type="section">
-						<div class="elementor-container elementor-column-gap-default">
-					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-da733ab" data-id="da733ab" data-element_type="column">
-			<div class="elementor-widget-wrap elementor-element-populated">
-								<div class="elementor-element elementor-element-9b6ed9e elementor-widget elementor-widget-uicore-the-content" data-id="9b6ed9e" data-element_type="widget" data-widget_type="uicore-the-content.default">
-				<div class="elementor-widget-container">
-					<div data-elementor-type="wp-post" data-elementor-id="1865" class="elementor elementor-1865" data-elementor-post-type="post">
-									<section class="elementor-section elementor-top-section elementor-element elementor-element-f371c9b elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f371c9b" data-element_type="section">
-						<div class="elementor-container elementor-column-gap-default">
-					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-ccdeafb" data-id="ccdeafb" data-element_type="column">
-			<div class="elementor-widget-wrap elementor-element-populated">
-								<div class="elementor-element elementor-element-a9cd896 elementor-widget elementor-widget-text-editor" data-id="a9cd896" data-element_type="widget" data-widget_type="text-editor.default">
-				<div class="elementor-widget-container">
-							<p>We are accustomed to using money as a stable store of value over short horizons. We have a tendency of evaluating portfolio outcomes and risk in nominal terms rather than in real terms which is what really matters over long horizons.</p><p>What do we mean by “nominal terms?” What is “real terms?”</p><p>Let us take an example.</p><p>You have an investment that delivers a return of 7% per year. The Rs. 1,000 you invested at 7% on 1st January 2021 gave you an additional Rs. 70 on 1st January 2022. You spend the Rs. 70 and invest the Rs. 1,000 once again at 7% on 1st January 2022 which gives you an additional Rs. 70 on 1st January 2023 leaving the Rs. 1,000 intact. If the return remains unchanged you will get an another Rs. 70 on 1st January, 2024. And so on.</p><p>The price of a masala dosa at your favourite Udupi restaurant on 1st January, 2022 is Rs. 70. You received the Rs. 70- return from your investment and spent it on the dosa on 1st January, 2022.</p><p>You want to eat a masala dosa at your favourite Udupi restaurant once again on 1st January,2023 when you receive the Rs. 70 return from the investment. You walk in with a swagger and order your favourite dosa and devour it hungrily. When you ask for the bill you get a shock when you realize you have to pay Rs. 77. You protest and speak to the owner who expresses his inability to reduce the price as the cost of input materials like flour and potatoes has gone up. You end up paying Rs. 77. Not only have you paid the earned interest but also an additional Rs. 7 leaving you with a lesser to invest for the future.</p><p>This is the impact of inflation and its relationship with investing.</p><p>On 1st January, 2023, you have received Rs. 70 in “nominal terms.”</p><p>However, in “real terms” it is worth less than it was worth on 1st January, 2022.</p><p>Why?</p><p>Because today’s Rs. 70 is not able to buy you the same amount of goods and services that it was able to buy you one year back.</p><p>The price of the dosa increasing from Rs. 70 to Rs. 77 is known as inflation.</p><p>Inflation can be defined as an increase in prices from one period to another. On the flip side, it could be described as the rate at which the value of money erodes or depreciates or loses its power to purchase. In the context of investment, it is the rate which they need to earn from their investments to keep their standard of living at the same level. If inflation in 10% and your “nominal” investment return is 7%, your “real” or effective investment return is minus 3%.</p><p>In economic terms, increase in the supply of money relative to the productive output leads to more money chasing fewer goods which results in inflation.</p><p>Inflation, though it seems opposed to the well-being of individuals, is supported by policy makers as it is believed to promote a stable, sustainable and predictable economic environment. However, at low/ moderate levels. When it goes beyond these levels, it can have deleterious economic outcomes.</p><p>If the price of everything were to rise at exactly the same rate, then it would not matter and nothing would change. People would not become richer or poorer as a result of inflation. However, not everything is impacted equally.</p><p>Among asset classes, the liquid asset classes tend to appreciate at a slower pace as compared to the less liquid asset classes. Hence, a move away from holding liquid assets is recommended as a strategy to counter the impact of inflation.</p><p>What should individuals strive for?</p><p>That their investments yield a return which is higher than the rate of inflation.</p><p>That their earnings increase annually at least as much as the rate of inflation.</p><p>The <a href="https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?end=2021&amp;locations=IN&amp;start=1960&amp;view=chart">World Bank</a> reports India’s inflation since 1960 as follows:</p>						</div>
-				</div>
-				<div class="elementor-element elementor-element-369c529 elementor-widget elementor-widget-image" data-id="369c529" data-element_type="widget" data-widget_type="image.default">
-				<div class="elementor-widget-container">
-															<img fetchpriority="high" fetchpriority="high" decoding="async" width="752" height="584" src="/wp-content/uploads/2023/01/Picture1.png" class="attachment-large size-large wp-image-1870" alt="" srcset="/wp-content/uploads/2023/01/Picture1.png 752w, /wp-content/uploads/2023/01/Picture1-300x233.png 300w, /wp-content/uploads/2023/01/Picture1-650x505.png 650w" sizes="(max-width: 752px) 100vw, 752px" />															</div>
-				</div>
-				<div class="elementor-element elementor-element-acda1f4 elementor-widget elementor-widget-text-editor" data-id="acda1f4" data-element_type="widget" data-widget_type="text-editor.default">
-				<div class="elementor-widget-container">
-							<p>What this means is that the value of what a Rupee could buy has become smaller over time.</p><p>According to a calculator of <a href="https://www.worlddata.info/asia/india/inflation-rates.php">World Data</a>, if you could buy a certain basket of goods and services for Rs. 1,000 in 1961, in 2022, 61 years later, you need Rs. 78,071 to buy.</p><p>Its value against the US Dollar over a similar period of time tells the same story.</p><p>Another way of looking at the decline in the value of Rupee over time is its value against the US dollar, as shown in the chart below, produced by <a href="https://www.xe.com/currencycharts/?from=USD&amp;to=INR&amp;view=10Y">XE.com</a>.</p>						</div>
-				</div>
-				<div class="elementor-element elementor-element-5486c26 elementor-widget elementor-widget-image" data-id="5486c26" data-element_type="widget" data-widget_type="image.default">
-				<div class="elementor-widget-container">
-															<img decoding="async" width="752" height="393" src="/wp-content/uploads/2023/01/Picture3.png" class="attachment-large size-large wp-image-1871" alt="" srcset="/wp-content/uploads/2023/01/Picture3.png 752w, /wp-content/uploads/2023/01/Picture3-300x157.png 300w, /wp-content/uploads/2023/01/Picture3-650x340.png 650w" sizes="(max-width: 752px) 100vw, 752px" />															</div>
-				</div>
-				<div class="elementor-element elementor-element-536f840 elementor-widget elementor-widget-text-editor" data-id="536f840" data-element_type="widget" data-widget_type="text-editor.default">
-				<div class="elementor-widget-container">
-							<p>In June 2012, one could buy one dollar with 57 Rupees. In June 2022, one needs 82 Rupees to buy the same one dollar.</p>						</div>
-				</div>
-					</div>
-		</div>
-							</div>
-		</section>
-							</div>
-				</div>
-				</div>
-					</div>
-		</div>
-							</div>
-		</section>
-						</div>
-			
-</div><!-- #primary -->
-
-
-	</div><!-- #content -->
-
-			` }} />
+    <PostLayout title="There is always some risk">
+      <p>Preservation and growth of money, simple as it may sound, is not an easy task. In the olden days one may have needed to protect money from thieves and robbers. The modern world has its share of thieves and robbers, though most of them will not rid you of your valuables at gunpoint.</p>
+      
+      <p>Investing is a choice being made by the investor. A choice needs to be made because the future is uncertain. Though we have some idea about how it might turn out, nobody knows for sure. Just because a certain commodity has appreciated over the last 5 years does not mean it will do so for the next 5 years as well. Investment advertisements regularly and mandatorily warn investors that past performance is no guarantee of the future returns.</p>
+      
+      <p>Most investment advisors will have you fill out a form based on which they evaluate your ‘risk profile,’ or ability to take investment risks, and recommend options accordingly.</p>
+      
+      <p>The risk-reward trade-off is well known. The greater the projected return, the greater the risk. Investors with a low ability to handle risk are recommended safe options like government bonds and bank deposits.</p>
+      
+      <p>What you are not told is that there is risk in every investment.</p>
+      
+      <h3>Equity Investing</h3>
+      <p>Equity is designed to bear risk in bad times.</p>
+      <p>When you invest in equity you take the risk that the business will be unsuccessful and that you will lose money. The only reason that people invest in equity is because they expect on average that the business will be successful and that they will make money in compensation for bearing this risk. Historically equity markets have delivered high returns. It is reasonable to expect that in the future too, one should expect to get higher returns for bearing equity risk. However, when one invests in equity, one is taking risk while hoping to generate higher returns than fixed income investments and interest rate investments like government or corporate bonds or bank fixed deposits.</p>
+      
+      <h3>Fixed Income Investing</h3>
+      <p>With fixed income instruments, there is a promise to pay you for borrowing money from you. There is an interest rate and a schedule for payment of principal. The interest rate can be fixed or floating based upon a specified index.</p>
+      <p>Fixed income investments have credit risk – that the promises of fixed payments made are not kept. There can be a default.</p>
+      <p>If the counterpart to a fixed income investment is very good, such as the government in its own currency, the credit risk can be very small.</p>
+      <p>The value of fixed-income investments also changes as interest rates change and they can go up or down in value as interest rates decrease or increase.</p>
+      <p>Fixed Income investments are denominated in terms of money and the value of money has fluctuated over time, with a general tendency to decline in value as a result of inflation. The real (inflation adjusted) value of fixed income instruments is therefore exposed to risk. Over time, the declines in real value can be substantial.</p>
+      <p>There are inflation-linked instruments, which promise a fixed real or inflation-adjusted return. If the promise comes from a government the credit risk can be minimal. However, there exists the risk that the calculation agent (often a government related entity) does not properly reflect actual inflation as has happened in Argentina. There are controversies about the calculation of inflation in other countries. Even eliminating that risk, taxes are due on nominal returns. Therefore, even if one has a fixed real rate instrument from a government, the after-tax real value will not be fixed and therefore have risk.</p>
+      <p>When economies go through crisis and turmoil, all assets can do very poorly with many assets losing almost all value; Zimbabwe, Venezuela and Lebanon are examples. Recently, Sri Lanka and Pakistan are examples closer to home where there was no place to hide without bearing significant losses in domestic assets. This makes the case for investing abroad, if possible, worth considering. However, changes in the law and taxation can reduce the returns from foreign assets as well in times of crisis.</p>
+      <p>While real estate and human capital are not included in the investments we are considering, it is worth highlighting some aspects of the value of investing in real estate and human capital.</p>
+      
+      <h3>Real estate</h3>
+      <p>Real estate has the benefit of going up in value with inflation as well as growth in population and per capita income. Residential housing is the largest expenditure for families. Owning residential real estate hedges one’s future expenditure or liability stream and therefore reduces the risk of affordability of housing. It therefore has attractive risk return characteristics over long horizons, particularly when one considers simultaneously one’s assets and liabilities. However, as refugees have experienced, when one is uprooted, one cannot take real estate with you.</p>
+      
+      <h3>Human capital</h3>
+      <p>Investing in human capital, particularly for one’s children, has the benefit of always being with them through crisis and turmoil. It is also a real asset and exposed to growth in the economy through growth in population and per capita income. Human capital also has positive lifetime externalities.</p>
+      
+      <p>So, what should one do if one wants a low level of risk?</p>
+      <p>Short term government bonds are often described as a risk-free asset. This is pretty accurate if one has a need for the funds over a short horizon. The rate is fixed, there is no exposure to changes in interest rates and the inflation rate over a short horizon can be pretty accurately predicted based upon recent history. The risk in both nominal and real terms is almost nil. However, most people seldom have a very short-term horizon for their investments. For those with a long-term horizon, short-term government bonds can be quite risky in nominal and even more so in real terms, particularly in emerging markets with high and variable levels of inflation. For those with a long investment horizon, typically real outcomes are more important than nominal outcomes. An inflation-linked government bond investment with a maturity matching the investment horizon could be considered low risk to the horizon. The value of this investment will however vary on a daily basis.</p>
+      <p>The investment horizon matters when one considers risk.</p>
+      <p>Equity is a real asset in that revenue and profit can be expected to go up with inflation. One can make the case that over long horizons fixed income investments are not as much lower in risk than equities than they are over shorter horizons. In emerging markets with higher and more variable inflation, the difference between fixed income and equity risk can be lower than is the case with developed markets with lower and more stable inflation rates.</p>
+      <p>Equities always have higher returns over long horizons.</p>
+      <p>If someone tells you that equity always pays off in the long run, have them take a look at the equity markets that ceased to exist after communist transitions in Russia and China and the equity market experience in Japan.</p>
+      <p>Bank deposits carry the risk of bank failure. Deposits in banks are insured only up to Rs. 500,000.</p>
+      <p>There could be liquidity risk; the inability to cash out when you need the money.</p>
+      <p>While a government might ensure that instruments like bank deposits and government bonds are honoured, they cannot guarantee the non-depreciation of the currency in case of economic mismanagement.</p>
     </PostLayout>
   )
 }

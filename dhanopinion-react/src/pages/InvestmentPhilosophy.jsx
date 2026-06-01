@@ -1,48 +1,125 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { HoverFlip, RevealChar } from '../components/Animations'
-import { SpreadCards } from '../components/SpreadCards'
+import philosophyImage from '../assets/investment_philosophy.png'
 
-const f = (d = 0) => ({ initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.15 }, transition: { duration: 0.7, delay: d, ease: [0.16, 1, 0.3, 1] } })
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+}
 
-const principles = [
-  { num: '01', title: 'Compound Interest', desc: 'The most powerful force in investing. Start early.', to: '/2023/08/03/compound-interest-and-exponential-growth/' },
-  { num: '02', title: 'Diversification', desc: 'Spread risk across asset classes and geographies.', to: '/2023/04/09/diversification-reduces-risk/' },
-  { num: '03', title: 'Risk Management', desc: 'Understand and manage — never avoid entirely.', to: '/2023/08/04/there-is-always-some-risk/' },
-  { num: '04', title: 'Low Costs', desc: 'Every basis point saved compounds over decades.', to: '/2023/08/16/keep-the-cost-of-investing-low/' },
-  { num: '05', title: 'Tax Efficiency', desc: 'Structure investments to minimize tax drag.', to: '/2023/08/17/taxes-and-investment-outcomes/' },
-  { num: '06', title: 'Long Horizon', desc: 'Invest with patience. Resist the urge to time.', to: '/2023/08/07/defining-your-investment-horizon-can-lead-to-better-planning/' },
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+}
+
+const elements = [
+  { text: "Everything has risk.", link: "/2023/08/04/there-is-always-some-risk/" },
+  { text: "Compounded returns result in exponential growth and over long periods small returns result in large amounts of accumulated value. In other words, small differences in rates of return over long periods will result in large differences in accumulated value.", link: "/2023/08/03/compound-interest-and-exponential-growth/" },
+  { text: "Inflation reduces the value of money. Over long periods, the loss is significant.", link: "/2023/08/25/inflation-real-value-and-the-money-illusion/" },
+  { text: "Diversification reduces risk.", link: "/2023/04/09/diversification-reduces-risk/" },
+  { text: "Markets are very competitive, and this makes it difficult to outperform the average market outcomes.", link: "/2023/08/10/competitive-financial-markets-and-the-implications-for-investment-strategy/" },
+  { text: "Asset Allocation is the most important investment decision.", link: "/2023/08/05/asset-allocation/" },
+  { text: "Historically, equities have outperformed fixed income investments by a lot. - Equity returns going forward are likely to be lower than the past.", link: "/2023/08/08/risk-and-return-profile-of-equity/" },
+  { text: "Historically, equities have outperformed fixed income investments by a lot. - Equity returns going forward are likely to be higher than fixed income returns.", link: "/2023/08/08/risk-and-return-profile-of-equity/" },
+  { text: "There is the risk of large losses in equities.", link: "/2023/08/08/risk-and-return-profile-of-equity/" },
+  { text: "Taxes have a significant impact on after tax investment returns. Managing taxes can add a lot of value in the investment process.", link: "/2023/08/17/taxes-and-investment-outcomes/" },
+  { text: "Defining and understanding your investment horizon can lead to better planning.", link: "/2023/08/07/defining-your-investment-horizon-can-lead-to-better-planning/" },
+  { text: "Keep the cost of investing low.", link: "/2023/08/16/keep-the-cost-of-investing-low/" },
+  { text: "Buy the index.", link: "/2023/08/14/dont-pick-stocks-buy-the-index/" },
+  { text: "Individuals and institutions - Who you are changes investment choices.", link: "/2023/08/21/individual-or-institution-who-you-are-changes-investment-choices/" }
 ]
 
 export default function InvestmentPhilosophy() {
   return (
     <>
-      <div style={{ position: 'relative' }}>
-        <section style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', background: 'var(--black)', position: 'sticky', top: 0, zIndex: 0 }}>
-          <div className="wrap">
-            <p className="t-overline mb-5">PHILOSOPHY</p>
-            <RevealChar as="h1" text="INVESTMENT \n PHILOSOPHY" highlight="PHILOSOPHY" className="t-mega mb-5" />
-            <p className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>Core principles that guide sound investment decisions for long-term wealth creation.</p>
+      <section className="sec" style={{ background: 'var(--black)', minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
+        <div className="wrap">
+          <div className="g-2" style={{ alignItems: 'center' }}>
+            <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
+              <motion.div variants={fadeUp} className="hairline-gold mb-5" />
+              <RevealChar as="h1" text="Investment \n Philosophy" className="t-mega mb-6" style={{ lineHeight: 0.95 }} />
+              <motion.p variants={fadeUp} className="t-body-lg mb-4" style={{ color: 'var(--pure)' }}>
+                Underpinning any investment recommendations is an underlying investment philosophy.
+              </motion.p>
+              <motion.p variants={fadeUp} className="t-body mb-7">
+                Here we articulate our investment philosophy so that you can see explicitly the important assumptions that underlie the suggestions we are making. If you agree with our investment philosophy, our approach is likely to be a good fit for you. If your view of the investment world is different, you should look at alternative solutions.
+              </motion.p>
+              <motion.div variants={fadeUp}>
+                <a href="#elements" className="btn btn-gold">
+                  <HoverFlip text="KNOW MORE" />
+                </a>
+              </motion.div>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }} 
+              animate={{ opacity: 1, scale: 1 }} 
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div style={{ position: 'relative', padding: 'var(--sp-4)' }}>
+                <div style={{ position: 'absolute', inset: 0, background: 'var(--gold-glow)', borderRadius: '4px', filter: 'blur(40px)', zIndex: 0 }}></div>
+                <img 
+                  src={philosophyImage} 
+                  alt="Investment Philosophy" 
+                  style={{ width: '100%', height: 'auto', borderRadius: '4px', position: 'relative', zIndex: 1, boxShadow: '0 24px 64px rgba(0,0,0,0.5)' }} 
+                />
+              </div>
+            </motion.div>
           </div>
-        </section>
-        <section className="sec" style={{ background: 'var(--pure)', minHeight: '100vh', position: 'relative', zIndex: 1, boxShadow: '0 -24px 64px rgba(0,0,0,0.6)' }}>
-          <div className="wrap">
-            <SpreadCards
-              items={principles}
-              cols={3}
-              className="g-3"
-              renderCard={(p) => (
-                <Link to={p.to} className="card" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--orange)', fontWeight: 600, marginBottom: 16 }}>{p.num}</span>
-                  <h3 className="t-h3" style={{ marginBottom: 8 }}><HoverFlip text={p.title} /></h3>
-                  <p className="t-caption" style={{ flex: 1, opacity: 0.9 }}>{p.desc}</p>
-                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--orange)', marginTop: 20 }}><HoverFlip text="READ →" /></span>
-                </Link>
-              )}
-            />
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      <section id="elements" className="sec" style={{ background: 'var(--charcoal)', borderTop: '1px solid var(--hairline)' }}>
+        <div className="wrap">
+          <motion.div 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeUp}
+            className="mb-8 tc"
+          >
+            <h2 className="t-h1 mb-4" style={{ color: 'var(--pure)' }}>The core elements of the investment philosophy</h2>
+            <div className="hairline-gold" style={{ margin: '0 auto' }}></div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}
+          >
+            {elements.map((item, i) => (
+              <motion.div 
+                key={i} 
+                variants={fadeUp}
+                className="list-row"
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'space-between',
+                  gap: 'var(--sp-5)',
+                  padding: 'var(--sp-4) var(--sp-5)',
+                  borderBottom: '1px solid var(--hairline)'
+                }}
+              >
+                <p className="t-body" style={{ margin: 0, flex: 1, color: 'var(--pure)' }}>
+                  {item.text}
+                </p>
+                <div>
+                  <Link to={item.link} className="btn btn-gold btn-sm" style={{ whiteSpace: 'nowrap' }}>
+                    <HoverFlip text="KNOW MORE" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
     </>
   )
 }

@@ -5,6 +5,9 @@ import EasyWins from './pages/EasyWins'
 import SimpleInvestmentStrategy from './pages/SimpleInvestmentStrategy'
 import InvestmentPhilosophy from './pages/InvestmentPhilosophy'
 import CaseStudies from './pages/CaseStudies'
+import CaseStudy1 from './pages/posts/CaseStudy1'
+import CaseStudy2 from './pages/posts/CaseStudy2'
+import CaseStudy3 from './pages/posts/CaseStudy3'
 import InformationCentre from './pages/InformationCentre'
 import AboutUs from './pages/AboutUs'
 import Disclaimer from './pages/Disclaimer'
@@ -29,6 +32,10 @@ import Post_when_investing_in_a_mutual_fund_choose_a_direct_mf_over_a_regular_mf
 import Post_why_keeping_money_in_a_liquid_mutual_fund_is_better_for_short_term_needs_than_keeping_it_in_a_savings_account from './pages/posts/Post_why_keeping_money_in_a_liquid_mutual_fund_is_better_for_short_term_needs_than_keeping_it_in_a_savings_account'
 import Post_national_pension_system_nps from './pages/posts/Post_national_pension_system_nps'
 import Post_government_savings_schemes from './pages/posts/Post_government_savings_schemes'
+import Post_inflation_real_value_and_the_money_illusion from './pages/posts/Post_inflation_real_value_and_the_money_illusion'
+import Post_government_bonds from './pages/posts/Post_government_bonds'
+import Post_senior_citizen_saving_scheme from './pages/posts/Post_senior_citizen_saving_scheme'
+import Post_public_provident_fund from './pages/posts/Post_public_provident_fund'
 
 function App() {
   return (
@@ -43,6 +50,9 @@ function App() {
         <Route path="investment-philosophy/" element={<InvestmentPhilosophy />} />
         <Route path="case-studies" element={<CaseStudies />} />
         <Route path="case-studies/" element={<CaseStudies />} />
+        <Route path="case_study/case-1/*" element={<CaseStudy1 />} />
+        <Route path="case_study/case-2/*" element={<CaseStudy2 />} />
+        <Route path="case_study/case-3/*" element={<CaseStudy3 />} />
         <Route path="information-centre" element={<InformationCentre />} />
         <Route path="information-centre/" element={<InformationCentre />} />
         <Route path="about-us" element={<AboutUs />} />
@@ -62,7 +72,7 @@ function App() {
         <Route path="2023/08/09/risk-and-return-profile-of-fixed-income/*" element={<Post_risk_and_return_profile_of_fixed_income />} />
         <Route path="2023/08/10/test/*" element={<Post_test />} />
         <Route path="2023/08/11/index-funds/*" element={<Post_index_funds />} />
-        <Route path="2023/08/12/competitive-financial-markets-and-the-implications-for-investment-strategy/*" element={<Post_competitive_financial_markets_and_the_implications_for_investment_strategy />} />
+        <Route path="2023/08/10/competitive-financial-markets-and-the-implications-for-investment-strategy/*" element={<Post_competitive_financial_markets_and_the_implications_for_investment_strategy />} />
         <Route path="2023/08/13/individual-or-institution-who-you-are-changes-investment-choices/*" element={<Post_individual_or_institution_who_you_are_changes_investment_choices />} />
         <Route path="2023/08/14/dont-pick-stocks-buy-the-index/*" element={<Post_dont_pick_stocks_buy_the_index />} />
         <Route path="2023/08/16/keep-the-cost-of-investing-low/*" element={<Post_keep_the_cost_of_investing_low />} />
@@ -71,6 +81,10 @@ function App() {
         <Route path="2023/08/19/why-keeping-money-in-a-liquid-mutual-fund-is-better-for-short-term-needs-than-keeping-it-in-a-savings-account/*" element={<Post_why_keeping_money_in_a_liquid_mutual_fund_is_better_for_short_term_needs_than_keeping_it_in_a_savings_account />} />
         <Route path="2023/08/20/national-pension-system-nps/*" element={<Post_national_pension_system_nps />} />
         <Route path="2023/08/23/government-savings-schemes/*" element={<Post_government_savings_schemes />} />
+        <Route path="2023/08/25/inflation-real-value-and-the-money-illusion/*" element={<Post_inflation_real_value_and_the_money_illusion />} />
+        <Route path="2023/08/22/government-bonds/*" element={<Post_government_bonds />} />
+        <Route path="2023/09/01/senior-citizen-saving-scheme/*" element={<Post_senior_citizen_saving_scheme />} />
+        <Route path="2023/10/01/public-provident-fund/*" element={<Post_public_provident_fund />} />
       </Route>
     </Routes>
   )

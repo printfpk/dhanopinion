@@ -23,7 +23,7 @@
 	--graphite: #242424;
 	--steel: #333333;
 	--ash: #808080;
-	--smoke: #999999;
+	--smoke: rgba(255, 255, 255, 0.95);
 	--mist: #c2c2c2;
 	--white: #f0f0f0;
 	--pure: #ffffff;
@@ -67,7 +67,7 @@
 
 	/* ── Max ── */
 	--max: 1120px;
-	--max-narrow: 720px;
+	--max-narrow: 900px;
 }
 
 /* ── Base ── */
@@ -150,17 +150,52 @@ img {
 }
 
 .t-body {
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: 400;
 	line-height: 1.7;
 	color: var(--smoke);
+	transition: color 0.3s ease, text-decoration-color 0.3s ease;
+	text-decoration: underline transparent;
+	text-underline-offset: 4px;
+}
+
+.t-body:hover {
+	text-decoration-color: var(--gold);
+	color: var(--pure);
 }
 
 .t-body-lg {
-	font-size: 18px;
+	font-size: 22px;
 	font-weight: 400;
 	line-height: 1.7;
 	color: var(--smoke);
+	transition: color 0.3s ease, text-decoration-color 0.3s ease;
+	text-decoration: underline transparent;
+	text-underline-offset: 4px;
+}
+
+.t-body-lg:hover {
+	text-decoration-color: var(--gold);
+	color: var(--pure);
+}
+
+/* ── Legacy Elementor Support ── */
+.elementor-widget-text-editor p,
+.elementor-widget-text-editor li {
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 1.7;
+	color: var(--smoke);
+	transition: color 0.3s ease, text-decoration-color 0.3s ease;
+	text-decoration: underline transparent;
+	text-underline-offset: 4px;
+	margin-bottom: var(--sp-4);
+}
+
+.elementor-widget-text-editor p:hover,
+.elementor-widget-text-editor li:hover {
+	text-decoration-color: var(--gold);
+	color: var(--pure);
 }
 
 .t-overline {
@@ -406,10 +441,8 @@ img {
 	top: -1px;
 	height: 90px;
 	background-color: var(--wave-fill, #000);
-	-webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path d='M0,80 C120,40 240,120 360,80 C480,40 600,120 720,80 C840,40 960,120 1080,80 C1200,40 1320,120 1440,80 L1440,0 L0,0 Z' fill='black'/></svg>")
-		no-repeat;
-	mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path d='M0,80 C120,40 240,120 360,80 C480,40 600,120 720,80 C840,40 960,120 1080,80 C1200,40 1320,120 1440,80 L1440,0 L0,0 Z' fill='black'/></svg>")
-		no-repeat;
+	-webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path d='M0,80 C120,40 240,120 360,80 C480,40 600,120 720,80 C840,40 960,120 1080,80 C1200,40 1320,120 1440,80 L1440,0 L0,0 Z' fill='black'/></svg>") no-repeat;
+	mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path d='M0,80 C120,40 240,120 360,80 C480,40 600,120 720,80 C840,40 960,120 1080,80 C1200,40 1320,120 1440,80 L1440,0 L0,0 Z' fill='black'/></svg>") no-repeat;
 	-webkit-mask-size: 100% 100%;
 	mask-size: 100% 100%;
 	pointer-events: none;
@@ -423,10 +456,8 @@ img {
 	bottom: -1px;
 	height: 90px;
 	background-color: var(--wave-fill, #000);
-	-webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path d='M0,40 C120,80 240,0 360,40 C480,80 600,0 720,40 C840,80 960,0 1080,40 C1200,80 1320,0 1440,40 L1440,120 L0,120 Z' fill='black'/></svg>")
-		no-repeat;
-	mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path d='M0,40 C120,80 240,0 360,40 C480,80 600,0 720,40 C840,80 960,0 1080,40 C1200,80 1320,0 1440,40 L1440,120 L0,120 Z' fill='black'/></svg>")
-		no-repeat;
+	-webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path d='M0,40 C120,80 240,0 360,40 C480,80 600,0 720,40 C840,80 960,0 1080,40 C1200,80 1320,0 1440,40 L1440,120 L0,120 Z' fill='black'/></svg>") no-repeat;
+	mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path d='M0,40 C120,80 240,0 360,40 C480,80 600,0 720,40 C840,80 960,0 1080,40 C1200,80 1320,0 1440,40 L1440,120 L0,120 Z' fill='black'/></svg>") no-repeat;
 	-webkit-mask-size: 100% 100%;
 	mask-size: 100% 100%;
 	pointer-events: none;

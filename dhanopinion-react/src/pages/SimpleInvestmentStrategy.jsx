@@ -1,56 +1,119 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { HoverFlip, RevealChar } from '../components/Animations'
-import { SpreadCards } from '../components/SpreadCards'
+import chessImage from '../assets/investment_chess_strategy.png'
 
-const f = (d = 0) => ({ initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.15 }, transition: { duration: 0.7, delay: d, ease: [0.16, 1, 0.3, 1] } })
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+}
 
-const cards = [
-  { title: 'Asset Allocation', to: '/2023/08/05/asset-allocation/' },
-  { title: 'Index Funds', to: '/2023/08/11/index-funds/' },
-  { title: 'Keep Costs Low', to: '/2023/08/16/keep-the-cost-of-investing-low/' },
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+}
+
+const elements = [
+  { text: "Start saving early if you can, even if the amounts of saving are small.", link: "/2023/08/03/compound-interest-and-exponential-growth/" },
+  { text: "Investment in stocks - Do not pick individual stocks or securities.", link: "/2023/08/14/dont-pick-stocks-buy-the-index/" },
+  { text: "Investment in stocks - Do not time investments by predicting the short-term movement of markets.", link: "/2023/08/11/index-funds/" },
+  { text: "Focus on deciding how much to put into equities and how much to put into fixed income assets. This is Asset Allocation and has the biggest impact on your future gains and losses.", link: "/2023/08/05/asset-allocation/" },
+  { text: "Think about what you will do if markets drop and your investments lose value - if you are likely to sell to avoid further losses, you may be taking too much risk and should consider reducing your risk now, before markets go down.", link: "/2023/08/08/risk-and-return-profile-of-equity/" },
+  { text: "Use the National Pension Scheme for your long-term investment goals.", link: "/2023/08/20/national-pension-system-nps/" },
+  { text: "Exposure to asset classes - Use Index funds for your equity risk exposure.", link: "/2023/08/11/index-funds/" },
+  { text: "Exposure to asset classes - Use Government Small savings Schemes for your fixed income exposures.", link: "/2023/08/23/government-savings-schemes/" },
+  { text: "Invest in Direct Mutual Funds and avoid Regular Funds.", link: "/2023/08/18/when-investing-in-a-mutual-fund-choose-a-direct-mf-over-a-regular-mf/" },
+  { text: "Keep your savings for emergency needs in a liquid mutual fund instead of a bank savings account.", link: "/2023/08/19/why-keeping-money-in-a-liquid-mutual-fund-is-better-for-short-term-needs-than-keeping-it-in-a-savings-account/" }
 ]
 
 export default function SimpleInvestmentStrategy() {
   return (
     <>
-      <div style={{ position: 'relative' }}>
-        <section style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', background: 'var(--black)', position: 'sticky', top: 0, zIndex: 0 }}>
-          <div className="wrap">
-            <p className="t-overline mb-5">STRATEGY</p>
-            <RevealChar as="h1" text="SIMPLE \n STRATEGY" highlight="STRATEGY" className="t-mega mb-5" />
-            <p className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>A straightforward approach to building and managing your investment portfolio effectively.</p>
-          </div>
-        </section>
-        <section className="sec" style={{ background: 'var(--void)', position: 'relative', zIndex: 1, boxShadow: '0 -24px 64px rgba(0,0,0,0.6)' }}>
-          <div className="wrap-narrow">
-            <motion.div {...f()}>
-              <div className="hairline-gold mb-6" />
-              <RevealChar as="h2" text="Core Principles" className="t-h2 mb-5" delay={0.1} />
-              <p className="t-body mb-5" style={{ marginTop: 24 }}>A simple investment strategy focuses on a few key principles proven to work over time. Rather than chasing complexity, evidence shows disciplined, basic approaches lead to better outcomes.</p>
-              <p className="t-body">The strategy rests on four pillars: keeping costs low, diversifying broadly, choosing the right asset allocation for your risk tolerance, and maintaining discipline through market cycles.</p>
+      <section className="sec" style={{ background: 'var(--black)', minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
+        <div className="wrap">
+          <div className="g-2" style={{ alignItems: 'center' }}>
+            <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
+              <motion.div variants={fadeUp} className="hairline-gold mb-5" />
+              <RevealChar as="h1" text="A Simple \n Investment \n Strategy" className="t-mega mb-6" style={{ lineHeight: 0.95 }} />
+              <motion.p variants={fadeUp} className="t-body-lg mb-4" style={{ color: 'var(--pure)' }}>
+                Investing can be very complex. However it is possible to create simple investment strategies that can be surprisingly effective.
+              </motion.p>
+              <motion.p variants={fadeUp} className="t-body mb-7">
+                Here we suggest a simple investment strategy that is easy to understand and that is likely to be more effective than most complex investment strategies recommended to individual investors.
+              </motion.p>
+              <motion.div variants={fadeUp}>
+                <a href="#elements" className="btn btn-gold">
+                  <HoverFlip text="KNOW MORE" />
+                </a>
+              </motion.div>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }} 
+              animate={{ opacity: 1, scale: 1 }} 
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div style={{ position: 'relative', padding: 'var(--sp-4)' }}>
+                <div style={{ position: 'absolute', inset: 0, background: 'var(--gold-glow)', borderRadius: '4px', filter: 'blur(40px)', zIndex: 0 }}></div>
+                <img 
+                  src={chessImage} 
+                  alt="Chess Strategy" 
+                  style={{ width: '100%', height: 'auto', borderRadius: '4px', position: 'relative', zIndex: 1, boxShadow: '0 24px 64px rgba(0,0,0,0.5)' }} 
+                />
+              </div>
             </motion.div>
           </div>
-        </section>
-      </div>
-      <section className="sec" style={{ background: 'var(--pure)', color: 'var(--black)', borderTop: '1px solid var(--hairline)' }}>
+        </div>
+      </section>
+
+      <section id="elements" className="sec" style={{ background: 'var(--charcoal)', borderTop: '1px solid var(--hairline)' }}>
         <div className="wrap">
-          <p className="t-overline mb-3 tc" style={{ color: 'var(--black)' }}>DEEP DIVES</p>
-          <RevealChar as="h2" text="Explore Further" className="t-h1 mb-7 tc" style={{ justifyContent: 'center', color: 'var(--black)' }} delay={0.1} />
-          <div style={{ marginTop: 40 }}>
-            <SpreadCards
-              items={cards}
-              cols={3}
-              className="g-3"
-              renderCard={(c) => (
-                <Link to={c.to} className="card" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-                  <div className="hairline-gold mb-5" style={{ background: 'var(--orange)' }} />
-                  <h3 className="t-h3 mb-3"><HoverFlip text={c.title} /></h3>
-                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--orange)' }}><HoverFlip text="READ →" /></span>
-                </Link>
-              )}
-            />
-          </div>
+          <motion.div 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeUp}
+            className="mb-8 tc"
+          >
+            <h2 className="t-h1 mb-4" style={{ color: 'var(--pure)' }}>Here are the elements of the simple investment strategy</h2>
+            <div className="hairline-gold" style={{ margin: '0 auto' }}></div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}
+          >
+            {elements.map((item, i) => (
+              <motion.div 
+                key={i} 
+                variants={fadeUp}
+                className="list-row"
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'space-between',
+                  gap: 'var(--sp-5)',
+                  padding: 'var(--sp-4) var(--sp-5)',
+                  borderBottom: '1px solid var(--hairline)'
+                }}
+              >
+                <p className="t-body" style={{ margin: 0, flex: 1, color: 'var(--pure)' }}>
+                  {item.text}
+                </p>
+                <div>
+                  <Link to={item.link} className="btn btn-gold btn-sm" style={{ whiteSpace: 'nowrap' }}>
+                    <HoverFlip text="KNOW MORE" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
     </>
