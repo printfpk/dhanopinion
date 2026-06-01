@@ -17,21 +17,22 @@ export default function PostLayout({ title, children }) {
             className="t-overline mb-5"
             style={{ color: 'var(--gold-deep)' }}
           >ARTICLE</motion.p>
-          <RevealChar 
-            as="h1" 
-            text={title} 
-            className="t-h1" 
-            style={{ 
-              maxWidth: 900, 
-              lineHeight: 1.25, 
-              fontWeight: 500, 
+          <RevealChar
+            as="h1"
+            text={title}
+            className="t-h1"
+            style={{
+              maxWidth: 900,
+              lineHeight: 1.25,
+              fontWeight: 500,
               letterSpacing: '-0.015em',
               color: 'var(--white)',
               textWrap: 'balance'
-            }} 
-            delay={0.1} 
+            }}
+            delay={0.1}
           />
         </div>
+
       </section>
       <section className="sec post-content-sec" style={{ background: 'var(--void)' }}>
         <div className="wrap-narrow">
@@ -51,11 +52,14 @@ export default function PostLayout({ title, children }) {
           display: flex;
           align-items: center;
           background: var(--black);
-          border-bottom: 1px solid var(--hairline);
+          position: relative;
+          overflow: hidden;
         }
         .post-header-wrap {
           padding-top: 6rem;
-          padding-bottom: 6rem;
+          padding-bottom: 10rem;
+          position: relative;
+          z-index: 1;
         }
         @media (max-width: 768px) {
           .post-header {
@@ -63,13 +67,13 @@ export default function PostLayout({ title, children }) {
           }
           .post-header-wrap {
             padding-top: 7rem;
-            padding-bottom: 2rem;
+            padding-bottom: 6rem;
           }
           .post-content-sec {
             padding-top: 2rem !important;
           }
         }
-        .post-content{font-size:18px;line-height:1.8;color:var(--smoke)}
+        .post-content{font-size:18px;line-height:1.8;color:var(--smoke); overflow-x: hidden; max-width: 100vw;}
         .post-content h2,.post-content h3,.post-content h4{color:var(--pure);margin-top:2em;margin-bottom:.75em;font-weight:600}
         .post-content h2{font-size:26px;letter-spacing:-.02em}
         .post-content h3{font-size:20px;letter-spacing:-.01em}
