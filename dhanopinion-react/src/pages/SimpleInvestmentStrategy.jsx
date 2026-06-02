@@ -18,15 +18,12 @@ const staggerContainer = {
 
 const elements = [
   { text: "Start saving early if you can, even if the amounts of saving are small.", link: "/2023/08/03/compound-interest-and-exponential-growth/" },
-  { text: "Investment in stocks - Do not pick individual stocks or securities.", link: "/2023/08/14/dont-pick-stocks-buy-the-index/" },
-  { text: "Investment in stocks - Do not time investments by predicting the short-term movement of markets.", link: "/2023/08/11/index-funds/" },
   { text: "Focus on deciding how much to put into equities and how much to put into fixed income assets. This is Asset Allocation and has the biggest impact on your future gains and losses.", link: "/2023/08/05/asset-allocation/" },
-  { text: "Think about what you will do if markets drop and your investments lose value - if you are likely to sell to avoid further losses, you may be taking too much risk and should consider reducing your risk now, before markets go down.", link: "/2023/08/08/risk-and-return-profile-of-equity/" },
-  { text: "Use the National Pension Scheme for your long-term investment goals.", link: "/2023/08/20/national-pension-system-nps/" },
-  { text: "Exposure to asset classes - Use Index funds for your equity risk exposure.", link: "/2023/08/11/index-funds/" },
+  { text: "Think about what you will do if markets drop and your investments lose value - if you are likely to sell to avoid further losses, you may be taking too much risk and should consider reducing your risk now.", link: "/2023/08/08/risk-and-return-profile-of-equity/" },
+  { text: "Investment in stocks - Do not pick individual stocks or securities.", link: "/2023/08/14/dont-pick-stocks-buy-the-index/" },
+  { text: "Exposure to asset classes - Use Index funds for your equity risk exposure, and do not try to time the market by predicting short-term movements.", link: "/2023/08/11/index-funds/" },
   { text: "Exposure to asset classes - Use Government Small savings Schemes for your fixed income exposures.", link: "/2023/08/23/government-savings-schemes/" },
-  { text: "Invest in Direct Mutual Funds and avoid Regular Funds.", link: "/2023/08/18/when-investing-in-a-mutual-fund-choose-a-direct-mf-over-a-regular-mf/" },
-  { text: "Keep your savings for emergency needs in a liquid mutual fund instead of a bank savings account.", link: "/2023/08/19/why-keeping-money-in-a-liquid-mutual-fund-is-better-for-short-term-needs-than-keeping-it-in-a-savings-account/" }
+  { text: "Use the National Pension Scheme for your long-term investment goals.", link: "/2023/08/20/national-pension-system-nps/" }
 ]
 
 export default function SimpleInvestmentStrategy() {

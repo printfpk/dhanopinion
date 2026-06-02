@@ -3,32 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { RevealChar } from '../components/Animations'
 
-const allArticles = [
-  { id: 1, title: 'There is always some risk', date: 'January 9, 2023', category: 'Risk Management', to: '/2023/01/09/there-is-always-some-risk-2/' },
-  { id: 2, title: 'Diversification reduces risk', date: 'April 9, 2023', category: 'Risk Management', to: '/2023/04/09/diversification-reduces-risk/' },
-  { id: 3, title: 'Compound Interest and Exponential growth', date: 'August 3, 2023', category: 'Wealth Building', to: '/2023/08/03/compound-interest-and-exponential-growth/' },
-  { id: 4, title: 'Inflation, Real Value and the Money Illusion', date: 'August 4, 2023', category: 'Economics', to: '/2023/08/25/inflation-real-value-and-the-money-illusion/' },
-  { id: 5, title: 'Asset Allocation', date: 'August 5, 2023', category: 'Portfolio Strategy', to: '/2023/08/05/asset-allocation/' },
-  { id: 6, title: 'Equity Investing', date: 'August 6, 2023', category: 'Investment Basics', to: '/2023/08/06/equity-investing/' },
-  { id: 7, title: 'Defining your investment horizon can lead to better planning', date: 'August 7, 2023', category: 'Planning', to: '/2023/08/07/defining-your-investment-horizon-can-lead-to-better-planning/' },
-  { id: 8, title: 'Risk and Return profile of Equity', date: 'August 8, 2023', category: 'Risk Management', to: '/2023/08/08/risk-and-return-profile-of-equity/' },
-  { id: 9, title: 'Risk and Return profile of Fixed Income', date: 'August 9, 2023', category: 'Risk Management', to: '/2023/08/09/risk-and-return-profile-of-fixed-income/' },
-  { id: 10, title: 'Active and Passive Investment Management', date: 'August 10, 2023', category: 'Portfolio Strategy', to: '/2023/08/10/test/' },
-  { id: 11, title: 'Index Funds', date: 'August 11, 2023', category: 'Investment Basics', to: '/2023/08/11/index-funds/' },
-  { id: 12, title: 'Competitive Financial Markets and the implications for investment strategy', date: 'August 12, 2023', category: 'Economics', to: '/2023/08/10/competitive-financial-markets-and-the-implications-for-investment-strategy/' },
-  { id: 13, title: 'Individual or Institution - who you are changes investment choices', date: 'August 13, 2023', category: 'Planning', to: '/2023/08/13/individual-or-institution-who-you-are-changes-investment-choices/' },
-  { id: 14, title: "Don't pick stocks, buy the index", date: 'August 14, 2023', category: 'Portfolio Strategy', to: '/2023/08/14/dont-pick-stocks-buy-the-index/' },
-  { id: 15, title: 'Keep the cost of investing low', date: 'August 16, 2023', category: 'Wealth Building', to: '/2023/08/16/keep-the-cost-of-investing-low/' },
-  { id: 16, title: 'Taxes and investment outcomes', date: 'August 17, 2023', category: 'Economics', to: '/2023/08/17/taxes-and-investment-outcomes/' },
-  { id: 17, title: 'When investing in a Mutual Fund, choose a Direct MF over a Regular MF', date: 'August 18, 2023', category: 'Investment Basics', to: '/2023/08/18/when-investing-in-a-mutual-fund-choose-a-direct-mf-over-a-regular-mf/' },
-  { id: 18, title: 'Why keeping money in a liquid mutual fund is better for short term needs than keeping it in a savings account', date: 'August 19, 2023', category: 'Wealth Building', to: '/2023/08/19/why-keeping-money-in-a-liquid-mutual-fund-is-better-for-short-term-needs-than-keeping-it-in-a-savings-account/' },
-  { id: 19, title: 'National Pension System (NPS)', date: 'August 20, 2023', category: 'Planning', to: '/2023/08/20/national-pension-system-nps/' },
-  { id: 20, title: 'Bank Fixed Deposits', date: 'August 21, 2023', category: 'Investment Basics', to: '#' },
-  { id: 21, title: 'Government Bonds', date: 'August 22, 2023', category: 'Investment Basics', to: '/2023/08/22/government-bonds/' },
-  { id: 22, title: 'Government Savings Schemes', date: 'August 23, 2023', category: 'Investment Basics', to: '/2023/08/23/government-savings-schemes/' },
-  { id: 23, title: 'Senior Citizen Saving Scheme', date: 'September 1, 2023', category: 'Planning', to: '/2023/09/01/senior-citizen-saving-scheme/' },
-  { id: 24, title: 'Public Provident Fund', date: 'October 1, 2023', category: 'Planning', to: '/2023/10/01/public-provident-fund/' },
-]
+import { allArticles } from '../data/articles'
 
 const ITEMS_PER_PAGE = 10;
 
@@ -66,9 +41,18 @@ export default function InformationCentre() {
     <>
       <section style={{ minHeight: '45vh', display: 'flex', alignItems: 'center', background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
         <div className="wrap pt-8 pb-8">
-          <p className="t-overline mb-5">LEARN</p>
+          <p className="t-overline mb-5" style={{ color: 'var(--gold)' }}>LEARN</p>
           <RevealChar as="h1" text="INFORMATION \n CENTRE" highlight="CENTRE" className="t-mega mb-5" />
-          <p className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>Educational resources to deepen your investment knowledge.</p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <p className="t-body-lg" style={{ maxWidth: 800, marginTop: 24, color: 'var(--pure)' }}>Educational resources to deepen your investment knowledge.</p>
+            <p className="t-body" style={{ maxWidth: 800, marginTop: 16, color: 'rgba(255, 255, 255, 0.7)' }}>
+              Here you will find our comprehensive collection of articles, research, and analysis covering various aspects of investing. You can use the filters below to navigate specific categories or search by keyword to find exactly what you are looking for.
+            </p>
+          </motion.div>
         </div>
       </section>
 

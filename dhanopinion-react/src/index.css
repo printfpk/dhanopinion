@@ -96,13 +96,13 @@ body {
 	position: relative;
 }
 
-.post-content p, 
-.post-content h1, 
-.post-content h2, 
-.post-content h3, 
-.post-content h4, 
-.post-content h5, 
-.post-content h6, 
+.post-content p,
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6,
 .post-content li {
 	overflow-wrap: break-word;
 	word-wrap: break-word;
@@ -127,9 +127,10 @@ img {
 }
 
 ::selection {
-	background: var(--gold);
-	color: var(--black);
+	background: transparent;
 }
+
+
 
 /* ── Typography — Lamborghini-grade ── */
 .t-mega {
@@ -319,10 +320,11 @@ img {
 	font-size: 12px;
 }
 
-/* ── Cards — sharp, elevated ── */
+/* ── Cards — rounded, elevated ── */
 .card {
 	background: var(--charcoal);
 	border: none;
+	border-radius: 16px;
 	padding: var(--sp-6);
 	color: var(--pure);
 	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);

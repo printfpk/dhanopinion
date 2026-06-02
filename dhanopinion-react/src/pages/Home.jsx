@@ -17,7 +17,7 @@ const AnimatedParagraph = ({ text, style, delay = 0.5 }) => {
 	const pRef = useRef(null);
 	useGSAP(() => {
 		if (!pRef.current) return;
-		
+
 		// Split into lines and words. Lines become the overflow mask.
 		const split = new SplitType(pRef.current, { types: "lines, words" });
 
@@ -85,6 +85,12 @@ const startingPoints = [
 		label: "Learn",
 		desc: "Deepen your knowledge with our research-backed articles.",
 		to: "/information-centre",
+	},
+	{
+		icon: "📈",
+		label: "Steps to Success",
+		desc: "Follow the key steps in our investing strategy, starting with the evaluation of debt.",
+		to: "/steps-to-investing-success",
 	},
 ];
 
@@ -305,8 +311,7 @@ export default function Home() {
 
 								<div style={{ display: "flex", flexDirection: "column", gap: "20px", paddingLeft: "10%" }}>
 									{[
-										"Simple investment strategies that have a logic and can be implemented",
-										"Reducing the clutter of options to a few good ones, saving you time and effort"
+										"Simple investment strategies based on logic, reducing the clutter of options to a few good ones, saving you time and effort in implementation."
 									].map((text, i) => (
 										<motion.div
 											key={i}
@@ -433,34 +438,7 @@ export default function Home() {
 			</div>
 
 			<div style={{ position: "relative" }}>
-				{/* ══════ OUR MISSION ══════ */}
-				<section
-					style={{
-						padding: "var(--sp-9) 0",
-						background: "var(--black)",
-						position: "sticky",
-						top: 0,
-						zIndex: 0,
-						height: "100vh",
-						display: "flex",
-						alignItems: "center",
-					}}
-				>
-					<div className="wrap tc">
-						<p className="t-overline mb-5">OUR MISSION</p>
-						<ScrollCharRevealText
-							as="h2"
-							text="We give opinions on effective strategies to help you"
-							className="t-h1 mb-6"
-							style={{ maxWidth: 700, margin: "0 auto var(--sp-6)" }}
-						/>
-						<motion.div
-							{...fade(0.6)}
-							className="hairline-gold"
-							style={{ margin: "0 auto" }}
-						/>
-					</div>
-				</section>
+
 
 				{/* ══════ STARTING POINTS ══════ */}
 				<section
@@ -700,12 +678,37 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* ══════ CTA — Teal Band (Superhuman) ══════ */}
+			{/* ══════ FEATURED: NPS ══════ */}
+			<section className="sec" style={{ background: "var(--black)", borderTop: "1px solid var(--hairline)" }}>
+				<div className="wrap">
+					<motion.div
+						{...fade(0.2)}
+						style={{
+							background: "linear-gradient(135deg, rgba(212, 168, 83, 0.15) 0%, rgba(0, 0, 0, 0) 100%)",
+							border: "1px solid rgba(212, 168, 83, 0.3)",
+							borderRadius: 24, padding: "48px", textAlign: "center", position: "relative", overflow: "hidden"
+						}}
+					>
+						<div style={{ position: "absolute", top: -50, right: -50, width: 200, height: 200, background: "var(--gold)", filter: "blur(100px)", opacity: 0.1 }} />
+						<p className="t-overline mb-4" style={{ color: "var(--gold)" }}>ESSENTIAL GUIDE</p>
+						<h2 className="t-h1 mb-4" style={{ color: "var(--pure)" }}>The National Pension System (NPS)</h2>
+						<p className="t-body mb-8" style={{ maxWidth: 600, margin: "0 auto 32px" }}>
+							One of the most powerful tools for retirement planning. Discover our in-depth analysis on how to utilize the NPS to secure your financial future effectively.
+						</p>
+						<Link to="/2023/08/20/national-pension-system-nps/" className="btn btn-white" style={{ background: "var(--gold)", color: "var(--black)", border: "none" }}>
+							<HoverFlip text="Read the NPS Guide" />
+						</Link>
+					</motion.div>
+				</div>
+			</section>
+
+			{/* ══════ CTA — Waitlist ══════ */}
 			<section className="teal-band" style={{ "--wave-fill": "var(--black)" }}>
 				<div className="wrap tc">
+					<p className="t-overline mb-3" style={{ color: "var(--gold)" }}>1-ON-1 CONSULTING</p>
 					<RevealChar
 						as="h2"
-						text="Ready to begin?"
+						text="Join the Waitlist"
 						className="t-display mb-5"
 						style={{ color: "var(--pure)", justifyContent: "center" }}
 						delay={0.1}
@@ -719,11 +722,11 @@ export default function Home() {
 							margin: "0 auto 32px",
 						}}
 					>
-						Start your journey toward simpler, more effective investing.
+						Due to high demand, our personal consulting is currently at capacity. Secure your spot in line today.
 					</p>
 					<motion.div {...fade(0.5)}>
-						<a href="mailto:response@dhanopinion.com" className="btn btn-white">
-							<HoverFlip text="Get in touch" />
+						<a href="mailto:response@dhanopinion.com?subject=Join Consulting Waitlist" className="btn btn-white">
+							<HoverFlip text="Get on the Waitlist" />
 						</a>
 					</motion.div>
 				</div>

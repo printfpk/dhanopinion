@@ -9,6 +9,7 @@ import CaseStudy1 from './pages/posts/CaseStudy1'
 import CaseStudy2 from './pages/posts/CaseStudy2'
 import CaseStudy3 from './pages/posts/CaseStudy3'
 import InformationCentre from './pages/InformationCentre'
+import StepsToInvestingSuccess from './pages/StepsToInvestingSuccess'
 import AboutUs from './pages/AboutUs'
 import Disclaimer from './pages/Disclaimer'
 
@@ -55,6 +56,8 @@ function App() {
         <Route path="case_study/case-3/*" element={<CaseStudy3 />} />
         <Route path="information-centre" element={<InformationCentre />} />
         <Route path="information-centre/" element={<InformationCentre />} />
+        <Route path="steps-to-investing-success" element={<StepsToInvestingSuccess />} />
+        <Route path="steps-to-investing-success/" element={<StepsToInvestingSuccess />} />
         <Route path="about-us" element={<AboutUs />} />
         <Route path="about-us/" element={<AboutUs />} />
         <Route path="disclaimer" element={<Disclaimer />} />
