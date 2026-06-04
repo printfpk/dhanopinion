@@ -129,8 +129,8 @@ export default function Home() {
 								width: "100%",
 								height: "100%",
 								objectFit: "cover",
-								opacity: 0.25,
-								filter: "blur(4px)",
+								opacity: "var(--video-opacity)",
+								mixBlendMode: "var(--video-blend)",
 							}}
 						/>
 						{/* Floating Glowing Orbs */}
@@ -144,10 +144,10 @@ export default function Home() {
 							transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
 							style={{
 								position: "absolute",
-								width: "50vw",
-								height: "50vw",
+								width: "40vw",
+								height: "40vw",
 								borderRadius: "50%",
-								background: "radial-gradient(circle, rgba(131, 231, 238, 0.15) 0%, transparent 60%)",
+								background: "var(--hero-orb-1)",
 								top: "-10vw",
 								right: "10vw",
 								filter: "blur(80px)",
@@ -166,7 +166,7 @@ export default function Home() {
 								width: "40vw",
 								height: "40vw",
 								borderRadius: "50%",
-								background: "radial-gradient(circle, rgba(138, 84, 199, 0.15) 0%, transparent 60%)",
+								background: "var(--hero-orb-2)",
 								bottom: "-10vw",
 								left: "-5vw",
 								filter: "blur(80px)",
@@ -177,7 +177,7 @@ export default function Home() {
 							style={{
 								position: "absolute",
 								inset: 0,
-								background: "linear-gradient(135deg, rgba(8,8,8,0.9) 0%, rgba(14,48,48,0.4) 100%)",
+								background: "var(--hero-grad)",
 							}}
 						/>
 					</div>
@@ -241,7 +241,7 @@ export default function Home() {
 											}}
 											style={{
 												display: "inline-block",
-												background: "linear-gradient(90deg, #a78bfa 0%, #60a5fa 100%)",
+												background: "var(--hero-text-grad)",
 												WebkitBackgroundClip: "text",
 												WebkitTextFillColor: "transparent",
 											}}
@@ -257,7 +257,7 @@ export default function Home() {
 									style={{
 										fontSize: "18px",
 										lineHeight: 1.7,
-										color: "rgba(255, 255, 255, 0.7)",
+										color: "var(--smoke)",
 										maxWidth: "500px",
 										fontWeight: 400,
 										margin: 0,
@@ -281,13 +281,13 @@ export default function Home() {
 										display: "flex",
 										alignItems: "center",
 										gap: "16px",
-										background: "linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%)",
+										background: "var(--hero-glass)",
 										backdropFilter: "blur(24px)",
-										border: "1px solid rgba(255, 255, 255, 0.1)",
+										border: "1px solid var(--hero-glass-border)",
 										borderRadius: "24px",
 										padding: "20px 32px",
 										width: "fit-content",
-										boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
+										boxShadow: "var(--shadow-nav)",
 									}}
 								>
 									<motion.div
@@ -298,8 +298,8 @@ export default function Home() {
 											<path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="url(#paint0_linear)" />
 											<defs>
 												<linearGradient id="paint0_linear" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-													<stop stopColor="#a78bfa" />
-													<stop offset="1" stopColor="#60a5fa" />
+													<stop stopColor="var(--gold, #a78bfa)" />
+													<stop offset="1" stopColor="var(--orange, #60a5fa)" />
 												</linearGradient>
 											</defs>
 										</svg>
@@ -320,14 +320,14 @@ export default function Home() {
 											transition={{ duration: 0.8, delay: 0.9 + i * 0.2, type: "spring", stiffness: 80 }}
 											whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
 											style={{
-												background: "linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%)",
+												background: "var(--hero-glass-strong)",
 												backdropFilter: "blur(24px)",
-												border: "1px solid rgba(255, 255, 255, 0.08)",
-												borderTop: "1px solid rgba(255, 255, 255, 0.15)",
-												borderLeft: "1px solid rgba(255, 255, 255, 0.15)",
+												border: "1px solid var(--hero-glass-border)",
+												borderTop: "1px solid var(--hero-glass-border)",
+												borderLeft: "1px solid var(--hero-glass-border)",
 												borderRadius: "32px",
 												padding: "32px 40px",
-												boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
+												boxShadow: "var(--shadow-bento)",
 												position: "relative",
 												overflow: "hidden",
 											}}
@@ -339,7 +339,7 @@ export default function Home() {
 												left: "-20px",
 												width: "100px",
 												height: "100px",
-												background: i === 0 ? "rgba(96, 165, 250, 0.2)" : "rgba(167, 139, 250, 0.2)",
+												background: i === 0 ? "var(--gold-glow, rgba(96, 165, 250, 0.2))" : "var(--violet-glow, rgba(167, 139, 250, 0.2))",
 												filter: "blur(40px)",
 												borderRadius: "50%",
 											}} />
@@ -362,7 +362,7 @@ export default function Home() {
 						background: "var(--charcoal)",
 						position: "relative",
 						zIndex: 1,
-						boxShadow: "0 -24px 64px rgba(0,0,0,0.8)",
+						boxShadow: "var(--shadow-section)",
 					}}
 				>
 					<div className="wrap">
@@ -444,18 +444,18 @@ export default function Home() {
 				<section
 					className="sec wave-top"
 					style={{
-						background: "#f6f1ed",
-						color: "var(--black)",
+						background: "var(--path-bg)",
+						color: "var(--path-text)",
 						position: "relative",
 						zIndex: 1,
-						boxShadow: "0 -24px 64px rgba(0,0,0,0.6)",
-						"--wave-fill": "var(--black)",
+						boxShadow: "var(--shadow-section-light)",
+						"--wave-fill": "var(--charcoal)",
 					}}
 				>
 					<div className="wrap">
 						<p
 							className="t-overline mb-3 tc"
-							style={{ color: "var(--black)", marginTop: 12 }}
+							style={{ color: "var(--path-text)", marginTop: 12 }}
 						>
 							GET STARTED
 						</p>
@@ -463,7 +463,7 @@ export default function Home() {
 							as="h2"
 							text="Choose your path"
 							className="t-display mb-8 tc"
-							style={{ justifyContent: "center", color: "var(--black)" }}
+							style={{ justifyContent: "center", color: "var(--path-text)" }}
 							delay={0.1}
 						/>
 						<div style={{ marginTop: 40 }}>
@@ -716,7 +716,7 @@ export default function Home() {
 					<p
 						style={{
 							fontSize: 16,
-							color: "rgba(255,255,255,0.6)",
+							color: "var(--smoke)",
 							marginBottom: 32,
 							maxWidth: 400,
 							margin: "0 auto 32px",

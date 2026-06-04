@@ -26,7 +26,7 @@ export default function PostLayout({ title, children }) {
               lineHeight: 1.25,
               fontWeight: 500,
               letterSpacing: '-0.015em',
-              color: 'var(--white)',
+              color: 'var(--post-title)',
               textWrap: 'balance'
             }}
             delay={0.1}

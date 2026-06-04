@@ -19,7 +19,7 @@ export default function Post_competitive_financial_markets_and_the_implications_
 
       <p>Table 1: Percentage of Active Managers Underperforming Benchmarks</p>
 
-      <div style={{ margin: '2rem 0', background: 'var(--pure)', padding: '1rem', borderRadius: 8 }}>
+      <div style={{ margin: '2rem 0', background: 'var(--bg-pure)', padding: '1rem', borderRadius: 8 }}>
         <img 
           src="https://dhanopinion.com/wp-content/uploads/2023/08/Dhan-Picture5-1536x334.png" 
           alt="Percentage of Active Managers Underperforming Benchmarks" 
@@ -49,7 +49,7 @@ export default function Post_competitive_financial_markets_and_the_implications_
       </ul>
       <p>The study concludes that past performance is not a reliable indicator of future results and that active management success is more likely due to luck than skill. The study also discusses some methodological issues and limitations of the scorecard, such as survivorship bias, style consistency and benchmark selection.</p>
 
-      <div style={{ margin: '2rem 0', background: 'var(--pure)', padding: '1rem', borderRadius: 8 }}>
+      <div style={{ margin: '2rem 0', background: 'var(--bg-pure)', padding: '1rem', borderRadius: 8 }}>
         <img 
           src="https://dhanopinion.com/wp-content/uploads/2023/08/Dhan-Picture6-1536x157.png" 
           alt="SPIVA India Table" 
@@ -61,7 +61,7 @@ export default function Post_competitive_financial_markets_and_the_implications_
       <p>Independent investment research firm Dalbar Inc., an independent research firm, publishes an annual <a href="https://www.ifa.com/articles/dalbar_2016_qaib_investors_still_their_worst_enemy" target="_blank" rel="noopener noreferrer">Quantitative Analysis of Investor Behavior report, or QAIB</a> for retail investors in the US.</p>
       <p>It consistently shows that people are “more often than not their own worst enemies when it comes to investing, often succumbing to short-term strategies such as market timing or performance chasing.”</p>
 
-      <div style={{ margin: '2rem 0', background: 'var(--pure)', padding: '1rem', borderRadius: 8 }}>
+      <div style={{ margin: '2rem 0', background: 'var(--bg-pure)', padding: '1rem', borderRadius: 8 }}>
         <img 
           src="https://dhanopinion.com/wp-content/uploads/2023/08/Dhan-Picture7.png" 
           alt="Dalbar Study" 

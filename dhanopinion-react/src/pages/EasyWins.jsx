@@ -56,7 +56,7 @@ export default function EasyWins() {
             position: "relative",
             zIndex: 1,
             padding: "clamp(60px, 10vw, 120px) 0",
-            boxShadow: "0 -24px 64px rgba(0,0,0,0.8)",
+            boxShadow: "var(--shadow-hard)",
           }}
         >
           <div className="wrap">
@@ -91,7 +91,7 @@ export default function EasyWins() {
                   style={{ 
                     fontSize: "18px", 
                     lineHeight: 1.8, 
-                    color: "rgba(255, 255, 255, 0.7)", 
+                    color: "var(--easy-text)", 
                     marginBottom: "24px",
                     fontWeight: 400
                   }}
@@ -102,7 +102,7 @@ export default function EasyWins() {
                   style={{ 
                     fontSize: "18px", 
                     lineHeight: 1.8, 
-                    color: "rgba(255, 255, 255, 0.7)", 
+                    color: "var(--easy-text)", 
                     marginBottom: "40px",
                     fontWeight: 400
                   }}
@@ -113,7 +113,7 @@ export default function EasyWins() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   style={{
-                    background: "#a78bfa", // Vibrant purple to match theme
+                    background: "var(--easy-btn)",
                     color: "var(--black)",
                     border: "none",
                     padding: "16px 36px",
@@ -121,7 +121,7 @@ export default function EasyWins() {
                     fontSize: "16px",
                     fontWeight: 600,
                     cursor: "pointer",
-                    boxShadow: "0 4px 14px rgba(167, 139, 250, 0.4)",
+                    boxShadow: "var(--easy-btn-shadow)",
                   }}
                 >
                   Know More
@@ -136,7 +136,7 @@ export default function EasyWins() {
                 viewport={{ once: true, margin: "-100px" }}
                 style={{ flex: "1 1 min(100%, 500px)", display: "flex", justifyContent: "center", alignItems: "center" }}
               >
-                <div style={{ width: "100%", maxWidth: "600px", aspectRatio: "4/3", borderRadius: "16px", background: "rgba(0,0,0,0.2)", overflow: "hidden", boxShadow: "0 20px 64px rgba(0,0,0,0.5)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <div style={{ width: "100%", maxWidth: "600px", aspectRatio: "4/3", borderRadius: "16px", background: "rgba(0,0,0,0.2)", overflow: "hidden", boxShadow: "var(--shadow-hard-3)", border: "1px solid rgba(255,255,255,0.1)" }}>
                   <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
                     <ambientLight intensity={0.8} />
                     <directionalLight position={[10, 10, 5]} intensity={1.5} />
@@ -148,7 +148,7 @@ export default function EasyWins() {
             </div>
           </div>
         </section>
-        <section className="sec" style={{ background: 'var(--pure)', minHeight: '100vh', position: 'relative', zIndex: 1, boxShadow: '0 -24px 64px rgba(0,0,0,0.6)' }}>
+        <section className="sec" style={{ background: 'var(--bg-pure)', minHeight: '100vh', position: 'relative', zIndex: 1, boxShadow: 'var(--shadow-hard-2)' }}>
           <div className="wrap">
             <SpreadCards
               items={wins}

@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HoverFlip } from './Animations'
 import { allArticles } from '../data/articles'
+import { useTheme } from './ThemeContext'
 
 const links = [
   { label: 'Easy Wins', to: '/easy-wins' },
@@ -19,6 +20,7 @@ export default function Navbar() {
   const [waitlistOpen, setWaitlistOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const { pathname } = useLocation()
+  const { theme, toggleTheme } = useTheme()
 
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return []
@@ -35,7 +37,7 @@ export default function Navbar() {
         position: 'fixed', top: 20, left: '50%', transform: 'translateX(-50%)', zIndex: 100,
         backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
         border: '1px solid var(--gold)', borderRadius: 9999,
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+        boxShadow: 'var(--shadow-nav)',
         height: 64, width: '90%', maxWidth: 1200
       }}>
         <div className="wrap" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px' }}>
@@ -80,6 +82,34 @@ export default function Navbar() {
               </svg>
             </button>
 
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              style={{
+                background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--pure)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center'
+              }}
+              title="Toggle Theme"
+            >
+              {theme === 'dark' ? (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+              )}
+            </button>
+
             {/* Consulting Waitlist Button */}
             <button
               onClick={() => setWaitlistOpen(true)}
@@ -89,7 +119,7 @@ export default function Navbar() {
                 padding: '8px 16px', fontSize: 12, fontWeight: 700, letterSpacing: '.05em', textTransform: 'uppercase',
                 cursor: 'pointer', transition: 'background 0.3s'
               }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#e6bc65'; }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'var(--gold-hover)'; }}
               onMouseLeave={e => { e.currentTarget.style.background = 'var(--gold)'; }}
             >
               Consulting
@@ -118,7 +148,7 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             style={{
               position: 'fixed', top: 64, left: 0, right: 0, bottom: 0, zIndex: 99,
-              background: 'rgba(0,0,0,0.97)', display: 'flex', flexDirection: 'column',
+              background: 'var(--menu-bg)', display: 'flex', flexDirection: 'column',
               padding: '48px 32px',
             }}
           >
@@ -170,7 +200,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             style={{
               position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1000,
-              background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(10px)',
+              background: 'var(--modal-bg)', backdropFilter: 'blur(10px)',
               display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '15vh'
             }}
           >
@@ -225,7 +255,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             style={{
               position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1000,
-              background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(10px)',
+              background: 'var(--modal-bg)', backdropFilter: 'blur(10px)',
               display: 'flex', alignItems: 'center', justifyContent: 'center'
             }}
           >
@@ -261,12 +291,12 @@ export default function Navbar() {
 
       <style>{`
         .custom-navbar {
-          background-color: rgba(20, 20, 20, 0.85) !important;
+          background-color: var(--nav-bg) !important;
           transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         .custom-navbar:hover {
-          background-color: rgba(20, 20, 20, 0.95) !important;
-          border-color: #f2c76a !important;
+          background-color: var(--nav-bg-hover) !important;
+          border-color: var(--gold) !important;
         }
         .nav-desktop { display:none }
         .nav-desktop-btn { display:none }

@@ -141,7 +141,7 @@ export default function AboutUs() {
                 DhanOpinion is an experiment to see if we can contribute to making the investment process and outcomes better for people. We think we can leverage our education, training and experience to provide something of value to a large number of people in an efficient way.
               </p>
 
-              <div style={{ marginTop: '48px', padding: '40px', background: 'var(--void)', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 20px 40px rgba(0,0,0,0.4)', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ marginTop: '48px', padding: '40px', background: 'var(--void)', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.05)', boxShadow: 'var(--shadow-hard-5)', position: 'relative', overflow: 'hidden' }}>
                 <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '2px', background: 'linear-gradient(90deg, transparent, var(--gold), transparent)' }} />
                 <h3 className="t-h3 mb-4" style={{ fontSize: '24px', color: 'var(--gold)' }}>Mission Statement</h3>
                 <p className="t-body" style={{ color: 'var(--pure)', fontSize: '17px', lineHeight: 1.6, margin: 0 }}>

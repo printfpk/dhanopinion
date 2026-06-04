@@ -11,7 +11,7 @@ export default function Post_risk_and_return_profile_of_equity() {
 
       <p>Table 1: 10 largest losses on the S&amp;P 500 for different periods</p>
 
-      <div style={{ margin: '2rem 0', background: 'var(--pure)', padding: '1rem', borderRadius: 8 }}>
+      <div style={{ margin: '2rem 0', background: 'var(--bg-pure)', padding: '1rem', borderRadius: 8 }}>
         <img 
           src="https://dhanopinion.com/wp-content/uploads/2023/08/Dhan-Picture1.png" 
           alt="10 largest losses on the S&P 500 for different periods" 
@@ -25,7 +25,7 @@ export default function Post_risk_and_return_profile_of_equity() {
 
       <p>Table 2: 10 largest drawdowns on the S&amp;P 500 Index and recovery periods</p>
 
-      <div style={{ margin: '2rem 0', background: 'var(--pure)', padding: '1rem', borderRadius: 8 }}>
+      <div style={{ margin: '2rem 0', background: 'var(--bg-pure)', padding: '1rem', borderRadius: 8 }}>
         <img 
           src="https://dhanopinion.com/wp-content/uploads/2023/08/Dhan-Picture2-1536x787.png" 
           alt="10 largest drawdowns on the S&P 500 Index and recovery periods" 
@@ -35,7 +35,7 @@ export default function Post_risk_and_return_profile_of_equity() {
 
       <p>Table 3: 10 largest drawdowns on the Nikkei 225 Index and recovery periods</p>
 
-      <div style={{ margin: '2rem 0', background: 'var(--pure)', padding: '1rem', borderRadius: 8 }}>
+      <div style={{ margin: '2rem 0', background: 'var(--bg-pure)', padding: '1rem', borderRadius: 8 }}>
         <img 
           src="https://dhanopinion.com/wp-content/uploads/2023/08/Dhan-Picture3-1536x721.png" 
           alt="10 largest drawdowns on the Nikkei 225 Index and recovery periods" 
@@ -45,7 +45,7 @@ export default function Post_risk_and_return_profile_of_equity() {
 
       <p>Table 4: 10 largest drawdowns on the Nifty 50 Index and recovery periods</p>
 
-      <div style={{ margin: '2rem 0', background: 'var(--pure)', padding: '1rem', borderRadius: 8 }}>
+      <div style={{ margin: '2rem 0', background: 'var(--bg-pure)', padding: '1rem', borderRadius: 8 }}>
         <img 
           src="https://dhanopinion.com/wp-content/uploads/2023/08/Dhan-Picture4-1536x792.png" 
           alt="10 largest drawdowns on the Nifty 50 Index and recovery periods" 

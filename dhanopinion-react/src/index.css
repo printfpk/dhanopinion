@@ -30,6 +30,7 @@
 
 	/* ── Accents ── */
 	--gold: #d4a853;
+	--gold-hover: #e6bc65;
 	--gold-deep: #b08930;
 	--gold-glow: rgba(212, 168, 83, 0.1);
 	--orange: #ff6b00;
@@ -68,6 +69,134 @@
 	/* ── Max ── */
 	--max: 1120px;
 	--max-narrow: 900px;
+	
+	/* ── Component Backgrounds ── */
+	--nav-bg: rgba(20, 20, 20, 0.85);
+	--nav-bg-hover: rgba(20, 20, 20, 0.95);
+	--modal-bg: rgba(0, 0, 0, 0.85);
+	--menu-bg: rgba(0, 0, 0, 0.97);
+	
+	/* ── Specific Section Variables ── */
+	--hero-grad: linear-gradient(135deg, rgba(8,8,8,0.9) 0%, rgba(14,48,48,0.4) 100%);
+	--hero-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+	--hero-glass-border: rgba(255, 255, 255, 0.1);
+	--hero-glass-strong: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+	
+	--hero-orb-1: radial-gradient(circle, rgba(131, 231, 238, 0.15) 0%, transparent 60%);
+	--hero-orb-2: radial-gradient(circle, rgba(138, 84, 199, 0.15) 0%, transparent 60%);
+	--hero-text-grad: linear-gradient(90deg, #a78bfa 0%, #60a5fa 100%);
+	--video-blend: luminosity;
+	--video-opacity: 0.4;
+	
+	/* Adaptive variables for inline styles */
+	--easy-text: rgba(255, 255, 255, 0.7);
+	--easy-btn: #a78bfa;
+	--bg-pure: var(--pure);
+	--shadow-hard: 0 -24px 64px rgba(0,0,0,0.8);
+	--shadow-hard-2: 0 -24px 64px rgba(0,0,0,0.6);
+	--shadow-hard-3: 0 20px 64px rgba(0,0,0,0.5);
+	--shadow-hard-4: 0 24px 64px rgba(0,0,0,0.5);
+	--shadow-hard-5: 0 20px 40px rgba(0,0,0,0.4);
+	--shadow-hard-6: 0 20px 40px rgba(0, 0, 0, 0.15);
+	--easy-btn-shadow: 0 4px 14px rgba(167, 139, 250, 0.4);
+	--post-title: var(--white);
+	
+	--path-bg: #f6f1ed;
+	--path-text: #000000;
+
+	--ghost-bg: rgba(255, 255, 255, 0.05);
+	--ghost-border: rgba(255, 255, 255, 0.1);
+	
+	/* ── Shadows ── */
+	--shadow-section: 0 -24px 64px rgba(0,0,0,0.8);
+	--shadow-section-light: 0 -24px 64px rgba(0,0,0,0.6);
+	--shadow-card: 0 20px 40px rgba(0,0,0,0.15);
+	--shadow-card-hover: 0 24px 64px rgba(0,0,0,0.5);
+	--shadow-bento: 0 20px 40px rgba(0,0,0,0.3);
+	--shadow-nav: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+[data-theme="light"] {
+	/* ── Light Palette (Handhold.io inspired) ── */
+	--black: #FCFBF7;
+	--void: #F5F3EC;
+	--charcoal: #FFFFFF;
+	--iron: #EAE6DE;
+	--graphite: #D6D2C9;
+	--steel: #B3AE9F;
+	--ash: #706B5E;
+	--smoke: #4A463B;
+	--mist: #686358;
+	--white: #F8F7F3;
+	--pure: #12100C;
+
+	/* ── Accents ── */
+	--gold: #DC2626; /* Crimson Red for initial state */
+	--gold-hover: #B91C1C; /* Slightly deeper red for hover */
+	--gold-deep: #991B1B;
+	--gold-glow: rgba(220, 38, 38, 0.1);
+	--orange: #E85D04;
+
+	--teal: #E6F0F0;
+	--teal-mid: #CCE0E0;
+	--violet: #5E35B1;
+	--violet-glow: rgba(94, 53, 177, 0.08);
+
+	/* ── Hairlines ── */
+	--hairline: rgba(0, 0, 0, 0.06);
+	--hairline-hover: rgba(0, 0, 0, 0.12);
+	
+	/* ── Component Backgrounds ── */
+	--nav-bg: rgba(252, 251, 247, 0.85);
+	--nav-bg-hover: rgba(252, 251, 247, 0.95);
+	--modal-bg: rgba(252, 251, 247, 0.85);
+	--menu-bg: rgba(252, 251, 247, 0.97);
+	--wave-fill: #FCFBF7;
+
+	/* ── Specific Section Variables ── */
+	--hero-grad: linear-gradient(135deg, rgba(252,251,247,0.5) 0%, rgba(252,251,247,0.1) 100%);
+	--hero-glass: rgba(255, 255, 255, 0.7);
+	--hero-glass-border: rgba(255, 255, 255, 0.8);
+	--hero-glass-strong: rgba(255, 255, 255, 0.9);
+	
+	--hero-orb-1: radial-gradient(circle, rgba(220, 38, 38, 0.08) 0%, transparent 60%);
+	--hero-orb-2: radial-gradient(circle, rgba(232, 93, 4, 0.08) 0%, transparent 60%);
+	--hero-text-grad: linear-gradient(90deg, var(--gold) 0%, var(--orange) 100%);
+	--video-blend: overlay;
+	--video-opacity: 0.3;
+	
+	/* Adaptive variables for inline styles */
+	--easy-text: var(--smoke);
+	--easy-btn: var(--gold);
+	--bg-pure: var(--void);
+	--shadow-hard: var(--shadow-section);
+	--shadow-hard-2: var(--shadow-section);
+	--shadow-hard-3: var(--shadow-bento);
+	--shadow-hard-4: var(--shadow-bento);
+	--shadow-hard-5: var(--shadow-bento);
+	--shadow-hard-6: var(--shadow-bento);
+	--easy-btn-shadow: var(--shadow-nav);
+	--post-title: var(--pure);
+	
+	--path-bg: #f6f1ed;
+	--path-text: #000000;
+
+	--ghost-bg: rgba(0, 0, 0, 0.05);
+	--ghost-border: rgba(0, 0, 0, 0.1);
+
+	/* ── Shadows ── */
+	--shadow-section: 0 -24px 64px rgba(0,0,0,0.04);
+	--shadow-section-light: 0 -24px 64px rgba(0,0,0,0.03);
+	--shadow-card: 0 20px 40px rgba(0,0,0,0.05);
+	--shadow-card-hover: 0 24px 64px rgba(0,0,0,0.1);
+	--shadow-bento: 0 20px 40px rgba(0,0,0,0.08);
+	--shadow-nav: 0 8px 32px rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .wave-top::before,
+[data-theme="light"] .wave-bottom::after,
+[data-theme="light"] .teal-band::after {
+	display: none;
 }
 
 /* ── Base ── */
@@ -326,8 +455,8 @@ img {
 	border: none;
 	border-radius: 16px;
 	padding: var(--sp-6);
-	color: var(--pure);
-	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+	color: var(--smoke);
+	box-shadow: var(--shadow-bento);
 	transition:
 		border-color 0.4s,
 		transform 0.4s,
