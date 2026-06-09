@@ -118,9 +118,9 @@
 
 [data-theme="light"] {
 	/* ── Light Palette (Handhold.io inspired) ── */
-	--black: #FCFBF7;
-	--void: #F5F3EC;
-	--charcoal: #FFFFFF;
+	--black: #FFFFFF;
+	--void: #F7F7F9;
+	--charcoal: #F2F2F4;
 	--iron: #EAE6DE;
 	--graphite: #D6D2C9;
 	--steel: #B3AE9F;

@@ -7,17 +7,17 @@ import { useTheme } from './ThemeContext'
 
 const links = [
   { label: 'Easy Wins', to: '/easy-wins' },
-  { label: 'Strategy', to: '/simple-investment-strategy' },
-  { label: 'Philosophy', to: '/investment-philosophy' },
+  { label: 'Simple Investment Strategy', to: '/simple-investment-strategy' },
+  { label: 'Investment Philosophy', to: '/investment-philosophy' },
   { label: 'Case Studies', to: '/case-studies' },
-  { label: 'Learn', to: '/information-centre' },
-  { label: 'About', to: '/about-us' },
+  { label: 'Information Centre', to: '/information-centre' },
+  { label: 'Steps to Success', to: '/steps-to-investing-success' },
+  { label: 'About Us', to: '/about-us' },
 ]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
-  const [waitlistOpen, setWaitlistOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const { pathname } = useLocation()
   const { theme, toggleTheme } = useTheme()
@@ -34,15 +34,15 @@ export default function Navbar() {
   return (
     <>
       <nav className="custom-navbar" style={{
-        position: 'fixed', top: 20, left: '50%', transform: 'translateX(-50%)', zIndex: 100,
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
-        border: '1px solid var(--gold)', borderRadius: 9999,
+        borderBottom: '1px solid var(--hairline)',
         boxShadow: 'var(--shadow-nav)',
-        height: 64, width: '90%', maxWidth: 1200
+        height: 72, width: '100%'
       }}>
-        <div className="wrap" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px' }}>
+        <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 32px', margin: '0 auto', maxWidth: 1400 }}>
           {/* Logo */}
-          <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'baseline', gap: 6, color: 'var(--pure)' }}>
+          <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'baseline', gap: 6, color: 'var(--pure)', whiteSpace: 'nowrap' }}>
             <HoverFlip text="DHAN OPINION" delayOffset={0} />
           </Link>
 
@@ -52,19 +52,11 @@ export default function Navbar() {
               <Link key={l.to} to={l.to} style={{
                 fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase',
                 color: pathname.startsWith(l.to) ? 'var(--orange)' : 'var(--pure)',
-                textDecoration: 'none', padding: '0 10px', display: 'flex'
+                textDecoration: 'none', padding: '0 12px', display: 'flex', whiteSpace: 'nowrap'
               }}>
                 <HoverFlip text={l.label} />
               </Link>
             ))}
-
-            {/* NPS Highlight Link */}
-            <Link to="/2023/08/20/national-pension-system-nps/" style={{
-              fontSize: 12, fontWeight: 800, letterSpacing: '.1em', textTransform: 'uppercase',
-              color: 'var(--gold)', textDecoration: 'none', padding: '0 10px', display: 'flex'
-            }}>
-              <HoverFlip text="NPS Guide" />
-            </Link>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
@@ -108,21 +100,6 @@ export default function Navbar() {
                   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                 </svg>
               )}
-            </button>
-
-            {/* Consulting Waitlist Button */}
-            <button
-              onClick={() => setWaitlistOpen(true)}
-              className="nav-desktop-btn"
-              style={{
-                background: 'var(--gold)', color: 'var(--black)', border: 'none', borderRadius: 999,
-                padding: '8px 16px', fontSize: 12, fontWeight: 700, letterSpacing: '.05em', textTransform: 'uppercase',
-                cursor: 'pointer', transition: 'background 0.3s'
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'var(--gold-hover)'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'var(--gold)'; }}
-            >
-              Consulting
             </button>
 
             {/* Hamburger */}
@@ -169,26 +146,6 @@ export default function Navbar() {
                 </Link>
               </motion.div>
             ))}
-            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4, duration: 0.4 }}>
-              <Link to="/2023/08/20/national-pension-system-nps/" onClick={() => setOpen(false)} style={{
-                display: 'block', padding: '16px 0',
-                fontSize: 28, fontWeight: 700, letterSpacing: '-.02em',
-                color: 'var(--gold)',
-                textDecoration: 'none', borderBottom: '1px solid var(--hairline)',
-              }}>
-                NPS Guide
-              </Link>
-            </motion.div>
-            <motion.button
-              onClick={() => { setOpen(false); setWaitlistOpen(true); }}
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
-              style={{
-                marginTop: 32, background: 'var(--pure)', color: 'var(--charcoal)', border: 'none',
-                padding: '16px', borderRadius: 8, fontSize: 16, fontWeight: 600, width: '100%', cursor: 'pointer'
-              }}
-            >
-              Join Consulting Waitlist
-            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>
@@ -248,47 +205,6 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* Waitlist Modal */}
-      <AnimatePresence>
-        {waitlistOpen && (
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            style={{
-              position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1000,
-              background: 'var(--modal-bg)', backdropFilter: 'blur(10px)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
-              style={{
-                background: 'var(--charcoal)', border: '1px solid var(--hairline)', borderRadius: 16,
-                padding: 48, width: '90%', maxWidth: 500, position: 'relative', textAlign: 'center'
-              }}
-            >
-              <button
-                onClick={() => setWaitlistOpen(false)}
-                style={{ position: 'absolute', right: 24, top: 24, background: 'none', border: 'none', color: 'var(--mist)', cursor: 'pointer', fontSize: 24 }}
-              >
-                &times;
-              </button>
-              <h3 style={{ fontSize: 28, fontWeight: 700, color: 'var(--pure)', marginBottom: 16 }}>Personal Consulting</h3>
-              <p style={{ color: 'var(--mist)', lineHeight: 1.6, marginBottom: 32 }}>
-                Due to high demand, our 1-on-1 personal consulting services are currently at capacity.
-                Join our exclusive waitlist to be notified as soon as a spot opens up.
-              </p>
-              <form onSubmit={e => { e.preventDefault(); alert("Thanks! You've been added to the waitlist."); setWaitlistOpen(false); }} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                <input required type="text" placeholder="Full Name" style={{ padding: '16px', background: 'var(--void)', border: '1px solid var(--hairline)', borderRadius: 8, color: 'var(--pure)', outline: 'none' }} />
-                <input required type="email" placeholder="Email Address" style={{ padding: '16px', background: 'var(--void)', border: '1px solid var(--hairline)', borderRadius: 8, color: 'var(--pure)', outline: 'none' }} />
-                <button type="submit" style={{ background: 'var(--gold)', color: 'var(--black)', fontWeight: 600, border: 'none', padding: '16px', borderRadius: 8, cursor: 'pointer', fontSize: 16 }}>
-                  Join the Waitlist
-                </button>
-              </form>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <style>{`
         .custom-navbar {
           background-color: var(--nav-bg) !important;
@@ -296,13 +212,12 @@ export default function Navbar() {
         }
         .custom-navbar:hover {
           background-color: var(--nav-bg-hover) !important;
-          border-color: var(--gold) !important;
         }
         .nav-desktop { display:none }
         .nav-desktop-btn { display:none }
         .nav-burger { display:flex }
         @media(min-width:1024px) {
-          .nav-desktop { display:flex; align-items:center }
+          .nav-desktop { display:flex; align-items:center; gap: 8px; flex-wrap: nowrap; }
           .nav-desktop-btn { display:block }
           .nav-burger { display:none !important }
         }

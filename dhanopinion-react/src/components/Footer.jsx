@@ -57,91 +57,27 @@ export default function Footer() {
 							guidance.
 						</p>
 					</div>
-					<div style={{ display: "flex", gap: 48, flexWrap: "wrap" }}>
-						<div>
-							<p
-								className="t-overline"
-								style={{ marginBottom: 16, fontSize: 10 }}
-							>
-								Navigate
-							</p>
-							{[
-								{ l: "Easy Wins", t: "/easy-wins" },
-								{ l: "Strategy", t: "/simple-investment-strategy" },
-								{ l: "Philosophy", t: "/investment-philosophy" },
-								{ l: "Case Studies", t: "/case-studies" },
-							].map((i) => (
-								<Link
-									key={i.t}
-									to={i.t}
-									style={{
-										display: "block",
-										fontSize: 13,
-										color: "var(--smoke)",
-										marginBottom: 10,
-										textDecoration: "none",
-									}}
-								>
-									{i.l}
-								</Link>
-							))}
-						</div>
-						<div>
-							<p
-								className="t-overline"
-								style={{ marginBottom: 16, fontSize: 10 }}
-							>
-								More
-							</p>
-							<Link
-								to="/information-centre"
-								style={{
-									display: "block",
-									fontSize: 13,
-									color: "var(--smoke)",
-									marginBottom: 10,
-									textDecoration: "none",
-								}}
-							>
-								Learn
-							</Link>
-							<Link
-								to="/about-us"
-								style={{
-									display: "block",
-									fontSize: 13,
-									color: "var(--smoke)",
-									marginBottom: 10,
-									textDecoration: "none",
-								}}
-							>
-								About
-							</Link>
-							<Link
-								to="/disclaimer"
-								style={{
-									display: "block",
-									fontSize: 13,
-									color: "var(--smoke)",
-									marginBottom: 10,
-									textDecoration: "none",
-								}}
-							>
-								Disclaimer
-							</Link>
-							<a
-								href="mailto:response@dhanopinion.com"
-								style={{
-									display: "block",
-									fontSize: 13,
-									color: "var(--gold)",
-									marginBottom: 10,
-									textDecoration: "none",
-								}}
-							>
-								Contact
-							</a>
-						</div>
+					<div style={{ display: "flex", gap: 32, flexWrap: "wrap", alignItems: "center" }}>
+						<Link
+							to="/disclaimer"
+							style={{
+								fontSize: 15,
+								color: "var(--smoke)",
+								textDecoration: "none",
+							}}
+						>
+							Disclaimer
+						</Link>
+						<a
+							href="mailto:response@dhanopinion.com"
+							style={{
+								fontSize: 15,
+								color: "var(--gold)",
+								textDecoration: "none",
+							}}
+						>
+							Contact Us
+						</a>
 					</div>
 				</div>
 				<div className="hairline" style={{ marginBottom: 24 }} />

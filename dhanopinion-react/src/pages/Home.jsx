@@ -70,21 +70,15 @@ const startingPoints = [
 	},
 	{
 		icon: "⚡",
-		label: "Strategy",
+		label: "Simple Investment Strategy",
 		desc: "A straightforward approach to building a portfolio that works.",
 		to: "/simple-investment-strategy",
 	},
 	{
 		icon: "◆",
-		label: "Philosophy",
+		label: "Investment Philosophy",
 		desc: "Core principles behind every sound investment decision.",
 		to: "/investment-philosophy",
-	},
-	{
-		icon: "▣",
-		label: "Learn",
-		desc: "Deepen your knowledge with our research-backed articles.",
-		to: "/information-centre",
 	},
 	{
 		icon: "📈",
@@ -191,9 +185,9 @@ export default function Home() {
 								display: "flex",
 								flexWrap: "wrap",
 								gap: "5rem",
-								alignItems: "center",
-								minHeight: "100vh",
-								padding: "120px 0 60px",
+								alignItems: "flex-start",
+								padding: "20px 0 0px", /* Removed bottom padding */
+								marginTop: "0"
 							}}
 						>
 							{/* ── LEFT: text ── */}
@@ -216,7 +210,7 @@ export default function Home() {
 										fontWeight: 700,
 										lineHeight: 1.05,
 										color: "var(--pure)",
-										marginBottom: "24px",
+										marginBottom: "0px",
 										letterSpacing: "-0.03em",
 										display: "flex",
 										flexDirection: "column",
@@ -233,7 +227,7 @@ export default function Home() {
 											Investing is
 										</motion.span>
 									</div>
-									<div style={{ overflow: "hidden", paddingBottom: "20px" }}>
+									<div style={{ overflow: "hidden", paddingBottom: "5px" }}>
 										<motion.span
 											variants={{
 												hidden: { y: "100%", opacity: 0, filter: "blur(10px)" },
@@ -318,7 +312,7 @@ export default function Home() {
 											initial={{ opacity: 0, x: 30 }}
 											animate={{ opacity: 1, x: 0 }}
 											transition={{ duration: 0.8, delay: 0.9 + i * 0.2, type: "spring", stiffness: 80 }}
-											whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+											whileHover={{ scale: 1.02 }}
 											style={{
 												background: "var(--hero-glass-strong)",
 												backdropFilter: "blur(24px)",
@@ -352,173 +346,103 @@ export default function Home() {
 								</div>
 							</motion.div>
 						</div>
-					</div>
-				</section>
 
-				{/* ══════ THE CHALLENGE ══════ */}
-				<section
-					className="sec"
-					style={{
-						background: "var(--charcoal)",
-						position: "relative",
-						zIndex: 1,
-						boxShadow: "var(--shadow-section)",
-					}}
-				>
-					<div className="wrap">
-						<div className="g-2" style={{ alignItems: "center" }}>
-							<div>
-								<p className="t-overline mb-5">THE CHALLENGE</p>
-								<RevealChar
-									as="h2"
-									text="Investment strategy is hard"
-									highlight="hard"
-									className="t-display mb-5"
-									delay={0.1}
-								/>
-								<p className="t-body" style={{ maxWidth: 440 }}>
-									It is difficult for large institutions, and it is even more
-									difficult for individuals because they lack resources,
-									expertise, and time.
-								</p>
-							</div>
-							<div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-								{[
-									{
-										num: "01",
-										title: "Complex Choices",
-										desc: "Tens of thousands of possible choices to make.",
-									},
-									{
-										num: "02",
-										title: "Uncertain Results",
-										desc: "Chance and luck play a role in every outcome.",
-									},
-									{
-										num: "03",
-										title: "Limited Resources",
-										desc: "Individuals lack what institutions have.",
-									},
-								].map((item, i) => (
-									<motion.div
-										key={i}
-										{...fade(i * 0.1 + 0.3)}
-										className="list-row"
-										style={{
-											padding: "28px 0",
-											borderBottom: "1px solid var(--hairline)",
-											display: "flex",
-											gap: 24,
-											alignItems: "flex-start",
-										}}
-									>
-										<span
-											style={{
-												fontFamily: "var(--font-mono)",
-												fontSize: 13,
-												color: "var(--gold)",
-												fontWeight: 600,
-												minWidth: 28,
-											}}
-										>
-											{item.num}
-										</span>
-										<div>
-											<h3 className="t-h3" style={{ marginBottom: 4 }}>
-												<HoverFlip text={item.title} />
-											</h3>
-											<p className="t-caption">{item.desc}</p>
-										</div>
-									</motion.div>
-								))}
-							</div>
-						</div>
-					</div>
-				</section>
-			</div>
-
-			<div style={{ position: "relative" }}>
-
-
-				{/* ══════ STARTING POINTS ══════ */}
-				<section
-					className="sec wave-top"
-					style={{
-						background: "var(--path-bg)",
-						color: "var(--path-text)",
-						position: "relative",
-						zIndex: 1,
-						boxShadow: "var(--shadow-section-light)",
-						"--wave-fill": "var(--charcoal)",
-					}}
-				>
-					<div className="wrap">
-						<p
-							className="t-overline mb-3 tc"
-							style={{ color: "var(--path-text)", marginTop: 12 }}
-						>
-							GET STARTED
-						</p>
-						<RevealChar
-							as="h2"
-							text="Choose your path"
-							className="t-display mb-8 tc"
-							style={{ justifyContent: "center", color: "var(--path-text)" }}
-							delay={0.1}
-						/>
-						<div style={{ marginTop: 40 }}>
-							<SpreadCards
-								items={startingPoints}
-								cols={4}
-								className="g-4"
-								renderCard={(s) => (
-									<Link
-										to={s.to}
-										className="card"
-										style={{
-											textDecoration: "none",
-											color: "inherit",
-											display: "flex",
-											flexDirection: "column",
-											height: "100%",
-											minHeight: 220,
-										}}
-									>
-										<span
-											style={{
-												fontSize: 28,
-												marginBottom: 20,
-												display: "block",
-												color: "var(--orange)",
-											}}
-										>
-											{s.icon}
-										</span>
-										<h3 className="t-h3" style={{ marginBottom: 8 }}>
-											<HoverFlip text={s.label} />
-										</h3>
-										<p className="t-caption" style={{ flex: 1, opacity: 0.9 }}>
-											{s.desc}
-										</p>
-										<span
-											style={{
-												fontSize: 11,
-												fontWeight: 700,
-												letterSpacing: ".12em",
-												textTransform: "uppercase",
-												color: "var(--orange)",
-												marginTop: 20,
-											}}
-										>
-											<HoverFlip text="EXPLORE →" />
-										</span>
-									</Link>
-								)}
+						{/* ══════ STARTING POINTS (MOVED TO BOTTOM OF HERO) ══════ */}
+						<div style={{ paddingTop: "20px", paddingBottom: "80px", width: "100%" }}>
+							<RevealChar
+								as="h2"
+								text="Choose your starting point"
+								className="t-display mb-8 tc"
+								style={{
+									justifyContent: "center",
+									color: "var(--pure)",
+									fontWeight: 300,
+									fontFamily: "'Playfair Display', 'Georgia', serif",
+									letterSpacing: "0.02em"
+								}}
+								delay={0.1}
 							/>
+							<div style={{ marginTop: 20 }}>
+								<SpreadCards
+									items={startingPoints}
+									cols={4}
+									className="g-4"
+									renderCard={(s) => (
+										<Link
+											to={s.to}
+											className="card"
+											style={{
+												textDecoration: "none",
+												color: "inherit",
+												display: "flex",
+												flexDirection: "column",
+												height: "100%",
+												minHeight: 220,
+											}}
+										>
+											<span
+												style={{
+													fontSize: 28,
+													marginBottom: 20,
+													display: "block",
+													color: "var(--orange)",
+												}}
+											>
+												{s.icon}
+											</span>
+											<h3 className="t-h3" style={{ marginBottom: 8 }}>
+												<HoverFlip text={s.label} />
+											</h3>
+											<p className="t-caption" style={{ flex: 1, opacity: 0.9 }}>
+												{s.desc}
+											</p>
+											<span
+												style={{
+													fontSize: 11,
+													fontWeight: 700,
+													letterSpacing: ".12em",
+													textTransform: "uppercase",
+													color: "var(--orange)",
+													marginTop: 20,
+												}}
+											>
+												<HoverFlip text="EXPLORE →" />
+											</span>
+										</Link>
+									)}
+								/>
+							</div>
 						</div>
 					</div>
 				</section>
 			</div>
+
+			{/* ══════ SCOPE ══════ */}
+			<section
+				className="sec"
+				style={{
+					background: "var(--void)",
+					borderTop: "1px solid var(--hairline)",
+				}}
+			>
+				<div className="wrap tc">
+					<p className="t-overline mb-5 tc">PARAMETERS</p>
+					<RevealChar
+						as="h2"
+						text="Scope"
+						className="t-h1 mb-5 tc"
+						style={{ justifyContent: "center" }}
+						delay={0.1}
+					/>
+					<motion.p
+						{...fade(0.3)}
+						className="t-body tc"
+						style={{ maxWidth: 680, margin: "0 auto" }}
+					>
+						The current scope covers financial assets such as mutual funds, government sponsored financial instruments and fixed deposits.
+					</motion.p>
+				</div>
+			</section>
 
 			{/* ══════ WHAT YOU CAN EXPECT ══════ */}
 			<section
@@ -638,42 +562,55 @@ export default function Home() {
 				}}
 			>
 				<div className="wrap">
-					<p className="t-overline mb-5 tc">TARGET AUDIENCE</p>
-					<RevealChar
-						as="h2"
-						text="Who is it for?"
-						className="t-h1 mb-7 tc"
-						style={{ justifyContent: "center" }}
-						delay={0.1}
-					/>
-					<p
-						className="t-body tc mb-7"
-						style={{ maxWidth: 560, margin: "0 auto var(--sp-7)" }}
-					>
-						Anyone interested in investing. However, particularly individuals
-						looking for guidance on:
-					</p>
-					<div className="g-4">
-						{[
-							"Financial Planning",
-							"Asset Allocation",
-							"Fund Selection",
-							"Tax Optimization",
-						].map((t, i) => (
-							<motion.div
-								key={i}
-								{...fade(i * 0.08 + 0.4)}
+					<div className="g-2" style={{ alignItems: "center", gap: "4rem" }}>
+						{/* Left: Content */}
+						<div>
+							<p className="t-overline mb-5">TARGET AUDIENCE</p>
+							<RevealChar
+								as="h2"
+								text="Who is it for?"
+								className="t-h1 mb-6"
+								delay={0.1}
+							/>
+							<p className="t-body mb-5" style={{ maxWidth: 560 }}>
+								The resources on this website will be of help to anyone interested in investing. However, the primary focus of the content is individual investors who have limited time, resources and expertise to devote to investment research and analyses.
+							</p>
+							<p className="t-body" style={{ maxWidth: 560 }}>
+								Every individual can also get some simple guidance to have a pretty good solution without knowing or learning too much about this, but everyone should learn a little bit.
+							</p>
+						</div>
+
+						{/* Right: Image */}
+						<motion.div {...fade(0.4)} style={{ position: "relative" }}>
+							<div
 								style={{
-									padding: "32px 24px",
-									border: "1px solid var(--hairline)",
-									textAlign: "center",
+									position: "relative",
+									borderRadius: 24,
+									overflow: "hidden",
+									boxShadow: "var(--shadow-bento)",
+									aspectRatio: "4/3",
 								}}
 							>
-								<h3 className="t-h3">
-									<HoverFlip text={t} />
-								</h3>
-							</motion.div>
-						))}
+								<img
+									src="https://dhanopinion.com/wp-content/uploads/2023/09/pexels-ketut-subiyanto-4308025.jpg"
+									alt="Target Audience"
+									style={{
+										width: "100%",
+										height: "100%",
+										objectFit: "cover",
+										display: "block",
+									}}
+								/>
+								<div
+									style={{
+										position: "absolute",
+										inset: 0,
+										background: "linear-gradient(0deg, rgba(0,0,0,0.2) 0%, transparent 50%)",
+										pointerEvents: "none"
+									}}
+								/>
+							</div>
+						</motion.div>
 					</div>
 				</div>
 			</section>

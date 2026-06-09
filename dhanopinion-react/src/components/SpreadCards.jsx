@@ -2,13 +2,6 @@ import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 export function SpreadCards({ items, renderCard, cols = 4, className = "g-4" }) {
-  const containerRef = useRef(null)
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start 85%', 'center 50%']
-  })
-
   const [isDesktop, setIsDesktop] = useState(true)
 
   useEffect(() => {
@@ -23,7 +16,7 @@ export function SpreadCards({ items, renderCard, cols = 4, className = "g-4" }) 
   const midRow = (numRows - 1) / 2
 
   return (
-    <div ref={containerRef} className={className} style={{ perspective: 1000 }}>
+    <div className={className} style={{ perspective: 1000 }}>
       {items.map((item, i) => {
         const col = i % cols
         const row = Math.floor(i / cols)
@@ -34,17 +27,28 @@ export function SpreadCards({ items, renderCard, cols = 4, className = "g-4" }) 
         const xOffset = `calc(${colDiff * 100}% + ${colDiff * 24}px)`
         const yOffsetBase = `calc(${rowDiff * 100}% + ${rowDiff * 24}px)`
         
-        const x = useTransform(scrollYProgress, [0, 1], [isDesktop ? xOffset : '0%', '0%'])
-        // Combine grid centering Y with the slight 20px overlap effect Y
-        const y = useTransform(scrollYProgress, [0, 1], [isDesktop ? `calc(${yOffsetBase} + ${Math.abs(colDiff) * 20}px)` : '0px', '0px'])
-        const rotate = useTransform(scrollYProgress, [0, 1], [isDesktop ? colDiff * -10 : 0, 0])
-        const opacity = useTransform(scrollYProgress, [0, 0.2, 1], [isDesktop ? 0 : 1, 1, 1])
-
         return (
           <motion.div 
             key={i} 
+            initial={isDesktop ? { 
+              x: xOffset, 
+              y: `calc(${yOffsetBase} + ${Math.abs(colDiff) * 20}px)`, 
+              rotate: colDiff * -10, 
+              opacity: 0 
+            } : { opacity: 0, y: 50 }}
+            animate={{ 
+              x: "0%", 
+              y: "0px", 
+              rotate: 0, 
+              opacity: 1 
+            }}
+            transition={{ 
+              duration: 1.2, 
+              delay: 0.2 + i * 0.1, 
+              type: "spring", 
+              bounce: 0.4 
+            }}
             style={{ 
-              x, y, rotate, opacity, 
               zIndex: items.length - Math.ceil(Math.abs(colDiff) + Math.abs(rowDiff)) 
             }}
             whileHover={{ y: -8, transition: { duration: 0.3 } }}

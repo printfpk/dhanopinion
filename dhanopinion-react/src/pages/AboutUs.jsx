@@ -108,48 +108,29 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* The Challenge & Solution Section */}
+      {/* Narrative Section */}
       <section className="sec" style={{ background: 'var(--black)', padding: '100px 0', borderTop: '1px solid var(--hairline)' }}>
         <div className="wrap">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '80px', alignItems: 'start' }}>
-            {/* Left Column: The Problem */}
-            <motion.div {...f(0.1)} style={{ paddingRight: '20px' }}>
-              <div style={{ display: 'inline-flex', padding: '12px 24px', background: 'rgba(255,255,255,0.03)', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '32px' }}>
-                <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--smoke)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>The Challenge</span>
-              </div>
-              <h2 className="t-h2 mb-6" style={{ fontSize: '32px', lineHeight: 1.3 }}>Things are often not working very well.</h2>
-              <p className="t-body mb-6" style={{ color: 'var(--smoke)', fontSize: '18px', lineHeight: 1.7 }}>
-                Personal Financial Advice is a huge area of activity. It can have a significant impact on household wealth and wellbeing.
-              </p>
-              <p className="t-body mb-6" style={{ color: 'var(--smoke)', fontSize: '18px', lineHeight: 1.7 }}>
-                People find it difficult to understand and make investment decisions. They end up with too little or too much risk relative to what they would have chosen if they had the expertise to make the best decisions for themselves. They often incur a lot of costs and fees in the process, do not know what they paying and what results they are getting for the payments.
-              </p>
-              <div style={{ padding: '24px', background: 'rgba(255,50,50,0.04)', borderLeft: '4px solid rgba(255,50,50,0.4)', borderRadius: '0 12px 12px 0', marginTop: '32px' }}>
-                <p className="t-body" style={{ color: 'var(--pure)', fontSize: '16px', lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>
-                  Unfortunately there is often a conflict of interest between the product providers and advisors and the clients – because the products that generate the highest profits for the providers are not the best for the clients and the best solutions generate very low profits to the providers.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Right Column: The Solution */}
-            <motion.div {...f(0.3)}>
-              <div style={{ display: 'inline-flex', padding: '12px 24px', background: 'rgba(234, 218, 134, 0.05)', borderRadius: '100px', border: '1px solid rgba(234, 218, 134, 0.15)', marginBottom: '32px' }}>
-                <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--gold)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Our Solution</span>
-              </div>
-              <h2 className="t-h2 mb-6" style={{ fontSize: '32px', lineHeight: 1.3 }}>Simple, effective guidance at low cost.</h2>
-              <p className="t-body mb-6" style={{ color: 'var(--smoke)', fontSize: '18px', lineHeight: 1.7 }}>
-                DhanOpinion is an experiment to see if we can contribute to making the investment process and outcomes better for people. We think we can leverage our education, training and experience to provide something of value to a large number of people in an efficient way.
-              </p>
-
-              <div style={{ marginTop: '48px', padding: '40px', background: 'var(--void)', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.05)', boxShadow: 'var(--shadow-hard-5)', position: 'relative', overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '2px', background: 'linear-gradient(90deg, transparent, var(--gold), transparent)' }} />
-                <h3 className="t-h3 mb-4" style={{ fontSize: '24px', color: 'var(--gold)' }}>Mission Statement</h3>
-                <p className="t-body" style={{ color: 'var(--pure)', fontSize: '17px', lineHeight: 1.6, margin: 0 }}>
-                  Dhanopinion seeks to make a difference to the individual investor in India by providing an unbiased view on financial investments. Consumers may agree or disagree with the views expressed on this site. They are free to take their own investing decisions.
-                </p>
-              </div>
-            </motion.div>
-          </div>
+          <motion.div {...f(0.1)} style={{ maxWidth: '800px', margin: '0 auto' }}>
+            <p className="t-body mb-6" style={{ color: 'var(--smoke)', fontSize: '18px', lineHeight: 1.7 }}>
+              Personal Financial Advice is a huge area of activity. It can have a significant impact on household wealth and wellbeing. It is our experience and observation that things are often not working very well.
+            </p>
+            <p className="t-body mb-6" style={{ color: 'var(--smoke)', fontSize: '18px', lineHeight: 1.7 }}>
+              People find it difficult to understand and make investment decisions. They end up with too little or too much risk relative to what they would have chosen if they had the expertise to make the best decisions for themselves. They often incur a lot of costs and fees in the process, do not know what they paying and what results they are getting for the payments.
+            </p>
+            <p className="t-body mb-6" style={{ color: 'var(--smoke)', fontSize: '18px', lineHeight: 1.7 }}>
+              Unfortunately there is often a conflict of interest between the product providers and advisors and the clients – because the products that generate the highest profits for the providers are not the best for the clients and the best solutions generate very low profits to the providers.
+            </p>
+            <p className="t-body mb-6" style={{ color: 'var(--smoke)', fontSize: '18px', lineHeight: 1.7 }}>
+              DhanOpinion is an experiment to see if we can contribute to making the investment process and outcomes better for people. The objective is to provide simple effective guidance at low cost. We think we can leverage our education, training and experience to provide something of value to a large number of people in an efficient way.
+            </p>
+            <p className="t-body mb-6" style={{ color: 'var(--smoke)', fontSize: '18px', lineHeight: 1.7 }}>
+              If you find DhanOpinion useful, please let us know. If there is something you would like us to analyze, that would be useful to you and many others, let us know and we will consider doing the analysis.
+            </p>
+            <p className="t-body" style={{ color: 'var(--smoke)', fontSize: '18px', lineHeight: 1.7 }}>
+              We think that we should be able to use technology and our domain expertise to improve the product over time. If you have any specific suggestions or expertise that you would like to contribute to the effort please let us know. It will help us greatly if you can fill in the brief questionnaire below:
+            </p>
+          </motion.div>
         </div>
       </section>
 
