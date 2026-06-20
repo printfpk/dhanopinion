@@ -13,8 +13,8 @@ export const ThemeProvider = ({ children }) => {
     if (savedTheme) {
       return savedTheme;
     }
-    // Default to dark mode
-    return 'dark';
+    // Default to light mode
+    return 'light';
   });
 
   useEffect(() => {
