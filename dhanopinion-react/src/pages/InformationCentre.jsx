@@ -39,10 +39,10 @@ export default function InformationCentre() {
 
   return (
     <>
-      <section style={{ minHeight: '45vh', display: 'flex', alignItems: 'center', background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
+      <section className="sec" style={{ background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
         <div className="wrap pt-8 pb-8">
-          <p className="t-overline mb-5" style={{ color: 'var(--gold)' }}>LEARN</p>
-          <RevealChar as="h1" text="INFORMATION \n CENTRE" highlight="CENTRE" className="t-mega mb-5" />
+
+          <RevealChar as="h1" text="Information Centre" className="t-mega mb-5" />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ export default function InformationCentre() {
 
           {/* Sidebar */}
           <div className="filters-sidebar" style={{ width: '300px', flexShrink: 0, padding: '1rem 0', position: 'sticky', top: '100px' }}>
-            <h3 style={{ color: 'var(--gold)', marginBottom: '1.5rem', fontSize: '18px', fontWeight: 500 }}>Filters</h3>
+            <h3 style={{ color: 'var(--pure)', marginBottom: '1.5rem', fontSize: '18px', fontWeight: 300, fontFamily: 'var(--font-heading)' }}>Filters</h3>
 
             <div style={{ marginBottom: '2rem' }}>
               <input
@@ -115,7 +115,7 @@ export default function InformationCentre() {
                         style={{ display: 'block', padding: '24px 0', textDecoration: 'none', transition: 'padding-left 0.3s ease' }}
                         className="article-link-hover"
                       >
-                        <h3 style={{ fontSize: '17px', color: 'var(--pure)', fontWeight: 600, marginBottom: '8px', lineHeight: 1.4 }}>
+                        <h3 style={{ fontSize: '17px', fontFamily: 'var(--font-heading)', color: 'var(--pure)', fontWeight: 300, marginBottom: '8px', lineHeight: 1.4 }}>
                           {a.title}
                         </h3>
                         <p style={{ fontSize: '12px', color: '#eada86', fontWeight: 600, margin: 0 }}>

@@ -38,26 +38,14 @@ export default function Navbar() {
         backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
         borderBottom: '1px solid var(--hairline)',
         boxShadow: 'var(--shadow-nav)',
-        height: 72, width: '100%'
+        width: '100%'
       }}>
-        <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 32px', margin: '0 auto', maxWidth: 1400 }}>
+        {/* Top row: Logo + Icons */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 32px', margin: '0 auto', maxWidth: 1400, height: 56 }}>
           {/* Logo */}
           <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'baseline', gap: 6, color: 'var(--pure)', whiteSpace: 'nowrap' }}>
             <HoverFlip text="DHAN OPINION" delayOffset={0} />
           </Link>
-
-          {/* Desktop links */}
-          <div className="nav-desktop">
-            {links.map(l => (
-              <Link key={l.to} to={l.to} style={{
-                fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase',
-                color: pathname.startsWith(l.to) ? 'var(--orange)' : 'var(--pure)',
-                textDecoration: 'none', padding: '0 12px', display: 'flex', whiteSpace: 'nowrap'
-              }}>
-                <HoverFlip text={l.label} />
-              </Link>
-            ))}
-          </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             {/* Search Button */}
@@ -111,6 +99,21 @@ export default function Navbar() {
               <motion.span animate={{ opacity: open ? 0 : 1 }} style={{ display: 'block', width: 22, height: 2, background: 'var(--pure)' }} />
               <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -7 : 0 }} style={{ display: 'block', width: 22, height: 2, background: 'var(--pure)', transformOrigin: 'center' }} />
             </button>
+          </div>
+        </div>
+
+        {/* Bottom row: Desktop nav links */}
+        <div className="nav-desktop-row" style={{ borderTop: '1px solid var(--hairline)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 32px', margin: '0 auto', maxWidth: 1400, height: 40 }}>
+            {links.map(l => (
+              <Link key={l.to} to={l.to} style={{
+                fontSize: 11, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase',
+                color: pathname.startsWith(l.to) ? 'var(--orange)' : 'var(--pure)',
+                textDecoration: 'none', padding: '0 16px', display: 'flex', whiteSpace: 'nowrap'
+              }}>
+                <HoverFlip text={l.label} />
+              </Link>
+            ))}
           </div>
         </div>
       </nav>
@@ -213,12 +216,10 @@ export default function Navbar() {
         .custom-navbar:hover {
           background-color: var(--nav-bg-hover) !important;
         }
-        .nav-desktop { display:none }
-        .nav-desktop-btn { display:none }
+        .nav-desktop-row { display:none }
         .nav-burger { display:flex }
         @media(min-width:1024px) {
-          .nav-desktop { display:flex; align-items:center; gap: 8px; flex-wrap: nowrap; }
-          .nav-desktop-btn { display:block }
+          .nav-desktop-row { display:block }
           .nav-burger { display:none !important }
         }
       `}</style>

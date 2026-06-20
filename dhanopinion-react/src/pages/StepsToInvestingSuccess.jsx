@@ -56,7 +56,7 @@ export default function StepsToInvestingSuccess() {
 
         <div className="wrap">
           <div className="tc mb-8" style={{ position: 'relative', zIndex: 1 }}>
-            <p className="t-overline mb-4" style={{ color: "var(--gold)" }}>YOUR ROADMAP</p>
+
             <RevealChar as="h1" text="Steps to Investing Success" className="t-mega mb-6" style={{ lineHeight: 0.95 }} />
             <motion.p
               initial={{ opacity: 0, y: 20 }}

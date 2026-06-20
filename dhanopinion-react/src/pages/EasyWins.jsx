@@ -2,46 +2,14 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { HoverFlip, RevealChar } from '../components/Animations'
 import { SpreadCards } from '../components/SpreadCards'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Environment, Float, useGLTF } from '@react-three/drei'
-import { useRef } from 'react'
-import * as THREE from 'three'
-
-useGLTF.preload('/money_tree.glb')
-
-function MoneyTreeModel() {
-  const { scene } = useGLTF('/money_tree.glb')
-  const group = useRef()
-  const mesh = useRef()
-
-  useFrame((state, delta) => {
-    if (mesh.current) {
-      mesh.current.rotation.y += delta * 0.3
-    }
-    if (group.current) {
-      const targetX = (state.pointer.y * Math.PI) / 6
-      const targetY = (state.pointer.x * Math.PI) / 6
-      group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, targetX, 0.1)
-      group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, targetY, 0.1)
-    }
-  })
-
-  return (
-    <group ref={group}>
-      <Float speed={2} rotationIntensity={0.3} floatIntensity={0.8}>
-        <primitive ref={mesh} object={scene} scale={0.75} position={[0, -2.1, 0]} />
-      </Float>
-    </group>
-  )
-}
 
 const f = (d = 0) => ({ initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.15 }, transition: { duration: 0.7, delay: d, ease: [0.16, 1, 0.3, 1] } })
 
 const wins = [
-  { num: '01', title: 'Shift to Direct Funds', desc: 'Choose a direct MF over a regular MF — save on fees every single year.', to: '/2023/08/18/when-investing-in-a-mutual-fund-choose-a-direct-mf-over-a-regular-mf/' },
-  { num: '02', title: 'Participate in NPS', desc: 'Tax benefits and low-cost investment options for retirement planning.', to: '/2023/08/20/national-pension-system-nps/' },
-  { num: '03', title: 'Switch to Liquid Funds', desc: 'Earn better returns on emergency funds than a savings account.', to: '/2023/08/19/why-keeping-money-in-a-liquid-mutual-fund-is-better-for-short-term-needs-than-keeping-it-in-a-savings-account/' },
-  { num: '04', title: 'Government Savings', desc: 'Move from fixed deposits to government small savings schemes.', to: '/2023/08/23/government-savings-schemes/' },
+  { title: 'Shift to Direct Funds', desc: 'Choose a direct MF over a regular MF — save on fees every single year.', to: '/2023/08/18/when-investing-in-a-mutual-fund-choose-a-direct-mf-over-a-regular-mf/' },
+  { title: 'Participate in NPS', desc: 'Tax benefits and low-cost investment options for retirement planning.', to: '/2023/08/20/national-pension-system-nps/' },
+  { title: 'Switch to Liquid Funds', desc: 'Earn better returns on emergency funds than a savings account.', to: '/2023/08/19/why-keeping-money-in-a-liquid-mutual-fund-is-better-for-short-term-needs-than-keeping-it-in-a-savings-account/' },
+  { title: 'Government Savings', desc: 'Move from fixed deposits to government small savings schemes.', to: '/2023/08/23/government-savings-schemes/' },
 ]
 
 export default function EasyWins() {
@@ -55,7 +23,8 @@ export default function EasyWins() {
             background: "var(--charcoal)",
             position: "relative",
             zIndex: 1,
-            padding: "clamp(60px, 10vw, 120px) 0",
+            paddingTop: "16px",
+            paddingBottom: "clamp(24px, 4vw, 48px)",
             boxShadow: "var(--shadow-hard)",
           }}
         >
@@ -79,17 +48,19 @@ export default function EasyWins() {
                 <h1 
                   style={{ 
                     fontSize: "clamp(48px, 6vw, 72px)", 
-                    fontWeight: 600, 
+                    fontWeight: 300,
+                    fontFamily: "var(--font-heading)",
                     color: "var(--pure)", 
+                    marginTop: 0, 
                     marginBottom: "32px",
-                    letterSpacing: "-0.02em"
+                    letterSpacing: "-0.01em"
                   }}
                 >
                   Easy Wins
                 </h1>
                 <p 
                   style={{ 
-                    fontSize: "18px", 
+                    fontSize: "17px", 
                     lineHeight: 1.8, 
                     color: "var(--easy-text)", 
                     marginBottom: "24px",
@@ -100,7 +71,7 @@ export default function EasyWins() {
                 </p>
                 <p 
                   style={{ 
-                    fontSize: "18px", 
+                    fontSize: "17px", 
                     lineHeight: 1.8, 
                     color: "var(--easy-text)", 
                     marginBottom: "40px",
@@ -112,6 +83,9 @@ export default function EasyWins() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    document.getElementById('cards-section')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                   style={{
                     background: "var(--easy-btn)",
                     color: "var(--black)",
@@ -128,7 +102,7 @@ export default function EasyWins() {
                 </motion.button>
               </motion.div>
 
-              {/* RIGHT: 3D Model Iframe */}
+              {/* RIGHT: Rupee Image */}
               <motion.div 
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -136,29 +110,35 @@ export default function EasyWins() {
                 viewport={{ once: true, margin: "-100px" }}
                 style={{ flex: "1 1 min(100%, 500px)", display: "flex", justifyContent: "center", alignItems: "center" }}
               >
-                <div style={{ width: "100%", maxWidth: "600px", aspectRatio: "4/3", borderRadius: "16px", background: "rgba(0,0,0,0.2)", overflow: "hidden", boxShadow: "var(--shadow-hard-3)", border: "1px solid rgba(255,255,255,0.1)" }}>
-                  <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
-                    <ambientLight intensity={0.8} />
-                    <directionalLight position={[10, 10, 5]} intensity={1.5} />
-                    <Environment preset="city" />
-                    <MoneyTreeModel />
-                  </Canvas>
-                </div>
+                <motion.img
+                  src="https://dhanopinion.com/wp-content/uploads/2023/07/Rupee-1.png"
+                  alt="Rupee"
+                  animate={{ y: [0, -14, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  style={{
+                    width: "100%",
+                    maxWidth: "260px",
+                    objectFit: "contain",
+                    filter: "drop-shadow(0 20px 60px rgba(212,168,83,0.25))",
+                    userSelect: "none",
+                    pointerEvents: "none",
+                  }}
+                />
               </motion.div>
             </div>
           </div>
         </section>
-        <section className="sec" style={{ background: 'var(--bg-pure)', minHeight: '100vh', position: 'relative', zIndex: 1, boxShadow: 'var(--shadow-hard-2)' }}>
+
+        <section id="cards-section" className="sec" style={{ background: 'var(--bg-pure)', position: 'relative', zIndex: 1, boxShadow: 'var(--shadow-hard-2)' }}>
           <div className="wrap">
             <SpreadCards
               items={wins}
               cols={4}
               className="g-4"
               renderCard={(item) => (
-                <Link to={item.to} className="card" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%', minHeight: 240 }}>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: 24, color: 'var(--orange)', fontWeight: 600, marginBottom: 20, display: 'block' }}>{item.num}</span>
-                  <h3 className="t-h3" style={{ marginBottom: 8 }}><HoverFlip text={item.title} /></h3>
-                  <p className="t-caption" style={{ flex: 1, opacity: 0.9 }}>{item.desc}</p>
+                <Link to={item.to} className="card starting-card" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%', minHeight: 240, padding: '36px 28px 28px', alignItems: 'flex-start' }}>
+                  <h3 className="t-h3" style={{ marginBottom: 8, color: '#1a1714' }}><HoverFlip text={item.title} /></h3>
+                  <p className="card-desc" style={{ flex: 1, opacity: 0.9, fontSize: 14, lineHeight: 1.65, color: '#5a4f45', margin: '10px 0 0' }}>{item.desc}</p>
                   <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--orange)', marginTop: 24 }}><HoverFlip text="READ MORE →" /></span>
                 </Link>
               )}

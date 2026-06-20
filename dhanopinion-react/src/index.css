@@ -5,6 +5,7 @@
    + Superhuman (indigo depth, violet soft, teal band)
    ═══════════════════════════════════════════════════════════ */
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap");
 
 *,
 *::before,
@@ -48,6 +49,7 @@
 	/* ── Type ── */
 	--font-display: "Outfit", system-ui, -apple-system, sans-serif;
 	--font-body: "Outfit", system-ui, -apple-system, sans-serif;
+	--font-heading: "Playfair Display", Georgia, serif;
 	--font-mono: "JetBrains Mono", monospace;
 
 	/* ── Spacing (8px ladder like Ferrari) ── */
@@ -59,7 +61,7 @@
 	--sp-6: 32px;
 	--sp-7: 48px;
 	--sp-8: 64px;
-	--sp-9: 96px;
+	--sp-9: 48px;
 	--sp-10: 128px;
 
 	/* ── Hairlines ── */
@@ -69,51 +71,51 @@
 	/* ── Max ── */
 	--max: 1120px;
 	--max-narrow: 900px;
-	
+
 	/* ── Component Backgrounds ── */
 	--nav-bg: rgba(20, 20, 20, 0.85);
 	--nav-bg-hover: rgba(20, 20, 20, 0.95);
 	--modal-bg: rgba(0, 0, 0, 0.85);
 	--menu-bg: rgba(0, 0, 0, 0.97);
-	
+
 	/* ── Specific Section Variables ── */
-	--hero-grad: linear-gradient(135deg, rgba(8,8,8,0.9) 0%, rgba(14,48,48,0.4) 100%);
+	--hero-grad: linear-gradient(135deg, rgba(8, 8, 8, 0.9) 0%, rgba(14, 48, 48, 0.4) 100%);
 	--hero-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
 	--hero-glass-border: rgba(255, 255, 255, 0.1);
 	--hero-glass-strong: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
-	
+
 	--hero-orb-1: radial-gradient(circle, rgba(131, 231, 238, 0.15) 0%, transparent 60%);
 	--hero-orb-2: radial-gradient(circle, rgba(138, 84, 199, 0.15) 0%, transparent 60%);
 	--hero-text-grad: linear-gradient(90deg, #a78bfa 0%, #60a5fa 100%);
 	--video-blend: luminosity;
 	--video-opacity: 0.4;
-	
+
 	/* Adaptive variables for inline styles */
 	--easy-text: rgba(255, 255, 255, 0.7);
 	--easy-btn: #a78bfa;
 	--bg-pure: var(--pure);
-	--shadow-hard: 0 -24px 64px rgba(0,0,0,0.8);
-	--shadow-hard-2: 0 -24px 64px rgba(0,0,0,0.6);
-	--shadow-hard-3: 0 20px 64px rgba(0,0,0,0.5);
-	--shadow-hard-4: 0 24px 64px rgba(0,0,0,0.5);
-	--shadow-hard-5: 0 20px 40px rgba(0,0,0,0.4);
+	--shadow-hard: 0 -24px 64px rgba(0, 0, 0, 0.8);
+	--shadow-hard-2: 0 -24px 64px rgba(0, 0, 0, 0.6);
+	--shadow-hard-3: 0 20px 64px rgba(0, 0, 0, 0.5);
+	--shadow-hard-4: 0 24px 64px rgba(0, 0, 0, 0.5);
+	--shadow-hard-5: 0 20px 40px rgba(0, 0, 0, 0.4);
 	--shadow-hard-6: 0 20px 40px rgba(0, 0, 0, 0.15);
 	--easy-btn-shadow: 0 4px 14px rgba(167, 139, 250, 0.4);
 	--post-title: var(--white);
-	
+
 	--path-bg: #f6f1ed;
 	--path-text: #000000;
 
 	--ghost-bg: rgba(255, 255, 255, 0.05);
 	--ghost-border: rgba(255, 255, 255, 0.1);
-	
+
 	/* ── Shadows ── */
-	--shadow-section: 0 -24px 64px rgba(0,0,0,0.8);
-	--shadow-section-light: 0 -24px 64px rgba(0,0,0,0.6);
-	--shadow-card: 0 20px 40px rgba(0,0,0,0.15);
-	--shadow-card-hover: 0 24px 64px rgba(0,0,0,0.5);
-	--shadow-bento: 0 20px 40px rgba(0,0,0,0.3);
-	--shadow-nav: 0 8px 32px rgba(0,0,0,0.4);
+	--shadow-section: 0 -24px 64px rgba(0, 0, 0, 0.8);
+	--shadow-section-light: 0 -24px 64px rgba(0, 0, 0, 0.6);
+	--shadow-card: 0 20px 40px rgba(0, 0, 0, 0.15);
+	--shadow-card-hover: 0 24px 64px rgba(0, 0, 0, 0.5);
+	--shadow-bento: 0 20px 40px rgba(0, 0, 0, 0.3);
+	--shadow-nav: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="light"] {
@@ -131,8 +133,10 @@
 	--pure: #12100C;
 
 	/* ── Accents ── */
-	--gold: #DC2626; /* Crimson Red for initial state */
-	--gold-hover: #B91C1C; /* Slightly deeper red for hover */
+	--gold: #DC2626;
+	/* Crimson Red for initial state */
+	--gold-hover: #B91C1C;
+	/* Slightly deeper red for hover */
 	--gold-deep: #991B1B;
 	--gold-glow: rgba(220, 38, 38, 0.1);
 	--orange: #E85D04;
@@ -145,7 +149,7 @@
 	/* ── Hairlines ── */
 	--hairline: rgba(0, 0, 0, 0.06);
 	--hairline-hover: rgba(0, 0, 0, 0.12);
-	
+
 	/* ── Component Backgrounds ── */
 	--nav-bg: rgba(252, 251, 247, 0.85);
 	--nav-bg-hover: rgba(252, 251, 247, 0.95);
@@ -154,17 +158,17 @@
 	--wave-fill: #FCFBF7;
 
 	/* ── Specific Section Variables ── */
-	--hero-grad: linear-gradient(135deg, rgba(252,251,247,0.5) 0%, rgba(252,251,247,0.1) 100%);
+	--hero-grad: linear-gradient(135deg, rgba(252, 251, 247, 0.5) 0%, rgba(252, 251, 247, 0.1) 100%);
 	--hero-glass: rgba(255, 255, 255, 0.7);
 	--hero-glass-border: rgba(255, 255, 255, 0.8);
 	--hero-glass-strong: rgba(255, 255, 255, 0.9);
-	
+
 	--hero-orb-1: radial-gradient(circle, rgba(220, 38, 38, 0.08) 0%, transparent 60%);
 	--hero-orb-2: radial-gradient(circle, rgba(232, 93, 4, 0.08) 0%, transparent 60%);
 	--hero-text-grad: linear-gradient(90deg, var(--gold) 0%, var(--orange) 100%);
 	--video-blend: overlay;
 	--video-opacity: 0.3;
-	
+
 	/* Adaptive variables for inline styles */
 	--easy-text: var(--smoke);
 	--easy-btn: var(--gold);
@@ -177,7 +181,7 @@
 	--shadow-hard-6: var(--shadow-bento);
 	--easy-btn-shadow: var(--shadow-nav);
 	--post-title: var(--pure);
-	
+
 	--path-bg: #f6f1ed;
 	--path-text: #000000;
 
@@ -185,12 +189,12 @@
 	--ghost-border: rgba(0, 0, 0, 0.1);
 
 	/* ── Shadows ── */
-	--shadow-section: 0 -24px 64px rgba(0,0,0,0.04);
-	--shadow-section-light: 0 -24px 64px rgba(0,0,0,0.03);
-	--shadow-card: 0 20px 40px rgba(0,0,0,0.05);
-	--shadow-card-hover: 0 24px 64px rgba(0,0,0,0.1);
-	--shadow-bento: 0 20px 40px rgba(0,0,0,0.08);
-	--shadow-nav: 0 8px 32px rgba(0,0,0,0.08);
+	--shadow-section: 0 -24px 64px rgba(0, 0, 0, 0.04);
+	--shadow-section-light: 0 -24px 64px rgba(0, 0, 0, 0.03);
+	--shadow-card: 0 20px 40px rgba(0, 0, 0, 0.05);
+	--shadow-card-hover: 0 24px 64px rgba(0, 0, 0, 0.1);
+	--shadow-bento: 0 20px 40px rgba(0, 0, 0, 0.08);
+	--shadow-nav: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
 [data-theme="light"] .wave-top::before,
@@ -261,52 +265,56 @@ img {
 
 
 
-/* ── Typography — Lamborghini-grade ── */
+/* ── Typography — Heading System ── */
 .t-mega {
-	font-size: clamp(48px, 8vw, 96px);
-	font-weight: 800;
-	line-height: 0.92;
-	letter-spacing: -0.04em;
+	font-size: clamp(40px, 5.5vw, 64px);
+	font-weight: 300;
+	line-height: 1.1;
+	letter-spacing: -0.02em;
 	color: var(--pure);
-	text-transform: uppercase;
+	font-family: var(--font-heading);
 }
 
 .t-display {
 	font-size: clamp(36px, 5vw, 64px);
-	font-weight: 700;
-	line-height: 0.96;
-	letter-spacing: -0.03em;
+	font-weight: 300;
+	line-height: 1.0;
+	letter-spacing: -0.01em;
 	color: var(--pure);
+	font-family: var(--font-heading);
 }
 
 .t-h1 {
 	font-size: clamp(28px, 4vw, 44px);
-	font-weight: 700;
-	line-height: 1.05;
-	letter-spacing: -0.025em;
+	font-weight: 300;
+	line-height: 1.1;
+	letter-spacing: -0.01em;
 	color: var(--pure);
+	font-family: var(--font-heading);
 }
 
 .t-h2 {
 	font-size: clamp(22px, 3vw, 32px);
-	font-weight: 600;
-	line-height: 1.12;
-	letter-spacing: -0.02em;
+	font-weight: 300;
+	line-height: 1.15;
+	letter-spacing: -0.01em;
 	color: var(--pure);
+	font-family: var(--font-heading);
 }
 
 .t-h3 {
 	font-size: clamp(17px, 1.5vw, 20px);
-	font-weight: 600;
+	font-weight: 400;
 	line-height: 1.3;
 	letter-spacing: -0.01em;
 	color: var(--pure);
+	font-family: var(--font-heading);
 }
 
 .t-body {
-	font-size: 20px;
+	font-size: 17px;
 	font-weight: 400;
-	line-height: 1.7;
+	line-height: 1.75;
 	color: var(--smoke);
 	transition: color 0.3s ease, text-decoration-color 0.3s ease;
 	text-decoration: underline transparent;
@@ -319,9 +327,9 @@ img {
 }
 
 .t-body-lg {
-	font-size: 22px;
+	font-size: 17px;
 	font-weight: 400;
-	line-height: 1.7;
+	line-height: 1.75;
 	color: var(--smoke);
 	transition: color 0.3s ease, text-decoration-color 0.3s ease;
 	text-decoration: underline transparent;
@@ -387,10 +395,37 @@ img {
 }
 
 .sec-sm {
-	padding: var(--sp-8) 0;
+	padding: var(--sp-6) 0;
 }
 
-/* ── Buttons — ZERO radius (Lamborghini) ── */
+/* ── List Row Hover Explore Button ── */
+.list-row {
+	position: relative;
+}
+
+.list-row .row-action {
+	opacity: 0;
+	transform: translateX(12px);
+	transition: opacity 0.3s ease, transform 0.3s ease;
+	pointer-events: none;
+	white-space: nowrap;
+}
+
+.list-row:hover .row-action {
+	opacity: 1;
+	transform: translateX(0);
+	pointer-events: auto;
+}
+
+@media (max-width: 1024px) {
+	.list-row .row-action {
+		opacity: 1;
+		transform: none;
+		pointer-events: auto;
+	}
+}
+
+
 .btn {
 	display: inline-flex;
 	align-items: center;
@@ -449,26 +484,121 @@ img {
 	font-size: 12px;
 }
 
-/* ── Cards — rounded, elevated ── */
+/* ── Cards — luxury editorial design ── */
 .card {
-	background: var(--charcoal);
-	border: none;
-	border-radius: 16px;
+	position: relative;
+	background: #fffcf7;
+	border: 1px solid #ede6d8;
+	border-radius: 24px;
 	padding: var(--sp-6);
-	color: var(--smoke);
-	box-shadow: var(--shadow-bento);
+	color: #2a2520;
+	box-shadow:
+		0 2px 8px rgba(0, 0, 0, 0.04),
+		0 12px 40px rgba(0, 0, 0, 0.06);
+	overflow: hidden;
 	transition:
-		border-color 0.4s,
-		transform 0.4s,
-		box-shadow 0.4s;
+		transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+		box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+		border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Corner decorative accent */
+.card::after {
+	content: "";
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	width: 80px;
+	height: 80px;
+	background: linear-gradient(135deg, transparent 50%, rgba(212, 168, 83, 0.08) 50%);
+	border-bottom-left-radius: 24px;
+	pointer-events: none;
+	transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Bottom accent bar */
+.card::before {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 0;
+	height: 3px;
+	background: linear-gradient(90deg, transparent, #d4a853, #b08930, #d4a853, transparent);
+	border-radius: 3px 3px 0 0;
+	transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+	pointer-events: none;
+	z-index: 1;
 }
 
 .card:hover {
-	border-color: var(--gold);
-	transform: translateY(-6px);
+	transform: translateY(-10px);
+	border-color: rgba(212, 168, 83, 0.35);
 	box-shadow:
-		0 24px 64px rgba(0, 0, 0, 0.5),
-		0 0 0 1px var(--gold);
+		0 20px 60px rgba(0, 0, 0, 0.1),
+		0 8px 24px rgba(212, 168, 83, 0.08);
+}
+
+.card:hover::after {
+	width: 100px;
+	height: 100px;
+	background: linear-gradient(135deg, transparent 50%, rgba(212, 168, 83, 0.14) 50%);
+}
+
+.card:hover::before {
+	width: 60%;
+}
+
+/* ── Expect Rows — hover reveal desc ── */
+.expect-row {
+	cursor: default;
+	transition: background 0.3s ease;
+	border-radius: 8px;
+	margin-inline: -8px;
+	padding-inline: 8px !important;
+}
+
+.expect-row:hover {
+	background: rgba(255,255,255,0.02);
+}
+
+.expect-row-heading {
+	display: block;
+	color: var(--mist);
+	font-size: 15px;
+	transition: color 0.3s ease;
+	line-height: 1.5;
+}
+
+.expect-row:hover .expect-row-heading {
+	color: var(--pure);
+}
+
+.expect-row-desc {
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.6;
+	color: var(--ash);
+	font-family: var(--font-body);
+	font-weight: 400;
+	opacity: 0;
+	transform: translateY(6px);
+	max-height: 0;
+	overflow: hidden;
+	transition:
+		opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+		transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+		max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+		margin 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	margin-top: 0 !important;
+}
+
+.expect-row:hover .expect-row-desc {
+	opacity: 1;
+	transform: translateY(0);
+	max-height: 100px;
+	margin-top: 8px !important;
 }
 
 /* ── Lists — subtle UX feedback ── */
@@ -621,7 +751,7 @@ img {
 /* ── Responsive ── */
 @media (max-width: 768px) {
 	.sec {
-		padding: var(--sp-8) 0;
+		padding: var(--sp-7) 0;
 	}
 
 	.wrap {

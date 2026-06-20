@@ -50,10 +50,10 @@ export default function CaseStudies() {
 
   return (
     <>
-      <section style={{ minHeight: '45vh', display: 'flex', alignItems: 'center', background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
+      <section className="sec" style={{ background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
         <div className="wrap pt-8 pb-8">
-          <p className="t-overline mb-5">CASE STUDIES</p>
-          <RevealChar as="h1" text="CASE \n STUDY" highlight="STUDY" className="t-mega mb-5" />
+
+          <RevealChar as="h1" text="Case Studies" className="t-mega mb-5" />
           <p className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>Real-world investment analysis and recommendations.</p>
         </div>
       </section>
@@ -63,7 +63,7 @@ export default function CaseStudies() {
           
           {/* Sidebar */}
           <div className="filters-sidebar" style={{ width: '300px', flexShrink: 0, padding: '2rem', background: 'var(--iron)', borderRadius: '12px', position: 'sticky', top: '100px' }}>
-            <h3 style={{ color: 'var(--gold)', marginBottom: '2rem', fontSize: '18px', fontWeight: 500 }}>Filters</h3>
+            <h3 style={{ color: 'var(--pure)', marginBottom: '2rem', fontSize: '18px', fontWeight: 300, fontFamily: 'var(--font-heading)' }}>Filters</h3>
             
             <div style={{ marginBottom: '2rem' }}>
               <label style={{ display: 'block', color: 'var(--gold)', marginBottom: '1rem', fontSize: '14px' }}>Age</label>
@@ -129,7 +129,7 @@ export default function CaseStudies() {
                   transition={{ duration: 0.3 }}
                   style={{ borderBottom: '1px solid var(--hairline)', paddingBottom: '2rem' }}
                 >
-                  <h3 style={{ color: 'var(--gold)', fontSize: '20px', fontWeight: 600, marginBottom: '1rem' }}>{c.title}</h3>
+                  <h3 style={{ color: 'var(--pure)', fontSize: '20px', fontWeight: 300, fontFamily: 'var(--font-heading)', fontStyle: 'italic', marginBottom: '1rem' }}>{c.title}</h3>
                   <p className="t-body" style={{ color: 'var(--pure)', marginBottom: '1.5rem', lineHeight: 1.6 }}>{c.desc}</p>
                   <Link 
                     to={`/case_study/${c.id}`}

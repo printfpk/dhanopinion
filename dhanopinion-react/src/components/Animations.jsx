@@ -69,11 +69,12 @@ export const RevealChar = ({ text, highlight = "", highlightStyle, className, st
         }
 
         const isHighlight = highlight && word.toUpperCase().includes(highlight.toUpperCase());
-        const charColor = (isHighlight && !highlightStyle) ? 'var(--gold)' : 'inherit';
+        const charColor = 'inherit';
         const wrapperStyle = (isHighlight && highlightStyle) ? highlightStyle : {};
+        const italicStyle = isHighlight ? { fontStyle: 'italic' } : {};
 
         return (
-          <span key={wordIndex} style={{ display: 'inline-flex', alignItems: 'center', ...wrapperStyle }}>
+          <span key={wordIndex} style={{ display: 'inline-flex', alignItems: 'center', ...wrapperStyle, ...italicStyle }}>
             <span style={{ display: 'inline-flex', overflow: 'hidden', paddingBottom: '0.15em', marginBottom: '-0.15em' }}>
               {word.split('').map((char, charIndex) => (
                 <motion.span

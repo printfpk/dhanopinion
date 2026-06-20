@@ -207,11 +207,12 @@ export default function Home() {
 								<h1
 									style={{
 										fontSize: "clamp(56px, 7vw, 96px)",
-										fontWeight: 700,
+										fontWeight: 300,
+										fontFamily: "var(--font-heading)",
 										lineHeight: 1.05,
 										color: "var(--pure)",
 										marginBottom: "0px",
-										letterSpacing: "-0.03em",
+										letterSpacing: "-0.01em",
 										display: "flex",
 										flexDirection: "column",
 									}}
@@ -235,9 +236,7 @@ export default function Home() {
 											}}
 											style={{
 												display: "inline-block",
-												background: "var(--hero-text-grad)",
-												WebkitBackgroundClip: "text",
-												WebkitTextFillColor: "transparent",
+												fontStyle: "italic",
 											}}
 										>
 											Difficult
@@ -259,91 +258,146 @@ export default function Home() {
 								/>
 							</motion.div>
 
-							{/* ── RIGHT: Focus points (Floating Glass Bento Cards) ── */}
+							{/* ── RIGHT: We Focus On — Premium Card ── */}
 							<motion.div
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								transition={{ duration: 1, delay: 0.5 }}
-								style={{ flex: "1 1 400px", display: "flex", flexDirection: "column", gap: "24px", perspective: "1000px" }}
+								initial={{ opacity: 0, x: 50 }}
+								animate={{ opacity: 1, x: 0 }}
+								transition={{ duration: 1.1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+								style={{ flex: "1 1 420px", display: "flex", flexDirection: "column", alignItems: "stretch", gap: "20px" }}
 							>
-								{/* Premium Bento Card Header */}
+								{/* ── We focus on: label ── */}
 								<motion.div
-									initial={{ opacity: 0, y: 20, rotateX: 20 }}
-									animate={{ opacity: 1, y: 0, rotateX: 0 }}
-									transition={{ duration: 0.8, delay: 0.6, type: "spring" }}
-									style={{
-										display: "flex",
-										alignItems: "center",
-										gap: "16px",
-										background: "var(--hero-glass)",
-										backdropFilter: "blur(24px)",
-										border: "1px solid var(--hero-glass-border)",
-										borderRadius: "24px",
-										padding: "20px 32px",
-										width: "fit-content",
-										boxShadow: "var(--shadow-nav)",
-									}}
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ delay: 0.65, duration: 0.6 }}
+									style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}
 								>
-									<motion.div
-										animate={{ rotate: 360 }}
-										transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-									>
-										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="url(#paint0_linear)" />
-											<defs>
-												<linearGradient id="paint0_linear" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-													<stop stopColor="var(--gold, #a78bfa)" />
-													<stop offset="1" stopColor="var(--orange, #60a5fa)" />
-												</linearGradient>
-											</defs>
-										</svg>
-									</motion.div>
-									<h2 style={{ margin: 0, fontSize: "20px", fontWeight: 600, color: "var(--pure)", letterSpacing: "0.02em" }}>
+									<motion.span
+										animate={{ rotate: [0, 20, -20, 0], scale: [1, 1.2, 1] }}
+										transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+										style={{ fontSize: 16, color: "var(--orange)", lineHeight: 1 }}
+									>✦</motion.span>
+									<span style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--pure)", opacity: 0.5, fontFamily: "var(--font-body)" }}>
 										We focus on
-									</h2>
+									</span>
 								</motion.div>
 
-								<div style={{ display: "flex", flexDirection: "column", gap: "20px", paddingLeft: "10%" }}>
-									{[
-										"Simple investment strategies based on logic, reducing the clutter of options to a few good ones, saving you time and effort in implementation."
-									].map((text, i) => (
-										<motion.div
-											key={i}
-											initial={{ opacity: 0, x: 30 }}
-											animate={{ opacity: 1, x: 0 }}
-											transition={{ duration: 0.8, delay: 0.9 + i * 0.2, type: "spring", stiffness: 80 }}
-											whileHover={{ scale: 1.02 }}
-											style={{
-												background: "var(--hero-glass-strong)",
-												backdropFilter: "blur(24px)",
-												border: "1px solid var(--hero-glass-border)",
-												borderTop: "1px solid var(--hero-glass-border)",
-												borderLeft: "1px solid var(--hero-glass-border)",
-												borderRadius: "32px",
-												padding: "32px 40px",
-												boxShadow: "var(--shadow-bento)",
-												position: "relative",
-												overflow: "hidden",
-											}}
-										>
-											{/* Ambient glow inside the card */}
-											<div style={{
-												position: "absolute",
-												top: "-20px",
-												left: "-20px",
-												width: "100px",
-												height: "100px",
-												background: i === 0 ? "var(--gold-glow, rgba(96, 165, 250, 0.2))" : "var(--violet-glow, rgba(167, 139, 250, 0.2))",
-												filter: "blur(40px)",
-												borderRadius: "50%",
-											}} />
+								{/* ── 2 Separate pill cards ── */}
+								{[
+									"Simple investment strategies that have a logic and can be implemented",
+									"Reducing the clutter of options to a few good ones, saving you time and effort",
+								].map((text, i) => (
+									<motion.div
+										key={i}
+										initial={{ opacity: 0, y: 24 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ delay: 0.8 + i * 0.2, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+										whileHover={{ y: -3, boxShadow: "0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18)" }}
+										style={{
+											background: "var(--hero-glass-strong)",
+											backdropFilter: "blur(32px)",
+											WebkitBackdropFilter: "blur(32px)",
+											borderRadius: "999px",
+											border: "1px solid var(--hero-glass-border)",
+											padding: "22px 36px",
+											boxShadow: "0 12px 40px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.12)",
+											textAlign: "center",
+										}}
+									>
+										<p style={{ margin: 0, fontSize: "clamp(15px, 1.5vw, 17px)", fontWeight: 300, fontFamily: "var(--font-heading)", color: "var(--pure)", lineHeight: 1.55, letterSpacing: "0.01em" }}>
+											{text}
+										</p>
+									</motion.div>
+								))}
 
-											<p style={{ margin: 0, color: "var(--pure)", fontSize: "17px", fontWeight: 400, lineHeight: 1.6, position: "relative", zIndex: 1 }}>
-												{text}
-											</p>
-										</motion.div>
-									))}
-								</div>
+								{/* Accent line */}
+								<motion.div
+									initial={{ scaleX: 0 }}
+									animate={{ scaleX: 1 }}
+									transition={{ delay: 1.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+									style={{ height: 1, background: "linear-gradient(90deg, var(--orange), transparent)", transformOrigin: "left", opacity: 0.4, marginTop: 4 }}
+								/>
+
+								{/* ── NPS Promo Card ── */}
+								<motion.div
+									initial={{ opacity: 0, y: 20 }}
+									animate={{ opacity: 1, y: 0 }}
+									whileHover={{ y: -4, boxShadow: "0 20px 60px rgba(212,168,83,0.22), inset 0 1px 0 rgba(255,255,255,0.1)", borderColor: "rgba(212,168,83,0.55)" }}
+									transition={{ duration: 0.9, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+									style={{
+										position: "relative",
+										background: "linear-gradient(135deg, rgba(212,168,83,0.14) 0%, rgba(255,107,0,0.06) 100%)",
+										backdropFilter: "blur(24px)",
+										WebkitBackdropFilter: "blur(24px)",
+										borderRadius: "20px",
+										border: "1px solid rgba(212,168,83,0.25)",
+										padding: "24px 28px",
+										display: "flex",
+										alignItems: "center",
+										gap: "20px",
+										overflow: "hidden",
+										boxShadow: "0 12px 40px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.06)",
+									}}
+								>
+									{/* Glow */}
+									<div style={{ position: "absolute", top: -30, right: -30, width: 120, height: 120, background: "radial-gradient(circle, rgba(212,168,83,0.18) 0%, transparent 70%)", borderRadius: "50%", pointerEvents: "none" }} />
+
+									{/* Icon */}
+									<div style={{
+										flexShrink: 0,
+										width: 48,
+										height: 48,
+										borderRadius: "14px",
+										background: "rgba(212,168,83,0.15)",
+										border: "1px solid rgba(212,168,83,0.3)",
+										display: "flex",
+										alignItems: "center",
+										justifyContent: "center",
+										fontSize: 22,
+									}}>
+										🏛️
+									</div>
+
+									{/* Text */}
+									<div style={{ flex: 1, minWidth: 0 }}>
+										<p style={{ margin: 0, fontSize: "clamp(13px, 1.3vw, 15px)", fontWeight: 400, fontFamily: "var(--font-heading)", color: "var(--pure)", lineHeight: 1.4, letterSpacing: "0.01em" }}>
+											National Pension System (NPS)
+										</p>
+										<p style={{ margin: "4px 0 0", fontSize: 11, fontWeight: 500, color: "var(--gold)", opacity: 0.6, fontFamily: "var(--font-body)", letterSpacing: "0.04em" }}>
+											Retirement Planning Guide
+										</p>
+									</div>
+
+									{/* Button */}
+									<Link
+										to="/2023/08/20/national-pension-system-nps/"
+										style={{
+											flexShrink: 0,
+											fontSize: 10,
+											fontWeight: 700,
+											letterSpacing: "0.14em",
+											textTransform: "uppercase",
+											color: "var(--gold)",
+											textDecoration: "none",
+											border: "1px solid rgba(212,168,83,0.4)",
+											borderRadius: "8px",
+											padding: "8px 14px",
+											background: "rgba(212,168,83,0.1)",
+											transition: "all 0.2s ease",
+											whiteSpace: "nowrap",
+										}}
+										onMouseEnter={e => {
+											e.currentTarget.style.background = "rgba(212,168,83,0.22)";
+											e.currentTarget.style.borderColor = "rgba(212,168,83,0.7)";
+										}}
+										onMouseLeave={e => {
+											e.currentTarget.style.background = "rgba(212,168,83,0.1)";
+											e.currentTarget.style.borderColor = "rgba(212,168,83,0.4)";
+										}}
+									>
+										Explore →
+									</Link>
+								</motion.div>
 							</motion.div>
 						</div>
 
@@ -357,8 +411,8 @@ export default function Home() {
 									justifyContent: "center",
 									color: "var(--pure)",
 									fontWeight: 300,
-									fontFamily: "'Playfair Display', 'Georgia', serif",
-									letterSpacing: "0.02em"
+									fontFamily: "var(--font-heading)",
+									letterSpacing: "0.01em"
 								}}
 								delay={0.1}
 							/>
@@ -376,34 +430,76 @@ export default function Home() {
 												color: "inherit",
 												display: "flex",
 												flexDirection: "column",
+												alignItems: "center",
+												justifyContent: "space-between",
+												textAlign: "center",
 												height: "100%",
-												minHeight: 220,
+												minHeight: 240,
+												gap: 0,
+												padding: "40px 28px 32px",
 											}}
 										>
-											<span
+											{/* Icon — double ring circle */}
+											<div
 												style={{
+													width: 68,
+													height: 68,
+													borderRadius: "50%",
+													background: "linear-gradient(145deg, #fef9f0, #f3e8cd)",
+													border: "2px solid rgba(212,168,83,0.3)",
+													boxShadow: "0 0 0 5px rgba(212,168,83,0.06), 0 6px 20px rgba(212,168,83,0.1)",
+													display: "flex",
+													alignItems: "center",
+													justifyContent: "center",
 													fontSize: 28,
+													flexShrink: 0,
 													marginBottom: 20,
-													display: "block",
-													color: "var(--orange)",
 												}}
 											>
 												{s.icon}
-											</span>
-											<h3 className="t-h3" style={{ marginBottom: 8 }}>
+											</div>
+
+											{/* Gold separator */}
+											<div style={{
+												width: 32,
+												height: 1,
+												background: "linear-gradient(90deg, transparent, #d4a853, transparent)",
+												marginBottom: 16,
+												flexShrink: 0,
+											}} />
+
+											{/* Title */}
+											<h3
+												style={{
+													margin: 0,
+													fontSize: "clamp(16px, 1.4vw, 19px)",
+													fontWeight: 400,
+													fontFamily: "var(--font-heading)",
+													color: "#1a1714",
+													lineHeight: 1.3,
+													letterSpacing: "0.01em",
+													flex: 1,
+													display: "flex",
+													alignItems: "center",
+												}}
+											>
 												<HoverFlip text={s.label} />
 											</h3>
-											<p className="t-caption" style={{ flex: 1, opacity: 0.9 }}>
-												{s.desc}
-											</p>
+
+											{/* Explore pill button */}
 											<span
 												style={{
-													fontSize: 11,
-													fontWeight: 700,
-													letterSpacing: ".12em",
-													textTransform: "uppercase",
-													color: "var(--orange)",
 													marginTop: 20,
+													fontSize: 10,
+													fontWeight: 700,
+													letterSpacing: ".16em",
+													textTransform: "uppercase",
+													color: "#9a7a2e",
+													border: "1px solid rgba(212,168,83,0.35)",
+													borderRadius: "100px",
+													padding: "8px 20px",
+													background: "linear-gradient(135deg, rgba(212,168,83,0.06), rgba(212,168,83,0.02))",
+													flexShrink: 0,
 												}}
 											>
 												<HoverFlip text="EXPLORE →" />
@@ -421,12 +517,12 @@ export default function Home() {
 			<section
 				className="sec"
 				style={{
-					background: "var(--void)",
+					background: "var(--teal)",
 					borderTop: "1px solid var(--hairline)",
 				}}
 			>
 				<div className="wrap tc">
-					<p className="t-overline mb-5 tc">PARAMETERS</p>
+
 					<RevealChar
 						as="h2"
 						text="Scope"
@@ -455,7 +551,6 @@ export default function Home() {
 				<div className="wrap">
 					<div className="g-2" style={{ alignItems: "center" }}>
 						<div>
-							<p className="t-overline mb-5">BENEFITS</p>
 							<RevealChar
 								as="h2"
 								text="What you can expect"
@@ -467,35 +562,45 @@ export default function Home() {
 							{[
 								{
 									mark: "→",
-									text: "A better match between your goals and your strategy",
+									heading: "Better Strategy",
+									desc: "Creation of a better match between your goals, circumstances and preferences and your investments.",
 								},
-								{ mark: "→", text: "Reduced complexity in investment choices" },
-								{ mark: "→", text: "Improved returns — a little" },
+								{
+									mark: "→",
+									heading: "Reduced Complexity",
+									desc: "Reduced investing complexity and better understanding of investment choices.",
+								},
+								{
+									mark: "→",
+									heading: "Improved Returns",
+									desc: "Improved returns — a little.",
+								},
+								{
+									mark: "→",
+									heading: "Reduced Risk",
+									desc: "Reduced risk — a little.",
+								},
 							].map((b, i) => (
 								<motion.div
 									key={i}
 									{...fadeX(30, i * 0.1 + 0.3)}
-									className="list-row"
+									className="expect-row"
 									style={{
-										display: "flex",
-										gap: 16,
 										padding: "20px 0",
 										borderBottom: "1px solid var(--hairline)",
-										alignItems: "center",
 									}}
 								>
-									<span
-										style={{
-											color: "var(--gold)",
-											fontSize: 16,
-											fontWeight: 700,
-										}}
-									>
-										{b.mark}
-									</span>
-									<span style={{ color: "var(--mist)", fontSize: 15 }}>
-										{b.text}
-									</span>
+									<div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+										<span style={{ color: "var(--gold)", fontSize: 16, fontWeight: 700, paddingTop: 2, flexShrink: 0 }}>
+											{b.mark}
+										</span>
+										<div>
+											<span className="expect-row-heading" style={{ color: "var(--mist)", fontSize: 15 }}>
+												{b.heading}
+											</span>
+											<p className="expect-row-desc">{b.desc}</p>
+										</div>
+									</div>
 								</motion.div>
 							))}
 						</div>
@@ -507,14 +612,14 @@ export default function Home() {
 			<section
 				className="sec"
 				style={{
-					background: "var(--void)",
+					background: "var(--teal)",
 					borderTop: "1px solid var(--hairline)",
 				}}
 			>
 				<div className="wrap">
 					<div className="g-2" style={{ alignItems: "center" }}>
 						<div>
-							<p className="t-overline mb-5">REALISTIC EXPECTATIONS</p>
+
 							<RevealChar
 								as="h2"
 								text="What you should not expect"
@@ -525,27 +630,37 @@ export default function Home() {
 						</div>
 						<div>
 							{[
-								"Market-beating returns consistently",
-								"Timing the market perfectly",
-								"Zero risk or guaranteed outcomes",
-								"Complex trading strategies",
-							].map((t, i) => (
+								{
+									heading: "Exponential Returns",
+									desc: "Substantial improvement in returns.",
+								},
+								{
+									heading: "Elimination of Risk",
+									desc: "Elimination, or substantial reduction of the risk of loss.",
+								},
+								{
+									heading: "Reduced Stress",
+									desc: "Reduced stress in investing.",
+								},
+							].map((b, i) => (
 								<motion.div
 									key={i}
 									{...fadeX(30, i * 0.1 + 0.3)}
-									className="list-row"
+									className="expect-row"
 									style={{
-										display: "flex",
-										gap: 16,
-										padding: "18px 0",
+										padding: "20px 0",
 										borderBottom: "1px solid var(--hairline)",
-										alignItems: "center",
 									}}
 								>
-									<span style={{ color: "var(--ash)", fontSize: 14 }}>✕</span>
-									<span style={{ color: "var(--smoke)", fontSize: 15 }}>
-										{t}
-									</span>
+									<div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+										<span style={{ color: "var(--ash)", fontSize: 14, paddingTop: 3, flexShrink: 0 }}>✕</span>
+										<div>
+											<span className="expect-row-heading" style={{ color: "var(--smoke)", fontSize: 15 }}>
+												{b.heading}
+											</span>
+											<p className="expect-row-desc">{b.desc}</p>
+										</div>
+									</div>
 								</motion.div>
 							))}
 						</div>
@@ -565,7 +680,7 @@ export default function Home() {
 					<div className="g-2" style={{ alignItems: "center", gap: "4rem" }}>
 						{/* Left: Content */}
 						<div>
-							<p className="t-overline mb-5">TARGET AUDIENCE</p>
+
 							<RevealChar
 								as="h2"
 								text="Who is it for?"
@@ -615,37 +730,14 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* ══════ FEATURED: NPS ══════ */}
-			<section className="sec" style={{ background: "var(--black)", borderTop: "1px solid var(--hairline)" }}>
-				<div className="wrap">
-					<motion.div
-						{...fade(0.2)}
-						style={{
-							background: "linear-gradient(135deg, rgba(212, 168, 83, 0.15) 0%, rgba(0, 0, 0, 0) 100%)",
-							border: "1px solid rgba(212, 168, 83, 0.3)",
-							borderRadius: 24, padding: "48px", textAlign: "center", position: "relative", overflow: "hidden"
-						}}
-					>
-						<div style={{ position: "absolute", top: -50, right: -50, width: 200, height: 200, background: "var(--gold)", filter: "blur(100px)", opacity: 0.1 }} />
-						<p className="t-overline mb-4" style={{ color: "var(--gold)" }}>ESSENTIAL GUIDE</p>
-						<h2 className="t-h1 mb-4" style={{ color: "var(--pure)" }}>The National Pension System (NPS)</h2>
-						<p className="t-body mb-8" style={{ maxWidth: 600, margin: "0 auto 32px" }}>
-							One of the most powerful tools for retirement planning. Discover our in-depth analysis on how to utilize the NPS to secure your financial future effectively.
-						</p>
-						<Link to="/2023/08/20/national-pension-system-nps/" className="btn btn-white" style={{ background: "var(--gold)", color: "var(--black)", border: "none" }}>
-							<HoverFlip text="Read the NPS Guide" />
-						</Link>
-					</motion.div>
-				</div>
-			</section>
 
 			{/* ══════ CTA — Waitlist ══════ */}
 			<section className="teal-band" style={{ "--wave-fill": "var(--black)" }}>
 				<div className="wrap tc">
-					<p className="t-overline mb-3" style={{ color: "var(--gold)" }}>1-ON-1 CONSULTING</p>
+
 					<RevealChar
 						as="h2"
-						text="Join the Waitlist"
+						text="Personalised Consulting"
 						className="t-display mb-5"
 						style={{ color: "var(--pure)", justifyContent: "center" }}
 						delay={0.1}
@@ -663,7 +755,7 @@ export default function Home() {
 					</p>
 					<motion.div {...fade(0.5)}>
 						<a href="mailto:response@dhanopinion.com?subject=Join Consulting Waitlist" className="btn btn-white">
-							<HoverFlip text="Get on the Waitlist" />
+							<HoverFlip text="1-on-1 Contact" />
 						</a>
 					</motion.div>
 				</div>

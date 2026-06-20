@@ -34,13 +34,12 @@ const elements = [
 export default function InvestmentPhilosophy() {
   return (
     <>
-      <section className="sec" style={{ background: 'var(--black)', minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
+      <section className="sec" style={{ background: 'var(--black)' }}>
         <div className="wrap">
           <div className="g-2" style={{ alignItems: 'center' }}>
             <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
-              <motion.div variants={fadeUp} className="hairline-gold mb-5" />
-              <RevealChar as="h1" text="Investment \n Philosophy" className="t-mega mb-6" style={{ lineHeight: 0.95 }} />
-              <motion.p variants={fadeUp} className="t-body-lg mb-4" style={{ color: 'var(--pure)' }}>
+              <RevealChar as="h1" text="Investment Philosophy" className="t-mega mb-6" />
+              <motion.p variants={fadeUp} className="t-body mb-4">
                 Underpinning any investment recommendations is an underlying investment philosophy.
               </motion.p>
               <motion.p variants={fadeUp} className="t-body mb-7">
@@ -109,8 +108,8 @@ export default function InvestmentPhilosophy() {
                   {item.text}
                 </p>
                 <div>
-                  <Link to={item.link} className="btn btn-gold btn-sm" style={{ whiteSpace: 'nowrap' }}>
-                    <HoverFlip text="KNOW MORE" />
+                  <Link to={item.link} className="btn btn-gold btn-sm row-action" style={{ whiteSpace: 'nowrap' }}>
+                    <HoverFlip text="Explore →" />
                   </Link>
                 </div>
               </motion.div>

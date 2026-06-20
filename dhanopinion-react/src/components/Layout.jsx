@@ -12,8 +12,8 @@ export default function Layout() {
     <>
       <GsapGlobalAnimator />
       <Navbar />
-      {/* Reduced paddingTop from 64 to 0 so the pages handle their own layout where needed, or minimal */}
-      <main style={{ paddingTop: 72 }}>
+      {/* paddingTop matches two-row navbar height: 56px top row + 40px bottom row = 96px */}
+      <main style={{ paddingTop: 96 }}>
         <Outlet />
       </main>
       <Footer />

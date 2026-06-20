@@ -9,31 +9,33 @@ export default function PostLayout({ title, children }) {
 
   return (
     <>
-      <section className="post-header">
-        <div className="wrap post-header-wrap">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="t-overline mb-5"
-            style={{ color: 'var(--gold-deep)' }}
-          >ARTICLE</motion.p>
+      {/* Post Header — large centered title like reference site */}
+      <section style={{
+        background: 'var(--void)',
+        padding: '4rem 0 2rem',
+        textAlign: 'center',
+        borderBottom: '1px solid var(--hairline)'
+      }}>
+        <div className="wrap-narrow">
           <RevealChar
             as="h1"
             text={title}
-            className="t-h1"
+            delay={0.05}
             style={{
-              maxWidth: 900,
-              lineHeight: 1.25,
-              fontWeight: 500,
-              letterSpacing: '-0.015em',
+              fontSize: 'clamp(32px, 5vw, 56px)',
+              fontWeight: 300,
+              fontFamily: 'var(--font-heading)',
+              letterSpacing: '-0.02em',
+              lineHeight: 1.15,
               color: 'var(--post-title)',
-              textWrap: 'balance'
+              textAlign: 'center',
+              display: 'block',
+              width: '100%',
             }}
-            delay={0.1}
           />
         </div>
-
       </section>
+
       <section className="sec post-content-sec" style={{ background: 'var(--void)' }}>
         <div className="wrap-narrow">
           <motion.article
@@ -41,41 +43,19 @@ export default function PostLayout({ title, children }) {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="post-content"
           >
-            <div className="hairline-gold mb-7" />
             {children}
           </motion.article>
         </div>
       </section>
       <style>{`
-        .post-header {
-          min-height: 45vh;
-          display: flex;
-          align-items: center;
-          background: var(--black);
-          position: relative;
-          overflow: hidden;
-        }
-        .post-header-wrap {
-          padding-top: 6rem;
-          padding-bottom: 10rem;
-          position: relative;
-          z-index: 1;
-        }
-        @media (max-width: 768px) {
-          .post-header {
-            min-height: auto;
-          }
-          .post-header-wrap {
-            padding-top: 7rem;
-            padding-bottom: 6rem;
-          }
-          .post-content-sec {
-            padding-top: 2rem !important;
-          }
-        }
+        .post-header-inner-title { display: none !important; }
+        .uicore-page-title { display: none !important; }
+        .uicore-animate.ui-breadcrumb { display: none !important; }
+        .uicore-title { display: none !important; }
+        .uicore-entry-meta { display: none !important; }
         .post-content{font-size:18px;line-height:1.8;color:var(--smoke); overflow-x: hidden; max-width: 100vw;}
-        .post-content h2,.post-content h3,.post-content h4{color:var(--pure);margin-top:2em;margin-bottom:.75em;font-weight:600}
-        .post-content h2{font-size:26px;letter-spacing:-.02em}
+        .post-content h2,.post-content h3,.post-content h4{color:var(--pure);margin-top:2em;margin-bottom:.75em;font-weight:300;font-family:var(--font-heading)}
+        .post-content h2{font-size:26px;letter-spacing:-.01em}
         .post-content h3{font-size:20px;letter-spacing:-.01em}
         .post-content h4{font-size:17px}
         .post-content p{margin-bottom:1.25em}
