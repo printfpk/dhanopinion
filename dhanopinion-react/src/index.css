@@ -694,9 +694,14 @@ img {
 /* ── Teal Band (Superhuman CTA) ── */
 .teal-band {
 	background: var(--teal);
-	padding: var(--sp-9) 0;
+	padding: var(--sp-9) 0 120px;
 	position: relative;
 	overflow: hidden;
+}
+
+.teal-band > div {
+	position: relative;
+	z-index: 1;
 }
 
 .teal-band::after {
@@ -706,9 +711,13 @@ img {
 	right: 0;
 	bottom: -1px;
 	height: 90px;
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path d='M0,40 C120,80 240,0 360,40 C480,80 600,0 720,40 C840,80 960,0 1080,40 C1200,80 1320,0 1440,40 L1440,120 L0,120 Z' fill='%23080808'/></svg>");
+	background-color: var(--black);
+	-webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path d='M0,40 C120,80 240,0 360,40 C480,80 600,0 720,40 C840,80 960,0 1080,40 C1200,80 1320,0 1440,40 L1440,120 L0,120 Z' fill='black'/></svg>") no-repeat;
+	mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path d='M0,40 C120,80 240,0 360,40 C480,80 600,0 720,40 C840,80 960,0 1080,40 C1200,80 1320,0 1440,40 L1440,120 L0,120 Z' fill='black'/></svg>") no-repeat;
+	-webkit-mask-size: 100% 100%;
+	mask-size: 100% 100%;
+	pointer-events: none;
+	z-index: 0;
 }
 
 /* ── Wave Distortion Utilities ── */
