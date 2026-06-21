@@ -8,7 +8,7 @@ export const allArticles = [
   { id: 7, title: 'Defining Your Investment Horizon Can Lead To Better Planning', date: 'August 7, 2023', category: 'Planning', to: '/2023/08/07/defining-your-investment-horizon-can-lead-to-better-planning/' },
   { id: 8, title: 'Risk And Return Profile Of Equity', date: 'August 8, 2023', category: 'Risk Management', to: '/2023/08/08/risk-and-return-profile-of-equity/' },
   { id: 9, title: 'Risk And Return Profile Of Fixed Income', date: 'August 9, 2023', category: 'Risk Management', to: '/2023/08/09/risk-and-return-profile-of-fixed-income/' },
-  { id: 10, title: 'Active And Passive Investment Management', date: 'August 10, 2023', category: 'Portfolio Strategy', to: '/2023/08/10/test/' },
+  { id: 10, title: 'Active And Passive Investment Management', date: 'August 10, 2023', category: 'Portfolio Strategy', to: '/2023/08/10/active-and-passive-investment-management/' },
   { id: 11, title: 'Index Funds', date: 'August 11, 2023', category: 'Investment Basics', to: '/2023/08/11/index-funds/' },
   { id: 12, title: 'Competitive Financial Markets And The Implications For Investment Strategy', date: 'August 12, 2023', category: 'Economics', to: '/2023/08/10/competitive-financial-markets-and-the-implications-for-investment-strategy/' },
   { id: 13, title: 'Individual Or Institution - Who You Are Changes Investment Choices', date: 'August 13, 2023', category: 'Planning', to: '/2023/08/13/individual-or-institution-who-you-are-changes-investment-choices/' },
@@ -22,4 +22,6 @@ export const allArticles = [
   { id: 22, title: 'Government Savings Schemes', date: 'August 23, 2023', category: 'Investment Basics', to: '/2023/08/23/government-savings-schemes/' },
   { id: 23, title: 'Senior Citizen Saving Scheme', date: 'September 1, 2023', category: 'Planning', to: '/2023/09/01/senior-citizen-saving-scheme/' },
   { id: 24, title: 'Public Provident Fund', date: 'October 1, 2023', category: 'Planning', to: '/2023/10/01/public-provident-fund/' },
+  { id: 25, title: 'Bank Fixed Deposits', date: 'October 2, 2023', category: 'Investment Basics', to: '/2023/10/02/bank-fixed-deposits/' },
+  { id: 26, title: 'Equity Linked Saving Scheme (ELSS)', date: 'October 3, 2023', category: 'Planning', to: '/2023/10/03/equity-linked-saving-scheme/' }
 ];

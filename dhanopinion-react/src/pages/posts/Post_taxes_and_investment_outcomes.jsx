@@ -2,67 +2,8 @@ import PostLayout from '../../components/PostLayout'
 
 export default function Post_taxes_and_investment_outcomes() {
   return (
-    <PostLayout title="Taxes and investment outcomes">
-      <div dangerouslySetInnerHTML={{ __html: `
-		<!-- 1.1 uicore_before_body_content -->	<div class="uicore-body-content">
-		<!-- 1.2 uicore_before_page_content -->		<div id="uicore-page">
-		<div class="uicore-progress-bar"></div>
-        
-        <!-- 1.3 uicore_page -->			<div id="content" class="uicore-content">
-
-			                <header class="uicore uicore-page-title elementor-section elementor-section-boxed"                 >
-
-                                    <div class="uicore-overlay"></div>
-                                    <div class="uicore elementor-container">
-
-                        <p class="uicore-animate ui-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><span itemprop="itemListElement" itemscope
-          itemtype="https://schema.org/ListItem"><a itemprop="item" href="https://dhanopinion.com"><span itemprop="name">Home</span></a><meta itemprop="position" content=" 1" /></span><i class="uicore-separator uicore-i-arrow"></i><span itemprop="itemListElement" itemscope
-          itemtype="https://schema.org/ListItem"><a itemprop="item" href="/blog/"><span itemprop="name">Blog</span></a><meta itemprop="position" content=" 2" /></span><i class="uicore-separator uicore-i-arrow"></i><span itemprop="itemListElement" itemscope
-          itemtype="https://schema.org/ListItem"><a itemprop="item" href="/category/asset-allocation/"><span itemprop="name">Asset Allocation</span></a><meta itemprop="position" content=" 3" /></span><i class="uicore-separator uicore-i-arrow"></i><span itemprop="itemListElement" itemscope
-          itemtype="https://schema.org/ListItem" ><span><span itemprop="name">Taxes and investment outcomes</span><meta itemprop="position" content=" 4" /></span></span></p>
-                            <h1 class="uicore-title uicore-animate h2">
-                                Taxes and investment outcomes                            </h1>
-                            <div class="uicore-animate uicore-entry-meta"><span class="ui-blog-date ui-published">August 17, 2023 </span></div>                    </div>
-
-                </header>
-                <!-- 1.4 uicore_before_content -->
-<div id="primary" class="content-area">
-
-			<div data-elementor-type="single-post" data-elementor-id="1192" class="elementor elementor-1192 elementor-location-single post-1916 post type-post status-publish format-standard hentry category-asset-allocation category-investment-strategy category-taxes tag-taxation tag-taxes" data-elementor-post-type="elementor_library">
-								<section class="elementor-section elementor-top-section elementor-element elementor-element-48ac486 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="48ac486" data-element_type="section">
-						<div class="elementor-container elementor-column-gap-default">
-					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-da733ab" data-id="da733ab" data-element_type="column">
-			<div class="elementor-widget-wrap elementor-element-populated">
-								<div class="elementor-element elementor-element-9b6ed9e elementor-widget elementor-widget-uicore-the-content" data-id="9b6ed9e" data-element_type="widget" data-widget_type="uicore-the-content.default">
-				<div class="elementor-widget-container">
-					<div data-elementor-type="wp-post" data-elementor-id="1916" class="elementor elementor-1916" data-elementor-post-type="post">
-									<section class="elementor-section elementor-top-section elementor-element elementor-element-c3562ec elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="c3562ec" data-element_type="section">
-						<div class="elementor-container elementor-column-gap-default">
-					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-ea72543" data-id="ea72543" data-element_type="column">
-			<div class="elementor-widget-wrap elementor-element-populated">
-								<div class="elementor-element elementor-element-bfefb98 elementor-widget elementor-widget-text-editor" data-id="bfefb98" data-element_type="widget" data-widget_type="text-editor.default">
-				<div class="elementor-widget-container">
-							<p> “Nothing is certain but death and taxes” goes the proverb.</p><p>With some exceptions, most forms of income generated through investments are taxable. Hence, the correct way of evaluating returns from an investment is after accounting for taxation.</p><p>You may have earned a 10% return, but if you need to pay 30% taxes on the return, what you are left with is only a 7% return, after taking out 30% of 10 which is 3.</p><p>Holding on to and maximizing gains requires being tax aware. </p><p>Certain investments, such as the Public Provident Fund (PPF), have been tax-friendly on both ends, the investment end as well as the earning end. Investments made in PPF accounts have been permitted for setting off income against, subject to certain limits. Thus, the investor benefits on both sides.</p>						</div>
-				</div>
-					</div>
-		</div>
-							</div>
-		</section>
-							</div>
-				</div>
-				</div>
-					</div>
-		</div>
-							</div>
-		</section>
-						</div>
-			
-</div><!-- #primary -->
-
-
-	</div><!-- #content -->
-
-			` }} />
+    <PostLayout title="Taxes and their impact on investment outcomes">
+      <p>April 8, 2026</p><p>“Nothing is certain but death and taxes” goes the proverb.</p><p>Investments are no exception. In most cases the returns earned on investments are treated as income of the investor and taxed one way or another. Hence, the correct way of evaluating returns from an investment is after accounting for taxation. It is not what one earns that matters, but what one gets to keep after taxes.</p><p>You may have earned a 10% return, but if you need to pay 30% taxes on the return, what you are left with is only a 7% return, after taking out 30% of 10 which is 3. Holding on to and maximizing gains requires being tax aware. </p><h2>Tax implications based on type of earning</h2><p>Interest income – could be added to your income and taxed at the slab rate applicable</p><p>Dividends income – currently added to income and taxed at the slab rate applicable. A few years back it was taxed in the hands of the company declaring the dividend with no additional tax liability on shareholders. </p><p>Capital gains – such as from shares and mutual funds attract short-term or long-term capital gains tax, based on the holding period</p><h2>Taxability of different investment instruments</h2><table><tr><td><p>Instrument</p></td><td><p>Tax Treatment</p></td></tr><tr><td><p>Fixed Deposits</p></td><td><p>Interest taxed at slab rate</p></td></tr><tr><td><p>Equity Mutual Funds</p></td><td><p>STCG: 15%; LTCG: 10% above ₹1 lakh/year</p></td></tr><tr><td><p>Debt Mutual Funds</p></td><td><p>STCG: slab rate; LTCG: 20% with indexation (till 2023 changes)</p></td></tr><tr><td><p>PPF</p></td><td><p>Tax-free</p></td></tr><tr><td><p>NPS</p></td><td><p>Partial withdrawal tax-free; annuity taxed</p></td></tr><tr><td><p>ULIPs</p></td><td><p>Tax-free under Section 10(10D) if premium conditions met</p></td></tr></table><p>The above are tax implications based on income earned. In addition, certain investments are allowed as deduction from income at the time the investment is made, lowering the income due for income tax, lowering the tax liability. This is mostly the case with what is known as the “old” tax regime. The new tax regime has tried to reduce/ remove the various allowable deductions in order to simplify the tax code.</p><h2>Factoring taxes into investment decisions</h2><h3>It enables you to</h3><p>Compare returns accurately – For example, if you are in the 30% tax slab, a tax-free bond offering a 6% return is better than a taxable bond with a return of 7.5%.</p><p>Optimize asset location in the family – For example, instruments offering a deduction for investing through the Section 80C route could be purchased by the family member in a higher tax bracket while the lower tax-bracket could purchase other instruments that do not offer this benefit but are needed for meeting allocation and investment goals.</p><p>Choose the right Instrument – For example, if you are open to taking equity risk, which is recommended especially at younger ages, you may find that the tax benefits offered by the ELSS mutual funds outweigh the returns from a fixed deposit in a bank.</p><h3>Quick and simple strategies</h3><p>PPF, NPS and ELSS are some readily available instruments that provide tax benefits and also enable you to get exposure to equity or debt, based on your allocation and goals.</p><p>Capital losses can be used to offset gains in equity portfolios.</p><p>Individuals in higher tax slabs should avoid withdrawals from equity schemes in which the slab rate will be applied on gains. Capital gains taxation rate is lower than the income tax rate in the higher slabs.</p><h2>Conclusion</h2><p>When people think about investing, they often focus on returns, risk, or diversification. But there’s one factor that significantly impacts your overall wealth and is frequently overlooked: taxes. The difference between a good investment and a great one can come down to how much tax you pay on your gains. Taxes are real, you cannot wish them away. By incorporating taxes into your planning process, you are ensuring greater accuracy in planning and giving yourself a better chance of meeting your investment goals. </p>
     </PostLayout>
   )
 }

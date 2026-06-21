@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { HoverFlip, RevealChar } from '../components/Animations'
 import philosophyImage from '../assets/investment_philosophy.png'
+import MediaSkeleton from '../components/MediaSkeleton'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -59,7 +60,7 @@ export default function InvestmentPhilosophy() {
             >
               <div style={{ position: 'relative', padding: 'var(--sp-4)' }}>
                 <div style={{ position: 'absolute', inset: 0, background: 'var(--gold-glow)', borderRadius: '4px', filter: 'blur(40px)', zIndex: 0 }}></div>
-                <img 
+                <MediaSkeleton type="img" loading="lazy" 
                   src={philosophyImage} 
                   alt="Investment Philosophy" 
                   style={{ width: '100%', height: 'auto', borderRadius: '4px', position: 'relative', zIndex: 1, boxShadow: 'var(--shadow-hard-4)' }} 

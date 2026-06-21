@@ -3,66 +3,7 @@ import PostLayout from '../../components/PostLayout'
 export default function Post_keep_the_cost_of_investing_low() {
   return (
     <PostLayout title="Keep the cost of investing low">
-      <div dangerouslySetInnerHTML={{ __html: `
-		<!-- 1.1 uicore_before_body_content -->	<div class="uicore-body-content">
-		<!-- 1.2 uicore_before_page_content -->		<div id="uicore-page">
-		<div class="uicore-progress-bar"></div>
-        
-        <!-- 1.3 uicore_page -->			<div id="content" class="uicore-content">
-
-			                <header class="uicore uicore-page-title elementor-section elementor-section-boxed"                 >
-
-                                    <div class="uicore-overlay"></div>
-                                    <div class="uicore elementor-container">
-
-                        <p class="uicore-animate ui-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><span itemprop="itemListElement" itemscope
-          itemtype="https://schema.org/ListItem"><a itemprop="item" href="https://dhanopinion.com"><span itemprop="name">Home</span></a><meta itemprop="position" content=" 1" /></span><i class="uicore-separator uicore-i-arrow"></i><span itemprop="itemListElement" itemscope
-          itemtype="https://schema.org/ListItem"><a itemprop="item" href="/blog/"><span itemprop="name">Blog</span></a><meta itemprop="position" content=" 2" /></span><i class="uicore-separator uicore-i-arrow"></i><span itemprop="itemListElement" itemscope
-          itemtype="https://schema.org/ListItem"><a itemprop="item" href="/category/investment-strategy/"><span itemprop="name">Investment Strategy</span></a><meta itemprop="position" content=" 3" /></span><i class="uicore-separator uicore-i-arrow"></i><span itemprop="itemListElement" itemscope
-          itemtype="https://schema.org/ListItem" ><span><span itemprop="name">Keep the cost of investing low</span><meta itemprop="position" content=" 4" /></span></span></p>
-                            <h1 class="uicore-title uicore-animate h2">
-                                Keep the cost of investing low                            </h1>
-                            <div class="uicore-animate uicore-entry-meta"><span class="ui-blog-date ui-published">August 16, 2023 </span></div>                    </div>
-
-                </header>
-                <!-- 1.4 uicore_before_content -->
-<div id="primary" class="content-area">
-
-			<div data-elementor-type="single-post" data-elementor-id="1192" class="elementor elementor-1192 elementor-location-single post-1907 post type-post status-publish format-standard hentry category-investment-strategy tag-cost tag-investment tag-risk tag-safety" data-elementor-post-type="elementor_library">
-								<section class="elementor-section elementor-top-section elementor-element elementor-element-48ac486 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="48ac486" data-element_type="section">
-						<div class="elementor-container elementor-column-gap-default">
-					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-da733ab" data-id="da733ab" data-element_type="column">
-			<div class="elementor-widget-wrap elementor-element-populated">
-								<div class="elementor-element elementor-element-9b6ed9e elementor-widget elementor-widget-uicore-the-content" data-id="9b6ed9e" data-element_type="widget" data-widget_type="uicore-the-content.default">
-				<div class="elementor-widget-container">
-					<div data-elementor-type="wp-post" data-elementor-id="1907" class="elementor elementor-1907" data-elementor-post-type="post">
-									<section class="elementor-section elementor-top-section elementor-element elementor-element-c3562ec elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="c3562ec" data-element_type="section">
-						<div class="elementor-container elementor-column-gap-default">
-					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-ea72543" data-id="ea72543" data-element_type="column">
-			<div class="elementor-widget-wrap elementor-element-populated">
-								<div class="elementor-element elementor-element-bfefb98 elementor-widget elementor-widget-text-editor" data-id="bfefb98" data-element_type="widget" data-widget_type="text-editor.default">
-				<div class="elementor-widget-container">
-							<p>Putting money to work is a task.</p><p>Just like you need to make choices between various investment options available, so do the people and institutions you entrust your money to. They have to put the money to work in order that they are able to generate a return from it and share it with you. If they just sit on the money, it will be a loss-making proposition for them.</p><p>Putting money to work involves cost.</p><p>When you deposit money with a bank, they need to lend it out to companies and individuals who will be charged interest which becomes their return, a part of which gets shared with you based on agreed terms. The cost of this effort is factored into the interest rate promised on the deposit.</p><p>When you deposit money with a fund, they need to research markets, move money around and make choices in line with the objective of the fund. Many funds charge a management fee to their investors on an annual basis in order to pay for these costs.</p><p>Financial advisors also cost money.</p><p>Most people have a long investment horizon, from the time they start working, till the time they retire from active work. Annual and other fees over a long horizon become substantial.</p><p>Hence, keeping the investment cost low can itself deliver a huge benefit over several decades.</p>						</div>
-				</div>
-					</div>
-		</div>
-							</div>
-		</section>
-							</div>
-				</div>
-				</div>
-					</div>
-		</div>
-							</div>
-		</section>
-						</div>
-			
-</div><!-- #primary -->
-
-
-	</div><!-- #content -->
-
-			` }} />
+      <p>April 7, 2026</p><p>Putting money to work is a task.</p><p>Just like you need to make choices between various investment options available, so do the people and institutions you entrust your money to. They have to put the money to work in order that they are able to generate a return from it and share it with you. If they just sit on the money, it will be a loss-making proposition for them.</p><h2>Putting money to work involves cost</h2><p>When you deposit money with a bank, they need to lend it out to companies and individuals who will be charged interest which becomes their return, a part of which gets shared with you based on agreed terms. The cost of this effort is factored into the interest rate promised on the deposit.</p><p>When you deposit money with a fund, they need to research markets, move money around and make choices in line with the objective of the fund. Many funds charge a management fee to their investors on an annual basis in order to pay for these costs.</p><p>Financial advisors also cost money.</p><p>Most people have a long investment horizon, from the time they start working, till the time they retire from active work. Annual and other fees over a long horizon become substantial.</p><p>Hence, keeping the investment cost low can itself deliver a huge benefit over several decades.</p><h2>The impact of lower cost investing</h2><p>Let us take an example of two funds, A and B, that deliver the same return year after year. The management fee charged by one is substantially lower than the other. How does it impact an investor over a period of time? </p><p><strong>Table: Comparative earnings difference between funds with different costs</strong></p><table><tr><td></td><td><p>Fund A</p></td><td><p>Fund B</p></td></tr><tr><td><p>Gross return p.a.</p></td><td><p>10%</p></td><td><p>10%</p></td></tr><tr><td><p>Management fee p.a.</p></td><td><p>1.25%</p></td><td><p>0.25%</p></td></tr><tr><td><p>Net return to investor p.a.</p></td><td><p>8.75%</p></td><td><p>9.75%</p></td></tr><tr><td><p>In 10 years, an initial investment of ₹ 10,000 will amount to</p></td><td><p>₹ 23,136</p></td><td><p>₹ 25,354</p></td></tr><tr><td><p>Investor earnings over 10 years</p></td><td><p>₹ 13,136</p></td><td><p>₹ 15,354</p></td></tr></table><p>Here is another illustration over a longer period of 50 years which demonstrates the additional value created by a fund which costs 1% lower than another similar fund. The initial investment is ₹ 10,000 and the cost difference between the two funds is 1%.</p><p><strong>Table: Incremental value created over time</strong></p><table><tr><td><p>Initial Investment</p></td><td><p>₹ 10,000</p></td></tr><tr><td><p>Investment Period in Years</p></td><td><p>50</p></td></tr><tr><td><p>Investment Return Direct Fund</p></td><td><p>10.00%</p></td></tr><tr><td><p>Additional Fees of Regular Fund</p></td><td><p>1.00%</p></td></tr><tr><td><p>Investment Return Regular Fund</p></td><td><p>9.00%</p></td></tr><tr><td><p>Final Value Direct Fund</p></td><td><p> ₹ 11,73,909 </p></td></tr><tr><td><p>Final Value Regular Fund</p></td><td><p> ₹ 7,43,575 </p></td></tr><tr><td><p>Additional Value</p></td><td><p> ₹ 4,30,333 </p></td></tr></table><p>What do we see?</p><p>Taking the higher-cost fund (Regular Fund) as the base case, the lower-cost fund (Direct Fund) has delivered 57% more in terms of gross earnings (₹ 4,30,333 as a percentage of ₹ 7,43,575) to the investor over a 50-year period.</p><p>The following table illustrates how the additional value changes over time.</p><p><strong>Table: Additional value created over different time horizons</strong></p><table><tr><td><p>Investment Period in Years</p></td><td><p>Additional Value (₹)</p></td></tr><tr><td><p>1</p></td><td><p> 100 </p></td></tr><tr><td><p>2</p></td><td><p> 219 </p></td></tr><tr><td><p>3</p></td><td><p> 360 </p></td></tr><tr><td><p>5</p></td><td><p> 719 </p></td></tr><tr><td><p>10</p></td><td><p> 2,264 </p></td></tr><tr><td><p>15</p></td><td><p> 5,348 </p></td></tr><tr><td><p>20</p></td><td><p> 11,231 </p></td></tr><tr><td><p>25</p></td><td><p> 22,116 </p></td></tr><tr><td><p>30</p></td><td><p> 41,817 </p></td></tr><tr><td><p>40</p></td><td><p> 1,38,498 </p></td></tr><tr><td><p>50</p></td><td><p> 4,30,333 </p></td></tr></table><h2>How to do low-cost investing</h2><p>Here are some strategies for low-cost investing:</p><ul><li>Choose low-cost index funds</li><li>Choose inactive over active funds</li><li>Choose Direct over Regular funds </li><li>Choose funds with a large corpus so that the management cost is more widely shared and each investor’s share is low</li><li>Avoid frequent trading – each time you trade a transaction cost is incurred</li><li>Choose funds with a history of low management fees</li><li>If you trade directly, use discount brokerages, which typically operate online</li><li>Stay away from high-cost, structured or exotic products</li><li>Maximize post-tax returns through leveraging tax-saving instruments </li></ul><h2>Conclusion</h2><p>The objective is not to say that one should ignore high-cost investments even if they are delivering great returns. The objective is to sensitize investors about the material impact on returns that the cost passed on to investors by a fund can have. Hence, it should be part of the variable-set to be evaluated before choosing a fund.</p>
     </PostLayout>
   )
 }

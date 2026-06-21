@@ -22,7 +22,7 @@ import Post_equity_investing from './pages/posts/Post_equity_investing'
 import Post_defining_your_investment_horizon_can_lead_to_better_planning from './pages/posts/Post_defining_your_investment_horizon_can_lead_to_better_planning'
 import Post_risk_and_return_profile_of_equity from './pages/posts/Post_risk_and_return_profile_of_equity'
 import Post_risk_and_return_profile_of_fixed_income from './pages/posts/Post_risk_and_return_profile_of_fixed_income'
-import Post_test from './pages/posts/Post_test'
+import Post_active_and_passive_investment_management from './pages/posts/Post_active_and_passive_investment_management'
 import Post_index_funds from './pages/posts/Post_index_funds'
 import Post_competitive_financial_markets_and_the_implications_for_investment_strategy from './pages/posts/Post_competitive_financial_markets_and_the_implications_for_investment_strategy'
 import Post_individual_or_institution_who_you_are_changes_investment_choices from './pages/posts/Post_individual_or_institution_who_you_are_changes_investment_choices'
@@ -37,6 +37,8 @@ import Post_inflation_real_value_and_the_money_illusion from './pages/posts/Post
 import Post_government_bonds from './pages/posts/Post_government_bonds'
 import Post_senior_citizen_saving_scheme from './pages/posts/Post_senior_citizen_saving_scheme'
 import Post_public_provident_fund from './pages/posts/Post_public_provident_fund'
+import Post_bank_fixed_deposits from './pages/posts/Post_bank_fixed_deposits'
+import Post_equity_linked_saving_scheme from './pages/posts/Post_equity_linked_saving_scheme'
 
 function App() {
   return (
@@ -73,7 +75,7 @@ function App() {
         <Route path="2023/08/07/defining-your-investment-horizon-can-lead-to-better-planning/*" element={<Post_defining_your_investment_horizon_can_lead_to_better_planning />} />
         <Route path="2023/08/08/risk-and-return-profile-of-equity/*" element={<Post_risk_and_return_profile_of_equity />} />
         <Route path="2023/08/09/risk-and-return-profile-of-fixed-income/*" element={<Post_risk_and_return_profile_of_fixed_income />} />
-        <Route path="2023/08/10/test/*" element={<Post_test />} />
+        <Route path="2023/08/10/active-and-passive-investment-management/*" element={<Post_active_and_passive_investment_management />} />
         <Route path="2023/08/11/index-funds/*" element={<Post_index_funds />} />
         <Route path="2023/08/10/competitive-financial-markets-and-the-implications-for-investment-strategy/*" element={<Post_competitive_financial_markets_and_the_implications_for_investment_strategy />} />
         <Route path="2023/08/13/individual-or-institution-who-you-are-changes-investment-choices/*" element={<Post_individual_or_institution_who_you_are_changes_investment_choices />} />
@@ -88,6 +90,8 @@ function App() {
         <Route path="2023/08/22/government-bonds/*" element={<Post_government_bonds />} />
         <Route path="2023/09/01/senior-citizen-saving-scheme/*" element={<Post_senior_citizen_saving_scheme />} />
         <Route path="2023/10/01/public-provident-fund/*" element={<Post_public_provident_fund />} />
+        <Route path="2023/10/02/bank-fixed-deposits/*" element={<Post_bank_fixed_deposits />} />
+        <Route path="2023/10/03/equity-linked-saving-scheme/*" element={<Post_equity_linked_saving_scheme />} />
       </Route>
     </Routes>
   )

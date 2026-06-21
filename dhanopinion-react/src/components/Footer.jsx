@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useTheme } from "./ThemeContext";
 
 export default function Footer() {
+	const { theme } = useTheme();
 	return (
 		<footer
 			className="site-footer"
@@ -22,28 +24,12 @@ export default function Footer() {
 					}}
 				>
 					<div>
-						<div style={{ marginBottom: 16 }}>
-							<span
-								style={{
-									fontWeight: 800,
-									fontSize: 16,
-									color: "var(--pure)",
-									letterSpacing: "-.02em",
-								}}
-							>
-								DHAN
-							</span>
-							<span
-								style={{
-									fontWeight: 300,
-									fontSize: 16,
-									color: "var(--gold)",
-									letterSpacing: "-.02em",
-									marginLeft: 4,
-								}}
-							>
-								OPINION
-							</span>
+						<div style={{ marginBottom: 16, position: 'relative', width: '250px', height: '60px', overflow: 'hidden' }}>
+							<img 
+								src={theme === 'dark' ? '/assets/images/dhan-logo-dark.png' : '/assets/images/dhan-logo-light.png'} 
+								alt="Dhan Opinion" 
+								style={{ position: 'absolute', top: '50%', left: '0', transform: 'translateY(-48%)', width: '250px', height: 'auto' }} 
+							/>
 						</div>
 						<p
 							style={{
@@ -90,8 +76,8 @@ export default function Footer() {
 							}}
 						>
 							<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-								<rect x="2" y="4" width="20" height="16" rx="2"/>
-								<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+								<rect x="2" y="4" width="20" height="16" rx="2" />
+								<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
 							</svg>
 							response@dhanopinion.com
 						</a>

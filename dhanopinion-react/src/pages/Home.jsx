@@ -12,6 +12,7 @@ import {
 } from "../components/Animations";
 import { SpreadCards } from "../components/SpreadCards";
 import ParticleSphere from "../components/ParticleSphere";
+import MediaSkeleton from "../components/MediaSkeleton";
 
 const AnimatedParagraph = ({ text, style, delay = 0.5 }) => {
 	const pRef = useRef(null);
@@ -113,7 +114,9 @@ export default function Home() {
 							zIndex: -1,
 						}}
 					>
-						<video
+						<MediaSkeleton
+							type="video"
+							preload="none"
 							autoPlay
 							loop
 							muted
@@ -253,7 +256,7 @@ export default function Home() {
 										color: "var(--smoke)",
 										maxWidth: "500px",
 										fontWeight: 400,
-										margin: 0,
+										margin: "20px 0 0 0",
 									}}
 								/>
 							</motion.div>
@@ -310,14 +313,6 @@ export default function Home() {
 									</motion.div>
 								))}
 
-								{/* Accent line */}
-								<motion.div
-									initial={{ scaleX: 0 }}
-									animate={{ scaleX: 1 }}
-									transition={{ delay: 1.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-									style={{ height: 1, background: "linear-gradient(90deg, var(--orange), transparent)", transformOrigin: "left", opacity: 0.4, marginTop: 4 }}
-								/>
-
 								{/* ── NPS Promo Card ── */}
 								<motion.div
 									initial={{ opacity: 0, y: 20 }}
@@ -326,6 +321,7 @@ export default function Home() {
 									transition={{ duration: 0.9, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
 									style={{
 										position: "relative",
+										marginTop: "-10px",
 										background: "linear-gradient(135deg, rgba(212,168,83,0.14) 0%, rgba(255,107,0,0.06) 100%)",
 										backdropFilter: "blur(24px)",
 										WebkitBackdropFilter: "blur(24px)",
@@ -406,7 +402,7 @@ export default function Home() {
 							<RevealChar
 								as="h2"
 								text="Choose your starting point"
-								className="t-display mb-8 tc"
+								className="t-display mb-4 tc"
 								style={{
 									justifyContent: "center",
 									color: "var(--pure)",
@@ -416,7 +412,7 @@ export default function Home() {
 								}}
 								delay={0.1}
 							/>
-							<div style={{ marginTop: 20 }}>
+							<div style={{ marginTop: 10 }}>
 								<SpreadCards
 									items={startingPoints}
 									cols={4}
@@ -706,7 +702,9 @@ export default function Home() {
 									aspectRatio: "4/3",
 								}}
 							>
-								<img
+								<MediaSkeleton
+									type="img"
+									loading="lazy"
 									src="https://dhanopinion.com/wp-content/uploads/2023/09/pexels-ketut-subiyanto-4308025.jpg"
 									alt="Target Audience"
 									style={{

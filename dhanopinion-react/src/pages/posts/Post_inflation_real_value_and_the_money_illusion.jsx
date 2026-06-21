@@ -47,7 +47,7 @@ export default function Post_inflation_real_value_and_the_money_illusion() {
       <p>The World Bank reports India’s inflation since 1960 as follows:</p>
 
       <div style={{ margin: '2rem 0', background: 'var(--bg-pure)', padding: '1rem', borderRadius: 8 }}>
-        <img 
+        <MediaSkeleton type="img" loading="lazy" 
           src="https://dhanopinion.com/wp-content/uploads/2023/01/Picture1.png" 
           alt="World Bank India Inflation" 
           style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 4 }} 
@@ -63,7 +63,7 @@ export default function Post_inflation_real_value_and_the_money_illusion() {
       <p>Another way of looking at the decline in the value of Rupee over time is its value against the US dollar, as shown in the chart below, produced by XE.com.</p>
 
       <div style={{ margin: '2rem 0', background: 'var(--bg-pure)', padding: '1rem', borderRadius: 8 }}>
-        <img 
+        <MediaSkeleton type="img" loading="lazy" 
           src="https://dhanopinion.com/wp-content/uploads/2023/01/Picture3.png" 
           alt="XE USD to INR Chart" 
           style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 4 }} 

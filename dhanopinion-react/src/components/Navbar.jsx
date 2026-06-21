@@ -43,8 +43,12 @@ export default function Navbar() {
         {/* Top row: Logo + Icons */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 32px', margin: '0 auto', maxWidth: 1400, height: 56 }}>
           {/* Logo */}
-          <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'baseline', gap: 6, color: 'var(--pure)', whiteSpace: 'nowrap' }}>
-            <HoverFlip text="DHAN OPINION" delayOffset={0} />
+          <Link to="/" style={{ textDecoration: 'none', display: 'block', position: 'relative', width: '210px', height: '56px', overflow: 'hidden' }}>
+            <img 
+              src={theme === 'dark' ? '/assets/images/dhan-logo-dark.png' : '/assets/images/dhan-logo-light.png'} 
+              alt="Dhan Opinion" 
+              style={{ position: 'absolute', top: '50%', left: '0', transform: 'translateY(-48%)', width: '210px', height: 'auto' }} 
+            />
           </Link>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>

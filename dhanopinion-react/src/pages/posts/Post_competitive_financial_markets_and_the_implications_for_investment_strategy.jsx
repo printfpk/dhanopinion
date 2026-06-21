@@ -20,7 +20,7 @@ export default function Post_competitive_financial_markets_and_the_implications_
       <p>Table 1: Percentage of Active Managers Underperforming Benchmarks</p>
 
       <div style={{ margin: '2rem 0', background: 'var(--bg-pure)', padding: '1rem', borderRadius: 8 }}>
-        <img 
+        <MediaSkeleton type="img" loading="lazy" 
           src="https://dhanopinion.com/wp-content/uploads/2023/08/Dhan-Picture5-1536x334.png" 
           alt="Percentage of Active Managers Underperforming Benchmarks" 
           style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 4 }} 
@@ -50,7 +50,7 @@ export default function Post_competitive_financial_markets_and_the_implications_
       <p>The study concludes that past performance is not a reliable indicator of future results and that active management success is more likely due to luck than skill. The study also discusses some methodological issues and limitations of the scorecard, such as survivorship bias, style consistency and benchmark selection.</p>
 
       <div style={{ margin: '2rem 0', background: 'var(--bg-pure)', padding: '1rem', borderRadius: 8 }}>
-        <img 
+        <MediaSkeleton type="img" loading="lazy" 
           src="https://dhanopinion.com/wp-content/uploads/2023/08/Dhan-Picture6-1536x157.png" 
           alt="SPIVA India Table" 
           style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 4 }} 
@@ -62,7 +62,7 @@ export default function Post_competitive_financial_markets_and_the_implications_
       <p>It consistently shows that people are “more often than not their own worst enemies when it comes to investing, often succumbing to short-term strategies such as market timing or performance chasing.”</p>
 
       <div style={{ margin: '2rem 0', background: 'var(--bg-pure)', padding: '1rem', borderRadius: 8 }}>
-        <img 
+        <MediaSkeleton type="img" loading="lazy" 
           src="https://dhanopinion.com/wp-content/uploads/2023/08/Dhan-Picture7.png" 
           alt="Dalbar Study" 
           style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 4 }} 

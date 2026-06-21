@@ -39,20 +39,9 @@ export default function InformationCentre() {
 
   return (
     <>
-      <section className="sec" style={{ background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
-        <div className="wrap pt-8 pb-8">
-
-          <RevealChar as="h1" text="Information Centre" className="t-mega mb-5" />
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <p className="t-body-lg" style={{ maxWidth: 800, marginTop: 24, color: 'var(--pure)' }}>Educational resources to deepen your investment knowledge.</p>
-            <p className="t-body" style={{ maxWidth: 800, marginTop: 16, color: 'rgba(255, 255, 255, 0.7)' }}>
-              Here you will find our comprehensive collection of articles, research, and analysis covering various aspects of investing. You can use the filters below to navigate specific categories or search by keyword to find exactly what you are looking for.
-            </p>
-          </motion.div>
+      <section style={{ background: 'var(--black)', borderBottom: '1px solid var(--hairline)', padding: 'var(--sp-6) 0 var(--sp-4) 0' }}>
+        <div className="wrap">
+          <RevealChar as="h1" text="Information Centre" className="t-mega" />
         </div>
       </section>
 
@@ -118,7 +107,7 @@ export default function InformationCentre() {
                         <h3 style={{ fontSize: '17px', fontFamily: 'var(--font-heading)', color: 'var(--pure)', fontWeight: 300, marginBottom: '8px', lineHeight: 1.4 }}>
                           {a.title}
                         </h3>
-                        <p style={{ fontSize: '12px', color: '#eada86', fontWeight: 600, margin: 0 }}>
+                        <p style={{ fontSize: '12px', color: 'var(--gold)', fontWeight: 600, margin: 0 }}>
                           {a.date}
                         </p>
                       </Link>
@@ -151,7 +140,7 @@ export default function InformationCentre() {
                       style={{
                         background: 'none',
                         border: 'none',
-                        color: currentPage === p ? '#eada86' : 'var(--pure)',
+                        color: currentPage === p ? 'var(--gold)' : 'var(--pure)',
                         cursor: 'pointer',
                         fontSize: '15px',
                         fontWeight: 600,
@@ -180,7 +169,7 @@ export default function InformationCentre() {
           padding-left: 8px !important;
         }
         .article-link-hover:hover h3 {
-          color: #eada86 !important;
+          color: var(--gold) !important;
         }
         @media (max-width: 768px) {
           .sec > .wrap { flex-direction: column !important; }
