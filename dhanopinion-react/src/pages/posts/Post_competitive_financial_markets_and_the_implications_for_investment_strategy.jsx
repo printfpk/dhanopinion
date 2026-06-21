@@ -1,3 +1,4 @@
+import MediaSkeleton from '../../components/MediaSkeleton';
 import PostLayout from '../../components/PostLayout'
 
 export default function Post_competitive_financial_markets_and_the_implications_for_investment_strategy() {

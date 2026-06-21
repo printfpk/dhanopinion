@@ -1,3 +1,4 @@
+import MediaSkeleton from '../../components/MediaSkeleton';
 import PostLayout from '../../components/PostLayout'
 
 export default function Post_inflation_real_value_and_the_money_illusion() {

@@ -1,3 +1,4 @@
+import MediaSkeleton from '../../components/MediaSkeleton';
 import PostLayout from '../../components/PostLayout'
 
 export default function Post_when_investing_in_a_mutual_fund_choose_a_direct_mf_over_a_regular_mf() {

@@ -1,3 +1,4 @@
+import MediaSkeleton from '../../components/MediaSkeleton';
 import PostLayout from '../../components/PostLayout'
 
 export default function Post_risk_and_return_profile_of_equity() {

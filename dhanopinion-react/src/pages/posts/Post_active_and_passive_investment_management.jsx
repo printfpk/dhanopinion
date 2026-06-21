@@ -1,3 +1,4 @@
+import MediaSkeleton from '../../components/MediaSkeleton';
 import PostLayout from '../../components/PostLayout'
 
 export default function Post_active_and_passive_investment_management() {
