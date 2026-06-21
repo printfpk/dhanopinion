@@ -220,3 +220,40 @@ export const ScrollCharRevealText = ({ text, as = 'h2', className, style }) => {
     </MotionComponent>
   );
 };
+
+export const TypewriterText = ({ text, delay = 0, style, className }) => {
+  const chars = text.split("");
+
+  const containerVariants = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.025, // Typewriter speed
+        delayChildren: delay,
+      }
+    }
+  };
+
+  const charVariants = {
+    hidden: { opacity: 0, display: "none" },
+    visible: { opacity: 1, display: "inline", transition: { duration: 0 } }
+  };
+
+  return (
+    <motion.span
+      className={className}
+      style={{ display: "inline", ...style }}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+    >
+      {chars.map((char, index) => (
+        <motion.span key={index} variants={charVariants}>
+          {char}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+};

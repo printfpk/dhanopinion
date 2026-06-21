@@ -9,6 +9,7 @@ import {
 	RevealChar,
 	ScrollFillText,
 	ScrollCharRevealText,
+	TypewriterText,
 } from "../components/Animations";
 import { SpreadCards } from "../components/SpreadCards";
 import ParticleSphere from "../components/ParticleSphere";
@@ -308,7 +309,7 @@ export default function Home() {
 										}}
 									>
 										<p style={{ margin: 0, fontSize: "clamp(15px, 1.5vw, 17px)", fontWeight: 300, fontFamily: "var(--font-heading)", color: "var(--pure)", lineHeight: 1.55, letterSpacing: "0.01em" }}>
-											{text}
+											<TypewriterText text={text} delay={0.8 + i * 0.2 + 0.3} />
 										</p>
 									</motion.div>
 								))}
