@@ -81,7 +81,6 @@ export default function InvestmentPhilosophy() {
             className="mb-8 tc"
           >
             <h2 className="t-h1 mb-4" style={{ color: 'var(--pure)' }}>The core elements of the investment philosophy</h2>
-            <div className="hairline-gold" style={{ margin: '0 auto' }}></div>
           </motion.div>
 
           <motion.div

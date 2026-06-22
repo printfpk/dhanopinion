@@ -54,7 +54,6 @@ export default function CaseStudies() {
         <div className="wrap pt-8 pb-8">
 
           <RevealChar as="h1" text="Case Studies" className="t-mega mb-5" />
-          <p className="t-body-lg" style={{ maxWidth: 520, marginTop: 24 }}>Real-world investment analysis and recommendations.</p>
         </div>
       </section>
 
@@ -109,7 +108,7 @@ export default function CaseStudies() {
 
             <button 
               onClick={handleReset}
-              style={{ width: '100%', padding: '0.75rem', background: '#9d4edd', color: 'var(--pure)', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 500, fontSize: '14px', transition: 'opacity 0.2s' }}
+              style={{ width: '100%', padding: '0.75rem', background: 'var(--gold)', color: '#ffffff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 500, fontSize: '14px', transition: 'opacity 0.2s' }}
               onMouseOver={e => e.currentTarget.style.opacity = 0.8}
               onMouseOut={e => e.currentTarget.style.opacity = 1}
             >
@@ -133,7 +132,7 @@ export default function CaseStudies() {
                   <p className="t-body" style={{ color: 'var(--pure)', marginBottom: '1.5rem', lineHeight: 1.6 }}>{c.desc}</p>
                   <Link 
                     to={`/case_study/${c.id}`}
-                    style={{ display: 'inline-block', padding: '0.6rem 1.5rem', background: '#9d4edd', color: 'var(--pure)', borderRadius: '6px', fontSize: '14px', fontWeight: 500, textDecoration: 'none', transition: 'opacity 0.2s' }}
+                    style={{ display: 'inline-block', padding: '0.6rem 1.5rem', background: 'var(--gold)', color: '#ffffff', borderRadius: '6px', fontSize: '14px', fontWeight: 500, textDecoration: 'none', transition: 'opacity 0.2s' }}
                     onMouseOver={e => e.currentTarget.style.opacity = 0.8}
                     onMouseOut={e => e.currentTarget.style.opacity = 1}
                   >

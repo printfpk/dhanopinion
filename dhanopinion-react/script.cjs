@@ -1,0 +1,1 @@
+const fs=require('fs');const xml=fs.readFileSync('c:/Users/prash/OneDrive/Desktop/Frontend projects/dhan003/dhanopinion/dhanopinion-react/public/temp_docx/word/_rels/document.xml.rels','utf8');const m=xml.match(/Id="([^"]+)" Target="media\/([^"]+)"/g);console.log(m);

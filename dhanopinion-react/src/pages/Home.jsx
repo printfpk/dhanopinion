@@ -753,9 +753,9 @@ export default function Home() {
 						Due to high demand, our personal consulting is currently at capacity. Secure your spot in line today.
 					</p>
 					<motion.div {...fade(0.5)}>
-						<a href="mailto:response@dhanopinion.com?subject=Join Consulting Waitlist" className="btn btn-white">
+						<Link to="/about-us#contact" className="btn btn-white">
 							<HoverFlip text="1-on-1 Contact" />
-						</a>
+						</Link>
 					</motion.div>
 				</div>
 			</section>
