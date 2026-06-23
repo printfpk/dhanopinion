@@ -3,11 +3,11 @@ import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motio
 
 const elements = { h1: motion.h1, h2: motion.h2, h3: motion.h3, p: motion.p, div: motion.div };
 
-export const HoverFlip = ({ text }) => {
+export const HoverFlip = ({ text, style }) => {
   const words = text.split(' ');
 
   return (
-    <motion.span initial="initial" whileHover="hover" style={{ display: 'inline-flex', flexWrap: 'wrap', perspective: 1000 }}>
+    <motion.span initial="initial" whileHover="hover" style={{ display: 'inline-flex', flexWrap: 'wrap', perspective: 1000, ...style }}>
       {words.map((word, wordIndex) => (
         <span key={wordIndex} style={{ display: 'inline-flex', position: 'relative', overflow: 'hidden' }}>
           <motion.span

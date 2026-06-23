@@ -15,55 +15,58 @@ export default function Footer() {
 			<div className="wrap">
 				<div
 					style={{
-						display: "flex",
-						flexWrap: "wrap",
-						justifyContent: "space-between",
-						alignItems: "flex-start",
+						display: "grid",
+						gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
 						gap: 40,
-						marginBottom: 48,
+						marginBottom: 64,
 					}}
 				>
+					{/* Column 1: Logo & Socials */}
 					<div>
-						<div style={{ marginBottom: 16, position: 'relative', width: '250px', height: '60px', overflow: 'hidden' }}>
+						<div style={{ marginBottom: 24, position: 'relative', width: '250px', height: '60px', overflow: 'hidden' }}>
 							<img 
 								src={theme === 'dark' ? '/assets/images/dhan-logo-dark.png' : '/assets/images/dhan-logo-light.png'} 
 								alt="Dhan Opinion" 
 								style={{ position: 'absolute', top: '50%', left: '0', transform: 'translateY(-48%)', width: '250px', height: 'auto' }} 
 							/>
 						</div>
-						<p
-							style={{
-								fontSize: 13,
-								color: "var(--ash)",
-								lineHeight: 1.6,
-								maxWidth: 280,
-							}}
-						>
-							Simplifying investing for individuals through research-backed
-							guidance.
-						</p>
+						<div style={{ display: 'flex', gap: 20 }}>
+							<a href="#" style={{ color: 'var(--gold)', fontSize: '22px', transition: 'transform 0.3s' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-3px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
+								<i className="fa-brands fa-linkedin"></i>
+							</a>
+							<a href="#" style={{ color: 'var(--gold)', fontSize: '22px', transition: 'transform 0.3s' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-3px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
+								<i className="fa-brands fa-x-twitter"></i>
+							</a>
+						</div>
 					</div>
-					<div style={{ display: "flex", gap: 32, flexWrap: "wrap", alignItems: "center" }}>
-						<Link
-							to="/disclaimer"
-							style={{
-								fontSize: 15,
-								color: "var(--smoke)",
-								textDecoration: "none",
-							}}
-						>
-							Disclaimer
-						</Link>
-						<Link
-							to="/about-us#contact"
-							style={{
-								fontSize: 15,
-								color: "var(--gold)",
-								textDecoration: "none",
-							}}
-						>
-							Contact Us
-						</Link>
+
+					{/* Column 2: Quick Links */}
+					<div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+						<h4 style={{ color: 'var(--pure)', fontSize: '18px', marginBottom: '8px', fontWeight: 600, fontFamily: 'var(--font-heading)' }}>Quick Links</h4>
+						{[
+							{ name: 'About Us', to: '/about-us' },
+							{ name: 'Disclaimer', to: '/disclaimer' },
+							{ name: 'Contact Us', to: '/about-us#contact' }
+						].map((link) => (
+							<Link
+								key={link.name}
+								to={link.to}
+								style={{
+									fontSize: 15,
+									color: "var(--smoke)",
+									textDecoration: "none",
+									display: 'flex',
+									alignItems: 'center',
+									gap: '12px',
+									transition: 'color 0.2s'
+								}}
+								onMouseOver={e => { e.currentTarget.style.color = 'var(--gold)' }}
+								onMouseOut={e => { e.currentTarget.style.color = 'var(--smoke)' }}
+							>
+								<i className="fa-solid fa-chevron-right" style={{ fontSize: '10px', color: 'var(--gold)' }}></i>
+								{link.name}
+							</Link>
+						))}
 						<a
 							href="mailto:response@dhanopinion.com"
 							style={{
@@ -72,15 +75,27 @@ export default function Footer() {
 								textDecoration: "none",
 								display: "flex",
 								alignItems: "center",
-								gap: 7,
+								gap: 12,
+								marginTop: 8,
+								transition: 'color 0.2s'
 							}}
+							onMouseOver={e => { e.currentTarget.style.color = 'var(--gold)' }}
+							onMouseOut={e => { e.currentTarget.style.color = 'var(--smoke)' }}
 						>
-							<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-								<rect x="2" y="4" width="20" height="16" rx="2" />
-								<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-							</svg>
+							<i className="fa-solid fa-envelope" style={{ fontSize: '12px', color: 'var(--gold)' }}></i>
 							response@dhanopinion.com
 						</a>
+					</div>
+
+					{/* Column 3: CTA */}
+					<div>
+						<h4 style={{ color: 'var(--pure)', fontSize: '18px', marginBottom: '16px', fontWeight: 600, fontFamily: 'var(--font-heading)' }}>Expert Guidance</h4>
+						<p style={{ color: 'var(--smoke)', fontSize: '14px', marginBottom: '24px', lineHeight: 1.6, maxWidth: 300 }}>
+							Ready to take control of your financial future? Speak with an expert advisor today for personalized strategies.
+						</p>
+						<Link to="/consulting-waitlist" className="btn btn-gold" style={{ display: 'inline-block', padding: '10px 18px', fontSize: '12px', letterSpacing: '0.05em' }}>
+							Personalised Investment Consulting
+						</Link>
 					</div>
 				</div>
 				<div className="hairline" style={{ marginBottom: 24 }} />

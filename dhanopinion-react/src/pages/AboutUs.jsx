@@ -23,14 +23,9 @@ const inputStyle = {
 
 const team = [
   {
-    name: 'Contributor 1',
-    role: 'Investment Strategy & Research',
-    bio: 'Brings deep expertise in financial markets, asset allocation, and investment philosophy. Focused on translating complex investment concepts into simple, actionable guidance for individual investors.'
-  },
-  {
-    name: 'Contributor 2',
-    role: 'Financial Analysis & Education',
-    bio: 'Specialises in financial analysis, investor education, and building tools that help people understand their investment choices, costs, and outcomes in a transparent and unbiased way.'
+    name: 'Ankur Mithal',
+    role: 'Banker, Consultant, Author',
+    bio: 'Widely experienced banker with roles in Payments, Wealth Management, Cash Management and Enterprise Transformation initiatives in India, Hong Kong and Singapore. Entrepreneurial ventures in E-learning and Digital Hiring. Leadership roles in global BPOs and a leading non-profit. MBA from IIM Ahmedabad. Published author and Business Consultant.'
   }
 ]
 
@@ -128,7 +123,7 @@ export default function AboutUs() {
       <section className="sec" style={{ background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
         <div className="wrap">
           <motion.div {...f(0.05)} className="tc mb-8">
-            <RevealChar as="h2" text="The Team" className="t-h1 mb-3" />
+            <RevealChar as="h2" text="The Team" className="t-mega mb-6" />
             <p className="t-body" style={{ color: 'var(--smoke)', maxWidth: 500, margin: '0 auto' }}>
               The people behind DhanOpinion.
             </p>
@@ -181,7 +176,7 @@ export default function AboutUs() {
             {/* Contact Us */}
             <motion.div {...f()}>
               <div style={{ marginBottom: '32px' }}>
-                <RevealChar as="h2" text="Contact Us" className="t-h2 mb-4" delay={0.1} />
+                <RevealChar as="h2" text="Contact Us" className="t-mega mb-6" delay={0.1} />
                 <p className="t-body" style={{ color: 'var(--smoke)' }}>
                   Have a question? Send us a message or email us at{' '}
                   <a href="mailto:response@dhanopinion.com" style={{ color: 'var(--gold)', textDecoration: 'none' }}>response@dhanopinion.com</a>.
@@ -199,7 +194,7 @@ export default function AboutUs() {
                     <label htmlFor="message" style={{ color: 'var(--pure)', fontSize: '14px', fontWeight: 500 }}>Message</label>
                     <textarea id="message" name="message" value={contactData.message} onChange={handleContactChange} rows="5" style={{ ...inputStyle, resize: 'vertical' }} onFocus={handleFocus} onBlur={handleBlur} />
                   </div>
-                  <button type="submit" className="btn" style={{ width: '100%', padding: '16px', background: 'var(--gold)', color: 'var(--black)', fontWeight: 600, border: 'none', borderRadius: '8px', cursor: 'pointer' }}>
+                  <button type="submit" className="btn" style={{ width: '100%', padding: '16px', background: 'var(--pure)', color: 'var(--void)', fontWeight: 600, border: 'none', borderRadius: '9999px', cursor: 'pointer', transition: 'all 0.3s' }}>
                     Send Message
                   </button>
                 </form>
@@ -222,7 +217,7 @@ export default function AboutUs() {
             {/* Feedback Form */}
             <motion.div {...f(0.2)}>
               <div style={{ marginBottom: '32px' }}>
-                <RevealChar as="h2" text="Leave Feedback" className="t-h2 mb-4" delay={0.2} />
+                <RevealChar as="h2" text="Leave Feedback" className="t-mega mb-6" delay={0.2} />
                 <p className="t-body" style={{ color: 'var(--smoke)' }}>
                   If you have specific suggestions or expertise you would like to contribute, please let us know.
                 </p>
@@ -268,9 +263,7 @@ export default function AboutUs() {
                   <button
                     type="submit"
                     className="btn"
-                    style={{ width: '100%', padding: '16px', background: 'rgba(255,255,255,0.05)', color: 'var(--pure)', border: '1px solid rgba(255,255,255,0.1)', fontWeight: 600, borderRadius: '8px', cursor: 'pointer', transition: 'all 0.3s' }}
-                    onMouseOver={e => { e.currentTarget.style.background = 'var(--gold)'; e.currentTarget.style.color = 'var(--black)'; e.currentTarget.style.borderColor = 'var(--gold)' }}
-                    onMouseOut={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.color = 'var(--pure)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}
+                    style={{ width: '100%', padding: '16px', background: 'var(--pure)', color: 'var(--void)', fontWeight: 600, border: 'none', borderRadius: '9999px', cursor: 'pointer', transition: 'all 0.3s' }}
                   >
                     Submit Feedback
                   </button>

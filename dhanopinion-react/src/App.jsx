@@ -12,6 +12,7 @@ import InformationCentre from './pages/InformationCentre'
 import StepsToInvestingSuccess from './pages/StepsToInvestingSuccess'
 import AboutUs from './pages/AboutUs'
 import Disclaimer from './pages/Disclaimer'
+import ConsultingWaitlist from './pages/ConsultingWaitlist'
 
 import Post_there_is_always_some_risk_2 from './pages/posts/Post_there_is_always_some_risk_2'
 import Post_diversification_reduces_risk from './pages/posts/Post_diversification_reduces_risk'
@@ -64,6 +65,8 @@ function App() {
         <Route path="about-us/" element={<AboutUs />} />
         <Route path="disclaimer" element={<Disclaimer />} />
         <Route path="disclaimer/" element={<Disclaimer />} />
+        <Route path="consulting-waitlist" element={<ConsultingWaitlist />} />
+        <Route path="consulting-waitlist/" element={<ConsultingWaitlist />} />
 
         {/* Blog posts */}
         <Route path="2023/01/09/there-is-always-some-risk-2/*" element={<Post_there_is_always_some_risk_2 />} />

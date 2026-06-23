@@ -17,7 +17,7 @@ export const allArticles = [
   { id: 19, title: 'National Pension System (NPS)', date: 'August 20, 2023', category: 'Planning', to: '/2023/08/20/national-pension-system-nps/' },
   { id: 25, title: 'Bank Fixed Deposits', date: 'October 2, 2023', category: 'Investment Basics', to: '/2023/10/02/bank-fixed-deposits/' },
   { id: 21, title: 'Government Bonds', date: 'August 22, 2023', category: 'Investment Basics', to: '/2023/08/22/government-bonds/' },
-  { id: 22, title: 'Government Savings Schemes', date: 'August 23, 2023', category: 'Investment Basics', to: '/2023/08/23/government-savings-schemes/' },
+  { id: 22, title: 'Leverage Government Schemes', date: 'August 23, 2023', category: 'Investment Basics', to: '/2023/08/23/government-savings-schemes/' },
   { id: 23, title: 'Senior Citizen Saving Scheme', date: 'September 1, 2023', category: 'Planning', to: '/2023/09/01/senior-citizen-saving-scheme/' },
   { id: 24, title: 'Public Provident Fund', date: 'October 1, 2023', category: 'Planning', to: '/2023/10/01/public-provident-fund/' },
   { id: 26, title: 'Equity Linked Saving Scheme (ELSS)', date: 'October 3, 2023', category: 'Planning', to: '/2023/10/03/equity-linked-saving-scheme/' },

@@ -40,18 +40,31 @@ export default function Navbar() {
         boxShadow: 'var(--shadow-nav)',
         width: '100%'
       }}>
-        {/* Top row: Logo + Icons */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 32px', margin: '0 auto', maxWidth: 1400, height: 56 }}>
+        {/* Single row: Logo + Desktop Nav + Icons */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 32px', margin: '0 auto', maxWidth: 1400, height: 72 }}>
           {/* Logo */}
-          <Link to="/" style={{ textDecoration: 'none', display: 'block', position: 'relative', width: '210px', height: '56px', overflow: 'hidden' }}>
-            <img 
-              src={theme === 'dark' ? '/assets/images/dhan-logo-dark.png' : '/assets/images/dhan-logo-light.png'} 
-              alt="Dhan Opinion" 
-              style={{ position: 'absolute', top: '50%', left: '0', transform: 'translateY(-48%)', width: '210px', height: 'auto' }} 
+          <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', position: 'relative', width: '210px', height: '56px', overflow: 'hidden', flexShrink: 0 }}>
+            <img
+              src={theme === 'dark' ? '/assets/images/dhan-logo-dark.png' : '/assets/images/dhan-logo-light.png'}
+              alt="Dhan Opinion"
+              style={{ position: 'absolute', top: '50%', left: '0', transform: 'translateY(-48%)', width: '210px', height: 'auto' }}
             />
           </Link>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          {/* Desktop nav links */}
+          <div className="nav-desktop-links" style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'nowrap' }}>
+            {links.map(l => (
+              <Link key={l.to} to={l.to} style={{
+                fontSize: 11, fontWeight: 700, letterSpacing: '.05em', textTransform: 'uppercase',
+                color: pathname.startsWith(l.to) ? 'var(--orange)' : 'var(--pure)',
+                textDecoration: 'none', padding: '8px 16px', display: 'flex', whiteSpace: 'nowrap'
+              }}>
+                <HoverFlip text={l.label} style={{ flexWrap: 'nowrap' }} />
+              </Link>
+            ))}
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexShrink: 0 }}>
             {/* Search Button */}
             <button
               onClick={() => setSearchOpen(true)}
@@ -103,21 +116,6 @@ export default function Navbar() {
               <motion.span animate={{ opacity: open ? 0 : 1 }} style={{ display: 'block', width: 22, height: 2, background: 'var(--pure)' }} />
               <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -7 : 0 }} style={{ display: 'block', width: 22, height: 2, background: 'var(--pure)', transformOrigin: 'center' }} />
             </button>
-          </div>
-        </div>
-
-        {/* Bottom row: Desktop nav links */}
-        <div className="nav-desktop-row" style={{ borderTop: '1px solid var(--hairline)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 32px', margin: '0 auto', maxWidth: 1400, height: 40 }}>
-            {links.map(l => (
-              <Link key={l.to} to={l.to} style={{
-                fontSize: 11, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase',
-                color: pathname.startsWith(l.to) ? 'var(--orange)' : 'var(--pure)',
-                textDecoration: 'none', padding: '0 16px', display: 'flex', whiteSpace: 'nowrap'
-              }}>
-                <HoverFlip text={l.label} />
-              </Link>
-            ))}
           </div>
         </div>
       </nav>
@@ -220,11 +218,11 @@ export default function Navbar() {
         .custom-navbar:hover {
           background-color: var(--nav-bg-hover) !important;
         }
-        .nav-desktop-row { display:none }
-        .nav-burger { display:flex }
-        @media(min-width:1024px) {
-          .nav-desktop-row { display:block }
-          .nav-burger { display:none !important }
+        .nav-desktop-links { display:none !important; }
+        .nav-burger { display:flex; }
+        @media(min-width:1200px) {
+          .nav-desktop-links { display:flex !important; }
+          .nav-burger { display:none !important; }
         }
       `}</style>
     </>

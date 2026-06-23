@@ -23,7 +23,7 @@ export default function Post_government_savings_schemes() {
   ]
 
   return (
-    <PostLayout title="Government Savings Schemes">
+    <PostLayout title="Leverage Government Schemes">
       <p className="t-body mb-5">
         The government offers a number of investment options for the individual investor. On account of a lack of awareness about these schemes (many money managers may not suggest these schemes as they do not receive a commission) as well as hesitation in dealing with a machinery that is considered bureaucratic and slow, many eligible people do not invest in them.
       </p>

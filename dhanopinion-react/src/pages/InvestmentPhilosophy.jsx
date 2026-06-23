@@ -40,11 +40,8 @@ export default function InvestmentPhilosophy() {
           <div className="g-2" style={{ alignItems: 'center' }}>
             <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
               <RevealChar as="h1" text="Investment Philosophy" className="t-mega mb-6" />
-              <motion.p variants={fadeUp} className="t-body mb-4">
-                Underpinning any investment recommendations is an underlying investment philosophy.
-              </motion.p>
               <motion.p variants={fadeUp} className="t-body mb-7">
-                Here we articulate our investment philosophy so that you can see explicitly the important assumptions that underlie the suggestions we are making. If you agree with our investment philosophy, our approach is likely to be a good fit for you. If your view of the investment world is different, you should look at alternative solutions.
+                Underpinning any investment recommendation is an underlying investment philosophy. This section outlines our investment philosophy in a manner designed to make the underlying assumptions and process clear to you. If you agree with our investment philosophy, our approach is likely to be a good fit for you. If your view of the investment world is different, you should look at alternative solutions.
               </motion.p>
               <motion.div variants={fadeUp}>
                 <a href="#elements" className="btn btn-gold">
@@ -80,7 +77,7 @@ export default function InvestmentPhilosophy() {
             variants={fadeUp}
             className="mb-8 tc"
           >
-            <h2 className="t-h1 mb-4" style={{ color: 'var(--pure)' }}>The core elements of the investment philosophy</h2>
+            <h2 className="t-h1 mb-4" style={{ color: 'var(--pure)' }}>Core elements of our investment philosophy</h2>
           </motion.div>
 
           <motion.div

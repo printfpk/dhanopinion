@@ -78,8 +78,7 @@ export default function SimpleInvestmentStrategy() {
             variants={fadeUp}
             className="mb-8 tc"
           >
-            <h2 className="t-h1 mb-4" style={{ color: 'var(--pure)' }}>Here are the elements of the simple investment strategy</h2>
-            <div className="hairline-gold" style={{ margin: '0 auto' }}></div>
+            <h2 className="t-h1 mb-4" style={{ color: 'var(--pure)' }}>Elements of a simple investment strategy</h2>
           </motion.div>
 
           <motion.div

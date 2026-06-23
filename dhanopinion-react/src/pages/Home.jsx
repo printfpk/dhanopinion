@@ -97,7 +97,7 @@ export default function Home() {
 				<section
 					className="home-hero"
 					style={{
-						minHeight: "100vh",
+						minHeight: "calc(100vh - 72px)",
 						display: "flex",
 						alignItems: "center",
 						position: "sticky",
@@ -188,9 +188,9 @@ export default function Home() {
 							style={{
 								display: "flex",
 								flexWrap: "wrap",
-								gap: "5rem",
+								gap: "1.5rem",
 								alignItems: "flex-start",
-								padding: "20px 0 0px", /* Removed bottom padding */
+								padding: "10px 0 0px", /* Removed bottom padding */
 								marginTop: "0"
 							}}
 						>
@@ -210,15 +210,13 @@ export default function Home() {
 								{/* Staggered text animation with blur */}
 								<h1
 									style={{
-										fontSize: "clamp(56px, 7vw, 96px)",
+										fontSize: "clamp(40px, 5vw, 72px)",
 										fontWeight: 300,
 										fontFamily: "var(--font-heading)",
 										lineHeight: 1.05,
 										color: "var(--pure)",
 										marginBottom: "0px",
 										letterSpacing: "-0.01em",
-										display: "flex",
-										flexDirection: "column",
 									}}
 								>
 									<div style={{ overflow: "hidden", paddingBottom: "10px" }}>
@@ -229,37 +227,26 @@ export default function Home() {
 											}}
 											style={{ display: "inline-block" }}
 										>
-											Investing is
-										</motion.span>
-									</div>
-									<div style={{ overflow: "hidden", paddingBottom: "5px" }}>
-										<motion.span
-											variants={{
-												hidden: { y: "100%", opacity: 0, filter: "blur(10px)" },
-												visible: { y: 0, opacity: 1, filter: "blur(0px)", transition: { type: "spring", damping: 20, stiffness: 80 } }
-											}}
-											style={{
-												display: "inline-block",
-												fontStyle: "italic",
-											}}
-										>
-											Difficult
+											Investing is Difficult
 										</motion.span>
 									</div>
 								</h1>
 
-								<AnimatedParagraph
-									text="It is difficult for large institutions, and it is even more difficult for individuals because they have less knowledge and resources. You can make it easier by evaluating our suggestions and if you are convinced, implement them."
-									delay={0.8}
+								<motion.p
+									initial={{ opacity: 0, y: 20 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
 									style={{
 										fontSize: "18px",
 										lineHeight: 1.7,
 										color: "var(--smoke)",
 										maxWidth: "500px",
 										fontWeight: 400,
-										margin: "20px 0 0 0",
+										margin: "12px 0 0 0",
 									}}
-								/>
+								>
+									It is difficult for large institutions, and it is even more difficult for individuals because they have less knowledge and resources. You can make it easier by evaluating our suggestions and if you are convinced, implement them.
+								</motion.p>
 							</motion.div>
 
 							{/* ── RIGHT: We Focus On — Premium Card ── */}
@@ -267,7 +254,7 @@ export default function Home() {
 								initial={{ opacity: 0, x: 50 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ duration: 1.1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-								style={{ flex: "1 1 420px", display: "flex", flexDirection: "column", alignItems: "stretch", gap: "20px" }}
+								style={{ flex: "1 1 420px", display: "flex", flexDirection: "column", alignItems: "stretch", gap: "10px" }}
 							>
 								{/* ── We focus on: label ── */}
 								<motion.div
@@ -303,7 +290,7 @@ export default function Home() {
 											WebkitBackdropFilter: "blur(32px)",
 											borderRadius: "999px",
 											border: "1px solid var(--hero-glass-border)",
-											padding: "22px 36px",
+											padding: "12px 20px",
 											boxShadow: "0 12px 40px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.12)",
 											textAlign: "center",
 										}}
@@ -318,50 +305,46 @@ export default function Home() {
 								<motion.div
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
-									whileHover={{ y: -4, boxShadow: "0 20px 60px rgba(212,168,83,0.22), inset 0 1px 0 rgba(255,255,255,0.1)", borderColor: "rgba(212,168,83,0.55)" }}
+									whileHover={{ y: -4, boxShadow: "0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)", borderColor: "rgba(212,168,83,0.4)" }}
 									transition={{ duration: 0.9, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
 									style={{
 										position: "relative",
-										marginTop: "-10px",
-										background: "linear-gradient(135deg, rgba(212,168,83,0.14) 0%, rgba(255,107,0,0.06) 100%)",
-										backdropFilter: "blur(24px)",
-										WebkitBackdropFilter: "blur(24px)",
-										borderRadius: "20px",
-										border: "1px solid rgba(212,168,83,0.25)",
-										padding: "24px 28px",
+										marginTop: "12px",
+										background: "linear-gradient(145deg, #1a1816 0%, #0d0c0a 100%)",
+										borderRadius: "24px",
+										border: "1px solid rgba(255,255,255,0.04)",
+										padding: "16px 20px",
 										display: "flex",
 										alignItems: "center",
 										gap: "20px",
 										overflow: "hidden",
-										boxShadow: "0 12px 40px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.06)",
+										boxShadow: "0 10px 40px rgba(0,0,0,0.2)",
 									}}
 								>
-									{/* Glow */}
-									<div style={{ position: "absolute", top: -30, right: -30, width: 120, height: 120, background: "radial-gradient(circle, rgba(212,168,83,0.18) 0%, transparent 70%)", borderRadius: "50%", pointerEvents: "none" }} />
+									{/* Premium Glow */}
+									<div style={{ position: "absolute", top: -40, left: -40, width: 140, height: 140, background: "radial-gradient(circle, rgba(212,168,83,0.1) 0%, transparent 70%)", borderRadius: "50%", pointerEvents: "none" }} />
 
-									{/* Icon */}
+									{/* Icon Wrapper */}
 									<div style={{
 										flexShrink: 0,
-										width: 48,
-										height: 48,
-										borderRadius: "14px",
-										background: "rgba(212,168,83,0.15)",
-										border: "1px solid rgba(212,168,83,0.3)",
+										width: 52,
+										height: 52,
+										borderRadius: "16px",
+										background: "linear-gradient(135deg, rgba(212,168,83,0.15) 0%, rgba(212,168,83,0.02) 100%)",
+										border: "1px solid rgba(212,168,83,0.2)",
 										display: "flex",
 										alignItems: "center",
 										justifyContent: "center",
-										fontSize: 22,
+										fontSize: 24,
+										boxShadow: "inset 0 1px 0 rgba(255,255,255,0.1)",
 									}}>
 										🏛️
 									</div>
 
 									{/* Text */}
-									<div style={{ flex: 1, minWidth: 0 }}>
-										<p style={{ margin: 0, fontSize: "clamp(13px, 1.3vw, 15px)", fontWeight: 400, fontFamily: "var(--font-heading)", color: "var(--pure)", lineHeight: 1.4, letterSpacing: "0.01em" }}>
+									<div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+										<p style={{ margin: 0, fontSize: "clamp(16px, 1.4vw, 18px)", fontWeight: 400, fontFamily: "var(--font-heading)", color: "#ffffff", lineHeight: 1.2, letterSpacing: "0.01em" }}>
 											National Pension System (NPS)
-										</p>
-										<p style={{ margin: "4px 0 0", fontSize: 11, fontWeight: 500, color: "var(--gold)", opacity: 0.6, fontFamily: "var(--font-body)", letterSpacing: "0.04em" }}>
-											Retirement Planning Guide
 										</p>
 									</div>
 
@@ -370,36 +353,40 @@ export default function Home() {
 										to="/2023/08/20/national-pension-system-nps/"
 										style={{
 											flexShrink: 0,
-											fontSize: 10,
-											fontWeight: 700,
-											letterSpacing: "0.14em",
-											textTransform: "uppercase",
+											width: 44,
+											height: 44,
+											borderRadius: "50%",
+											background: "rgba(255,255,255,0.03)",
+											border: "1px solid rgba(255,255,255,0.08)",
+											display: "flex",
+											alignItems: "center",
+											justifyContent: "center",
 											color: "var(--gold)",
 											textDecoration: "none",
-											border: "1px solid rgba(212,168,83,0.4)",
-											borderRadius: "8px",
-											padding: "8px 14px",
-											background: "rgba(212,168,83,0.1)",
-											transition: "all 0.2s ease",
-											whiteSpace: "nowrap",
+											transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
 										}}
 										onMouseEnter={e => {
-											e.currentTarget.style.background = "rgba(212,168,83,0.22)";
-											e.currentTarget.style.borderColor = "rgba(212,168,83,0.7)";
+											e.currentTarget.style.background = "var(--gold)";
+											e.currentTarget.style.color = "#000000";
+											e.currentTarget.style.transform = "scale(1.05)";
 										}}
 										onMouseLeave={e => {
-											e.currentTarget.style.background = "rgba(212,168,83,0.1)";
-											e.currentTarget.style.borderColor = "rgba(212,168,83,0.4)";
+											e.currentTarget.style.background = "rgba(255,255,255,0.03)";
+											e.currentTarget.style.color = "var(--gold)";
+											e.currentTarget.style.transform = "scale(1)";
 										}}
 									>
-										Explore →
+										<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+											<path d="M5 12h14"></path>
+											<path d="M12 5l7 7-7 7"></path>
+										</svg>
 									</Link>
 								</motion.div>
 							</motion.div>
 						</div>
 
 						{/* ══════ STARTING POINTS (MOVED TO BOTTOM OF HERO) ══════ */}
-						<div style={{ paddingTop: "20px", paddingBottom: "80px", width: "100%" }}>
+						<div style={{ paddingTop: "40px", paddingBottom: "20px", width: "100%" }}>
 							<RevealChar
 								as="h2"
 								text="Choose your starting point"
@@ -413,7 +400,7 @@ export default function Home() {
 								}}
 								delay={0.1}
 							/>
-							<div style={{ marginTop: 10 }}>
+							<div style={{ marginTop: 24 }}>
 								<SpreadCards
 									items={startingPoints}
 									cols={4}
@@ -431,16 +418,16 @@ export default function Home() {
 												justifyContent: "space-between",
 												textAlign: "center",
 												height: "100%",
-												minHeight: 240,
+												minHeight: "auto",
 												gap: 0,
-												padding: "40px 28px 32px",
+												padding: "16px 12px",
 											}}
 										>
 											{/* Icon — double ring circle */}
 											<div
 												style={{
-													width: 68,
-													height: 68,
+													width: 48,
+													height: 48,
 													borderRadius: "50%",
 													background: "linear-gradient(145deg, #fef9f0, #f3e8cd)",
 													border: "2px solid rgba(212,168,83,0.3)",
@@ -448,9 +435,9 @@ export default function Home() {
 													display: "flex",
 													alignItems: "center",
 													justifyContent: "center",
-													fontSize: 28,
+													fontSize: 20,
 													flexShrink: 0,
-													marginBottom: 20,
+													marginBottom: 8,
 												}}
 											>
 												{s.icon}
@@ -461,7 +448,7 @@ export default function Home() {
 												width: 32,
 												height: 1,
 												background: "linear-gradient(90deg, transparent, #d4a853, transparent)",
-												marginBottom: 16,
+												marginBottom: 8,
 												flexShrink: 0,
 											}} />
 
@@ -469,7 +456,7 @@ export default function Home() {
 											<h3
 												style={{
 													margin: 0,
-													fontSize: "clamp(16px, 1.4vw, 19px)",
+													fontSize: "clamp(14px, 1.2vw, 16px)",
 													fontWeight: 400,
 													fontFamily: "var(--font-heading)",
 													color: "#1a1714",
@@ -486,7 +473,7 @@ export default function Home() {
 											{/* Explore pill button */}
 											<span
 												style={{
-													marginTop: 20,
+													marginTop: 8,
 													fontSize: 10,
 													fontWeight: 700,
 													letterSpacing: ".16em",
@@ -494,7 +481,7 @@ export default function Home() {
 													color: "#9a7a2e",
 													border: "1px solid rgba(212,168,83,0.35)",
 													borderRadius: "100px",
-													padding: "8px 20px",
+													padding: "6px 16px",
 													background: "linear-gradient(135deg, rgba(212,168,83,0.06), rgba(212,168,83,0.02))",
 													flexShrink: 0,
 												}}
@@ -746,15 +733,16 @@ export default function Home() {
 							fontSize: 16,
 							color: "var(--smoke)",
 							marginBottom: 32,
-							maxWidth: 400,
+							maxWidth: 800,
 							margin: "0 auto 32px",
+							lineHeight: 1.7,
 						}}
 					>
-						Due to high demand, our personal consulting is currently at capacity. Secure your spot in line today.
+						The philosophy, strategy and suggestions shared on these pages are of universal relevance and should deliver value to every investor. Should you wish to seek a confidential, one-on-one, paid consulting with one of our experts, kindly click the button below. Personalised consulting is expected to be launched in the future. At this time you will be joining a wait-list. We will reach out when the service comes on-stream and a slot becomes available to arrange a session at a mutually convenient time.
 					</p>
 					<motion.div {...fade(0.5)}>
-						<Link to="/about-us#contact" className="btn btn-white">
-							<HoverFlip text="1-on-1 Contact" />
+						<Link to="/consulting-waitlist" className="btn btn-white" style={{ padding: "14px 28px" }}>
+							<HoverFlip text="I would like a personalised consulting session" />
 						</Link>
 					</motion.div>
 				</div>
