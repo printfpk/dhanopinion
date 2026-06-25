@@ -51,15 +51,15 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Desktop nav links */}
           <div className="nav-desktop-links" style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'nowrap' }}>
             {links.map(l => (
-              <Link key={l.to} to={l.to} style={{
+              <Link key={l.to} to={l.to} className="desktop-nav-link" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '.05em', textTransform: 'uppercase',
                 color: pathname.startsWith(l.to) ? 'var(--orange)' : 'var(--pure)',
-                textDecoration: 'none', padding: '8px 16px', display: 'flex', whiteSpace: 'nowrap'
+                textDecoration: 'none', padding: '8px 16px', display: 'flex', alignItems: 'center', whiteSpace: 'nowrap'
               }}>
-                <HoverFlip text={l.label} style={{ flexWrap: 'nowrap' }} />
+                <span className="dot"></span>
+                <span className="text">{l.label}</span>
               </Link>
             ))}
           </div>
@@ -141,13 +141,14 @@ export default function Navbar() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.06, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               >
-                <Link to={l.to} onClick={() => setOpen(false)} style={{
-                  display: 'block', padding: '16px 0',
+                <Link to={l.to} onClick={() => setOpen(false)} className="mobile-nav-link" style={{
+                  display: 'flex', alignItems: 'center', padding: '16px 0',
                   fontSize: 28, fontWeight: 700, letterSpacing: '-.02em',
                   color: pathname.startsWith(l.to) ? 'var(--gold)' : 'var(--pure)',
                   textDecoration: 'none', borderBottom: '1px solid var(--hairline)',
                 }}>
-                  {l.label}
+                  <span className="dot"></span>
+                  <span className="text">{l.label}</span>
                 </Link>
               </motion.div>
             ))}
@@ -223,6 +224,50 @@ export default function Navbar() {
         @media(min-width:1200px) {
           .nav-desktop-links { display:flex !important; }
           .nav-burger { display:none !important; }
+        }
+        
+        .desktop-nav-link .dot {
+          width: 5px;
+          height: 5px;
+          background-color: currentColor;
+          border-radius: 50%;
+          opacity: 0;
+          transform: scale(0);
+          transition: all 0.3s ease;
+          margin-right: 0px;
+        }
+        .desktop-nav-link .text {
+          transition: transform 0.3s ease;
+        }
+        .desktop-nav-link:hover .dot {
+          opacity: 1;
+          transform: scale(1);
+          margin-right: 8px;
+        }
+        .desktop-nav-link:hover .text {
+          transform: translateX(4px);
+        }
+        
+        .mobile-nav-link .dot {
+          width: 8px;
+          height: 8px;
+          background-color: currentColor;
+          border-radius: 50%;
+          opacity: 0;
+          transform: scale(0);
+          transition: all 0.3s ease;
+          margin-right: 0px;
+        }
+        .mobile-nav-link .text {
+          transition: transform 0.3s ease;
+        }
+        .mobile-nav-link:hover .dot {
+          opacity: 1;
+          transform: scale(1);
+          margin-right: 12px;
+        }
+        .mobile-nav-link:hover .text {
+          transform: translateX(8px);
         }
       `}</style>
     </>

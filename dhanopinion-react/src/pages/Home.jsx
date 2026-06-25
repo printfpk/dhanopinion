@@ -302,86 +302,50 @@ export default function Home() {
 								))}
 
 								{/* ── NPS Promo Card ── */}
-								<motion.div
-									initial={{ opacity: 0, y: 20 }}
-									animate={{ opacity: 1, y: 0 }}
-									whileHover={{ y: -4, boxShadow: "0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)", borderColor: "rgba(212,168,83,0.4)" }}
-									transition={{ duration: 0.9, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-									style={{
-										position: "relative",
-										marginTop: "12px",
-										background: "linear-gradient(145deg, #1a1816 0%, #0d0c0a 100%)",
-										borderRadius: "24px",
-										border: "1px solid rgba(255,255,255,0.04)",
-										padding: "16px 20px",
-										display: "flex",
-										alignItems: "center",
-										gap: "20px",
-										overflow: "hidden",
-										boxShadow: "0 10px 40px rgba(0,0,0,0.2)",
-									}}
-								>
-									{/* Premium Glow */}
-									<div style={{ position: "absolute", top: -40, left: -40, width: 140, height: 140, background: "radial-gradient(circle, rgba(212,168,83,0.1) 0%, transparent 70%)", borderRadius: "50%", pointerEvents: "none" }} />
-
-									{/* Icon Wrapper */}
-									<div style={{
-										flexShrink: 0,
-										width: 52,
-										height: 52,
-										borderRadius: "16px",
-										background: "linear-gradient(135deg, rgba(212,168,83,0.15) 0%, rgba(212,168,83,0.02) 100%)",
-										border: "1px solid rgba(212,168,83,0.2)",
-										display: "flex",
-										alignItems: "center",
-										justifyContent: "center",
-										fontSize: 24,
-										boxShadow: "inset 0 1px 0 rgba(255,255,255,0.1)",
-									}}>
-										🏛️
-									</div>
-
-									{/* Text */}
-									<div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-										<p style={{ margin: 0, fontSize: "clamp(16px, 1.4vw, 18px)", fontWeight: 400, fontFamily: "var(--font-heading)", color: "#ffffff", lineHeight: 1.2, letterSpacing: "0.01em" }}>
-											National Pension System (NPS)
-										</p>
-									</div>
-
-									{/* Button */}
-									<Link
-										to="/2023/08/20/national-pension-system-nps/"
+								<Link to="/2023/08/20/national-pension-system-nps/" style={{ textDecoration: "none", display: "block" }}>
+									<motion.div
+										initial={{ opacity: 0, y: 24 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ delay: 1.2, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+										whileHover={{ y: -3, boxShadow: "0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18)" }}
 										style={{
-											flexShrink: 0,
-											width: 44,
-											height: 44,
-											borderRadius: "50%",
-											background: "rgba(255,255,255,0.03)",
-											border: "1px solid rgba(255,255,255,0.08)",
+											background: "var(--hero-glass-strong)",
+											backdropFilter: "blur(32px)",
+											WebkitBackdropFilter: "blur(32px)",
+											borderRadius: "999px",
+											border: "1px solid var(--hero-glass-border)",
+											padding: "8px 8px 8px 24px",
+											boxShadow: "0 12px 40px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.12)",
 											display: "flex",
 											alignItems: "center",
-											justifyContent: "center",
-											color: "var(--gold)",
-											textDecoration: "none",
-											transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-										}}
-										onMouseEnter={e => {
-											e.currentTarget.style.background = "var(--gold)";
-											e.currentTarget.style.color = "#000000";
-											e.currentTarget.style.transform = "scale(1.05)";
-										}}
-										onMouseLeave={e => {
-											e.currentTarget.style.background = "rgba(255,255,255,0.03)";
-											e.currentTarget.style.color = "var(--gold)";
-											e.currentTarget.style.transform = "scale(1)";
+											justifyContent: "space-between",
+											gap: "20px"
 										}}
 									>
-										<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-											<path d="M5 12h14"></path>
-											<path d="M12 5l7 7-7 7"></path>
-										</svg>
-									</Link>
-								</motion.div>
+										<p style={{ margin: 0, fontSize: "clamp(15px, 1.5vw, 17px)", fontWeight: 300, fontFamily: "var(--font-heading)", color: "var(--pure)", lineHeight: 1.55, letterSpacing: "0.01em" }}>
+											<TypewriterText text="National Pension System (NPS)" delay={1.5} />
+										</p>
+										<div
+											style={{
+												flexShrink: 0,
+												width: 40,
+												height: 40,
+												borderRadius: "50%",
+												background: "var(--pure)",
+												color: "var(--void)",
+												display: "flex",
+												alignItems: "center",
+												justifyContent: "center",
+												boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+											}}
+										>
+											<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+												<path d="M5 12h14"></path>
+												<path d="M12 5l7 7-7 7"></path>
+											</svg>
+										</div>
+									</motion.div>
+								</Link>
 							</motion.div>
 						</div>
 

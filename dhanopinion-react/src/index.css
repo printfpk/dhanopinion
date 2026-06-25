@@ -96,7 +96,7 @@ table {
 	--hero-orb-2: radial-gradient(circle, rgba(138, 84, 199, 0.15) 0%, transparent 60%);
 	--hero-text-grad: linear-gradient(90deg, #a78bfa 0%, #60a5fa 100%);
 	--video-blend: luminosity;
-	--video-opacity: 0.4;
+	--video-opacity: 0.7;
 
 	/* Adaptive variables for inline styles */
 	--easy-text: rgba(255, 255, 255, 0.7);
@@ -175,7 +175,7 @@ table {
 	--hero-orb-2: radial-gradient(circle, rgba(232, 93, 4, 0.08) 0%, transparent 60%);
 	--hero-text-grad: linear-gradient(90deg, var(--gold) 0%, var(--orange) 100%);
 	--video-blend: overlay;
-	--video-opacity: 0.3;
+	--video-opacity: 0.6;
 
 	/* Adaptive variables for inline styles */
 	--easy-text: var(--smoke);
