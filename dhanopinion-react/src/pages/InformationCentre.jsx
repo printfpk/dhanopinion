@@ -5,13 +5,10 @@ import { RevealChar } from '../components/Animations'
 
 import { allArticles } from '../data/articles'
 
-const ITEMS_PER_PAGE = 10;
-
 export default function InformationCentre() {
   const [keyword, setKeyword] = useState('')
   const [category, setCategory] = useState('Category...')
   const [dateRange, setDateRange] = useState('Select Date Range')
-  const [currentPage, setCurrentPage] = useState(1)
 
   const filtered = useMemo(() => {
     return allArticles.filter(a => {
@@ -22,20 +19,8 @@ export default function InformationCentre() {
     });
   }, [keyword, category, dateRange])
 
-  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
-
-  // Update current page if filters change
-  useMemo(() => { setCurrentPage(1) }, [filtered.length])
-
-  const paginated = filtered.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
-
   const categories = ['Category...', ...new Set(allArticles.map(a => a.category))].sort()
   const dates = ['Select Date Range', 'January', 'April', 'August', 'September', 'October']
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 300, behavior: 'smooth' });
-  }
 
   return (
     <>
@@ -91,19 +76,18 @@ export default function InformationCentre() {
             <div style={{ minHeight: '600px' }}>
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={currentPage + category + keyword + dateRange}
+                  key={category + keyword + dateRange}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 10 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {paginated.map((a) => (
+                  {filtered.map((a) => (
                     <div key={a.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                      <Link
-                        to={a.to}
+                      <Link to={a.to}
                         style={{ display: 'block', padding: '24px 0', textDecoration: 'none', transition: 'padding-left 0.3s ease' }}
                         className="article-link-hover"
-                      >
+                       target="_blank" rel="noopener noreferrer">
                         <h3 style={{ fontSize: '17px', fontFamily: 'var(--font-heading)', color: 'var(--pure)', fontWeight: 300, marginBottom: '8px', lineHeight: 1.4 }}>
                           {a.title}
                         </h3>
@@ -114,53 +98,11 @@ export default function InformationCentre() {
                     </div>
                   ))}
                   {filtered.length === 0 && (
-                    <div style={{ color: 'var(--smoke)', padding: '2rem 0' }}>No articles match your filters.</div>
+                    <div style={{ padding: '2rem 0' }}>No articles match your filters.</div>
                   )}
                 </motion.div>
               </AnimatePresence>
             </div>
-
-            {/* Pagination Controls */}
-            {totalPages > 1 && (
-              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px', marginTop: '40px', paddingBottom: '40px' }}>
-                <button
-                  onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-                  disabled={currentPage === 1}
-                  style={{ background: 'none', border: 'none', color: currentPage === 1 ? 'rgba(255,255,255,0.3)' : 'var(--pure)', cursor: currentPage === 1 ? 'default' : 'pointer', fontSize: '15px', fontWeight: 500 }}
-                >
-                  Prev
-                </button>
-
-                {[...Array(totalPages)].map((_, idx) => {
-                  const p = idx + 1;
-                  return (
-                    <button
-                      key={p}
-                      onClick={() => handlePageChange(p)}
-                      style={{
-                        background: 'none',
-                        border: 'none',
-                        color: currentPage === p ? 'var(--gold)' : 'var(--pure)',
-                        cursor: 'pointer',
-                        fontSize: '15px',
-                        fontWeight: 600,
-                        padding: '4px 8px'
-                      }}
-                    >
-                      {p}
-                    </button>
-                  )
-                })}
-
-                <button
-                  onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
-                  disabled={currentPage === totalPages}
-                  style={{ background: 'none', border: 'none', color: currentPage === totalPages ? 'rgba(255,255,255,0.3)' : 'var(--pure)', cursor: currentPage === totalPages ? 'default' : 'pointer', fontSize: '15px', fontWeight: 500 }}
-                >
-                  Next
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </section>

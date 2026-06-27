@@ -76,6 +76,9 @@ table {
 	--hairline: rgba(255, 255, 255, 0.06);
 	--hairline-hover: rgba(255, 255, 255, 0.12);
 
+	/* ── Underline hover ── */
+	--underline-hover: rgba(255, 255, 255, 0.3);
+
 	/* ── Max ── */
 	--max: 1120px;
 	--max-narrow: 900px;
@@ -158,6 +161,9 @@ table {
 	--hairline: rgba(0, 0, 0, 0.06);
 	--hairline-hover: rgba(0, 0, 0, 0.12);
 
+	/* ── Underline hover ── */
+	--underline-hover: rgba(0, 0, 0, 0.3);
+
 	/* ── Component Backgrounds ── */
 	--nav-bg: rgba(252, 251, 247, 0.85);
 	--nav-bg-hover: rgba(252, 251, 247, 0.95);
@@ -225,13 +231,13 @@ body {
 	line-height: 1.6;
 	color: var(--smoke);
 	background: var(--black);
-	overflow-x: hidden;
+	overflow-x: clip;
 	width: 100%;
 	max-width: 100vw;
 }
 
 #root {
-	overflow-x: hidden;
+	overflow-x: clip;
 	width: 100%;
 	max-width: 100vw;
 	position: relative;
@@ -324,13 +330,16 @@ img {
 	font-weight: 400;
 	line-height: 1.75;
 	color: var(--smoke);
-	transition: color 0.3s ease, text-decoration-color 0.3s ease;
-	text-decoration: underline transparent;
+	transition: color 0.3s ease, text-decoration-color 0.3s ease, -webkit-text-stroke 0.2s ease;
+	text-decoration: underline;
+	text-decoration-color: transparent;
 	text-underline-offset: 4px;
+	-webkit-text-stroke: 0px transparent;
 }
 
 .t-body:hover {
-	text-decoration-color: var(--gold);
+	-webkit-text-stroke: 0.3px currentColor;
+	text-decoration-color: var(--underline-hover);
 	color: var(--pure);
 }
 
@@ -339,13 +348,16 @@ img {
 	font-weight: 400;
 	line-height: 1.75;
 	color: var(--smoke);
-	transition: color 0.3s ease, text-decoration-color 0.3s ease;
-	text-decoration: underline transparent;
+	transition: color 0.3s ease, text-decoration-color 0.3s ease, -webkit-text-stroke 0.2s ease;
+	text-decoration: underline;
+	text-decoration-color: transparent;
 	text-underline-offset: 4px;
+	-webkit-text-stroke: 0px transparent;
 }
 
 .t-body-lg:hover {
-	text-decoration-color: var(--gold);
+	-webkit-text-stroke: 0.3px currentColor;
+	text-decoration-color: var(--underline-hover);
 	color: var(--pure);
 }
 
@@ -364,7 +376,7 @@ img {
 
 .elementor-widget-text-editor p:hover,
 .elementor-widget-text-editor li:hover {
-	text-decoration-color: var(--gold);
+	text-decoration-color: var(--underline-hover);
 	color: var(--pure);
 }
 
@@ -702,7 +714,7 @@ img {
 /* ── Teal Band (Superhuman CTA) ── */
 .teal-band {
 	background: var(--teal);
-	padding: var(--sp-9) 0 120px;
+	padding: var(--sp-9) 0;
 	position: relative;
 	overflow: hidden;
 }
@@ -710,22 +722,6 @@ img {
 .teal-band>div {
 	position: relative;
 	z-index: 1;
-}
-
-.teal-band::after {
-	content: "";
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: -1px;
-	height: 90px;
-	background-color: var(--black);
-	-webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path d='M0,40 C120,80 240,0 360,40 C480,80 600,0 720,40 C840,80 960,0 1080,40 C1200,80 1320,0 1440,40 L1440,120 L0,120 Z' fill='black'/></svg>") no-repeat;
-	mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path d='M0,40 C120,80 240,0 360,40 C480,80 600,0 720,40 C840,80 960,0 1080,40 C1200,80 1320,0 1440,40 L1440,120 L0,120 Z' fill='black'/></svg>") no-repeat;
-	-webkit-mask-size: 100% 100%;
-	mask-size: 100% 100%;
-	pointer-events: none;
-	z-index: 0;
 }
 
 /* ── Wave Distortion Utilities ── */

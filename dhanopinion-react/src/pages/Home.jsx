@@ -302,7 +302,7 @@ export default function Home() {
 								))}
 
 								{/* ── NPS Promo Card ── */}
-								<Link to="/2023/08/20/national-pension-system-nps/" style={{ textDecoration: "none", display: "block" }}>
+								<Link to="/2023/08/20/national-pension-system-nps/" style={{ textDecoration: "none", display: "block" }} target="_blank" rel="noopener noreferrer">
 									<motion.div
 										initial={{ opacity: 0, y: 24 }}
 										animate={{ opacity: 1, y: 0 }}
@@ -370,8 +370,7 @@ export default function Home() {
 									cols={4}
 									className="g-4"
 									renderCard={(s) => (
-										<Link
-											to={s.to}
+										<Link to={s.to}
 											className="card"
 											style={{
 												textDecoration: "none",
@@ -386,7 +385,7 @@ export default function Home() {
 												gap: 0,
 												padding: "16px 12px",
 											}}
-										>
+										 target="_blank" rel="noopener noreferrer">
 											{/* Icon — double ring circle */}
 											<div
 												style={{
@@ -400,6 +399,7 @@ export default function Home() {
 													alignItems: "center",
 													justifyContent: "center",
 													fontSize: 20,
+													color: "#b08930",
 													flexShrink: 0,
 													marginBottom: 8,
 												}}
@@ -705,7 +705,7 @@ export default function Home() {
 						The philosophy, strategy and suggestions shared on these pages are of universal relevance and should deliver value to every investor. Should you wish to seek a confidential, one-on-one, paid consulting with one of our experts, kindly click the button below. Personalised consulting is expected to be launched in the future. At this time you will be joining a wait-list. We will reach out when the service comes on-stream and a slot becomes available to arrange a session at a mutually convenient time.
 					</p>
 					<motion.div {...fade(0.5)}>
-						<Link to="/consulting-waitlist" className="btn btn-white" style={{ padding: "14px 28px" }}>
+						<Link to="/consulting-waitlist" className="btn btn-white" style={{ padding: "14px 28px" }} target="_blank" rel="noopener noreferrer">
 							<HoverFlip text="I would like a personalised consulting session" />
 						</Link>
 					</motion.div>

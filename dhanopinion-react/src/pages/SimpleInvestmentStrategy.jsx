@@ -109,11 +109,11 @@ export default function SimpleInvestmentStrategy() {
                 </div>
                 <div>
                   {item.link ? (
-                    <Link to={item.link} className="btn btn-gold btn-sm row-action" style={{ whiteSpace: 'nowrap' }}>
+                    <Link to={item.link} className="btn btn-gold btn-sm row-action" style={{ whiteSpace: 'nowrap' }} target="_blank" rel="noopener noreferrer">
                       <HoverFlip text="Know More" />
                     </Link>
                   ) : (
-                    <span className="btn btn-sm row-action" style={{ whiteSpace: 'nowrap', opacity: 0.35, cursor: 'default', border: '1px solid var(--hairline)', color: 'var(--smoke)' }}>
+                    <span className="btn btn-sm row-action" style={{ whiteSpace: 'nowrap', opacity: 0.35, cursor: 'default', border: '1px solid var(--hairline)' }}>
                       Coming Soon
                     </span>
                   )}

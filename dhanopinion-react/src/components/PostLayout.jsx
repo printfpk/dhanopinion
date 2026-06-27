@@ -62,13 +62,17 @@ export default function PostLayout({ title, children }) {
         .post-content ul,.post-content ol{margin-bottom:1.25em;padding-left:1.5em}
         .post-content li{margin-bottom:.5em}
         .post-content p, .post-content li {
-          transition: color 0.3s ease, text-decoration-color 0.3s ease;
-          text-decoration: underline transparent;
-          text-underline-offset: 4px;
+          text-decoration: underline;
+          text-decoration-color: transparent;
+          text-underline-offset: 5px;
+          text-decoration-thickness: 1px;
+          -webkit-text-stroke: 0px transparent;
+          transition: color 0.3s ease, text-decoration-color 0.3s ease, -webkit-text-stroke 0.2s ease;
         }
         .post-content p:hover, .post-content li:hover {
-          text-decoration-color: var(--gold);
           color: var(--pure);
+          -webkit-text-stroke: 0.3px currentColor;
+          text-decoration-color: var(--underline-hover);
         }
         .post-content strong{color:var(--pure);font-weight:600}
         .post-content a{color:var(--gold);text-decoration:underline;text-decoration-color:rgba(212,168,83,.3);text-underline-offset:3px;transition:text-decoration-color .2s}

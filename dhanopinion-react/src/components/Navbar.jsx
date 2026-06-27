@@ -10,9 +10,8 @@ const links = [
   { label: 'Simple Investment Strategy', to: '/simple-investment-strategy' },
   { label: 'Investment Philosophy', to: '/investment-philosophy' },
   { label: 'Case Studies', to: '/case-studies' },
-  { label: 'Information Centre', to: '/information-centre' },
   { label: 'Steps to Success', to: '/steps-to-investing-success' },
-  { label: 'About Us', to: '/about-us' },
+  { label: 'Information Centre', to: '/information-centre' },
 ]
 
 export default function Navbar() {
@@ -41,22 +40,22 @@ export default function Navbar() {
         width: '100%'
       }}>
         {/* Single row: Logo + Desktop Nav + Icons */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 32px', margin: '0 auto', maxWidth: 1400, height: 72 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', margin: '0 auto', maxWidth: 1400, height: 72 }}>
           {/* Logo */}
-          <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', position: 'relative', width: '210px', height: '56px', overflow: 'hidden', flexShrink: 0 }}>
+          <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', position: 'relative', width: '300px', height: '68px', overflow: 'hidden', flexShrink: 0 }}>
             <img
               src={theme === 'dark' ? '/assets/images/dhan-logo-dark.png' : '/assets/images/dhan-logo-light.png'}
               alt="Dhan Opinion"
-              style={{ position: 'absolute', top: '50%', left: '0', transform: 'translateY(-48%)', width: '210px', height: 'auto' }}
+              style={{ position: 'absolute', top: '50%', left: '0', transform: 'translateY(-48%)', width: '300px', height: 'auto' }}
             />
           </Link>
 
           <div className="nav-desktop-links" style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'nowrap' }}>
             {links.map(l => (
               <Link key={l.to} to={l.to} className="desktop-nav-link" style={{
-                fontSize: 11, fontWeight: 700, letterSpacing: '.05em', textTransform: 'uppercase',
+                fontSize: 13, fontWeight: 700, letterSpacing: '.05em', textTransform: 'uppercase',
                 color: pathname.startsWith(l.to) ? 'var(--orange)' : 'var(--pure)',
-                textDecoration: 'none', padding: '8px 16px', display: 'flex', alignItems: 'center', whiteSpace: 'nowrap'
+                textDecoration: 'none', padding: '8px 12px', display: 'flex', alignItems: 'center', whiteSpace: 'nowrap'
               }}>
                 <span className="dot"></span>
                 <span className="text">{l.label}</span>

@@ -1,7 +1,7 @@
 import PostLayout from '../../components/PostLayout'
 
 export default function Post_government_savings_schemes() {
-  const tdStyle = { padding: '12px 16px', color: 'var(--smoke)', fontSize: 15, borderBottom: '1px solid var(--hairline)' }
+  const tdStyle = { padding: '12px 16px', fontSize: 15, borderBottom: '1px solid var(--hairline)' }
   const thStyle = { padding: '12px 16px', color: 'var(--pure)', fontSize: 13, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', borderBottom: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.04)' }
   const trHover = { transition: 'background 0.2s' }
 

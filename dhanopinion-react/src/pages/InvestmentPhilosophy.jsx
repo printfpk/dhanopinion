@@ -105,7 +105,7 @@ export default function InvestmentPhilosophy() {
                   {item.text}
                 </p>
                 <div>
-                  <Link to={item.link} className="btn btn-gold btn-sm row-action" style={{ whiteSpace: 'nowrap' }}>
+                  <Link to={item.link} className="btn btn-gold btn-sm row-action" style={{ whiteSpace: 'nowrap' }} target="_blank" rel="noopener noreferrer">
                     <HoverFlip text="Explore →" />
                   </Link>
                 </div>

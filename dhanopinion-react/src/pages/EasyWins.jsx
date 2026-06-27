@@ -87,7 +87,7 @@ export default function EasyWins() {
                     document.getElementById('cards-section')?.scrollIntoView({ behavior: 'smooth' });
                   }}
                   style={{
-                    background: "var(--easy-btn)",
+                    background: "var(--pure)",
                     color: "var(--black)",
                     border: "none",
                     padding: "16px 36px",
@@ -95,7 +95,7 @@ export default function EasyWins() {
                     fontSize: "16px",
                     fontWeight: 600,
                     cursor: "pointer",
-                    boxShadow: "var(--easy-btn-shadow)",
+                    boxShadow: "none",
                   }}
                 >
                   Know More
@@ -136,7 +136,7 @@ export default function EasyWins() {
               cols={4}
               className="g-4"
               renderCard={(item) => (
-                <Link to={item.to} className="card starting-card" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%', minHeight: 240, padding: '36px 28px 28px', alignItems: 'flex-start' }}>
+                <Link to={item.to} className="card starting-card" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%', minHeight: 240, padding: '36px 28px 28px', alignItems: 'flex-start' }} target="_blank" rel="noopener noreferrer">
                   <h3 className="t-h3" style={{ marginBottom: 8, color: '#1a1714' }}><HoverFlip text={item.title} /></h3>
                   <p className="card-desc" style={{ flex: 1, opacity: 0.9, fontSize: 14, lineHeight: 1.65, color: '#5a4f45', margin: '10px 0 0' }}>{item.desc}</p>
                   <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--orange)', marginTop: 24 }}><HoverFlip text="READ MORE →" /></span>

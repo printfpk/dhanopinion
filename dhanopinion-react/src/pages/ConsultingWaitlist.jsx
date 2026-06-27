@@ -39,15 +39,15 @@ export default function ConsultingWaitlist() {
 							alignSelf: "flex-start", 
 							padding: "14px 28px", 
 							borderRadius: "8px", 
-							background: "#d9534f", 
+							background: "#000000", 
 							color: "#ffffff", 
 							border: "none", 
 							fontWeight: 700, 
 							cursor: "pointer", 
 							transition: "all 0.2s ease"
 						}}
-							onMouseEnter={e => { e.currentTarget.style.background = "#c9302c"; }}
-							onMouseLeave={e => { e.currentTarget.style.background = "#d9534f"; }}
+							onMouseEnter={e => { e.currentTarget.style.background = "#333333"; }}
+							onMouseLeave={e => { e.currentTarget.style.background = "#000000"; }}
 						>
 							Put me on the waitlist
 						</button>
