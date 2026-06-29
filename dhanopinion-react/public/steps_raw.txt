@@ -1,0 +1,33 @@
+﻿powershell : At line:1 char:280
+At line:1 char:1
++ powershell -Command "Add-Type -AssemblyName System.IO.Compression.Fil ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (At line:1 char:280:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
++ ... ve steps.docx');  = .GetEntry('word/document.xml');  = .Open();  = Ne ...
++                                                                  ~
+An expression was expected after '('.
+At line:1 char:320
++ ... ment.xml');  = .Open();  = New-Object System.IO.StreamReader();  = .R ...
++                                                                  ~
+An expression was expected after '('.
+At line:1 char:337
++ ... pen();  = New-Object System.IO.StreamReader();  = .ReadToEnd(); .Clos ...
++                                                                  ~
+An expression was expected after '('.
+At line:1 char:347
++ ... New-Object System.IO.StreamReader();  = .ReadToEnd(); .Close(); .Clos ...
++                                                                  ~
+An expression was expected after '('.
+At line:1 char:357
++ ...  System.IO.StreamReader();  = .ReadToEnd(); .Close(); .Close(); .Disp ...
++                                                                  ~
+An expression was expected after '('.
+At line:1 char:369
++ ... treamReader();  = .ReadToEnd(); .Close(); .Close(); .Dispose();  -rep ...
++                                                                  ~
+An expression was expected after '('.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : ExpectedExpression
+ 

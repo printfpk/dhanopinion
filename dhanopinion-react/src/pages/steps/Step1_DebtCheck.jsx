@@ -15,12 +15,12 @@ export default function Step1_DebtCheck() {
       </p>
 
       <ul style={{ listStyle: 'none', padding: 0, marginBottom: '24px' }}>
-        <li style={{ marginBottom: '12px', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-          <span style={{ minWidth: '40px' }}>If Yes,</span>
+        <li style={{ marginBottom: '4px', display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+          <span style={{ whiteSpace: 'nowrap' }}>If Yes,</span>
           <span className="t-body">paying down debt may be better than investing as investment returns are unlikely to exceed 10% p.a. sustainably.</span>
         </li>
-        <li style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-          <span style={{ minWidth: '40px' }}>If No,</span>
+        <li style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+          <span style={{ whiteSpace: 'nowrap' }}>If No,</span>
           <span className="t-body">you can move to the next step and initiate the investing journey.</span>
         </li>
       </ul>
