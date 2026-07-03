@@ -3,7 +3,8 @@ import PostLayout from '../../components/PostLayout'
 
 export default function Post_risk_and_return_profile_of_equity() {
   return (
-    <PostLayout title="Risk and Return profile of Equity">
+    <PostLayout title="Equity - Risk and Return profile">
+      <p style={{ color: 'var(--post-title)', fontWeight: '600' }}>March 30, 2025</p>
       <h3>The nature of equity investing</h3>
 
       <p>Equity is designed to bear risk in bad times.</p>

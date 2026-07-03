@@ -3,12 +3,13 @@ import PostLayout from '../../components/PostLayout'
 export default function Post_senior_citizen_saving_scheme() {
   return (
     <PostLayout
-      title="Senior Citizen Saving Scheme"
-      date="September 1, 2023"
+      title="Senior Citizen Saving Scheme (SCSS)"
+      date="April 23, 2026"
       author="Dhanopinion"
       readTime="5 min read"
       category="Government scheme"
     >
+      <p style={{ color: 'var(--post-title)', fontWeight: '600' }}>April 23, 2026</p>
       <p>The Senior Citizens Savings Scheme (SCSS) account is designed to offer superior returns to senior citizens, along with security of the money. It could be viewed as a retirement benefit account as it is only available to people above 60, with some exceptions. Along with excellent returns and safety, the account also offers tax benefits.</p>
       <p>By paying out interest every quarter to a designated account, the scheme fulfils one of the primary objectives of the scheme of providing regular income for seniors.</p>
       <p>The account can be opened with the Post Office or with designated public and private sector banks.</p>

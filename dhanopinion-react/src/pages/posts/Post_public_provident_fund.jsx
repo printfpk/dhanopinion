@@ -4,11 +4,12 @@ export default function Post_public_provident_fund() {
   return (
     <PostLayout
       title="Public Provident Fund"
-      date="October 1, 2023"
+      date="May 23, 2026"
       author="Dhanopinion"
       readTime="5 min read"
       category="Government scheme"
     >
+      <p style={{ color: 'var(--post-title)', fontWeight: '600' }}>May 23, 2026</p>
       <p>The Public Provident Fund (PPF) scheme is a savings scheme conceptualised by the National Savings Institute and offered by the government of India. It provides handsome returns along with tax benefits. However, the new income tax code which seeks to simplify the process, has done away with some of the benefits available on account of investing in specified schemes. Hence, please ascertain the tax implications prior to investing.</p>
       <p>The rate of interest is subject to change quarterly; however, the change generally happens annually. Accounts can be opened with the Post Office as well as with public sector and designated private banks.</p>
       <p>While pension funds create regular income after retirement, provident funds yield a lumpsum amount at or around the time of retirement. Non-organized workers, including small business owners, do not have access to any organized form of getting such a lumpsum amount except for their own savings.</p>

@@ -4,6 +4,7 @@ import PostLayout from '../../components/PostLayout'
 export default function Post_why_keeping_money_in_a_liquid_mutual_fund_is_better_for_short_term_needs_than_keeping_it_in_a_savings_account() {
   return (
     <PostLayout title="A liquid mutual fund is better for short-term needs than a bank savings account">
+      <p style={{ color: 'var(--post-title)', fontWeight: '600' }}>April 10, 2026</p>
 
       <p>While the individual investor will have a broad understanding of what a Mutual Fund is, he/ she may not be aware of the range.</p>
 
