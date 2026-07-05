@@ -4,7 +4,7 @@ import PostLayout from '../../components/PostLayout'
 export default function Post_inflation_real_value_and_the_money_illusion() {
   return (
     <PostLayout title="Inflation, Real Value and the Money Illusion">
-      <p style={{ color: 'var(--post-title)', fontWeight: '600' }}>March 26, 2026</p>
+      <p className="post-date">March 26, 2026</p>
       <p>We are accustomed to using money as a stable store of value over short horizons. We have a tendency of evaluating portfolio outcomes and risk in nominal terms rather than in real terms which is what really matters over long horizons.</p>
       <p>What do we mean by “nominal terms?” What is “real terms?”</p>
       <p>Let us take an example.</p>
@@ -29,18 +29,18 @@ export default function Post_inflation_real_value_and_the_money_illusion() {
       </ul>
       <p>The International Monetary Fund (IMF) reports India’s inflation since 1960 as follows:</p>
       <p><MediaSkeleton type="img" loading="lazy" src="/assets/images/info_centre/doc_image_1.png" /></p>
-      <p>Source: World Bank</p>
+      <p>Source: <a href="https://data.worldbank.org/indicator/fp.cpi.totl?locations=in" target="_blank" rel="noopener noreferrer">World Bank</a></p>
       <p>We can see that inflation based on consumer prices has hovered at around 5% annually over the last quarter of a century, with a spike towards the end of the first decade. Inflation in the last century has been much higher.</p>
       <p>What this means is that the value of what a Rupee could buy has become smaller over time.</p>
       <p>How much smaller?</p>
       <p>IMF tells us how much in the chart below:</p>
       <p><MediaSkeleton type="img" loading="lazy" src="/assets/images/info_centre/doc_image_2.png" /></p>
-      <p>Source: World Bank</p>
+      <p>Source: <a href="https://data.worldbank.org/indicator/fp.cpi.totl?locations=in" target="_blank" rel="noopener noreferrer">World Bank</a></p>
       <p>An item that cost ₹2.50 in 1960 cost ₹100 in 2010 and ₹220 in ₹227 in 2024.</p>
-      <p>According to another calculator provided by World Data , if you could buy a certain basket of goods and services for ₹ 1,000 in 1961, in 2022, 61 years later, you need ₹ 78,071 to buy it.</p>
-      <p>Another way of looking at the decline in the value of Rupee over time is its value against the US dollar, as shown in the chart below, produced by XE.com.</p>
+      <p>According to another calculator provided by <a href="https://www.worlddata.info/asia/india/inflation-rates.php" target="_blank" rel="noopener noreferrer">World Data</a>, if you could buy a certain basket of goods and services for ₹ 1,000 in 1961, in 2022, 61 years later, you need ₹ 78,071 to buy it.</p>
+      <p>Another way of looking at the decline in the value of Rupee over time is its value against the US dollar, as shown in the chart below, produced by <a href="https://www.xe.com/currencycharts/?from=usd&to=inr&view=10y" target="_blank" rel="noopener noreferrer">XE.com</a>.</p>
       <p><MediaSkeleton type="img" loading="lazy" src="/assets/images/info_centre/doc_image_3.png" /></p>
-      <p>Source: XE.com</p>
+      <p>Source: <a href="https://www.xe.com/currencycharts/?from=usd&to=inr&view=10y" target="_blank" rel="noopener noreferrer">XE.com</a></p>
       <p>In June 2016, one could buy one dollar with ₹67. In June 2026, one needs more than ₹96 to buy the same one dollar.</p>
     </PostLayout>
   )

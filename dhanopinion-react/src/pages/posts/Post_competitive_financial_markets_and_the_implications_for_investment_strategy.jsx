@@ -3,7 +3,7 @@ import PostLayout from '../../components/PostLayout'
 export default function Post_competitive_financial_markets_and_the_implications_for_investment_strategy() {
   return (
     <PostLayout title="Competitive Financial Markets and the implications for investment strategy">
-      <p style={{ color: 'var(--post-title)', fontWeight: '600' }}>April 3, 2026</p>
+      <p className="post-date">April 3, 2026</p>
       <p>Financial markets are very competitive. There are many smart well-resourced players looking to find undervalued securities to buy and overvalued securities to sell. When people find an undervalued security, they buy it and that takes the price higher and when they find an overvalued security, they sell it taking the price lower. A lot of the players are very large institutions with a lot of resources and there are many of them. With lots of people competing furiously to find the mispriced securities, the result is that securities tend to be reasonably efficiently priced. As a result, it is very hard to beat the market.</p>
 
       <p>Historical evidence in the largest market with the most research on historical outcomes, which is the US market, shows that even most professional investors fail to beat the market after costs and fees. If large well-resourced institutions with teams trying to outperform the market have a hard time being successful, it is reasonable to expect that individuals who have much less time, training and resources are likely to fall short. The evidence shows this to be the case. If one accepts this premise that the very competitive nature of markets makes it hard to beat the “market”, the natural implication is that one should not invest a lot of time and resources in picking stocks, picking mutual funds or timing the market because outperforming on any of these dimensions means that one is winning the competitive game to beat most of the other people playing this game. And that, we know, is extremely difficult.</p>
@@ -16,11 +16,11 @@ export default function Post_competitive_financial_markets_and_the_implications_
 
       <p>Most mutual funds fail to keep up with their benchmark indices. This is true in the US and is true in India.</p>
 
-      <p>Independent investment research firm Dalbar Inc., an independent research firm, publishes an annual Quantitative Analysis of Investor Behavior report, or QAIB, for retail investors in the US.</p>
+      <p>Independent investment research firm Dalbar Inc., an independent research firm, publishes an annual <a href="https://www.ifa.com/articles/understanding-investor-behavior-portfolio-performance" target="_blank" rel="noopener noreferrer">Quantitative Analysis of Investor Behavior report</a>, or QAIB, for retail investors in the US.</p>
 
       <p>It consistently shows that people are “more often than not their own worst enemies when it comes to investing, often succumbing to short-term strategies such as market timing or performance chasing.” It concludes that retail investors perform poorly when compared to market benchmarks or index funds tracking the market.</p>
 
-      <p>More details from the report can be accessed in our article: Index investing Strategy.”</p>
+      <p>More details from the report can be accessed in our article: <a href="/2023/08/11/index-funds/">Index investing Strategy</a>.”</p>
 
       <h2>Individual or Institution – who you are changes investment choices</h2>
 

@@ -4,8 +4,8 @@ import PostLayout from '../../components/PostLayout'
 export default function Post_risk_and_return_profile_of_equity() {
   return (
     <PostLayout title="Equity - Risk and Return profile">
-      <p style={{ color: 'var(--post-title)', fontWeight: '600' }}>March 30, 2025</p>
-      <h3>The nature of equity investing</h3>
+      <p className="post-date">March 30, 2025</p>
+      <h2>The nature of equity investing</h2>
 
       <p>Equity is designed to bear risk in bad times.</p>
 
@@ -13,7 +13,7 @@ export default function Post_risk_and_return_profile_of_equity() {
 
       <p>Equity markets returns have been very attractive historically, particularly over long horizons. However, the trade-off is that one is exposed to significant risk of losses. When one invests in equity, one is taking risk while hoping to generate higher returns than fixed income investments and interest rate investments like government or corporate bonds or bank fixed deposits.</p>
 
-      <h3>Understanding equity drawdown</h3>
+      <h2>Understanding equity drawdown</h2>
 
       <p>A drawdown, or equity drawdown, is a key measure to understand the maximum loss an investor could have made during a past period.</p>
 
@@ -42,7 +42,7 @@ export default function Post_risk_and_return_profile_of_equity() {
         <li>A 70% drawdown requires a 233% gain to recover.</li>
       </ul>
 
-      <h3>Historical performance</h3>
+      <h2>Historical performance</h2>
 
       <p>The US markets have the longest and best statistics available and are also the largest equity markets, estimated to account for 60% of global capitalization weighted indices. They are a good place to start to get a sense of historical returns for equity. Investing is about making choices and so one should look at the returns on equity and other assets as well to make an informed choice.</p>
 
@@ -50,13 +50,13 @@ export default function Post_risk_and_return_profile_of_equity() {
 
       <p><MediaSkeleton type="img" loading="lazy" src="/assets/images/info_centre/doc_image_4.png" /></p>
       
-      <p>Source: Northern Trust</p>
+      <p>Source: <a href="https://www.northerntrust.com/content/dam/northerntrust/pws/nt/documents/commentary/wealth-management/a-history-of-drawdowns.pdf" target="_blank" rel="noopener noreferrer">Northern Trust</a></p>
 
       <p>Extracts from the same data, differently presented, capture the maximum drawdown, the lowest point reached since the previous peak, across different drawdown events in history. The Great Depression is clearly the sharpest, will a fall in value of over 80%.</p>
 
       <p><MediaSkeleton type="img" loading="lazy" src="/assets/images/info_centre/doc_image_5.png" /></p>
       
-      <p>Source: Northern Trust</p>
+      <p>Source: <a href="https://www.northerntrust.com/content/dam/northerntrust/pws/nt/documents/commentary/wealth-management/a-history-of-drawdowns.pdf" target="_blank" rel="noopener noreferrer">Northern Trust</a></p>
 
       <p>The Great Depression took 151 months to recover, nearly 13 years, even though the drawdown had taken only 34 months.</p>
 
@@ -66,7 +66,7 @@ export default function Post_risk_and_return_profile_of_equity() {
 
       <p>Indian equity is not immune to drawdowns either. A LinkedIn post by Sonali Das states that between January and October 2008, the Nifty 50 witnessed a drawdown of over 60%. Though the race to the bottom took less than a year, the recovery took over 5 years.</p>
 
-      <h3>The challenge for investors</h3>
+      <h2>The challenge for investors</h2>
 
       <p>Herein lies one of the great challenges of stock investing. Though values did eventually recover, they took many years. If an investor needed to cash out during this period, he/ she would have had to invariably book losses. This is also one of the reasons why investors are advised to reduce their equity exposure as they age. At a young age one has time to recover from drawdowns. But, at an advanced age, one may not.</p>
 
@@ -74,7 +74,7 @@ export default function Post_risk_and_return_profile_of_equity() {
 
       <p>Looking through historical data, one can get some sense of possible losses. When investing in a well-diversified portfolio of equities, one should be prepared that one has a loss of 30 to 50%. One cannot rule out the possibility of losses of 80% or even more.</p>
 
-      <h3>Recommendations for prudent investors</h3>
+      <h2>Recommendations for prudent investors</h2>
 
       <p>The good thing is that, historically, values have recovered over time. Even if you were looking down the barrel of the next Great Depression, history shows us that there was a light at the end of the tunnel.</p>
 
@@ -87,7 +87,7 @@ export default function Post_risk_and_return_profile_of_equity() {
         <li>Monitor – The investor cannot make investing a one-time activity. The portfolio needs to be monitored, along with keeping an eye on the broader market with the help of information provided by analysts. Over time, an investor should develop a set of indicators and tools to be monitored on a regular basis.</li>
       </ul>
 
-      <h3>Conclusion</h3>
+      <h2>Conclusion</h2>
 
       <p>Does this mean that equities do not have much risk if one is prepared to hold for long periods of time and follow a prudent approach? The answer is no. Just because the markets came back historically, does not mean that they will recover fully from large losses in the future. Owners of equity are taking a risk and should be prepared for a permanent loss and the loss could be significant. However, given the historical experience – selling after a large loss may not be well advised. If one does take equity risk, it is worthwhile to plan to ride through large losses rather than sell when the pain is highest.</p>
 

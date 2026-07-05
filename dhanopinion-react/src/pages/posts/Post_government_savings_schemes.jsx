@@ -17,63 +17,63 @@ export default function Post_government_savings_schemes() {
 
   return (
     <PostLayout title="Government Savings Schemes">
-      <p style={{ color: 'var(--post-title)', fontWeight: '600' }}>April 14, 2026</p>
+      <p className="post-date">April 14, 2026</p>
       
-      <p className="t-body mb-5">
+      <p>
         The government offers a number of investment options for the individual investor. On account of a lack of awareness about these schemes (many money managers may not suggest these schemes as they do not receive a commission) as well as hesitation in dealing with a machinery that is considered bureaucratic and slow, many eligible people do not invest in them.
       </p>
-      <p className="t-body mb-5">
+      <p>
         The loss is their own as these schemes offer great returns, better than fixed income schemes like fixed deposits and bonds, the highest level of security, and tax benefits as well. With online access to account opening and closing gradually expanding, it is also becoming easier to invest in these schemes.
       </p>
-      <p className="t-body mb-6">
+      <p>
         A short list of schemes that you should consider, along with their key features, as currently applicable, are shared below. We hope this will encourage more of you to consider investing in government schemes. The returns, tax implications and features are subject to change. As always, please read the scheme documents to ensure that they are beneficial for your situation.
       </p>
 
-      <p className="t-body mb-4">
+      <p>
         <strong>Table: Government savings schemes for individuals</strong>
       </p>
 
       {/* Table */}
-      <div style={{ overflowX: 'auto', marginBottom: 'var(--sp-8)', borderRadius: 12, border: '1px solid var(--hairline)', background: 'rgba(255,255,255,0.02)' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 580 }}>
+      <div className="table-container">
+        <table>
           <thead>
             <tr>
-              <th style={{ ...thStyle, textAlign: 'left' }}>Scheme</th>
-              <th style={{ ...thStyle, textAlign: 'left' }}>Target Group</th>
-              <th style={{ ...thStyle, textAlign: 'left' }}>Returns (Indicative)</th>
-              <th style={{ ...thStyle, textAlign: 'left' }}>Tenure</th>
+              <th>Scheme</th>
+              <th>Target Group</th>
+              <th>Returns (Indicative)</th>
+              <th>Tenure</th>
             </tr>
           </thead>
           <tbody>
             {rows.map((r, i) => (
-              <tr key={i} style={{ ...trHover, background: 'transparent' }}
+              <tr key={i}
                 onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.03)'}
                 onMouseOut={e => e.currentTarget.style.background = 'transparent'}
               >
-                <td style={{ ...tdStyle, color: 'var(--pure)', fontWeight: 500 }}>{r.scheme}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)' }}>{r.target}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)' }}>{r.returns}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)' }}>{r.tenure}</td>
+                <td>{r.scheme}</td>
+                <td>{r.target}</td>
+                <td>{r.returns}</td>
+                <td>{r.tenure}</td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
+</div>
 
-      <p className="t-body mb-5">
-        The National Savings Institute publishes the applicable rates for different schemes on its website.<br/>
-        An overview of the schemes is also available here.
+      <p>
+        The <a href="https://www.nsiindia.gov.in/(S(gnfsjb45ru0l0pra3kz4vt45))/InternalPage.aspx?Id_Pk=132" target="_blank" rel="noopener noreferrer">National Savings Institute</a> publishes the applicable rates for different schemes on its website.<br/>
+        An overview of the schemes is also available <a href="https://www.nsiindia.gov.in/(S(zlus4x55qtazutywewljk0fl))/InternalPage.aspx?Id_Pk=188" target="_blank" rel="noopener noreferrer">here</a>.
       </p>
 
-      <p className="t-body mb-5">
+      <p>
         With this list, you can pick the one with the highest rates subject to your liquidity preferences and taxability, till you get to the maximum and then move to the next option.
       </p>
-      <p className="t-body mb-8">
-        Details of the National Pension System (NPS), Public Provident Fund (PPF), and Senior Citizens’ Saving Scheme (SCSS) can be accessed on this website by clicking on the names of these schemes here.
+      <p>
+        Details of the <a href="/2023/08/20/national-pension-system-nps/">National Pension System (NPS)</a>, <a href="/2023/10/01/public-provident-fund/">Public Provident Fund (PPF)</a>, and <a href="/2023/09/01/senior-citizen-saving-scheme/">Senior Citizens’ Saving Scheme (SCSS)</a> can be accessed on this website by clicking on the names of these schemes here.
       </p>
 
-      <h3 className="t-h3 mt-10 mb-4">Things to note</h3>
-      <ul className="list-disc pl-5 mb-5 space-y-2">
+      <h2>Things to note</h2>
+      <ul>
         <li>While it is recommended that you go through the scheme details to ensure it suits your requirements, the following are a quick reckoner which apply to most:</li>
         <li>Extremely low or negligible risk as offered by the government of India</li>
         <li>Available through Post Offices, public sector banks and designated private banks</li>

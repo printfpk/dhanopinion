@@ -20,8 +20,8 @@ export default function Post_equity_investing() {
           itemtype="https://schema.org/ListItem"><a itemprop="item" href="/blog/"><span itemprop="name">Blog</span></a><meta itemprop="position" content=" 2" /></span><i class="uicore-separator uicore-i-arrow"></i><span itemprop="itemListElement" itemscope
           itemtype="https://schema.org/ListItem"><a itemprop="item" href="/category/asset-allocation/"><span itemprop="name">Asset Allocation</span></a><meta itemprop="position" content=" 3" /></span><i class="uicore-separator uicore-i-arrow"></i><span itemprop="itemListElement" itemscope
           itemtype="https://schema.org/ListItem" ><span><span itemprop="name">Equity Investing</span><meta itemprop="position" content=" 4" /></span></span></p>
-                            <h1 class="uicore-title uicore-animate h2">
-                                Equity Investing                            </h1>
+                            < class="uicore-title uicore-animate h2">
+                                Equity Investing                            <>
                             <div class="uicore-animate uicore-entry-meta"><span class="ui-blog-date ui-published">August 6, 2023 </span></div>                    </div>
 
                 </header>

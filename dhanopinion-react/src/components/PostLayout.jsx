@@ -53,15 +53,75 @@ export default function PostLayout({ title, children }) {
         .uicore-animate.ui-breadcrumb { display: none !important; }
         .uicore-title { display: none !important; }
         .uicore-entry-meta { display: none !important; }
-        .post-content{font-size:18px;line-height:1.8;color:var(--smoke); overflow-x: hidden; max-width: 100vw;}
-        .post-content h2,.post-content h3,.post-content h4{color:var(--pure);margin-top:2em;margin-bottom:.75em;font-weight:300;font-family:var(--font-heading)}
-        .post-content h2{font-size:26px;letter-spacing:-.01em}
-        .post-content h3{font-size:20px;letter-spacing:-.01em}
-        .post-content h4{font-size:17px}
-        .post-content p{margin-bottom:1.25em}
-        .post-content ul,.post-content ol{margin-bottom:1.25em;padding-left:1.5em}
-        .post-content li{margin-bottom:.5em}
-        .post-content p, .post-content li {
+        
+        .post-content { 
+          font-family: var(--font-body);
+          font-size: 17px; 
+          font-weight: 400;
+          line-height: 1.8; 
+          color: var(--smoke); 
+          overflow-x: hidden; 
+          max-width: 100vw; 
+        }
+        
+        /* Heading Defaults */
+        .post-content h1, .post-content h2, .post-content h3, 
+        .post-content h4, .post-content h5, .post-content h6 {
+          font-family: var(--font-heading);
+          color: var(--pure);
+          font-weight: 400;
+          line-height: 1.3;
+          margin-top: 2em;
+          margin-bottom: 0.75em;
+        }
+        .post-content h1 { font-size: clamp(26px, 4vw, 32px); letter-spacing: -0.01em; }
+        .post-content h2 { font-size: clamp(24px, 3vw, 28px); letter-spacing: -0.01em; }
+        .post-content h3 { font-size: clamp(20px, 2.5vw, 24px); letter-spacing: -0.01em; }
+        .post-content h4 { font-size: clamp(18px, 2vw, 20px); }
+        
+        /* Reduce gap when subheadings immediately follow main headings */
+        .post-content h2 + h3, 
+        .post-content h3 + h4 {
+          margin-top: 0.5em;
+        }
+        
+        /* Paragraphs */
+        .post-content p {
+          margin-bottom: 1.5em;
+          font-size: 17px;
+        }
+        
+        /* Date formatting */
+        .post-content .post-date {
+          font-family: var(--font-body);
+          font-weight: 600;
+          font-size: 14px;
+          color: var(--gold);
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          margin-bottom: 2.5em;
+          margin-top: 1em;
+          border-bottom: 1px solid var(--hairline);
+          padding-bottom: 0.75em;
+          display: inline-block;
+        }
+
+        /* Prevent double margins when a heading immediately follows the date */
+        .post-content .post-date + h1,
+        .post-content .post-date + h2,
+        .post-content .post-date + h3,
+        .post-content .post-date + h4,
+        .post-content .post-date + h5,
+        .post-content .post-date + h6 {
+          margin-top: 0;
+        }
+
+        /* Lists */
+        .post-content ul, .post-content ol { margin-bottom: 1.5em; padding-left: 1.5em; }
+        .post-content li { margin-bottom: 0.5em; }
+        
+        /* Hover underline effect */
+        .post-content p:not(.post-date), .post-content li {
           text-decoration: underline;
           text-decoration-color: transparent;
           text-underline-offset: 5px;
@@ -69,18 +129,23 @@ export default function PostLayout({ title, children }) {
           -webkit-text-stroke: 0px transparent;
           transition: color 0.3s ease, text-decoration-color 0.3s ease, -webkit-text-stroke 0.2s ease;
         }
-        .post-content p:hover, .post-content li:hover {
+        .post-content p:not(.post-date):hover, .post-content li:hover {
           color: var(--pure);
           -webkit-text-stroke: 0.3px currentColor;
           text-decoration-color: var(--underline-hover);
         }
-        .post-content strong{color:var(--pure);font-weight:600}
-        .post-content a{color:var(--gold);text-decoration:underline;text-decoration-color:rgba(212,168,83,.3);text-underline-offset:3px;transition:text-decoration-color .2s}
-        .post-content a:hover{text-decoration-color:var(--gold)}
-        .post-content blockquote{border-left:2px solid var(--gold);padding-left:1.5em;margin:1.5em 0;color:var(--smoke);font-style:italic}
-        .post-content table{width:100%;border-collapse:collapse;margin:1.5em 0}
-        .post-content th,.post-content td{padding:12px 16px;border-bottom:1px solid var(--hairline);text-align:left;font-size:14px}
-        .post-content th{color:var(--pure);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+        
+        .post-content strong { color: var(--pure); font-weight: 600; }
+        .post-content a { color: var(--gold); text-decoration: underline; text-decoration-color: rgba(212,168,83,0.3); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
+        .post-content a:hover { text-decoration-color: var(--gold); }
+        .post-content blockquote { border-left: 2px solid var(--gold); padding-left: 1.5em; margin: 1.5em 0; color: var(--smoke); font-style: italic; }
+        
+        /* Tables */
+        .post-content .table-container { overflow-x: auto; margin: 2em 0; border-radius: 12px; border: 1px solid var(--hairline); background: rgba(255,255,255,0.02); }
+        .post-content table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        .post-content th, .post-content td { padding: 14px 16px; border-bottom: 1px solid var(--hairline); text-align: left; font-size: 15px; }
+        .post-content th { color: var(--pure); font-weight: 600; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(255,255,255,0.04); }
+        .post-content tr:last-child td { border-bottom: none; }
       `}</style>
     </>
   )

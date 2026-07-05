@@ -21,125 +21,125 @@ export default function Post_compound_interest_and_exponential_growth() {
 
   return (
     <PostLayout title="Compounding can deliver exponential growth">
-      <p style={{ color: 'var(--post-title)', fontWeight: '600' }}>March 25, 2026</p>
+      <p className="post-date">March 25, 2026</p>
       
-      <h3 className="t-h3 mt-10 mb-4">Compound interest is an exponential growth phenomenon</h3>
-      <p className="t-body mb-5">
+      <h2>Compound interest is an exponential growth phenomenon</h2>
+      <p>
         We are generally used to thinking in linear terms and not very good at understanding the accumulated effect of small differences in growth rates over long periods of time. The tables below give us the impact of different rates of return over different time horizons, and the difference between simple and compound interest.
       </p>
 
-      <h3 className="t-h3 mt-10 mb-4">Simple interest effect over different periods of time</h3>
+      <h2>Simple interest effect over different periods of time</h2>
       
-      <div style={{ overflowX: 'auto', marginBottom: 'var(--sp-8)', borderRadius: 12, border: '1px solid var(--hairline)', background: 'rgba(255,255,255,0.02)' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 600 }}>
+      <div className="table-container">
+        <table>
           <thead>
             <tr>
-              <th style={{ ...thStyle, textAlign: 'left' }}>Interest rate \ Years 🡪</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>1</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>2</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>3</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>5</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>10</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>25</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>50</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>100</th>
+              <th>Interest rate \ Years 🡪</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>5</th>
+              <th>10</th>
+              <th>25</th>
+              <th>50</th>
+              <th>100</th>
             </tr>
           </thead>
           <tbody>
             {rows1.map((r, i) => (
-              <tr key={i} style={{ ...trHover, background: 'transparent' }}
+              <tr key={i}
                 onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.03)'}
                 onMouseOut={e => e.currentTarget.style.background = 'transparent'}
               >
-                <td style={{ ...tdStyle, color: 'var(--pure)', fontWeight: 500 }}>{r.rate}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y1}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y2}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y3}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y5}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y10}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y25}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y50}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y100}</td>
+                <td>{r.rate}</td>
+                <td>{r.y1}</td>
+                <td>{r.y2}</td>
+                <td>{r.y3}</td>
+                <td>{r.y5}</td>
+                <td>{r.y10}</td>
+                <td>{r.y25}</td>
+                <td>{r.y50}</td>
+                <td>{r.y100}</td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
+</div>
 
-      <p className="t-body mb-5">
+      <p>
         At a return of 1% simple interest p.a., an amount becomes 1.5 times the initial amount in 50 years and twice the original amount in 100 years.<br/>
         At a 5% simple interest return, an amount becomes 3.5 times the initial amount in 50 years and six times the original amount in 100 years.
       </p>
 
-      <h3 className="t-h3 mt-10 mb-4">Compound interest effect over different periods of time</h3>
+      <h2>Compound interest effect over different periods of time</h2>
 
-      <div style={{ overflowX: 'auto', marginBottom: 'var(--sp-8)', borderRadius: 12, border: '1px solid var(--hairline)', background: 'rgba(255,255,255,0.02)' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 600 }}>
+      <div className="table-container">
+        <table>
           <thead>
             <tr>
-              <th style={{ ...thStyle, textAlign: 'left' }}>Interest rate \ Years 🡪</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>1</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>2</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>3</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>5</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>10</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>25</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>50</th>
-              <th style={{ ...thStyle, textAlign: 'right' }}>100</th>
+              <th>Interest rate \ Years 🡪</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>5</th>
+              <th>10</th>
+              <th>25</th>
+              <th>50</th>
+              <th>100</th>
             </tr>
           </thead>
           <tbody>
             {rows2.map((r, i) => (
-              <tr key={i} style={{ ...trHover, background: 'transparent' }}
+              <tr key={i}
                 onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.03)'}
                 onMouseOut={e => e.currentTarget.style.background = 'transparent'}
               >
-                <td style={{ ...tdStyle, color: 'var(--pure)', fontWeight: 500 }}>{r.rate}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y1}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y2}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y3}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y5}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y10}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y25}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y50}</td>
-                <td style={{ ...tdStyle, color: 'var(--smoke)', textAlign: 'right' }}>{r.y100}</td>
+                <td>{r.rate}</td>
+                <td>{r.y1}</td>
+                <td>{r.y2}</td>
+                <td>{r.y3}</td>
+                <td>{r.y5}</td>
+                <td>{r.y10}</td>
+                <td>{r.y25}</td>
+                <td>{r.y50}</td>
+                <td>{r.y100}</td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
+</div>
 
-      <p className="t-body mb-5">
+      <p>
         At a return of 1% compound interest p.a., an amount becomes 1.64 times the initial amount in 50 years and 2.7 times the original amount in 100 years.<br/>
         At a 5% compound interest return, an amount becomes 11.5 times the initial amount in 50 years and 131.5 times the original amount in 100 years.
       </p>
 
-      <h3 className="t-h3 mt-10 mb-4">What do we see?</h3>
-      <p className="t-body mb-5">
+      <h2>What do we see?</h2>
+      <p>
         Money invested on compounding terms amounts to a whole lot more than the money invested on simple interest.
       </p>
 
-      <h3 className="t-h3 mt-10 mb-4">Why does this happen when the rate is the same?</h3>
-      <p className="t-body mb-5">
+      <h2>Why does this happen when the rate is the same?</h2>
+      <p>
         The primary reason is that simple interest, once earned, does not get reinvested. It is probably drawn out for expenditure. When invested on compounding basis, the earnings get ploughed back into the investment and generate returns in addition to the returns generated by the principal. In a few years, the interest starts becoming bigger than the principal and generating a whole lot more money.
       </p>
 
-      <p className="t-body mb-5">
+      <p>
         There are two variables on which this works:<br/>
         – The duration; the longer the investment period the greater the benefit<br/>
         – The rate of return; the higher the rate the greater the benefit
       </p>
 
-      <p className="t-body mb-5">
+      <p>
         In our example, at the rate of 1% per annum, the amount is almost the same after 10 years, a little higher at the end of 100 years.<br/>
         When invested at 10% p.a., the difference starts becoming visible earlier. After 5 years, ₹ 1 amounts to ₹ 1.50 using simple interest and ₹ 1.61 using compound interest. From here onwards, compound interest keeps pulling away. After 50 years, simple interest yields ₹ 6 while compound interest yields ₹ 11.74.
       </p>
-      <p className="t-body mb-5">
+      <p>
         As the rate and amount increase, the difference expands.
       </p>
 
-      <h3 className="t-h3 mt-10 mb-4">Recommendation</h3>
-      <p className="t-body mb-5">
+      <h2>Recommendation</h2>
+      <p>
         Start investing early and give your money a chance to grow. Allow the earnings, as they accrue, to generate returns as well.
       </p>
     </PostLayout>
