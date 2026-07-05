@@ -60,17 +60,17 @@ export default function Post_risk_and_return_profile_of_equity() {
 
       <p>The Great Depression took 151 months to recover, nearly 13 years, even though the drawdown had taken only 34 months.</p>
 
-      <p>In an article published in December 2024, StatOasis commented on drawdowns in other global markets and said, “Market volatility isn’t unique to the U.S. In the UK, the stock index faced a devastating 73% drawdown in 1972, taking nine years to recover. Even worse, the crash in 2000 required a gruelling 20 years to finally post new highs in 2024.”</p>
+      <p>In an article published in December 2024, <a href="https://statoasis.com/post/sp500-drawdowns-since-1870?" target="_blank" rel="noopener noreferrer">StatOasis</a> commented on drawdowns in other global markets and said, “Market volatility isn’t unique to the U.S. In the UK, the stock index faced a devastating 73% drawdown in 1972, taking nine years to recover. Even worse, the crash in 2000 required a gruelling 20 years to finally post new highs in 2024.”</p>
 
       <p>Japan’s Nikkei index presents another sobering example. After a massive speculative bubble burst in 1990, the index posted annualized returns of -4.78% for over 20 years. It still hasn’t recovered to its peak levels today.”</p>
 
-      <p>Indian equity is not immune to drawdowns either. A LinkedIn post by Sonali Das states that between January and October 2008, the Nifty 50 witnessed a drawdown of over 60%. Though the race to the bottom took less than a year, the recovery took over 5 years.</p>
+      <p>Indian equity is not immune to drawdowns either. A <a href="https://www.linkedin.com/posts/sonali-das-90374649_historical-insights-nifty-50-bear-market-activity-7287748037529980928-e0qz/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">LinkedIn post by Sonali Das</a> states that between January and October 2008, the Nifty 50 witnessed a drawdown of over 60%. Though the race to the bottom took less than a year, the recovery took over 5 years.</p>
 
       <h2>The challenge for investors</h2>
 
       <p>Herein lies one of the great challenges of stock investing. Though values did eventually recover, they took many years. If an investor needed to cash out during this period, he/ she would have had to invariably book losses. This is also one of the reasons why investors are advised to reduce their equity exposure as they age. At a young age one has time to recover from drawdowns. But, at an advanced age, one may not.</p>
 
-      <p>In an article published on July 17, 2025, MorningStar suggests, “Market crashes always feel scary when they happen, but there’s no way to know in the moment whether you’re encountering a minor correction or looking down the barrel of the next Great Depression. But since the path to recovery is so uncertain, the best way to be prepared is by owning a well-diversified portfolio that fits your time horizon and risk tolerance. Investors who stay invested in the market in the long run will reap rewards that make the turmoil worthwhile.”</p>
+      <p>In an article published on July 17, 2025, <a href="https://www.morningstar.com/economy/what-weve-learned-150-years-stock-market-crashes" target="_blank" rel="noopener noreferrer">MorningStar</a> suggests, “Market crashes always feel scary when they happen, but there’s no way to know in the moment whether you’re encountering a minor correction or looking down the barrel of the next Great Depression. But since the path to recovery is so uncertain, the best way to be prepared is by owning a well-diversified portfolio that fits your time horizon and risk tolerance. Investors who stay invested in the market in the long run will reap rewards that make the turmoil worthwhile.”</p>
 
       <p>Looking through historical data, one can get some sense of possible losses. When investing in a well-diversified portfolio of equities, one should be prepared that one has a loss of 30 to 50%. One cannot rule out the possibility of losses of 80% or even more.</p>
 

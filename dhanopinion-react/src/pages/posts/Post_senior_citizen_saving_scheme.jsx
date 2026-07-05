@@ -17,7 +17,7 @@ export default function Post_senior_citizen_saving_scheme() {
       
       <h2>Benefits</h2>
       <p>The return offered SCSS is 8.2% currently and is the highest amongst all assured-return, government guaranteed schemes if you look at the comparative returns of all schemes under the section on government schemes.</p>
-      <p>Historically, SCSS has offered attractive rates of interest, as demonstrated by the historical table below:</p>
+      <p>Historically, SCSS has offered attractive rates of interest, as demonstrated by the <a href="https://www.nsiindia.gov.in/(S(xzttfyd3ncpvllzbslqsdtubq))/internalpage.aspx?id_pk=132" target="_blank" rel="noopener noreferrer">historical table</a> below:</p>
       
       <div className="table-container">
 <table>

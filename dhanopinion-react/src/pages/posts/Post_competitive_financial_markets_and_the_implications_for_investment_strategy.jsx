@@ -10,7 +10,7 @@ export default function Post_competitive_financial_markets_and_the_implications_
 
       <h2>The Evidence</h2>
 
-      <p>Most institutional investors fall short of properly constructed benchmarks. Here is the evidence from US public Pension funds that manage billions of dollars with the benefit of large professional teams and the ability to hire almost any professional money manager or invest directly. An article by Richard M. Ennis examines the cost, performance, and benchmark bias of public pension funds in the United States.</p>
+      <p>Most institutional investors fall short of properly constructed benchmarks. Here is the evidence from US public Pension funds that manage billions of dollars with the benefit of large professional teams and the ability to hire almost any professional money manager or invest directly. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3883370" target="_blank" rel="noopener noreferrer">An article by Richard M. Ennis</a> examines the cost, performance, and benchmark bias of public pension funds in the United States.</p>
 
       <p>In its Abstract, the study states: “I estimate that statewide pension funds in the United States incur annual investment expenses averaging 1.3% of asset value. A sample of 24 of them underperformed passive investment during the past decade by an average of 1.4% a year. And yet, those same funds report that they outperformed benchmarks of their own devising by an average of +0.3% a year for the same period. This sharp disconnect raises questions about the usefulness of the funds’ performance reporting, as well as their heavy reliance on expensive active management.”</p>
 

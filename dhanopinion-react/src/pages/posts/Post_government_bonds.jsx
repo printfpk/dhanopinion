@@ -86,7 +86,7 @@ export default function Post_government_bonds() {
 
       <h3 className="t-h3 mt-10 mb-4">Historical returns</h3>
       <p className="mb-6">
-        Returns delivered by a few of the large GILT mutual funds as available on the <a href="https://www.moneycontrol.com" target="_blank" rel="noopener noreferrer" style={{ color: '#3b82f6', textDecoration: 'underline' }}>moneycontrol.com</a> website, as on 11<sup>th</sup> July, 2025:
+        Returns delivered by a few of the large GILT mutual funds as available on the <a href="https://www.moneycontrol.com" target="_blank" rel="noopener noreferrer">moneycontrol.com</a> website, as on 11<sup>th</sup> July, 2025:
       </p>
 
       {/* Table */}

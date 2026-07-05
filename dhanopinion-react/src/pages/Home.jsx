@@ -301,51 +301,7 @@ export default function Home() {
 									</motion.div>
 								))}
 
-								{/* ── NPS Promo Card ── */}
-								<Link to="/2023/08/20/national-pension-system-nps/" style={{ textDecoration: "none", display: "block" }} target="_blank" rel="noopener noreferrer">
-									<motion.div
-										initial={{ opacity: 0, y: 24 }}
-										animate={{ opacity: 1, y: 0 }}
-										transition={{ delay: 1.2, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-										whileHover={{ y: -3, boxShadow: "0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18)" }}
-										style={{
-											background: "var(--hero-glass-strong)",
-											backdropFilter: "blur(32px)",
-											WebkitBackdropFilter: "blur(32px)",
-											borderRadius: "999px",
-											border: "1px solid var(--hero-glass-border)",
-											padding: "8px 8px 8px 24px",
-											boxShadow: "0 12px 40px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.12)",
-											display: "flex",
-											alignItems: "center",
-											justifyContent: "space-between",
-											gap: "20px"
-										}}
-									>
-										<p style={{ margin: 0, fontSize: "clamp(15px, 1.5vw, 17px)", fontWeight: 300, fontFamily: "var(--font-heading)", color: "var(--pure)", lineHeight: 1.55, letterSpacing: "0.01em" }}>
-											<TypewriterText text="National Pension System (NPS)" delay={1.5} />
-										</p>
-										<div
-											style={{
-												flexShrink: 0,
-												width: 40,
-												height: 40,
-												borderRadius: "50%",
-												background: "var(--pure)",
-												color: "var(--void)",
-												display: "flex",
-												alignItems: "center",
-												justifyContent: "center",
-												boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-											}}
-										>
-											<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-												<path d="M5 12h14"></path>
-												<path d="M12 5l7 7-7 7"></path>
-											</svg>
-										</div>
-									</motion.div>
-								</Link>
+
 							</motion.div>
 						</div>
 

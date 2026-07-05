@@ -27,7 +27,7 @@ export default function Post_why_keeping_money_in_a_liquid_mutual_fund_is_better
       </ul>
 
       <h2>Comparison of returns delivered by liquid funds and savings accounts</h2>
-      <p>One can check out the trailing performance of liquid MFs on Moneycontrol.com. A snapshot of the returns delivered by the largest (by AUM) liquid funds is given in the table below:</p>
+      <p>One can check out the trailing performance of liquid MFs on <a href="https://www.moneycontrol.com/" target="_blank" rel="noopener noreferrer">Moneycontrol.com</a>. A snapshot of the returns delivered by the largest (by AUM) liquid funds is given in the table below:</p>
       
       <div style={{ margin: '2rem 0', background: 'var(--bg-pure)', padding: '1rem', borderRadius: 8 }}>
         <MediaSkeleton type="img" loading="lazy" 
