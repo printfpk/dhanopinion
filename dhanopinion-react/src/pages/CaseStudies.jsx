@@ -108,7 +108,7 @@ export default function CaseStudies() {
 
             <button 
               onClick={handleReset}
-              style={{ width: '100%', padding: '0.75rem', background: '#000000', color: '#ffffff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 500, fontSize: '14px', transition: 'opacity 0.2s' }}
+              style={{ width: '100%', padding: '0.75rem', background: 'var(--pure)', color: 'var(--black)', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 500, fontSize: '14px', transition: 'opacity 0.2s' }}
               onMouseOver={e => e.currentTarget.style.opacity = 0.8}
               onMouseOut={e => e.currentTarget.style.opacity = 1}
             >
@@ -134,7 +134,7 @@ export default function CaseStudies() {
                     <h3 style={{ color: 'var(--pure)', fontSize: '20px', fontWeight: 300, fontFamily: 'var(--font-heading)', fontStyle: 'italic', marginBottom: '1rem' }}>{c.title}</h3>
                     <p className="t-body" style={{ color: 'var(--pure)', marginBottom: '1.5rem', lineHeight: 1.6 }}>{c.desc}</p>
                     <Link to={`/case_study/${c.id}`}
-                      style={{ display: 'inline-block', padding: '0.6rem 1.5rem', background: '#000000', color: '#ffffff', borderRadius: '6px', fontSize: '14px', fontWeight: 500, textDecoration: 'none', transition: 'opacity 0.2s' }}
+                      style={{ display: 'inline-block', padding: '0.6rem 1.5rem', background: 'var(--pure)', color: 'var(--black)', borderRadius: '6px', fontSize: '14px', fontWeight: 500, textDecoration: 'none', transition: 'opacity 0.2s' }}
                       onMouseOver={e => e.currentTarget.style.opacity = 0.8}
                       onMouseOut={e => e.currentTarget.style.opacity = 1}
                       target="_blank" rel="noopener noreferrer"
