@@ -257,6 +257,10 @@ body {
 	hyphens: auto;
 }
 
+.post-date {
+	font-weight: 400 !important;
+}
+
 a {
 	color: var(--gold);
 	text-decoration: none;

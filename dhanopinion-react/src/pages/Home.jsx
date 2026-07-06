@@ -341,7 +341,7 @@ export default function Home() {
 												gap: 0,
 												padding: "16px 12px",
 											}}
-										 target="_blank" rel="noopener noreferrer">
+											target="_blank" rel="noopener noreferrer">
 											{/* Icon — double ring circle */}
 											<div
 												style={{

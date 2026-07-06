@@ -36,7 +36,7 @@ export default function Post_inflation_real_value_and_the_money_illusion() {
       <p>IMF tells us how much in the chart below:</p>
       <p><MediaSkeleton type="img" loading="lazy" src="/assets/images/info_centre/doc_image_2.png" /></p>
       <p>Source: <a href="https://data.worldbank.org/indicator/fp.cpi.totl?locations=in" target="_blank" rel="noopener noreferrer">World Bank</a></p>
-      <p>An item that cost ₹2.50 in 1960 cost ₹100 in 2010 and ₹220 in ₹227 in 2024.</p>
+      <p>An item that cost ₹2.50 in 1960 cost ₹100 in 2010 and ₹227 in 2024.</p>
       <p>According to another calculator provided by <a href="https://www.worlddata.info/asia/india/inflation-rates.php" target="_blank" rel="noopener noreferrer">World Data</a>, if you could buy a certain basket of goods and services for ₹ 1,000 in 1961, in 2022, 61 years later, you need ₹ 78,071 to buy it.</p>
       <p>Another way of looking at the decline in the value of Rupee over time is its value against the US dollar, as shown in the chart below, produced by <a href="https://www.xe.com/currencycharts/?from=usd&to=inr&view=10y" target="_blank" rel="noopener noreferrer">XE.com</a>.</p>
       <p><MediaSkeleton type="img" loading="lazy" src="/assets/images/info_centre/doc_image_3.png" /></p>

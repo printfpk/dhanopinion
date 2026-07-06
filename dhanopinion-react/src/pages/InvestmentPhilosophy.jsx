@@ -28,8 +28,8 @@ const elements = [
   { text: "Taxes have a significant impact on after-tax investment returns. Managing taxes can add a lot of value in the investment process.", link: "/2023/08/17/taxes-and-investment-outcomes/" },
   { text: "Defining and understanding your investment horizon can lead to better planning.", link: "/2023/08/07/defining-your-investment-horizon-can-lead-to-better-planning/" },
   { text: "Keep the cost of investing low.", link: "/2023/08/16/keep-the-cost-of-investing-low/" },
-  { text: "Because markets are highly competitive, individual stock picking is less effective than buying the index.", link: "/2023/08/14/dont-pick-stocks-buy-the-index/" },
-  { text: "Individuals and institutions - Who you are changes investment choices.", link: "/2023/08/21/individual-or-institution-who-you-are-changes-investment-choices/" }
+  { text: "Because markets are highly competitive, individual stock picking is less effective than buying the index.", link: "/2023/08/11/index-funds/" },
+  { text: "Individuals and institutions - Who you are changes investment choices.", link: "/2023/08/10/competitive-financial-markets-and-the-implications-for-investment-strategy/" }
 ]
 
 export default function InvestmentPhilosophy() {

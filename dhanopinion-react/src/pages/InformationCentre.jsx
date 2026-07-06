@@ -1,6 +1,9 @@
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import './datepicker.css'
 import { RevealChar } from '../components/Animations'
 
 import { allArticles } from '../data/articles'
@@ -8,19 +11,49 @@ import { allArticles } from '../data/articles'
 export default function InformationCentre() {
   const [keyword, setKeyword] = useState('')
   const [category, setCategory] = useState('Category...')
-  const [dateRange, setDateRange] = useState('Select Date Range')
+  const [dateRange, setDateRange] = useState([null, null])
+  const [startDate, endDate] = dateRange
+
+  const formatDateForCompare = (dateString) => {
+    const d = new Date(dateString);
+    if (isNaN(d)) return '';
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
 
   const filtered = useMemo(() => {
     return allArticles.filter(a => {
-      if (keyword && !a.title.toLowerCase().includes(keyword.toLowerCase())) return false;
-      if (category !== 'Category...' && a.category !== category) return false;
-      if (dateRange !== 'Select Date Range' && !a.date.includes(dateRange)) return false;
+      if (keyword) {
+        const lowerKw = keyword.toLowerCase();
+        const matchesTitle = a.title.toLowerCase().includes(lowerKw);
+        const matchesContent = a.textContent ? a.textContent.toLowerCase().includes(lowerKw) : false;
+        if (!matchesTitle && !matchesContent) return false;
+      }
+      if (category !== 'Category...' && (!a.category || !a.category.includes(category))) return false;
+      
+      if (startDate && endDate) {
+        const articleDate = new Date(a.date);
+        // Normalize time for comparison
+        articleDate.setHours(0, 0, 0, 0);
+        const start = new Date(startDate);
+        start.setHours(0, 0, 0, 0);
+        const end = new Date(endDate);
+        end.setHours(23, 59, 59, 999);
+        
+        if (articleDate < start || articleDate > end) return false;
+      }
       return true;
     });
-  }, [keyword, category, dateRange])
+  }, [keyword, category, startDate, endDate])
 
-  const categories = ['Category...', ...new Set(allArticles.map(a => a.category))].sort()
-  const dates = ['Select Date Range', 'January', 'April', 'August', 'September', 'October']
+  const categories = [
+    'Category...', 'Asset Allocation', 'Bank', 'Compounding', 'Direct funds', 'Goal', 
+    'Government scheme', 'Index', 'Inflation', 'Interest', 'Investment Strategy', 
+    'Investments', 'Liquid funds', 'Liquid MF', 'Mutual Fund', 'NPS', 
+    'Pension', 'Regular MF', 'Risk and return', 'taxes'
+  ];
 
   return (
     <>
@@ -61,13 +94,16 @@ export default function InformationCentre() {
 
             <div style={{ marginBottom: '2rem' }}>
               <label style={{ display: 'block', color: 'var(--gold)', marginBottom: '1rem', fontSize: '16px' }}>Date</label>
-              <select
-                value={dateRange}
-                onChange={e => setDateRange(e.target.value)}
-                style={{ width: '100%', padding: '14px 16px', background: 'var(--pure)', border: 'none', borderRadius: '4px', fontSize: '15px', outline: 'none', cursor: 'pointer', color: 'var(--black)' }}
-              >
-                {dates.map(m => <option key={m}>{m}</option>)}
-              </select>
+              <div className="custom-date-picker-input-container">
+                <DatePicker
+                  selectsRange={true}
+                  startDate={startDate}
+                  endDate={endDate}
+                  onChange={(update) => setDateRange(update)}
+                  placeholderText="Select Date Range"
+                  dateFormat="dd MMM"
+                />
+              </div>
             </div>
           </div>
 
@@ -76,7 +112,7 @@ export default function InformationCentre() {
             <div style={{ minHeight: '600px' }}>
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={category + keyword + dateRange}
+                  key={category + keyword + (startDate ? startDate.toISOString() : '') + (endDate ? endDate.toISOString() : '')}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 10 }}
@@ -91,7 +127,7 @@ export default function InformationCentre() {
                         <h3 style={{ fontSize: '17px', fontFamily: 'var(--font-heading)', color: 'var(--pure)', fontWeight: 300, marginBottom: '8px', lineHeight: 1.4 }}>
                           {a.title}
                         </h3>
-                        <p style={{ fontSize: '12px', color: 'var(--gold)', fontWeight: 600, margin: 0 }}>
+                        <p style={{ fontSize: '12px', color: 'var(--gold)', fontWeight: 400, margin: 0 }}>
                           {a.date}
                         </p>
                       </Link>

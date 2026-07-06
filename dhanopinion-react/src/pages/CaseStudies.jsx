@@ -118,31 +118,35 @@ export default function CaseStudies() {
 
           {/* List */}
           <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            <AnimatePresence>
-              {filtered.map((c, i) => (
-                <motion.div 
-                  key={c.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
-                  style={{ borderBottom: '1px solid var(--hairline)', paddingBottom: '2rem' }}
-                >
-                  <h3 style={{ color: 'var(--pure)', fontSize: '20px', fontWeight: 300, fontFamily: 'var(--font-heading)', fontStyle: 'italic', marginBottom: '1rem' }}>{c.title}</h3>
-                  <p className="t-body" style={{ color: 'var(--pure)', marginBottom: '1.5rem', lineHeight: 1.6 }}>{c.desc}</p>
-                  <Link to={`/case_study/${c.id}`}
-                    style={{ display: 'inline-block', padding: '0.6rem 1.5rem', background: '#000000', color: '#ffffff', borderRadius: '6px', fontSize: '14px', fontWeight: 500, textDecoration: 'none', transition: 'opacity 0.2s' }}
-                    onMouseOver={e => e.currentTarget.style.opacity = 0.8}
-                    onMouseOut={e => e.currentTarget.style.opacity = 1}
-                    target="_blank" rel="noopener noreferrer"
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`${minAge}-${minEquity}-${risk}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+              >
+                {filtered.map((c, i) => (
+                  <div 
+                    key={c.id}
+                    style={{ borderBottom: '1px solid var(--hairline)', paddingBottom: '2rem', marginBottom: '2rem' }}
                   >
-                    Read More
-                  </Link>
-                </motion.div>
-              ))}
-              {filtered.length === 0 && (
-                <div style={{ padding: '2rem 0' }}>No case studies match your filters.</div>
-              )}
+                    <h3 style={{ color: 'var(--pure)', fontSize: '20px', fontWeight: 300, fontFamily: 'var(--font-heading)', fontStyle: 'italic', marginBottom: '1rem' }}>{c.title}</h3>
+                    <p className="t-body" style={{ color: 'var(--pure)', marginBottom: '1.5rem', lineHeight: 1.6 }}>{c.desc}</p>
+                    <Link to={`/case_study/${c.id}`}
+                      style={{ display: 'inline-block', padding: '0.6rem 1.5rem', background: '#000000', color: '#ffffff', borderRadius: '6px', fontSize: '14px', fontWeight: 500, textDecoration: 'none', transition: 'opacity 0.2s' }}
+                      onMouseOver={e => e.currentTarget.style.opacity = 0.8}
+                      onMouseOut={e => e.currentTarget.style.opacity = 1}
+                      target="_blank" rel="noopener noreferrer"
+                    >
+                      Read More
+                    </Link>
+                  </div>
+                ))}
+                {filtered.length === 0 && (
+                  <div style={{ padding: '2rem 0' }}>No case studies match your filters.</div>
+                )}
+              </motion.div>
             </AnimatePresence>
           </div>
         </div>

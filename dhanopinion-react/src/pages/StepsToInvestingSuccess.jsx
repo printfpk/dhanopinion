@@ -6,42 +6,42 @@ import { useRef, useState, useEffect } from 'react'
 const steps = [
   {
     num: "01",
-    title: "Step 1 – Debt Check",
+    title: "Debt Check",
     desc: "Before investing, it is important to evaluate your debt situation. Paying high interest on debt while expecting lower returns from investments is counterproductive.",
-    icon: "fa-solid fa-landmark",
+    icon: "fa-solid fa-clipboard-check",
     link: "/steps/step-1-debt-check"
   },
   {
     num: "02",
-    title: "Step 2 – Allocation between Equity and Debt",
+    title: "Allocation between Equity and Debt",
     desc: "OK! You have cleared the first hurdle of the debt check and decided that you are ready to invest. Your portfolio should balance equity (stocks, mutual funds) and debt (bonds, fixed income, government schemes). But how much to invest in debt and how much in equity is a personal choice.",
     icon: "fa-solid fa-chart-pie",
     link: "/steps/step-2-allocation-equity-debt"
   },
   {
     num: "03",
-    title: "Step 3 – Emergency Funds",
+    title: "Emergency Funds",
     desc: "An unplanned pulling out from an investment can cause severe damage to the portfolio in several ways: Liquidating equity investments in a downward spiral can impair the returns and limit the potential to bounce back during an upswing. Liquidating debt investments can invite penalties and lower than assured returns.",
     icon: "fa-solid fa-shield-halved",
     link: "/steps/step-3-emergency-funds"
   },
   {
     num: "04",
-    title: "Step 4 – Investing in Equity (Stocks / Mutual Funds)",
+    title: "Investing in Equity (Stocks / Mutual Funds)",
     desc: "We recommend exposure to equity through mutual funds, not direct stock picking. This can be done either through equity mutual funds or the NPS (National Pension System) scheme.",
     icon: "fa-solid fa-arrow-trend-up",
     link: "/steps/step-4-investing-in-equity"
   },
   {
     num: "05",
-    title: "Step 5 – Investing in Debt (Fixed Income)",
+    title: "Investing in Debt (Fixed Income)",
     desc: "Prioritize government schemes for fixed income investing. NPS can serve the need for both equity as well as fixed income investing since it follows an age-based allocation system.",
     icon: "fa-solid fa-building-columns",
     link: "/steps/step-5-investing-in-debt"
   },
   {
     num: "06",
-    title: "Step 6 – Ongoing",
+    title: "Ongoing",
     desc: "Ensure that tax implications are factored in, at the time of investment, on the income that is generated, and on liquidation or encashment. Review allocation and investments periodically, but at least annually, and rebalance.",
     icon: "fa-solid fa-rotate",
     link: "/steps/step-6-ongoing"
@@ -225,8 +225,8 @@ function StepCard({ step, index, totalSteps }) {
             style={{
               position: 'absolute',
               bottom: '-20px',
-              right: isEven ? '16px' : 'auto',
-              left: isEven ? 'auto' : '16px',
+              right: '16px',
+              left: 'auto',
               fontSize: 'clamp(80px, 12vw, 160px)',
               fontWeight: 900,
               color: 'transparent',
@@ -252,7 +252,7 @@ function StepCard({ step, index, totalSteps }) {
               marginBottom: '20px'
             }}>
               <span style={{
-                fontSize: '11px',
+                fontSize: '14px',
                 fontWeight: 700,
                 letterSpacing: '0.2em',
                 textTransform: 'uppercase',
@@ -324,7 +324,7 @@ function StepCard({ step, index, totalSteps }) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <HoverFlip text="READ FULL STEP" />
+                  <HoverFlip text="KNOW MORE" />
                 </Link>
               </motion.div>
             )}
@@ -409,12 +409,31 @@ function TimelineSpine({ containerRef }) {
         top: useTransform(smoothProgress, v => `${v * 100}%`),
         pointerEvents: 'none'
       }} />
+
+      {/* Moving Down Arrow at the head of the progress line */}
+      <motion.div style={{
+        position: 'absolute',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        top: useTransform(smoothProgress, v => `calc(${v * 100}% + 10px)`),
+        color: 'var(--gold)',
+        fontSize: '14px',
+        zIndex: 10,
+        pointerEvents: 'none',
+      }}>
+        <motion.i
+          className="fa-solid fa-chevron-down"
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      </motion.div>
     </div>
   )
 }
 
 export default function StepsToInvestingSuccess() {
   const timelineRef = useRef(null)
+  const sectionRef = useRef(null)
 
   return (
     <>
@@ -448,7 +467,11 @@ export default function StepsToInvestingSuccess() {
 
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}
-            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', color: 'var(--gold)', marginTop: '20px' }}
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', color: 'var(--gold)', marginTop: '20px', cursor: 'pointer' }}
+            onClick={() => {
+              const y = sectionRef.current.getBoundingClientRect().top + window.scrollY - 100;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }}
           >
             <span style={{ fontSize: '12px', letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: 700 }}>Jump to Success Steps</span>
             <motion.i
@@ -461,7 +484,7 @@ export default function StepsToInvestingSuccess() {
       </section>
 
       {/* ── Vertical Timeline ── */}
-      <section style={{
+      <section ref={sectionRef} style={{
         background: 'var(--black)',
         position: 'relative',
         overflow: 'hidden',

@@ -21,13 +21,7 @@ const inputStyle = {
   width: '100%'
 }
 
-const team = [
-  {
-    name: 'Ankur Mithal',
-    role: 'Banker, Consultant, Author',
-    bio: 'Widely experienced banker with roles in Payments, Wealth Management, Cash Management and Enterprise Transformation initiatives in India, Hong Kong and Singapore. Entrepreneurial ventures in E-learning and Digital Hiring. Leadership roles in global BPOs and a leading non-profit. MBA from IIM Ahmedabad. Published author and Business Consultant.'
-  }
-]
+
 
 const luxuryEase = [0.25, 0.1, 0.25, 1];
 const luxuryInputAnim = {
@@ -167,54 +161,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* ── Team Section ── */}
-      <section className="sec" style={{ background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
-        <div className="wrap">
-          <motion.div {...f(0.05)} className="tc mb-8">
-            <RevealChar as="h2" text="The Team" className="t-mega mb-6" />
-            <p className="t-body" style={{ maxWidth: 500, margin: '0 auto' }}>
-              The people behind DhanOpinion.
-            </p>
-          </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 32, maxWidth: 900, margin: '0 auto' }}>
-            {team.map((m, i) => (
-              <motion.div
-                key={i}
-                {...f(0.1 + i * 0.15)}
-                style={{
-                  background: 'rgba(255,255,255,0.02)',
-                  border: '1px solid var(--hairline)',
-                  borderRadius: 12,
-                  padding: '36px 32px',
-                  textAlign: 'center'
-                }}
-              >
-                {/* Avatar placeholder */}
-                <div style={{
-                  width: 72,
-                  height: 72,
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, var(--gold) 0%, rgba(234,218,134,0.3) 100%)',
-                  margin: '0 auto 20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: 26,
-                  fontWeight: 300,
-                  color: 'var(--black)',
-                  fontFamily: 'var(--font-heading)'
-                }}>
-                  {m.name[0]}
-                </div>
-                <h3 className="t-h3 mb-1" style={{ color: 'var(--pure)' }}>{m.name}</h3>
-                <p style={{ fontSize: 12, color: 'var(--gold)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 16 }}>{m.role}</p>
-                <p className="t-body" style={{ fontSize: 15, lineHeight: 1.7 }}>{m.bio}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── Forms Section: Contact & Feedback ── */}
       <section id="contact" style={{ background: 'var(--void)', padding: '60px 0', borderBottom: '1px solid var(--hairline)' }}>

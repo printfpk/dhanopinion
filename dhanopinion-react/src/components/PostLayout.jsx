@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { RevealChar } from './Animations'
+import { RevealChar, HoverFlip } from './Animations'
 
-export default function PostLayout({ title, children }) {
+export default function PostLayout({ title, preTitle, prevLink, nextLink, children }) {
   const { pathname } = useLocation()
   useEffect(() => { window.scrollTo(0, 0) }, [pathname])
 
@@ -17,6 +17,24 @@ export default function PostLayout({ title, children }) {
         borderBottom: '1px solid var(--hairline)'
       }}>
         <div className="wrap-narrow">
+          {preTitle && (
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              style={{
+                fontSize: '14px',
+                fontWeight: 700,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: 'var(--gold)',
+                fontFamily: 'var(--font-body)',
+                display: 'block',
+                marginBottom: '1.5rem'
+              }}
+            >
+              {preTitle}
+            </motion.span>
+          )}
           <RevealChar
             as="h1"
             text={title}
@@ -44,6 +62,21 @@ export default function PostLayout({ title, children }) {
             className="post-content"
           >
             {children}
+            
+            {(prevLink || nextLink) && (
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--hairline)' }}>
+                {prevLink ? (
+                  <Link to={prevLink} className="btn btn-ghost btn-sm" style={{ borderColor: 'rgba(212,168,83,0.4)', color: 'var(--gold)' }}>
+                    <HoverFlip text="PREVIOUS STEP" />
+                  </Link>
+                ) : <div />}
+                {nextLink ? (
+                  <Link to={nextLink} className="btn btn-ghost btn-sm" style={{ borderColor: 'rgba(212,168,83,0.4)', color: 'var(--gold)' }}>
+                    <HoverFlip text="NEXT STEP" />
+                  </Link>
+                ) : <div />}
+              </div>
+            )}
           </motion.article>
         </div>
       </section>
