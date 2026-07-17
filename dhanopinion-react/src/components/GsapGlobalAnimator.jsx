@@ -12,22 +12,15 @@ export default function GsapGlobalAnimator() {
   useGSAP(() => {
     let splitInstances = []
 
-    // We use a small timeout to ensure the DOM (including Outlet content) is fully rendered
-    const timer = setTimeout(() => {
-      // Select main body paragraphs to animate. 
-      // Not excluding captions or overlines so it applies globally as requested
-      const paragraphs = document.querySelectorAll('main p:not(.no-anim)')
-      
+    const runAnimation = () => {
+      const paragraphs = document.querySelectorAll('.post-content-sec p:not(.no-split), .sec p:not(.no-split), .uicore-content p:not(.no-split), .elementor-widget-text-editor p:not(.no-split), h1:not(.no-split), h2:not(.no-split), h3:not(.no-split), h4:not(.no-split), h5:not(.no-split), h6:not(.no-split)')
       paragraphs.forEach((p) => {
-        // Skip if already split
         if (p.classList.contains('is-split')) return
-        
-        // Split text into lines
-        const split = new SplitType(p, { types: 'lines' })
         p.classList.add('is-split')
+
+        const split = new SplitType(p, { types: 'lines' })
         splitInstances.push(split)
 
-        // To create a mask reveal effect, we wrap each line in a div with overflow hidden
         split.lines.forEach((line) => {
           const wrapper = document.createElement('div')
           wrapper.style.overflow = 'hidden'
@@ -36,38 +29,36 @@ export default function GsapGlobalAnimator() {
           wrapper.appendChild(line)
         })
 
-        // GSAP ScrollTrigger animation: lines slide up from being hidden under the wrapper
         gsap.fromTo(split.lines, 
-          { 
-            y: '100%',
-            opacity: 0 // Keep opacity 0 initially so they are completely hidden
-          },
+          { y: 30, opacity: 0 },
           {
-            y: '0%',
+            y: 0,
             opacity: 1,
-            duration: 0.8,
-            stagger: 0.1, // Stagger each line
+            stagger: 0.06,
+            duration: 0.55,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: p,
-              start: 'top 90%',
-              toggleActions: 'play none none reverse',
+              start: 'top 92%',
+              toggleActions: 'play none none none',
             }
           }
         )
       })
-      
-      // Refresh ScrollTrigger to recalculate positions
       ScrollTrigger.refresh()
-      
-    }, 150)
+    }
+
+    const timer = setTimeout(runAnimation, 80)
+
+    // Disabled MutationObserver to prevent infinite browser freezes.
+    // The initial timeout is enough for static content.
 
     return () => {
       clearTimeout(timer)
       ScrollTrigger.getAll().forEach(t => t.kill())
       splitInstances.forEach(split => split.revert())
     }
-  }, [pathname]) // Re-run whenever the route changes
+  }, [pathname])
 
   return null
 }

@@ -1,18 +1,102 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import './datepicker.css'
 import { RevealChar } from '../components/Animations'
-
-import { allArticles } from '../data/articles'
+import { client } from '../sanityClient'
 
 export default function InformationCentre() {
   const [keyword, setKeyword] = useState('')
   const [category, setCategory] = useState('Category...')
   const [dateRange, setDateRange] = useState([null, null])
   const [startDate, endDate] = dateRange
+
+  const [pageData, setPageData] = useState({
+    title: 'Information Centre',
+    filtersTitle: 'Filters',
+    searchPlaceholder: 'Input Keyword...',
+    noResultsText: 'No articles match your filters.'
+  })
+  const [articles, setArticles] = useState([])
+
+  const ARTICLE_ORDER = [
+    { title: 'There is always some risk',                                                              date: 'August 31, 2025' },
+    { title: 'Diversification reduces risk',                                                           date: 'November 29, 2025' },
+    { title: 'Compounding can deliver exponential growth',                                             date: 'March 25, 2026' },
+    { title: 'Inflation, Real Value and the Money Illusion',                                           date: 'March 26, 2026' },
+    { title: 'Asset Allocation',                                                                       date: 'March 27, 2026' },
+    { title: 'Defining your investment horizon can lead to better planning',                           date: 'March 29, 2026' },
+    { title: 'Equity - Risk and Return profile',                                                  date: 'March 30, 2026' },
+    { title: 'Fixed Income \u2013 Risk and Return profile',                                            date: 'March 31, 2026' },
+    { title: 'Active and Passive Investment Management',                                               date: 'April 1, 2026' },
+    { title: 'Index Investing Strategy',                                                               date: 'April 2, 2026' },
+    { title: 'Competitive Financial Markets and the implications for investment strategy',              date: 'April 3, 2026' },
+    { title: 'Keep the cost of investing low',                                                         date: 'April 7, 2026' },
+    { title: 'Taxes and their impact on investment outcomes',                                          date: 'April 8, 2026' },
+    { title: 'When investing in a Mutual Fund, choose a Direct MF over a Regular MF',                 date: 'April 9, 2026' },
+    { title: 'A liquid mutual fund is better for short-term needs than a bank savings account',        date: 'April 10, 2026' },
+    { title: 'National Pension System (NPS)',                                                          date: 'April 11, 2026' },
+    { title: 'Bank Fixed Deposits',                                                               date: 'April 12, 2026' },
+    { title: 'Government Bonds',                                                                       date: 'April 13, 2026' },
+    { title: 'Government Savings Schemes',                                                             date: 'April 14, 2026' },
+    { title: 'Senior Citizen Saving Scheme (SCSS)',                                                    date: 'April 23, 2026' },
+    { title: 'Public Provident Fund',                                                            date: 'May 23, 2026' },
+    { title: 'Equity Linked Saving Scheme (ELSS)',                                                     date: 'May 24, 2026' },
+  ]
+
+  useEffect(() => {
+    // Fetch Page Data
+    client.fetch(`*[_type == "informationCentrePage"][0]`)
+      .then(res => {
+        if (res) {
+          setPageData(prev => ({ ...prev, ...res }))
+        }
+      })
+      .catch(console.error)
+
+    // Fetch all articles, then apply custom sort order + hardcoded dates
+    client.fetch(`*[_type == "post"] {
+      _id,
+      title,
+      publishedAt,
+      "category": categories[]->title,
+      "to": slug.current
+    }`).then(res => {
+        const formatted = res.map(p => {
+          const titleLower = (p.title || '').toLowerCase()
+          const match = ARTICLE_ORDER.find(o => o.title.toLowerCase() === titleLower)
+          return {
+            id: p._id,
+            title: p.title || 'Untitled',
+            // Use hardcoded date if available, else fall back to Sanity date
+            date: match
+              ? match.date
+              : p.publishedAt
+                ? new Date(p.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+                : '',
+            rawDate: p.publishedAt,
+            category: p.category || [],
+            to: p.to ? `/post/${p.to}` : '#'
+          }
+        })
+
+        // Sort by custom order, unknowns go to end sorted by date
+        const sorted = [...formatted].sort((a, b) => {
+          const ai = ARTICLE_ORDER.findIndex(o => o.title.toLowerCase() === a.title.toLowerCase())
+          const bi = ARTICLE_ORDER.findIndex(o => o.title.toLowerCase() === b.title.toLowerCase())
+          if (ai !== -1 && bi !== -1) return ai - bi
+          if (ai !== -1) return -1
+          if (bi !== -1) return 1
+          return (a.rawDate || '').localeCompare(b.rawDate || '')
+        })
+
+        setArticles(sorted)
+      })
+      .catch(console.error)
+  }, [])
+
 
   const formatDateForCompare = (dateString) => {
     const d = new Date(dateString);
@@ -24,7 +108,7 @@ export default function InformationCentre() {
   };
 
   const filtered = useMemo(() => {
-    return allArticles.filter(a => {
+    return articles.filter(a => {
       if (keyword) {
         const lowerKw = keyword.toLowerCase();
         const matchesTitle = a.title.toLowerCase().includes(lowerKw);
@@ -34,7 +118,7 @@ export default function InformationCentre() {
       if (category !== 'Category...' && (!a.category || !a.category.includes(category))) return false;
       
       if (startDate && endDate) {
-        const articleDate = new Date(a.date);
+        const articleDate = new Date(a.rawDate || a.date);
         // Normalize time for comparison
         articleDate.setHours(0, 0, 0, 0);
         const start = new Date(startDate);
@@ -46,7 +130,7 @@ export default function InformationCentre() {
       }
       return true;
     });
-  }, [keyword, category, startDate, endDate])
+  }, [keyword, category, startDate, endDate, articles])
 
   const categories = [
     'Category...', 'Asset Allocation', 'Bank', 'Compounding', 'Direct funds', 'Goal', 
@@ -59,7 +143,7 @@ export default function InformationCentre() {
     <>
       <section style={{ background: 'var(--black)', borderBottom: '1px solid var(--hairline)', padding: 'var(--sp-6) 0 var(--sp-4) 0' }}>
         <div className="wrap">
-          <RevealChar as="h1" text="Information Centre" className="t-mega" />
+          <RevealChar as="h1" text={pageData.title} className="t-mega" />
         </div>
       </section>
 
@@ -69,12 +153,12 @@ export default function InformationCentre() {
 
           {/* Sidebar */}
           <div className="filters-sidebar" style={{ width: '300px', flexShrink: 0, padding: '1rem 0', position: 'sticky', top: '100px' }}>
-            <h3 style={{ color: 'var(--pure)', marginBottom: '1.5rem', fontSize: '18px', fontWeight: 300, fontFamily: 'var(--font-heading)' }}>Filters</h3>
+            <h3 style={{ color: 'var(--pure)', marginBottom: '1.5rem', fontSize: '18px', fontWeight: 300, fontFamily: 'var(--font-heading)' }}>{pageData.filtersTitle}</h3>
 
             <div style={{ marginBottom: '2rem' }}>
               <input
                 type="text"
-                placeholder="Input Keyword..."
+                placeholder={pageData.searchPlaceholder}
                 value={keyword}
                 onChange={e => setKeyword(e.target.value)}
                 style={{ width: '100%', padding: '14px 16px', background: 'var(--pure)', border: 'none', borderRadius: '4px', fontSize: '15px', outline: 'none', color: 'var(--black)' }}
@@ -134,7 +218,7 @@ export default function InformationCentre() {
                     </div>
                   ))}
                   {filtered.length === 0 && (
-                    <div style={{ padding: '2rem 0' }}>No articles match your filters.</div>
+                    <div style={{ padding: '2rem 0' }}>{pageData.noResultsText}</div>
                   )}
                 </motion.div>
               </AnimatePresence>

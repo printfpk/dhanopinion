@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
@@ -13,6 +14,7 @@ import StepsToInvestingSuccess from './pages/StepsToInvestingSuccess'
 import AboutUs from './pages/AboutUs'
 import Disclaimer from './pages/Disclaimer'
 import ConsultingWaitlist from './pages/ConsultingWaitlist'
+import DynamicPost from './pages/DynamicPost'
 
 import Post_there_is_always_some_risk_2 from './pages/posts/Post_there_is_always_some_risk_2'
 import Post_diversification_reduces_risk from './pages/posts/Post_diversification_reduces_risk'
@@ -49,6 +51,26 @@ import Step5_InvestingInDebt from './pages/steps/Step5_InvestingInDebt'
 import Step6_OngoingReview from './pages/steps/Step6_OngoingReview'
 
 function App() {
+  useEffect(() => {
+    const handleLinkClick = (e) => {
+      const a = e.target.closest('a');
+      if (a && a.href) {
+        // Exclude empty links, hash links, and mailto/tel
+        const isHash = a.getAttribute('href')?.startsWith('#');
+        const isMailOrTel = a.href.startsWith('mailto:') || a.href.startsWith('tel:');
+        
+        if (!isHash && !isMailOrTel && a.target !== '_blank') {
+          e.preventDefault();
+          e.stopPropagation(); // prevent React Router from also trying to navigate
+          window.open(a.href, '_blank', 'noopener,noreferrer');
+        }
+      }
+    };
+    // Use capture phase to intercept before React Router or other listeners
+    document.addEventListener('click', handleLinkClick, true);
+    return () => document.removeEventListener('click', handleLinkClick, true);
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -75,7 +97,10 @@ function App() {
         <Route path="consulting-waitlist" element={<ConsultingWaitlist />} />
         <Route path="consulting-waitlist/" element={<ConsultingWaitlist />} />
 
-        {/* Blog posts */}
+        {/* Dynamic Blog post route (from Sanity) */}
+        <Route path="post/:slug" element={<DynamicPost />} />
+
+        {/* Blog posts (Legacy static routes) */}
         <Route path="2023/01/09/there-is-always-some-risk-2/*" element={<Post_there_is_always_some_risk_2 />} />
         <Route path="2023/04/09/diversification-reduces-risk/*" element={<Post_diversification_reduces_risk />} />
         <Route path="2023/08/03/compound-interest-and-exponential-growth/*" element={<Post_compound_interest_and_exponential_growth />} />

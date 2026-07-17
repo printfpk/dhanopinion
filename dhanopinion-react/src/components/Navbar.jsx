@@ -24,10 +24,15 @@ export default function Navbar() {
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return []
     const query = searchQuery.toLowerCase()
-    return allArticles.filter(a =>
-      a.title.toLowerCase().includes(query) ||
-      a.category.toLowerCase().includes(query)
-    ).slice(0, 5)
+    return allArticles.filter(a => {
+      const matchTitle = a.title?.toLowerCase().includes(query);
+      const matchCategory = Array.isArray(a.category)
+        ? a.category.some(c => c.toLowerCase().includes(query))
+        : typeof a.category === 'string'
+          ? a.category.toLowerCase().includes(query)
+          : false;
+      return matchTitle || matchCategory;
+    }).slice(0, 5)
   }, [searchQuery])
 
   return (
@@ -53,7 +58,7 @@ export default function Navbar() {
           <div className="nav-desktop-links" style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'nowrap' }}>
             {links.map(l => (
               <Link key={l.to} to={l.to} className="desktop-nav-link" style={{
-                fontSize: 13, fontWeight: 700, letterSpacing: '.05em', textTransform: 'uppercase',
+                fontSize: 13, fontWeight: 400, letterSpacing: '.05em', textTransform: 'uppercase',
                 color: pathname.startsWith(l.to) ? 'var(--orange)' : 'var(--pure)',
                 textDecoration: 'none', padding: '8px 12px', display: 'flex', alignItems: 'center', whiteSpace: 'nowrap'
               }}>
@@ -142,7 +147,7 @@ export default function Navbar() {
               >
                 <Link to={l.to} onClick={() => setOpen(false)} className="mobile-nav-link" style={{
                   display: 'flex', alignItems: 'center', padding: '16px 0',
-                  fontSize: 28, fontWeight: 700, letterSpacing: '-.02em',
+                  fontSize: 28, fontWeight: 400, letterSpacing: '-.02em',
                   color: pathname.startsWith(l.to) ? 'var(--gold)' : 'var(--pure)',
                   textDecoration: 'none', borderBottom: '1px solid var(--hairline)',
                 }}>
@@ -195,7 +200,9 @@ export default function Navbar() {
                     onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
                     onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
                   >
-                    <div style={{ fontSize: 12, color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 4 }}>{result.category}</div>
+                    <div style={{ fontSize: 12, color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 4 }}>
+                      {Array.isArray(result.category) ? result.category.join(', ') : result.category}
+                    </div>
                     <div style={{ fontSize: 18, color: 'var(--pure)', fontWeight: 500 }}>{result.title}</div>
                   </Link>
                 ))}

@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { HoverFlip, RevealChar } from '../components/Animations'
 import philosophyImage from '../assets/investment_philosophy.png'
 import MediaSkeleton from '../components/MediaSkeleton'
+import { useState, useEffect } from 'react'
+import { client } from '../sanityClient'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -33,15 +35,23 @@ const elements = [
 ]
 
 export default function InvestmentPhilosophy() {
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    client.fetch(`*[_type == "philosophyPage"][0]`)
+      .then(res => setData(res))
+      .catch(console.error)
+  }, [])
+
   return (
     <>
       <section className="sec" style={{ background: 'var(--black)' }}>
         <div className="wrap">
           <div className="g-2" style={{ alignItems: 'center' }}>
             <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
-              <RevealChar as="h1" text="Investment Philosophy" className="t-mega mb-6" />
+              <RevealChar as="h1" text={data?.title || "Investment Philosophy"} className="t-mega mb-6" />
               <motion.p variants={fadeUp} className="t-body mb-7">
-                Underpinning any investment recommendation is an underlying investment philosophy. This section outlines our investment philosophy in a manner designed to make the underlying assumptions and process clear to you. If you agree with our investment philosophy, our approach is likely to be a good fit for you. If your view of the investment world is different, you should look at alternative solutions.
+                {data?.introParagraph1 || "Underpinning any investment recommendation is an underlying investment philosophy. This section outlines our investment philosophy in a manner designed to make the underlying assumptions and process clear to you. If you agree with our investment philosophy, our approach is likely to be a good fit for you. If your view of the investment world is different, you should look at alternative solutions."}
               </motion.p>
               <motion.div variants={fadeUp}>
                 <a href="#elements" className="btn btn-gold">
@@ -77,7 +87,7 @@ export default function InvestmentPhilosophy() {
             variants={fadeUp}
             className="mb-8 tc"
           >
-            <h2 className="t-h1 mb-4" style={{ color: 'var(--pure)' }}>Core elements of our investment philosophy</h2>
+            <h2 className="t-h1 mb-4" style={{ color: 'var(--pure)' }}>{data?.elementsTitle || "Core elements of our investment philosophy"}</h2>
           </motion.div>
 
           <motion.div
@@ -87,7 +97,7 @@ export default function InvestmentPhilosophy() {
             variants={staggerContainer}
             style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}
           >
-            {elements.map((item, i) => (
+            {(data?.elements?.length > 0 ? data.elements : elements).map((item, i) => (
               <motion.div 
                 key={i} 
                 variants={fadeUp}

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Suspense, useRef } from "react";
+import { Suspense, useRef, useEffect, useState } from "react";
+import { client } from "../sanityClient";
 import SplitType from "split-type";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -51,16 +52,16 @@ const AnimatedParagraph = ({ text, style, delay = 0.5 }) => {
 };
 
 const fade = (d = 0) => ({
-	initial: { opacity: 0, y: 40 },
+	initial: { opacity: 0, y: 24 },
 	whileInView: { opacity: 1, y: 0 },
-	viewport: { once: true, amount: 0.2 },
-	transition: { duration: 0.8, delay: d, ease: [0.16, 1, 0.3, 1] },
+	viewport: { once: true, amount: 0.1, margin: "60px" },
+	transition: { duration: 0.55, delay: d, ease: [0.16, 1, 0.3, 1] },
 });
 const fadeX = (x, d = 0) => ({
 	initial: { opacity: 0, x },
 	whileInView: { opacity: 1, x: 0 },
-	viewport: { once: true, amount: 0.2 },
-	transition: { duration: 0.8, delay: d, ease: [0.16, 1, 0.3, 1] },
+	viewport: { once: true, amount: 0.1, margin: "60px" },
+	transition: { duration: 0.55, delay: d, ease: [0.16, 1, 0.3, 1] },
 });
 
 const startingPoints = [
@@ -91,6 +92,46 @@ const startingPoints = [
 ];
 
 export default function Home() {
+	const [data, setData] = useState(null);
+
+	useEffect(() => {
+		client.fetch('*[_type == "homePage"][0]').then(res => {
+			if (res) setData(res);
+		}).catch(console.error);
+	}, []);
+
+	const heroTitle = data?.heroTitle || "Investing is Difficult";
+	const heroSubtitle = data?.heroSubtitle || "It is difficult for large institutions, and it is even more difficult for individuals because they have less knowledge and resources. You can make it easier by evaluating our suggestions and if you are convinced, implement them.";
+	const focusPills = data?.focusPills || [
+		"Simple investment strategies that have a logic and can be implemented",
+		"Reducing the clutter of options to a few good ones, saving you time and effort",
+	];
+	const sps = data?.startingPoints?.length > 0 ? data.startingPoints : startingPoints;
+	const scopeTitle = data?.scopeTitle || "Scope";
+	const scopeText = data?.scopeText || "The current scope covers financial assets such as mutual funds, government sponsored financial instruments and fixed deposits.";
+	const expectationsTitle = data?.expectationsTitle || "What you can expect";
+	const expectationsData = data?.expectations?.length > 0 ? data.expectations : [
+		{ mark: "→", heading: "Better Strategy", desc: "Creation of a better match between your goals, circumstances and preferences and your investments." },
+		{ mark: "→", heading: "Reduced Complexity", desc: "Reduced investing complexity and better understanding of investment choices." },
+		{ mark: "→", heading: "Improved Returns", desc: "Improved returns — a little." },
+		{ mark: "→", heading: "Reduced Risk", desc: "Reduced risk — a little." },
+	];
+	const notExpectationsTitle = data?.notExpectationsTitle || "What you should not expect";
+	const notExpectationsData = data?.notExpectations?.length > 0 ? data.notExpectations : [
+		{ heading: "Exponential Returns", desc: "Substantial improvement in returns." },
+		{ heading: "Elimination of Risk", desc: "Elimination, or substantial reduction of the risk of loss." },
+		{ heading: "Reduced Stress", desc: "Reduced stress in investing." },
+	];
+	const audienceTitle = data?.audienceTitle || "Who is it for?";
+	const audienceParagraphsData = data?.audienceParagraphs?.length > 0 ? data.audienceParagraphs : [
+		"The resources on this website will be of help to anyone interested in investing. However, the primary focus of the content is individual investors who have limited time, resources and expertise to devote to investment research and analyses.",
+		"Every individual can also get some simple guidance to have a pretty good solution without knowing or learning too much about this, but everyone should learn a little bit."
+	];
+	const ctaTitle = data?.ctaTitle || "Personalised Consulting";
+	const ctaText = data?.ctaText || "The philosophy, strategy and suggestions shared on these pages are of universal relevance and should deliver value to every investor. Should you wish to seek a confidential, one-on-one, paid consulting with one of our experts, kindly click the button below. Personalised consulting is expected to be launched in the future. At this time you will be joining a wait-list. We will reach out when the service comes on-stream and a slot becomes available to arrange a session at a mutually convenient time.";
+	const ctaButtonText = data?.ctaButtonText || "I would like a personalised consulting session";
+	const ctaButtonLink = data?.ctaButtonLink || "/consulting-waitlist";
+
 	return (
 		<>
 			<div style={{ position: "relative" }}>
@@ -202,13 +243,14 @@ export default function Home() {
 									hidden: { opacity: 0 },
 									visible: {
 										opacity: 1,
-										transition: { staggerChildren: 0.15, delayChildren: 0.2 },
+										transition: { staggerChildren: 0.1, delayChildren: 0.1 },
 									}
 								}}
 								style={{ flex: "1 1 450px" }}
 							>
 								{/* Staggered text animation with blur */}
 								<h1
+									className="no-split"
 									style={{
 										fontSize: "clamp(40px, 5vw, 72px)",
 										fontWeight: 300,
@@ -222,20 +264,21 @@ export default function Home() {
 									<div style={{ overflow: "hidden", paddingBottom: "10px" }}>
 										<motion.span
 											variants={{
-												hidden: { y: "100%", opacity: 0, filter: "blur(10px)" },
-												visible: { y: 0, opacity: 1, filter: "blur(0px)", transition: { type: "spring", damping: 20, stiffness: 80 } }
+												hidden: { y: "100%", opacity: 0 },
+												visible: { y: 0, opacity: 1, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
 											}}
 											style={{ display: "inline-block" }}
 										>
-											Investing is Difficult
+											{heroTitle}
 										</motion.span>
 									</div>
 								</h1>
 
 								<motion.p
-									initial={{ opacity: 0, y: 20 }}
+									initial={{ opacity: 0, y: 16 }}
 									animate={{ opacity: 1, y: 0 }}
-									transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
+									transition={{ delay: 0.45, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+									className="no-split"
 									style={{
 										fontSize: "18px",
 										lineHeight: 1.7,
@@ -245,7 +288,7 @@ export default function Home() {
 										margin: "12px 0 0 0",
 									}}
 								>
-									It is difficult for large institutions, and it is even more difficult for individuals because they have less knowledge and resources. You can make it easier by evaluating our suggestions and if you are convinced, implement them.
+									{heroSubtitle}
 								</motion.p>
 							</motion.div>
 
@@ -254,7 +297,7 @@ export default function Home() {
 								initial={{ opacity: 0, x: 50 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ duration: 1.1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-								style={{ flex: "1 1 420px", display: "flex", flexDirection: "column", alignItems: "stretch", gap: "10px" }}
+								style={{ flex: "1 1 420px", display: "flex", flexDirection: "column", alignItems: "stretch", gap: "10px", marginTop: "80px" }}
 							>
 								{/* ── We focus on: label ── */}
 								<motion.div
@@ -274,15 +317,12 @@ export default function Home() {
 								</motion.div>
 
 								{/* ── 2 Separate pill cards ── */}
-								{[
-									"Simple investment strategies that have a logic and can be implemented",
-									"Reducing the clutter of options to a few good ones, saving you time and effort",
-								].map((text, i) => (
+								{focusPills.map((text, i) => (
 									<motion.div
 										key={i}
-										initial={{ opacity: 0, y: 24 }}
+										initial={{ opacity: 0, y: 20 }}
 										animate={{ opacity: 1, y: 0 }}
-										transition={{ delay: 0.8 + i * 0.2, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+										transition={{ delay: 0.55 + i * 0.15, duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
 										whileHover={{ y: -3, boxShadow: "0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18)" }}
 										style={{
 											background: "var(--hero-glass-strong)",
@@ -295,8 +335,8 @@ export default function Home() {
 											textAlign: "center",
 										}}
 									>
-										<p style={{ margin: 0, fontSize: "clamp(15px, 1.5vw, 17px)", fontWeight: 300, fontFamily: "var(--font-heading)", color: "var(--pure)", lineHeight: 1.55, letterSpacing: "0.01em" }}>
-											<TypewriterText text={text} delay={0.8 + i * 0.2 + 0.3} />
+										<p className="no-split" style={{ margin: 0, fontSize: "clamp(15px, 1.5vw, 17px)", fontWeight: 300, fontFamily: "var(--font-heading)", color: "var(--pure)", lineHeight: 1.55, letterSpacing: "0.01em" }}>
+											{text}
 										</p>
 									</motion.div>
 								))}
@@ -310,7 +350,7 @@ export default function Home() {
 							<RevealChar
 								as="h2"
 								text="Choose your starting point"
-								className="t-display mb-4 tc"
+								className="t-display mb-4 tc no-split"
 								style={{
 									justifyContent: "center",
 									color: "var(--pure)",
@@ -322,7 +362,7 @@ export default function Home() {
 							/>
 							<div style={{ marginTop: 24 }}>
 								<SpreadCards
-									items={startingPoints}
+									items={sps}
 									cols={4}
 									className="g-4"
 									renderCard={(s) => (
@@ -334,19 +374,18 @@ export default function Home() {
 												display: "flex",
 												flexDirection: "column",
 												alignItems: "center",
-												justifyContent: "space-between",
+												justifyContent: "center",
 												textAlign: "center",
 												height: "100%",
 												minHeight: "auto",
-												gap: 0,
-												padding: "16px 12px",
-											}}
-											target="_blank" rel="noopener noreferrer">
-											{/* Icon — double ring circle */}
+												padding: "20px 16px",
+												gap: "12px",
+											}}>
+											{/* Icon circle */}
 											<div
 												style={{
-													width: 48,
-													height: 48,
+													width: 56,
+													height: 56,
 													borderRadius: "50%",
 													background: "linear-gradient(145deg, #fef9f0, #f3e8cd)",
 													border: "2px solid rgba(212,168,83,0.3)",
@@ -354,46 +393,36 @@ export default function Home() {
 													display: "flex",
 													alignItems: "center",
 													justifyContent: "center",
-													fontSize: 20,
+													fontSize: 24,
 													color: "#b08930",
 													flexShrink: 0,
-													marginBottom: 8,
 												}}
 											>
 												{s.icon}
 											</div>
 
-											{/* Gold separator */}
-											<div style={{
-												width: 32,
-												height: 1,
-												background: "linear-gradient(90deg, transparent, #d4a853, transparent)",
-												marginBottom: 8,
-												flexShrink: 0,
-											}} />
-
 											{/* Title */}
 											<h3
+												className="no-split"
 												style={{
-													margin: 0,
+													margin: "0",
 													fontSize: "clamp(14px, 1.2vw, 16px)",
 													fontWeight: 400,
 													fontFamily: "var(--font-heading)",
 													color: "#1a1714",
-													lineHeight: 1.3,
+													lineHeight: 1.35,
 													letterSpacing: "0.01em",
 													flex: 1,
 													display: "flex",
 													alignItems: "center",
 												}}
 											>
-												<HoverFlip text={s.label} />
+												{s.label}
 											</h3>
 
 											{/* Explore pill button */}
 											<span
 												style={{
-													marginTop: 8,
 													fontSize: 10,
 													fontWeight: 700,
 													letterSpacing: ".16em",
@@ -402,11 +431,12 @@ export default function Home() {
 													border: "1px solid rgba(212,168,83,0.35)",
 													borderRadius: "100px",
 													padding: "6px 16px",
-													background: "linear-gradient(135deg, rgba(212,168,83,0.06), rgba(212,168,83,0.02))",
+													background: "transparent",
 													flexShrink: 0,
+													whiteSpace: "nowrap",
 												}}
 											>
-												<HoverFlip text="EXPLORE →" />
+												EXPLORE →
 											</span>
 										</Link>
 									)}
@@ -429,17 +459,17 @@ export default function Home() {
 
 					<RevealChar
 						as="h2"
-						text="Scope"
+						text={scopeTitle}
 						className="t-h1 mb-5 tc"
 						style={{ justifyContent: "center" }}
-						delay={0.1}
+						delay={0}
 					/>
 					<motion.p
-						{...fade(0.3)}
-						className="t-body tc"
+						{...fade(0)}
+						className="t-body tc no-split"
 						style={{ maxWidth: 680, margin: "0 auto" }}
 					>
-						The current scope covers financial assets such as mutual funds, government sponsored financial instruments and fixed deposits.
+						{scopeText}
 					</motion.p>
 				</div>
 			</section>
@@ -457,37 +487,16 @@ export default function Home() {
 						<div>
 							<RevealChar
 								as="h2"
-								text="What you can expect"
+								text={expectationsTitle}
 								className="t-h1"
-								delay={0.1}
+								delay={0}
 							/>
 						</div>
 						<div>
-							{[
-								{
-									mark: "→",
-									heading: "Better Strategy",
-									desc: "Creation of a better match between your goals, circumstances and preferences and your investments.",
-								},
-								{
-									mark: "→",
-									heading: "Reduced Complexity",
-									desc: "Reduced investing complexity and better understanding of investment choices.",
-								},
-								{
-									mark: "→",
-									heading: "Improved Returns",
-									desc: "Improved returns — a little.",
-								},
-								{
-									mark: "→",
-									heading: "Reduced Risk",
-									desc: "Reduced risk — a little.",
-								},
-							].map((b, i) => (
+							{expectationsData.map((b, i) => (
 								<motion.div
 									key={i}
-									{...fadeX(30, i * 0.1 + 0.3)}
+									{...fadeX(20, i * 0.07 + 0.1)}
 									className="expect-row"
 									style={{
 										padding: "20px 0",
@@ -496,13 +505,13 @@ export default function Home() {
 								>
 									<div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
 										<span style={{ color: "var(--gold)", fontSize: 16, fontWeight: 700, paddingTop: 2, flexShrink: 0 }}>
-											{b.mark}
+											{b.mark || "→"}
 										</span>
 										<div>
-											<span className="expect-row-heading" style={{ color: "var(--mist)", fontSize: 15 }}>
+											<span className="expect-row-heading no-split" style={{ color: "var(--mist)", fontSize: 15 }}>
 												{b.heading}
 											</span>
-											<p className="expect-row-desc">{b.desc}</p>
+											<p className="expect-row-desc no-split">{b.desc}</p>
 										</div>
 									</div>
 								</motion.div>
@@ -526,30 +535,17 @@ export default function Home() {
 
 							<RevealChar
 								as="h2"
-								text="What you should not expect"
+								text={notExpectationsTitle}
 								highlight="not"
 								className="t-h1"
-								delay={0.1}
+								delay={0}
 							/>
 						</div>
 						<div>
-							{[
-								{
-									heading: "Exponential Returns",
-									desc: "Substantial improvement in returns.",
-								},
-								{
-									heading: "Elimination of Risk",
-									desc: "Elimination, or substantial reduction of the risk of loss.",
-								},
-								{
-									heading: "Reduced Stress",
-									desc: "Reduced stress in investing.",
-								},
-							].map((b, i) => (
+							{notExpectationsData.map((b, i) => (
 								<motion.div
 									key={i}
-									{...fadeX(30, i * 0.1 + 0.3)}
+									{...fadeX(20, i * 0.07 + 0.1)}
 									className="expect-row"
 									style={{
 										padding: "20px 0",
@@ -559,10 +555,10 @@ export default function Home() {
 									<div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
 										<span style={{ color: "var(--ash)", fontSize: 14, paddingTop: 3, flexShrink: 0 }}>✕</span>
 										<div>
-											<span className="expect-row-heading" style={{ color: "var(--smoke)", fontSize: 15 }}>
+											<span className="expect-row-heading no-split" style={{ color: "var(--smoke)", fontSize: 15 }}>
 												{b.heading}
 											</span>
-											<p className="expect-row-desc">{b.desc}</p>
+											<p className="expect-row-desc no-split">{b.desc}</p>
 										</div>
 									</div>
 								</motion.div>
@@ -587,16 +583,15 @@ export default function Home() {
 
 							<RevealChar
 								as="h2"
-								text="Who is it for?"
+								text={audienceTitle}
 								className="t-h1 mb-6"
-								delay={0.1}
+								delay={0}
 							/>
-							<p className="t-body mb-5" style={{ maxWidth: 560 }}>
-								The resources on this website will be of help to anyone interested in investing. However, the primary focus of the content is individual investors who have limited time, resources and expertise to devote to investment research and analyses.
-							</p>
-							<p className="t-body" style={{ maxWidth: 560 }}>
-								Every individual can also get some simple guidance to have a pretty good solution without knowing or learning too much about this, but everyone should learn a little bit.
-							</p>
+							{audienceParagraphsData.map((p, i) => (
+								<p key={i} className={`t-body no-split ${i !== audienceParagraphsData.length - 1 ? 'mb-5' : ''}`} style={{ maxWidth: 560 }}>
+									{p}
+								</p>
+							))}
 						</div>
 
 						{/* Right: Image */}
@@ -643,12 +638,13 @@ export default function Home() {
 
 					<RevealChar
 						as="h2"
-						text="Personalised Consulting"
+						text={ctaTitle}
 						className="t-display mb-5"
 						style={{ color: "var(--pure)", justifyContent: "center" }}
-						delay={0.1}
+						delay={0}
 					/>
 					<p
+						className="no-split"
 						style={{
 							fontSize: 16,
 							color: "var(--smoke)",
@@ -658,11 +654,11 @@ export default function Home() {
 							lineHeight: 1.7,
 						}}
 					>
-						The philosophy, strategy and suggestions shared on these pages are of universal relevance and should deliver value to every investor. Should you wish to seek a confidential, one-on-one, paid consulting with one of our experts, kindly click the button below. Personalised consulting is expected to be launched in the future. At this time you will be joining a wait-list. We will reach out when the service comes on-stream and a slot becomes available to arrange a session at a mutually convenient time.
+						{ctaText}
 					</p>
 					<motion.div {...fade(0.5)}>
-						<Link to="/consulting-waitlist" className="btn btn-white" style={{ padding: "14px 28px" }} target="_blank" rel="noopener noreferrer">
-							<HoverFlip text="I would like a personalised consulting session" />
+						<Link to={ctaButtonLink} className="btn btn-white" style={{ padding: "14px 28px" }} target="_blank" rel="noopener noreferrer">
+							<HoverFlip text={ctaButtonText} />
 						</Link>
 					</motion.div>
 				</div>

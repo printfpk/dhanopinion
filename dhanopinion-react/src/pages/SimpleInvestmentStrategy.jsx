@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { HoverFlip, RevealChar } from '../components/Animations'
 import chessImage from '../assets/investment_chess_strategy.png'
 import MediaSkeleton from '../components/MediaSkeleton'
+import { useState, useEffect } from 'react'
+import { client } from '../sanityClient'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -29,18 +31,26 @@ const elements = [
 ]
 
 export default function SimpleInvestmentStrategy() {
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    client.fetch(`*[_type == "simpleStrategyPage"][0]`)
+      .then(res => setData(res))
+      .catch(console.error)
+  }, [])
+
   return (
     <>
       <section className="sec" style={{ background: 'var(--black)' }}>
         <div className="wrap">
           <div className="g-2" style={{ alignItems: 'center' }}>
             <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
-              <RevealChar as="h1" text="A Simple Investment Strategy" className="t-mega mb-6" />
+              <RevealChar as="h1" text={data?.title || "A Simple Investment Strategy"} className="t-mega mb-6" />
               <motion.p variants={fadeUp} className="t-body mb-4">
-                Investing can be very complex. However it is possible to create simple investment strategies that can be surprisingly effective.
+                {data?.introParagraph1 || "Investing can be very complex. However it is possible to create simple investment strategies that can be surprisingly effective."}
               </motion.p>
               <motion.p variants={fadeUp} className="t-body mb-7">
-                Here we suggest a simple investment strategy that is easy to understand and that is likely to be more effective than most complex investment strategies recommended to individual investors.
+                {data?.introParagraph2 || "Here we suggest a simple investment strategy that is easy to understand and that is likely to be more effective than most complex investment strategies recommended to individual investors."}
               </motion.p>
               <motion.div variants={fadeUp}>
                 <a href="#elements" className="btn btn-gold">
@@ -76,7 +86,7 @@ export default function SimpleInvestmentStrategy() {
             variants={fadeUp}
             className="mb-8 tc"
           >
-            <h2 className="t-h1 mb-4" style={{ color: 'var(--pure)' }}>Elements of a simple investment strategy</h2>
+            <h2 className="t-h1 mb-4" style={{ color: 'var(--pure)' }}>{data?.elementsTitle || "Elements of a simple investment strategy"}</h2>
           </motion.div>
 
           <motion.div
@@ -86,7 +96,7 @@ export default function SimpleInvestmentStrategy() {
             variants={staggerContainer}
             style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}
           >
-            {elements.map((item, i) => (
+            {(data?.elements?.length > 0 ? data.elements : elements).map((item, i) => (
               <motion.div 
                 key={i} 
                 variants={fadeUp}

@@ -1,21 +1,22 @@
 import { useEffect } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { RevealChar, HoverFlip } from './Animations'
+import { HoverFlip } from './Animations'
 
-export default function PostLayout({ title, preTitle, prevLink, nextLink, children }) {
+export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHeader = false, children }) {
   const { pathname } = useLocation()
   useEffect(() => { window.scrollTo(0, 0) }, [pathname])
 
   return (
     <>
       {/* Post Header — large centered title like reference site */}
-      <section style={{
-        background: 'var(--void)',
-        padding: '4rem 0 2rem',
-        textAlign: 'center',
-        borderBottom: '1px solid var(--hairline)'
-      }}>
+      {!hideHeader && (
+        <section style={{
+          background: 'var(--void)',
+          padding: '2.5rem 0 2rem',
+          textAlign: 'center',
+          borderBottom: '1px solid var(--hairline)'
+        }}>
         <div className="wrap-narrow">
           {preTitle && (
             <motion.span
@@ -35,10 +36,10 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, childr
               {preTitle}
             </motion.span>
           )}
-          <RevealChar
-            as="h1"
-            text={title}
-            delay={0.05}
+          <motion.h1
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
             style={{
               fontSize: 'clamp(32px, 5vw, 56px)',
               fontWeight: 300,
@@ -47,14 +48,17 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, childr
               lineHeight: 1.15,
               color: 'var(--post-title)',
               textAlign: 'center',
-              display: 'block',
               width: '100%',
+              margin: 0,
             }}
-          />
+          >
+            {title}
+          </motion.h1>
         </div>
       </section>
+      )}
 
-      <section className="sec post-content-sec" style={{ background: 'var(--void)' }}>
+      <section className="post-content-sec" style={{ background: 'var(--void)', paddingTop: hideHeader ? '2rem' : '2rem', paddingBottom: 'var(--sp-9)' }}>
         <div className="wrap-narrow">
           <motion.article
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
@@ -80,13 +84,16 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, childr
           </motion.article>
         </div>
       </section>
+      {!hideHeader && (
+        <style>{`
+          .post-header-inner-title { display: none !important; }
+          .uicore-page-title { display: none !important; }
+          .uicore-animate.ui-breadcrumb { display: none !important; }
+          .uicore-title { display: none !important; }
+          .uicore-entry-meta { display: none !important; }
+        `}</style>
+      )}
       <style>{`
-        .post-header-inner-title { display: none !important; }
-        .uicore-page-title { display: none !important; }
-        .uicore-animate.ui-breadcrumb { display: none !important; }
-        .uicore-title { display: none !important; }
-        .uicore-entry-meta { display: none !important; }
-        
         .post-content { 
           font-family: var(--font-body);
           font-size: 17px; 
@@ -132,8 +139,8 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, childr
           color: var(--gold);
           text-transform: uppercase;
           letter-spacing: 0.06em;
-          margin-bottom: 2.5em;
-          margin-top: 1em;
+          margin-bottom: 1.5em;
+          margin-top: 0;
           border-bottom: 1px solid var(--hairline);
           padding-bottom: 0.75em;
           display: inline-block;

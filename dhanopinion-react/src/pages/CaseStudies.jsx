@@ -101,7 +101,6 @@ export default function CaseStudies() {
               >
                 <option>Risk Taking Ability</option>
                 <option>Low</option>
-                <option>Average</option>
                 <option>High</option>
               </select>
             </div>

@@ -4,60 +4,102 @@ import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motio
 const elements = { h1: motion.h1, h2: motion.h2, h3: motion.h3, p: motion.p, div: motion.div };
 
 export const HoverFlip = ({ text, style }) => {
-  const words = text.split(' ');
+  const safeText = typeof text === 'string' ? text : (text ? String(text) : '')
+  if (!safeText) return null
+  const words = safeText.split(' ');
 
   return (
-    <motion.span initial="initial" whileHover="hover" style={{ display: 'inline-flex', flexWrap: 'wrap', perspective: 1000, ...style }}>
+    <motion.span initial="initial" whileHover="hover" style={{ perspective: 1000, display: 'inline', ...style }}>
       {words.map((word, wordIndex) => (
-        <span key={wordIndex} style={{ display: 'inline-flex', position: 'relative', overflow: 'hidden' }}>
-          <motion.span
-            variants={{ initial: { y: 0, rotateX: 0 }, hover: { y: '-100%', rotateX: 90 } }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: wordIndex * 0.03 }}
-            style={{ display: 'inline-block', transformOrigin: 'center bottom' }}
-          >
-            {word}
-          </motion.span>
-          <motion.span
-            variants={{ initial: { y: '100%', rotateX: -90 }, hover: { y: 0, rotateX: 0 } }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: wordIndex * 0.03 }}
-            style={{ display: 'inline-block', position: 'absolute', inset: 0, color: 'var(--gold)', transformOrigin: 'center top' }}
-          >
-            {word}
-          </motion.span>
-          {wordIndex < words.length - 1 && <span style={{ width: '0.25em', display: 'inline-block' }} />}
-        </span>
+        <React.Fragment key={wordIndex}>
+          <span style={{ display: 'inline-block', position: 'relative', overflow: 'hidden', verticalAlign: 'bottom' }}>
+            <motion.span
+              variants={{ initial: { y: 0, rotateX: 0 }, hover: { y: '-100%', rotateX: 90 } }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: wordIndex * 0.03 }}
+              style={{ display: 'inline-block', transformOrigin: 'center bottom' }}
+            >
+              {word}
+            </motion.span>
+            <motion.span
+              variants={{ initial: { y: '100%', rotateX: -90 }, hover: { y: 0, rotateX: 0 } }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: wordIndex * 0.03 }}
+              style={{ display: 'inline-block', position: 'absolute', inset: 0, color: 'var(--gold)', transformOrigin: 'center top' }}
+            >
+              {word}
+            </motion.span>
+          </span>
+          {wordIndex < words.length - 1 && ' '}
+        </React.Fragment>
       ))}
     </motion.span>
   );
 };
 
-export const RevealChar = ({ text, highlight = "", highlightStyle, className, style, delay = 0, as = 'h2' }) => {
-  const MotionComponent = elements[as] || motion.div;
-  const words = text.split(' ');
 
+export const RevealChar = ({ text, highlight = "", highlightStyle, className, style, delay = 0, as = 'h2', mode = 'word' }) => {
+  const MotionComponent = elements[as] || motion.div;
+  const safeText = typeof text === 'string' ? text : (text ? String(text) : '')
+  if (!safeText) return null
+  const words = safeText.split(' ');
+
+  // Word-level animation: much faster, no per-char overhead
+  if (mode === 'word') {
+    const containerVariants = {
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.06, delayChildren: delay }
+      }
+    };
+    const wordVariants = {
+      hidden: { y: '60%', opacity: 0 },
+      visible: { y: 0, opacity: 1, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } }
+    };
+    return (
+      <MotionComponent
+        className={`no-split ${className || ''}`}
+        style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25em', ...style }}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1, margin: "60px" }}
+      >
+        {words.map((word, wordIndex) => {
+          if (word === '\\n' || word === '\n') {
+            return <div key={wordIndex} style={{ flexBasis: '100%', height: 0 }} />;
+          }
+          const isHighlight = highlight && word.toUpperCase().includes(highlight.toUpperCase());
+          const wrapperStyle = (isHighlight && highlightStyle) ? highlightStyle : {};
+          const italicStyle = isHighlight ? { fontStyle: 'italic' } : {};
+          return (
+            <span key={wordIndex} style={{ display: 'inline-flex', overflow: 'hidden', paddingBottom: '0.1em', marginBottom: '-0.1em', ...wrapperStyle, ...italicStyle }}>
+              <motion.span variants={wordVariants} style={{ display: 'inline-block' }}>
+                {word}
+              </motion.span>
+            </span>
+          );
+        })}
+      </MotionComponent>
+    );
+  }
+
+  // Char-level animation (mode='char') — original behavior, kept for hero
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.03,
-        delayChildren: delay,
-      }
+      transition: { staggerChildren: 0.015, delayChildren: delay }
     }
   };
-
   const charVariants = {
-    hidden: { y: '120%', rotateZ: 5, opacity: 0 },
-    visible: {
-      y: 0, rotateZ: 0, opacity: 1,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-    }
+    hidden: { y: '80%', opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }
   };
 
   return (
     <MotionComponent
-      className={className}
-      style={{ display: 'flex', flexWrap: 'wrap', ...style }}
+      className={`no-split ${className || ''}`}
+      style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25em', ...style }}
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
@@ -67,12 +109,9 @@ export const RevealChar = ({ text, highlight = "", highlightStyle, className, st
         if (word === '\\n' || word === '\n') {
           return <div key={wordIndex} style={{ flexBasis: '100%', height: 0 }} />;
         }
-
         const isHighlight = highlight && word.toUpperCase().includes(highlight.toUpperCase());
-        const charColor = 'inherit';
         const wrapperStyle = (isHighlight && highlightStyle) ? highlightStyle : {};
         const italicStyle = isHighlight ? { fontStyle: 'italic' } : {};
-
         return (
           <span key={wordIndex} style={{ display: 'inline-flex', alignItems: 'center', ...wrapperStyle, ...italicStyle }}>
             <span style={{ display: 'inline-flex', overflow: 'hidden', paddingBottom: '0.15em', marginBottom: '-0.15em' }}>
@@ -80,15 +119,12 @@ export const RevealChar = ({ text, highlight = "", highlightStyle, className, st
                 <motion.span
                   key={charIndex}
                   variants={charVariants}
-                  style={{ display: 'inline-block', color: charColor }}
+                  style={{ display: 'inline-block' }}
                 >
                   {char}
                 </motion.span>
               ))}
             </span>
-            {wordIndex < words.length - 1 && words[wordIndex + 1] !== '\\n' && words[wordIndex + 1] !== '\n' && (
-              <span style={{ width: '0.25em', display: 'inline-block' }} />
-            )}
           </span>
         )
       })}
@@ -191,7 +227,7 @@ export const ScrollCharRevealText = ({ text, as = 'h2', className, style }) => {
   return (
     <MotionComponent
       ref={containerRef}
-      className={className}
+      className={`no-split ${className || ''}`}
       style={{
         display: 'flex',
         flexWrap: 'wrap',
@@ -214,7 +250,7 @@ export const ScrollCharRevealText = ({ text, as = 'h2', className, style }) => {
               />
             );
           })}
-          {wordIndex < words.length - 1 && <span>&nbsp;</span>}
+          {wordIndex < words.length - 1 && <span key="space">&nbsp;</span>}
         </span>
       ))}
     </MotionComponent>
@@ -222,7 +258,9 @@ export const ScrollCharRevealText = ({ text, as = 'h2', className, style }) => {
 };
 
 export const TypewriterText = ({ text, delay = 0, style, className }) => {
-  const chars = text.split("");
+  // Guard: Sanity sometimes returns non-string values
+  const safeText = typeof text === 'string' ? text : (text ? String(text) : '')
+  const chars = safeText.split("");
 
   const containerVariants = {
     hidden: { opacity: 1 },
@@ -242,7 +280,7 @@ export const TypewriterText = ({ text, delay = 0, style, className }) => {
 
   return (
     <motion.span
-      className={className}
+      className={`no-split ${className || ''}`}
       style={{ display: "inline", ...style }}
       variants={containerVariants}
       initial="hidden"

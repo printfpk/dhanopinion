@@ -1,0 +1,14 @@
+import blockContent from './blockContent'
+import category from './category'
+import post from './post'
+import author from './author'
+import page from './page'
+import siteSettings from './siteSettings'
+import formBlock from './formBlock'
+import easyWinsPage from './easyWinsPage'
+import simpleStrategyPage from './simpleStrategyPage'
+import philosophyPage from './philosophyPage'
+import homePage from './homePage'
+import informationCentrePage from './informationCentrePage'
+
+export const schemaTypes = [post, author, category, blockContent, page, siteSettings, formBlock, easyWinsPage, simpleStrategyPage, philosophyPage, homePage, informationCentrePage]
