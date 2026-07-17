@@ -43,7 +43,7 @@ export default function InformationCentre() {
     { title: 'Government Savings Schemes',                                                             date: 'April 14, 2026' },
     { title: 'Senior Citizen Saving Scheme (SCSS)',                                                    date: 'April 23, 2026' },
     { title: 'Public Provident Fund',                                                            date: 'May 23, 2026' },
-    { title: 'Equity Linked Saving Scheme (ELSS)',                                                     date: 'May 24, 2026' },
+    { title: 'Equity Linked Saving Scheme (ELSS)',                                                     date: 'July 20, 2026' },
   ]
 
   useEffect(() => {

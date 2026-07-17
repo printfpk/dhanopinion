@@ -1,5 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const elements = { h1: motion.h1, h2: motion.h2, h3: motion.h3, p: motion.p, div: motion.div };
 
@@ -42,18 +47,29 @@ export const RevealChar = ({ text, highlight = "", highlightStyle, className, st
   if (!safeText) return null
   const words = safeText.split(' ');
 
+  const isExcluded = typeof window !== 'undefined' && window.location.pathname.includes('there-is-always-some-risk');
+
+  if (isExcluded) {
+    const Component = as;
+    return (
+      <Component className={className} style={style}>
+        {text}
+      </Component>
+    );
+  }
+
   // Word-level animation: much faster, no per-char overhead
   if (mode === 'word') {
     const containerVariants = {
       hidden: { opacity: 0 },
       visible: {
         opacity: 1,
-        transition: { staggerChildren: 0.06, delayChildren: delay }
+        transition: { staggerChildren: 0.05, delayChildren: delay }
       }
     };
     const wordVariants = {
-      hidden: { y: '60%', opacity: 0 },
-      visible: { y: 0, opacity: 1, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } }
+      hidden: { y: '100%', opacity: 0 },
+      visible: { y: 0, opacity: 1, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
     };
     return (
       <MotionComponent
@@ -88,12 +104,12 @@ export const RevealChar = ({ text, highlight = "", highlightStyle, className, st
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.015, delayChildren: delay }
+      transition: { staggerChildren: 0.04, delayChildren: delay }
     }
   };
   const charVariants = {
-    hidden: { y: '80%', opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }
+    hidden: { y: '100%', opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 1.2, ease: [0.25, 1, 0.5, 1] } }
   };
 
   return (
@@ -293,5 +309,75 @@ export const TypewriterText = ({ text, delay = 0, style, className }) => {
         </motion.span>
       ))}
     </motion.span>
+  );
+};
+
+export const AnimatedParagraph = ({ children, style, className }) => {
+  const textRef = useRef(null);
+  const initialized = useRef(false);
+
+  const isExcluded = typeof window !== 'undefined' && window.location.pathname.includes('there-is-always-some-risk');
+
+  useEffect(() => {
+    if (isExcluded) return;
+    if (!textRef.current) return;
+
+    // Create a ScrollTrigger that fires right before the paragraph enters the viewport
+    const trigger = ScrollTrigger.create({
+      trigger: textRef.current,
+      start: 'top 95%', // Fire when it's almost in view
+      once: true,
+      onEnter: () => {
+        if (initialized.current) return;
+        initialized.current = true;
+
+        // Split text strictly by visual lines ONLY when it enters the viewport.
+        // This completely eliminates the massive page-load lag!
+        const split = new SplitType(textRef.current, { types: 'lines' });
+        
+        // Wrap each line in an overflow-hidden wrapper for a true "pop up" mask effect
+        split.lines.forEach(line => {
+          const wrapper = document.createElement('div');
+          wrapper.style.overflow = 'hidden';
+          wrapper.style.display = 'block'; 
+          line.parentNode.insertBefore(wrapper, line);
+          wrapper.appendChild(line);
+        });
+        
+        // Make parent visible now that lines are masked
+        gsap.set(textRef.current, { opacity: 1 });
+
+        // Animate the lines sliding up and fading in
+        gsap.fromTo(
+          split.lines,
+          { y: '100%', opacity: 0 },
+          {
+            y: '0%',
+            opacity: 1,
+            duration: 1.2,
+            stagger: 0.08,
+            ease: 'power4.out',
+          }
+        );
+      }
+    });
+
+    return () => {
+      trigger.kill();
+    };
+  }, [children, isExcluded]);
+
+  if (isExcluded) {
+    return (
+      <p className={className} style={{...style, display: 'block'}}>
+        {children}
+      </p>
+    );
+  }
+
+  return (
+    <p ref={textRef} className={className} style={{...style, display: 'block', opacity: 0}}>
+      {children}
+    </p>
   );
 };

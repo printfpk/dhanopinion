@@ -3,6 +3,9 @@ import { useParams, Link } from 'react-router-dom'
 import { PortableText } from '@portabletext/react'
 import { client, urlFor } from '../sanityClient'
 import PostLayout from '../components/PostLayout'
+import { motion } from 'framer-motion'
+import { AnimatedParagraph } from '../components/Animations'
+import PageLoader from '../components/PageLoader'
 
 export default function DynamicPost() {
   const { slug } = useParams()
@@ -33,13 +36,7 @@ export default function DynamicPost() {
   }, [slug])
 
   if (loading) {
-    return (
-      <PostLayout title="Loading...">
-        <div style={{ padding: '4rem', textAlign: 'center', color: 'var(--pure)' }}>
-          Loading article...
-        </div>
-      </PostLayout>
-    )
+    return <PageLoader />
   }
 
   if (!post) {
@@ -188,7 +185,11 @@ export default function DynamicPost() {
       h4: ({children}) => <h4 style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>{children}</h4>,
       h5: ({children}) => <h5 style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>{children}</h5>,
       h6: ({children}) => <h6 style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>{children}</h6>,
-      normal: ({children}) => <p>{children}</p>,
+      normal: ({children}) => (
+        <AnimatedParagraph>
+          {children}
+        </AnimatedParagraph>
+      ),
     }
   }
 

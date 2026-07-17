@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { HoverFlip } from './Animations'
+import { HoverFlip, RevealChar } from './Animations'
 
 export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHeader = false, children }) {
   const { pathname } = useLocation()
@@ -36,10 +36,10 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHe
               {preTitle}
             </motion.span>
           )}
-          <motion.h1
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+          <RevealChar
+            key={title}
+            as="h1"
+            text={title}
             style={{
               fontSize: 'clamp(32px, 5vw, 56px)',
               fontWeight: 300,
@@ -50,10 +50,9 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHe
               textAlign: 'center',
               width: '100%',
               margin: 0,
+              justifyContent: 'center'
             }}
-          >
-            {title}
-          </motion.h1>
+          />
         </div>
       </section>
       )}
@@ -160,18 +159,36 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHe
         .post-content ul, .post-content ol { margin-bottom: 1.5em; padding-left: 1.5em; }
         .post-content li { margin-bottom: 0.5em; }
         
-        /* Hover underline effect */
-        .post-content p:not(.post-date), .post-content li {
+        /* Hover underline only — no color change */
+        .post-content p:not(.post-date) .line {
+          display: block;
+          border-bottom: 1px solid transparent;
+          padding-bottom: 1px;
+          transition: border-color 0.3s ease;
+        }
+        .post-content p:not(.post-date):hover .line {
+          border-color: var(--underline-hover);
+        }
+        /* Fallback for paragraphs without SplitType .line children */
+        .post-content p:not(.post-date):not(:has(.line)) {
           text-decoration: underline;
           text-decoration-color: transparent;
           text-underline-offset: 5px;
           text-decoration-thickness: 1px;
-          -webkit-text-stroke: 0px transparent;
-          transition: color 0.3s ease, text-decoration-color 0.3s ease, -webkit-text-stroke 0.2s ease;
+          transition: text-decoration-color 0.3s ease;
         }
-        .post-content p:not(.post-date):hover, .post-content li:hover {
-          color: var(--pure);
-          -webkit-text-stroke: 0.3px currentColor;
+        .post-content p:not(.post-date):not(:has(.line)):hover {
+          text-decoration-color: var(--underline-hover);
+        }
+        /* List items */
+        .post-content li {
+          text-decoration: underline;
+          text-decoration-color: transparent;
+          text-underline-offset: 5px;
+          text-decoration-thickness: 1px;
+          transition: text-decoration-color 0.3s ease;
+        }
+        .post-content li:hover {
           text-decoration-color: var(--underline-hover);
         }
         

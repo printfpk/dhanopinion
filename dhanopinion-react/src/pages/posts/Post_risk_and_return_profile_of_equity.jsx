@@ -4,7 +4,7 @@ import PostLayout from '../../components/PostLayout'
 export default function Post_risk_and_return_profile_of_equity() {
   return (
     <PostLayout title="Equity - Risk and Return profile">
-      <p className="post-date">March 30, 2025</p>
+      <p className="post-date">March 30, 2026</p>
       <h2>The nature of equity investing</h2>
 
       <p>Equity is designed to bear risk in bad times.</p>
