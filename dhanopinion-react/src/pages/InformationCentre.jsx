@@ -28,7 +28,7 @@ export default function InformationCentre() {
     { title: 'Inflation, Real Value and the Money Illusion',                                           date: 'March 26, 2026' },
     { title: 'Asset Allocation',                                                                       date: 'March 27, 2026' },
     { title: 'Defining your investment horizon can lead to better planning',                           date: 'March 29, 2026' },
-    { title: 'Equity - Risk and Return profile',                                                  date: 'March 30, 2026' },
+    { title: 'Equity - Risk and Return profile',                                                  date: 'March 30, 2025' },
     { title: 'Fixed Income \u2013 Risk and Return profile',                                            date: 'March 31, 2026' },
     { title: 'Active and Passive Investment Management',                                               date: 'April 1, 2026' },
     { title: 'Index Investing Strategy',                                                               date: 'April 2, 2026' },
