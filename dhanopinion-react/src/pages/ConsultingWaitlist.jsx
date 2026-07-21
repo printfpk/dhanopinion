@@ -3,11 +3,41 @@ import PostLayout from '../components/PostLayout'
 
 export default function ConsultingWaitlist() {
 	const [submitted, setSubmitted] = useState(false)
+	const [formData, setFormData] = useState({ name: '', email: '', remarks: '' })
+	const [status, setStatus] = useState('idle')
 
-	const handleSubmit = (e) => {
-		e.preventDefault()
-		// Fake submission
-		setSubmitted(true)
+	const handleChange = (e) => {
+		const { id, value } = e.target;
+		setFormData(prev => ({ ...prev, [id]: value }));
+	}
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		setStatus('submitting');
+		try {
+			const response = await fetch("https://api.web3forms.com/submit", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Accept: "application/json",
+				},
+				body: JSON.stringify({
+					access_key: "45d867a9-e12a-4f89-964d-560ed247d05a",
+					subject: "New Consulting Waitlist Submission",
+					...formData
+				}),
+			});
+			const result = await response.json();
+			if (result.success) {
+				setSubmitted(true);
+			} else {
+				console.error("Submission failed", result);
+			}
+			setStatus('idle');
+		} catch (error) {
+			console.error("Error!", error);
+			setStatus('idle');
+		}
 	}
 
 	return (
@@ -21,17 +51,17 @@ export default function ConsultingWaitlist() {
 					<form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 20, marginTop: "2rem", maxWidth: "600px", margin: "2rem auto 0" }}>
 						<div style={{ display: "flex", flexDirection: "column", gap: 8, textAlign: "left" }}>
 							<label htmlFor="name" style={{ color: "var(--pure)", fontSize: 14 }}>Name:</label>
-							<input type="text" id="name" required style={{ padding: "12px 16px", borderRadius: 8, background: "var(--ghost-bg)", border: "1px solid var(--ghost-border)", color: "var(--pure)", outline: "none", width: "100%", fontFamily: "var(--font-body)" }} />
+							<input type="text" id="name" value={formData.name} onChange={handleChange} required style={{ padding: "12px 16px", borderRadius: 8, background: "var(--ghost-bg)", border: "1px solid var(--ghost-border)", color: "var(--pure)", outline: "none", width: "100%", fontFamily: "var(--font-body)" }} />
 						</div>
 
 						<div style={{ display: "flex", flexDirection: "column", gap: 8, textAlign: "left" }}>
 							<label htmlFor="email" style={{ color: "var(--pure)", fontSize: 14 }}>Email ID:</label>
-							<input type="email" id="email" required style={{ padding: "12px 16px", borderRadius: 8, background: "var(--ghost-bg)", border: "1px solid var(--ghost-border)", color: "var(--pure)", outline: "none", width: "100%", fontFamily: "var(--font-body)" }} />
+							<input type="email" id="email" value={formData.email} onChange={handleChange} required style={{ padding: "12px 16px", borderRadius: 8, background: "var(--ghost-bg)", border: "1px solid var(--ghost-border)", color: "var(--pure)", outline: "none", width: "100%", fontFamily: "var(--font-body)" }} />
 						</div>
 
 						<div style={{ display: "flex", flexDirection: "column", gap: 8, textAlign: "left" }}>
 							<label htmlFor="remarks" style={{ color: "var(--pure)", fontSize: 14 }}>Remarks:</label>
-							<textarea id="remarks" rows="4" style={{ padding: "12px 16px", borderRadius: 8, background: "var(--ghost-bg)", border: "1px solid var(--ghost-border)", color: "var(--pure)", outline: "none", width: "100%", resize: "vertical", fontFamily: "var(--font-body)" }} />
+							<textarea id="remarks" rows="4" value={formData.remarks} onChange={handleChange} style={{ padding: "12px 16px", borderRadius: 8, background: "var(--ghost-bg)", border: "1px solid var(--ghost-border)", color: "var(--pure)", outline: "none", width: "100%", resize: "vertical", fontFamily: "var(--font-body)" }} />
 						</div>
 
 						<button type="submit" style={{ 
@@ -49,7 +79,7 @@ export default function ConsultingWaitlist() {
 							onMouseEnter={e => { e.currentTarget.style.background = "#333333"; }}
 							onMouseLeave={e => { e.currentTarget.style.background = "#000000"; }}
 						>
-							Put me on the waitlist
+							{status === 'submitting' ? 'Submitting...' : 'Put me on the waitlist'}
 						</button>
 					</form>
 				</>

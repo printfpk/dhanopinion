@@ -58,9 +58,25 @@ export default function AboutUs() {
     e.preventDefault();
     setFeedbackStatus('submitting');
     try {
-      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ formType: 'feedback', ...formData }) });
-      setFeedbackStatus('success');
-      setFormData({ name: '', email: '', mobile: '', isUseful: '', knowFees: '', knowStocksPct: '', willingToPay: '', valuableThings: '', anythingElse: '' });
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "45d867a9-e12a-4f89-964d-560ed247d05a",
+          subject: "New Feedback Form Submission",
+          ...formData
+        }),
+      });
+      const result = await response.json();
+      if (result.success) {
+        setFeedbackStatus('success');
+        setFormData({ name: '', email: '', mobile: '', isUseful: '', knowFees: '', knowStocksPct: '', willingToPay: '', valuableThings: '', anythingElse: '' });
+      } else {
+        setFeedbackStatus('error');
+      }
       setTimeout(() => setFeedbackStatus('idle'), 5000);
     } catch (error) {
       console.error("Error!", error);
@@ -73,9 +89,25 @@ export default function AboutUs() {
     e.preventDefault();
     setContactStatus('submitting');
     try {
-      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ formType: 'contact', ...contactData }) });
-      setContactStatus('success');
-      setContactData({ name: '', email: '', phone: '', message: '' });
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "45d867a9-e12a-4f89-964d-560ed247d05a",
+          subject: "New Contact Form Submission",
+          ...contactData
+        }),
+      });
+      const result = await response.json();
+      if (result.success) {
+        setContactStatus('success');
+        setContactData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        setContactStatus('error');
+      }
       setTimeout(() => setContactStatus('idle'), 5000);
     } catch (error) {
       console.error("Error!", error);
