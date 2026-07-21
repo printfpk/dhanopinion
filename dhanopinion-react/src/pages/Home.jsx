@@ -436,7 +436,7 @@ export default function Home() {
 													whiteSpace: "nowrap",
 												}}
 											>
-												EXPLORE →
+												<HoverFlip text="EXPLORE →" />
 											</span>
 										</Link>
 									)}

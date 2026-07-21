@@ -58,7 +58,7 @@ export default function Navbar() {
           <div className="nav-desktop-links" style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'nowrap' }}>
             {links.map(l => (
               <Link key={l.to} to={l.to} className="desktop-nav-link" style={{
-                fontSize: 13, fontWeight: 400, letterSpacing: '.05em', textTransform: 'uppercase',
+                fontSize: 13, fontWeight: 500, letterSpacing: '.05em', textTransform: 'uppercase',
                 color: pathname.startsWith(l.to) ? 'var(--orange)' : 'var(--pure)',
                 textDecoration: 'none', padding: '8px 12px', display: 'flex', alignItems: 'center', whiteSpace: 'nowrap'
               }}>
@@ -147,7 +147,7 @@ export default function Navbar() {
               >
                 <Link to={l.to} onClick={() => setOpen(false)} className="mobile-nav-link" style={{
                   display: 'flex', alignItems: 'center', padding: '16px 0',
-                  fontSize: 28, fontWeight: 400, letterSpacing: '-.02em',
+                  fontSize: 28, fontWeight: 500, letterSpacing: '-.02em',
                   color: pathname.startsWith(l.to) ? 'var(--gold)' : 'var(--pure)',
                   textDecoration: 'none', borderBottom: '1px solid var(--hairline)',
                 }}>
