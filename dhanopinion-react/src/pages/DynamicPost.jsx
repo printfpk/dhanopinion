@@ -93,50 +93,55 @@ export default function DynamicPost() {
 
 
     return (
-      <div className="table-container" style={{ overflowX: 'auto', margin: '1.5rem 0' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '15px' }}>
-          {headerRow && (
-            <thead>
-              <tr>
-                {headerRow.cells.map((cell, i) => (
-                  <th key={i} style={{
-                    padding: '12px 16px',
-                    color: 'var(--pure)',
-                    fontSize: '13px',
-                    fontWeight: 600,
-                    letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
-                    borderBottom: '1px solid rgba(255,255,255,0.12)',
-                    background: 'rgba(255,255,255,0.04)',
-                    textAlign: 'left',
-                    whiteSpace: 'nowrap',
-                  }}>
-                    {renderCell(cell)}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-          )}
-          <tbody>
-            {bodyRows.map((row, ri) => (
-              <tr key={ri}
-                onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.03)'}
-                onMouseOut={e => e.currentTarget.style.background = 'transparent'}
-                style={{ transition: 'background 0.2s' }}
-              >
-                {row.cells.map((cell, ci) => (
-                  <td key={ci} style={{
-                    padding: '12px 16px',
-                    fontSize: '15px',
-                    borderBottom: '1px solid var(--hairline)',
-                  }}>
-                    {renderCell(cell)}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="table-wrapper" style={{ margin: '1.5rem 0' }}>
+        <div className="table-container" style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '15px' }}>
+            {headerRow && (
+              <thead>
+                <tr>
+                  {headerRow.cells.map((cell, i) => (
+                    <th key={i} style={{
+                      padding: '12px 16px',
+                      color: 'var(--pure)',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      letterSpacing: '0.06em',
+                      textTransform: 'uppercase',
+                      borderBottom: '1px solid rgba(255,255,255,0.12)',
+                      background: 'rgba(255,255,255,0.04)',
+                      textAlign: 'left',
+                      whiteSpace: 'nowrap',
+                    }}>
+                      {renderCell(cell)}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+            )}
+            <tbody>
+              {bodyRows.map((row, ri) => (
+                <tr key={ri}
+                  onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.03)'}
+                  onMouseOut={e => e.currentTarget.style.background = 'transparent'}
+                  style={{ transition: 'background 0.2s' }}
+                >
+                  {row.cells.map((cell, ci) => (
+                    <td key={ci} style={{
+                      padding: '12px 16px',
+                      fontSize: '15px',
+                      borderBottom: '1px solid var(--hairline)',
+                    }}>
+                      {renderCell(cell)}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="table-swipe-indicator">
+          <span>← Swipe to view more →</span>
+        </div>
       </div>
     )
   }
@@ -220,7 +225,7 @@ export default function DynamicPost() {
               </div>
             </header>
             <div id="primary" className="content-area">
-              <div style={{ maxWidth: '800px', margin: '0 auto', padding: '1rem 2rem 3rem' }}>
+              <div className="dynamic-post-inner">
                 <p className="post-date">{dateStr}</p>
                 <PortableText value={post.body} components={components} />
               </div>

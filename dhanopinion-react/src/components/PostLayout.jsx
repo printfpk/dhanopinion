@@ -67,7 +67,7 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHe
             {children}
             
             {(prevLink || nextLink) && (
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--hairline)' }}>
+              <div className="post-nav-row" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--hairline)' }}>
                 {prevLink ? (
                   <Link to={prevLink} className="btn btn-ghost btn-sm" style={{ borderColor: 'rgba(212,168,83,0.4)', color: 'var(--gold)' }}>
                     <HoverFlip text="PREVIOUS STEP" />
@@ -160,14 +160,18 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHe
         .post-content li { margin-bottom: 0.5em; }
         
         /* Hover underline only — no color change */
-        .post-content p:not(.post-date) .line {
-          display: block;
+        .post-content .line {
           border-bottom: 1px solid transparent;
           padding-bottom: 1px;
           transition: border-color 0.3s ease;
+          width: fit-content;
         }
         .post-content p:not(.post-date):hover .line {
           border-color: var(--underline-hover);
+          color: var(--pure);
+        }
+        .post-content p:not(.post-date):hover {
+          color: var(--pure);
         }
         /* Fallback for paragraphs without SplitType .line children */
         .post-content p:not(.post-date):not(:has(.line)) {
@@ -175,10 +179,11 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHe
           text-decoration-color: transparent;
           text-underline-offset: 5px;
           text-decoration-thickness: 1px;
-          transition: text-decoration-color 0.3s ease;
+          transition: text-decoration-color 0.3s ease, color 0.3s ease;
         }
         .post-content p:not(.post-date):not(:has(.line)):hover {
           text-decoration-color: var(--underline-hover);
+          color: var(--pure);
         }
         /* List items */
         .post-content li {
@@ -191,7 +196,6 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHe
         .post-content li:hover {
           text-decoration-color: var(--underline-hover);
         }
-        
         .post-content strong { color: var(--pure); font-weight: 600; }
         .post-content a { color: var(--gold); text-decoration: underline; text-decoration-color: rgba(212,168,83,0.3); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
         .post-content a:hover { text-decoration-color: var(--gold); }

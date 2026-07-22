@@ -198,7 +198,7 @@ export default function AboutUs() {
       {/* ── Forms Section: Contact & Feedback ── */}
       <section id="contact" style={{ background: 'var(--void)', padding: '60px 0', borderBottom: '1px solid var(--hairline)' }}>
         <div className="wrap">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '64px' }}>
+          <div className="about-forms-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '64px' }}>
 
             {/* Contact Us */}
             <motion.div {...f()}>
@@ -209,7 +209,7 @@ export default function AboutUs() {
                   <a href="mailto:response@dhanopinion.com" style={{ color: 'var(--gold)', textDecoration: 'none' }}>response@dhanopinion.com</a>.
                 </p>
               </div>
-              <div style={{ background: 'rgba(255,255,255,0.02)', borderRadius: '24px', padding: '40px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <div className="about-form-card" style={{ background: 'rgba(255,255,255,0.02)', borderRadius: '24px', padding: '40px', border: '1px solid rgba(255,255,255,0.05)' }}>
                 <form onSubmit={handleContactSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                   {[['contactName','Name','text','name'],['contactEmail','Email','email','email'],['contactPhone','Phone Number','tel','phone']].map(([id,label,type,name]) => (
                     <div key={id} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -228,6 +228,11 @@ export default function AboutUs() {
                     {contactStatus === 'success' && (
                       <motion.div {...luxuryToastAnim} style={{ padding: '16px', background: 'rgba(76, 175, 80, 0.05)', border: '1px solid rgba(76, 175, 80, 0.2)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderRadius: '8px', color: '#4caf50', textAlign: 'center', fontWeight: 500, letterSpacing: '0.02em', marginTop: '16px' }}>
                         Message sent successfully!
+                      </motion.div>
+                    )}
+                    {contactStatus === 'error' && (
+                      <motion.div {...luxuryToastAnim} style={{ padding: '16px', background: 'rgba(244, 67, 54, 0.1)', border: '1px solid rgba(244, 67, 54, 0.3)', borderRadius: '8px', color: '#f44336', textAlign: 'center', fontWeight: 500, marginTop: '16px' }}>
+                        Something went wrong. Please try again later.
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -256,9 +261,9 @@ export default function AboutUs() {
                   If you have specific suggestions or expertise you would like to contribute, please let us know.
                 </p>
               </div>
-              <div style={{ background: 'rgba(255,255,255,0.02)', borderRadius: '24px', padding: '40px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <div className="about-form-card" style={{ background: 'rgba(255,255,255,0.02)', borderRadius: '24px', padding: '40px', border: '1px solid rgba(255,255,255,0.05)' }}>
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  <div className="about-feedback-name-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                     {[['name','Name','text'],['mobile','Mobile','tel']].map(([name,label,type]) => (
                       <div key={name} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         <label htmlFor={name} style={{ color: 'var(--pure)', fontSize: '14px', fontWeight: 500 }}>{label}</label>
@@ -305,6 +310,11 @@ export default function AboutUs() {
                     {feedbackStatus === 'success' && (
                       <motion.div {...luxuryToastAnim} style={{ padding: '16px', background: 'rgba(76, 175, 80, 0.05)', border: '1px solid rgba(76, 175, 80, 0.2)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderRadius: '8px', color: '#4caf50', textAlign: 'center', fontWeight: 500, letterSpacing: '0.02em', marginTop: '16px' }}>
                         Feedback submitted successfully!
+                      </motion.div>
+                    )}
+                    {feedbackStatus === 'error' && (
+                      <motion.div {...luxuryToastAnim} style={{ padding: '16px', background: 'rgba(244, 67, 54, 0.1)', border: '1px solid rgba(244, 67, 54, 0.3)', borderRadius: '8px', color: '#f44336', textAlign: 'center', fontWeight: 500, marginTop: '16px' }}>
+                        Something went wrong. Please try again later.
                       </motion.div>
                     )}
                   </AnimatePresence>

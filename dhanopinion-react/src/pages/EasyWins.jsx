@@ -118,9 +118,11 @@ export default function EasyWins() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                 viewport={{ once: true, margin: "-100px" }}
+                className="easywin-image-wrapper"
                 style={{ flex: "1 1 min(100%, 500px)", display: "flex", justifyContent: "center", alignItems: "center" }}
               >
                 <motion.img
+                  className="easywin-img"
                   src="https://dhanopinion.com/wp-content/uploads/2023/07/Rupee-1.png"
                   alt="Rupee"
                   animate={{ y: [0, -14, 0] }}

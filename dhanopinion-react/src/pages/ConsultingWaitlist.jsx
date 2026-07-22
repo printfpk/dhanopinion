@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import PostLayout from '../components/PostLayout'
 
 export default function ConsultingWaitlist() {
@@ -32,11 +33,11 @@ export default function ConsultingWaitlist() {
 				setSubmitted(true);
 			} else {
 				console.error("Submission failed", result);
+				setStatus('error');
 			}
-			setStatus('idle');
 		} catch (error) {
 			console.error("Error!", error);
-			setStatus('idle');
+			setStatus('error');
 		}
 	}
 
@@ -82,6 +83,13 @@ export default function ConsultingWaitlist() {
 							{status === 'submitting' ? 'Submitting...' : 'Put me on the waitlist'}
 						</button>
 					</form>
+					<AnimatePresence>
+						{status === 'error' && (
+							<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ padding: '16px', background: 'rgba(244, 67, 54, 0.1)', border: '1px solid rgba(244, 67, 54, 0.3)', borderRadius: '8px', color: '#f44336', textAlign: 'center', fontWeight: 500, marginTop: '16px' }}>
+								Something went wrong. Please try again later.
+							</motion.div>
+						)}
+					</AnimatePresence>
 				</>
 			) : (
 				<div style={{ padding: 40, background: "var(--ghost-bg)", border: "1px solid var(--ghost-border)", borderRadius: 16, textAlign: "center", marginTop: "2rem" }}>

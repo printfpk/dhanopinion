@@ -378,16 +378,7 @@ img {
 	font-weight: 400;
 	line-height: 1.7;
 	color: var(--smoke);
-	transition: color 0.3s ease, text-decoration-color 0.3s ease;
-	text-decoration: underline transparent;
-	text-underline-offset: 4px;
 	margin-bottom: var(--sp-4);
-}
-
-.elementor-widget-text-editor p:hover,
-.elementor-widget-text-editor li:hover {
-	text-decoration-color: var(--underline-hover);
-	color: var(--pure);
 }
 
 .t-overline {
@@ -882,3 +873,264 @@ img {
 		background-position: -200% 0;
 	}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE OVERRIDES  (≤ 768px)
+   Desktop layout is fully untouched — all rules are scoped
+   inside @media (max-width: 768px) or smaller.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Navbar ── */
+@media (max-width: 768px) {
+	/* Shrink the logo so it doesn't overflow on narrow screens */
+	.nav-logo-link {
+		width: 180px !important;
+		height: 52px !important;
+	}
+	.nav-logo-img {
+		width: 180px !important;
+	}
+
+	/* Footer logo */
+	.footer-logo-link {
+		width: 200px !important;
+		height: 56px !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+	}
+	.footer-logo-img {
+		width: 200px !important;
+	}
+
+	/* Footer grid: tighten gap on mobile */
+	.site-footer .wrap > div:first-child {
+		gap: 32px !important;
+	}
+
+	/* ── Home Hero ── */
+	/* The hero section uses sticky positioning — switch to relative on mobile */
+	.home-hero {
+		position: relative !important;
+		min-height: unset !important;
+	}
+
+	/* Hero flex row → column */
+	.home-hero-flex {
+		flex-direction: column !important;
+		gap: 1.5rem !important;
+		padding-top: 20px !important;
+		padding-bottom: 32px !important;
+	}
+
+	/* Left col: let it be full width */
+	.home-hero-left {
+		flex: 1 1 100% !important;
+		min-width: 0 !important;
+	}
+
+	/* Right col: full width, no top margin on mobile */
+	.home-hero-right {
+		flex: 1 1 100% !important;
+		min-width: 0 !important;
+		margin-top: 0 !important;
+		width: 100% !important;
+	}
+
+	/* Starting-point section inside hero */
+	.home-starting-points {
+		padding-top: 24px !important;
+	}
+
+	/* ── CTA button ── */
+	/* Long CTA text button — allow it to wrap */
+	.teal-band .btn {
+		white-space: normal !important;
+		text-align: center !important;
+		max-width: 90vw !important;
+		padding: 14px 20px !important;
+		line-height: 1.4 !important;
+	}
+
+	/* ── "Who is it for" section ── */
+	/* g-2 already stacks on mobile; fix the gap which is 4rem */
+	.home-audience-grid {
+		gap: 2rem !important;
+	}
+
+	/* ── InformationCentre ── */
+	/* Main flex container → column */
+	.info-centre-wrap {
+		flex-direction: column !important;
+		gap: 2rem !important;
+	}
+	.info-centre-sidebar {
+		width: 100% !important;
+		position: static !important;
+	}
+
+	/* ── AboutUs: forms grid ── */
+	/* Override the minmax(400px, 1fr) which breaks narrow screens */
+	.about-forms-grid {
+		grid-template-columns: 1fr !important;
+		gap: 48px !important;
+	}
+
+	/* Feedback form inner Name+Mobile grid → single col */
+	.about-feedback-name-grid {
+		grid-template-columns: 1fr !important;
+	}
+
+	/* Form card padding on mobile */
+	.about-form-card {
+		padding: 24px !important;
+		border-radius: 16px !important;
+	}
+
+	/* ── Post Layout prev/next nav ── */
+	.post-nav-row {
+		flex-direction: column !important;
+		gap: 12px !important;
+	}
+
+	/* ── Misc section padding ── */
+	.sec {
+		padding: var(--sp-7) 0 !important;
+	}
+
+	/* Reduce the 4rem gap in the "Who is it for" g-2 */
+	.g-2[style*="4rem"] {
+		gap: 2rem !important;
+	}
+}
+
+/* ── Extra small screens (≤ 480px) ── */
+@media (max-width: 480px) {
+	.nav-logo-link {
+		width: 160px !important;
+		height: 46px !important;
+	}
+	.nav-logo-img {
+		width: 160px !important;
+	}
+
+	/* Pill cards in hero should have slightly smaller text */
+	.home-hero-pill p {
+		font-size: 14px !important;
+	}
+
+	/* CTA button text */
+	.teal-band .btn {
+		font-size: 11px !important;
+		padding: 12px 16px !important;
+	}
+
+	/* InformationCentre article title */
+	.info-article-title {
+		font-size: 15px !important;
+	}
+
+	/* Footer bottom row */
+	.footer-bottom-row {
+		flex-direction: column !important;
+		text-align: center !important;
+	}
+}
+
+/* ── EasyWins page: shrink the rupee image on mobile ── */
+@media (max-width: 768px) {
+	.easywin-img {
+		max-width: 180px !important;
+	}
+	.easywin-image-wrapper {
+		padding: 8px 0 !important;
+	}
+}
+
+/* ── Fix gap between fixed navbar and page content on mobile ── */
+@media (max-width: 768px) {
+	.site-main {
+		padding-top: 72px !important;
+	}
+	/* First section on each page — adjust top padding for better breathing room */
+	.site-main > * > section:first-child,
+	.site-main > * > div > section:first-child,
+	.site-main > section:first-child {
+		padding-top: 40px !important;
+	}
+}
+
+/* ── SimpleInvestmentStrategy page: reveal "Know More" button from bottom on mobile tap/hover ── */
+@media (max-width: 768px) {
+	.list-row {
+		flex-direction: column !important;
+		align-items: flex-start !important;
+		gap: 0 !important; 
+		/* Enable hover state on iOS Safari by making it clickable */
+		cursor: pointer;
+	}
+	/* Hide the button wrapper initially */
+	.list-row > div:last-child {
+		opacity: 0;
+		max-height: 0;
+		overflow: hidden;
+		transform: translateY(15px);
+		transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+		width: 100%;
+	}
+	/* Reveal it on tap or hover */
+	.list-row:hover > div:last-child,
+	.list-row:active > div:last-child,
+	.list-row:focus-within > div:last-child {
+		opacity: 1;
+		max-height: 80px; /* enough to show button */
+		transform: translateY(0);
+		margin-top: 16px;
+	}
+}
+
+/* ── Dynamic Post Layout fixes for mobile ── */
+.dynamic-post-inner {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 1rem 2rem 3rem;
+}
+
+@media (max-width: 768px) {
+	/* 1. Make the paragraph/title cover full screen width by removing side padding */
+	.dynamic-post-inner {
+		padding: 0.5rem 0 3rem;
+	}
+	
+	/* 2. Reduce gap between title and date */
+	/* The title section has 2rem bottom padding, and the content section has 2rem top padding */
+	.post-content-sec {
+		padding-top: 0 !important;
+	}
+	.post-content-sec .wrap-narrow {
+		padding-top: 0 !important;
+	}
+	.post-date {
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
+	}
+	/* Target whatever element comes immediately after the date (heading or paragraph) */
+	.post-date + * {
+		margin-top: 12px !important;
+	}
+
+	.table-swipe-indicator {
+		display: block !important;
+	}
+}
+
+.table-swipe-indicator {
+	display: none;
+	text-align: center;
+	font-size: 11px;
+	color: var(--gold);
+	margin-top: 8px;
+	opacity: 0.7;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+

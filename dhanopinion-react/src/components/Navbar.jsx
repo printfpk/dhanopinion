@@ -31,7 +31,8 @@ export default function Navbar() {
         : typeof a.category === 'string'
           ? a.category.toLowerCase().includes(query)
           : false;
-      return matchTitle || matchCategory;
+      const matchText = a.textContent?.toLowerCase().includes(query);
+      return matchTitle || matchCategory || matchText;
     }).slice(0, 5)
   }, [searchQuery])
 
@@ -47,8 +48,9 @@ export default function Navbar() {
         {/* Single row: Logo + Desktop Nav + Icons */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', margin: '0 auto', maxWidth: 1400, height: 72 }}>
           {/* Logo */}
-          <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', position: 'relative', width: '300px', height: '68px', overflow: 'hidden', flexShrink: 0 }}>
+          <Link to="/" className="nav-logo-link" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', position: 'relative', width: '300px', height: '68px', overflow: 'hidden', flexShrink: 0 }}>
             <img
+              className="nav-logo-img"
               src={theme === 'dark' ? '/assets/images/dhan-logo-dark.png' : '/assets/images/dhan-logo-light.png'}
               alt="Dhan Opinion"
               style={{ position: 'absolute', top: '50%', left: '0', transform: 'translateY(-48%)', width: '300px', height: 'auto' }}

@@ -111,6 +111,11 @@ export function ContactForm() {
                 Message sent successfully!
               </motion.div>
             )}
+            {contactStatus === 'error' && (
+              <motion.div {...luxuryToastAnim} style={{ padding: '16px', background: 'rgba(244, 67, 54, 0.1)', border: '1px solid rgba(244, 67, 54, 0.3)', borderRadius: '8px', color: '#f44336', textAlign: 'center', fontWeight: 500, marginTop: '16px' }}>
+                Something went wrong. Please try again later.
+              </motion.div>
+            )}
           </AnimatePresence>
         </form>
       </div>
@@ -223,6 +228,11 @@ export function FeedbackForm() {
             {feedbackStatus === 'success' && (
               <motion.div {...luxuryToastAnim} style={{ padding: '16px', background: 'rgba(76, 175, 80, 0.05)', border: '1px solid rgba(76, 175, 80, 0.2)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderRadius: '8px', color: '#4caf50', textAlign: 'center', fontWeight: 500, letterSpacing: '0.02em', marginTop: '16px' }}>
                 Feedback submitted successfully!
+              </motion.div>
+            )}
+            {feedbackStatus === 'error' && (
+              <motion.div {...luxuryToastAnim} style={{ padding: '16px', background: 'rgba(244, 67, 54, 0.1)', border: '1px solid rgba(244, 67, 54, 0.3)', borderRadius: '8px', color: '#f44336', textAlign: 'center', fontWeight: 500, marginTop: '16px' }}>
+                Something went wrong. Please try again later.
               </motion.div>
             )}
           </AnimatePresence>

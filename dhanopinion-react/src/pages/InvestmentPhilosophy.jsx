@@ -102,6 +102,7 @@ export default function InvestmentPhilosophy() {
                 key={i} 
                 variants={fadeUp}
                 className="list-row"
+                onClick={() => {}} // Empty handler to enable :hover/:active on iOS Safari
                 style={{ 
                   display: 'flex', 
                   alignItems: 'center', 

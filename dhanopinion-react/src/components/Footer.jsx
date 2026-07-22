@@ -25,8 +25,9 @@ export default function Footer() {
 				>
 					{/* Brand Section */}
 					<div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-						<Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', position: 'relative', width: '330px', height: '80px', overflow: 'hidden', flexShrink: 0, marginLeft: '-16px', marginTop: '-12px' }}>
+						<Link to="/" className="footer-logo-link" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', position: 'relative', width: '330px', height: '80px', overflow: 'hidden', flexShrink: 0, marginLeft: '-16px', marginTop: '-12px' }}>
 							<img
+								className="footer-logo-img"
 								src="/assets/images/dhan-logo-dark.png"
 								alt="Dhan Opinion"
 								style={{ position: 'absolute', top: '50%', left: '0', transform: 'translateY(-48%)', width: '330px', height: 'auto' }}
@@ -80,7 +81,7 @@ export default function Footer() {
 
 				<div className="hairline" style={{ marginBottom: 32, background: 'rgba(255,255,255,0.1)' }} />
 
-				<div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px" }}>
+				<div className="footer-bottom-row" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px" }}>
 					<p style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", letterSpacing: ".02em", margin: 0 }}>
 						© 2026 Dhanopinion. All Rights Reserved.
 					</p>

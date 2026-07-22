@@ -6,6 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import './datepicker.css'
 import { RevealChar } from '../components/Animations'
 import { client } from '../sanityClient'
+import { allArticles } from '../data/articles'
 
 export default function InformationCentre() {
   const [keyword, setKeyword] = useState('')
@@ -47,7 +48,7 @@ export default function InformationCentre() {
   ]
 
   useEffect(() => {
-    // Fetch Page Data
+    // Fetch Page Data (Titles etc)
     client.fetch(`*[_type == "informationCentrePage"][0]`)
       .then(res => {
         if (res) {
@@ -62,7 +63,8 @@ export default function InformationCentre() {
       title,
       publishedAt,
       "category": categories[]->title,
-      "to": slug.current
+      "to": slug.current,
+      "textContent": pt::text(body)
     }`).then(res => {
         const formatted = res.map(p => {
           const titleLower = (p.title || '').toLowerCase()
@@ -78,7 +80,8 @@ export default function InformationCentre() {
                 : '',
             rawDate: p.publishedAt,
             category: p.category || [],
-            to: p.to ? `/post/${p.to}` : '#'
+            to: p.to ? `/post/${p.to}` : '#',
+            textContent: p.textContent || ''
           }
         })
 
@@ -149,10 +152,10 @@ export default function InformationCentre() {
 
       {/* Main Container mirroring the dark blue layout of the screenshot */}
       <section className="sec" style={{ background: 'var(--void)' }}>
-        <div className="wrap" style={{ display: 'flex', gap: '4rem', alignItems: 'flex-start' }}>
+        <div className="wrap info-centre-wrap" style={{ display: 'flex', gap: '4rem', alignItems: 'flex-start' }}>
 
           {/* Sidebar */}
-          <div className="filters-sidebar" style={{ width: '300px', flexShrink: 0, padding: '1rem 0', position: 'sticky', top: '100px' }}>
+          <div className="filters-sidebar info-centre-sidebar" style={{ width: '300px', flexShrink: 0, padding: '1rem 0', position: 'sticky', top: '100px' }}>
             <h3 style={{ color: 'var(--pure)', marginBottom: '1.5rem', fontSize: '18px', fontWeight: 300, fontFamily: 'var(--font-heading)' }}>{pageData.filtersTitle}</h3>
 
             <div style={{ marginBottom: '2rem' }}>
@@ -208,7 +211,7 @@ export default function InformationCentre() {
                         style={{ display: 'block', padding: '24px 0', textDecoration: 'none', transition: 'padding-left 0.3s ease' }}
                         className="article-link-hover"
                        target="_blank" rel="noopener noreferrer">
-                        <h3 style={{ fontSize: '17px', fontFamily: 'var(--font-heading)', color: 'var(--pure)', fontWeight: 300, marginBottom: '8px', lineHeight: 1.4 }}>
+                        <h3 className="info-article-title" style={{ fontSize: '17px', fontFamily: 'var(--font-heading)', color: 'var(--pure)', fontWeight: 300, marginBottom: '8px', lineHeight: 1.4 }}>
                           {a.title}
                         </h3>
                         <p style={{ fontSize: '12px', color: 'var(--gold)', fontWeight: 400, margin: 0 }}>

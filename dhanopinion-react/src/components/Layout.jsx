@@ -36,7 +36,7 @@ export default function Layout() {
       <GsapGlobalAnimator />
       <Navbar />
       {/* paddingTop matches single-row navbar height: 72px */}
-      <main style={{ paddingTop: 72 }}>
+      <main className="site-main" style={{ paddingTop: 72 }}>
         <Outlet />
       </main>
       <Footer />

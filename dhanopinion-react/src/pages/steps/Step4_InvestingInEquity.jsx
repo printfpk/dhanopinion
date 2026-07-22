@@ -65,21 +65,6 @@ export default function Step4_InvestingInEquity() {
         </table>
       </div>
 
-      <p className="t-body mb-4">
-        Refer to the following articles in our Information Centre know more about the strategies recommended here:
-      </p>
-      <ul style={{ paddingLeft: '20px', marginBottom: '32px' }}>
-        <li className="t-body" style={{ marginBottom: '8px' }}>
-          <Link to="/2023/08/11/index-funds/">Index Investing Strategy</Link>
-        </li>
-        <li className="t-body" style={{ marginBottom: '8px' }}>
-          <Link to="/2023/08/18/when-investing-in-a-mutual-fund-choose-a-direct-mf-over-a-regular-mf/">When investing in a Mutual Fund, choose a Direct MF over a Regular MF</Link>
-        </li>
-        <li className="t-body">
-          <Link to="/2023/08/10/active-and-passive-investment-management/">Active and Passive Investment Management</Link>
-        </li>
-      </ul>
-
       <h2 className="t-h2 mb-4">Investing through NPS (National Pension System)</h2>
       <p className="t-body mb-5">
         NPS has its own system of allocation of investor funds between debt and equity based on age. Hence, within one investment scheme you could potentially meet your allocation goals for exposure to equity as well as debt.
@@ -102,6 +87,21 @@ export default function Step4_InvestingInEquity() {
       <p className="t-body mb-5">
         Read our knowledge article on the NPS scheme for more information.
       </p>
+
+      <p className="t-body mb-4">
+        Refer to the following articles in our Information Centre know more about the strategies recommended here:
+      </p>
+      <ul style={{ paddingLeft: '20px', marginBottom: '32px' }}>
+        <li className="t-body" style={{ marginBottom: '8px' }}>
+          <Link to="/2023/08/11/index-funds/">Index Investing Strategy</Link>
+        </li>
+        <li className="t-body" style={{ marginBottom: '8px' }}>
+          <Link to="/2023/08/18/when-investing-in-a-mutual-fund-choose-a-direct-mf-over-a-regular-mf/">When investing in a Mutual Fund, choose a Direct MF over a Regular MF</Link>
+        </li>
+        <li className="t-body">
+          <Link to="/2023/08/10/active-and-passive-investment-management/">Active and Passive Investment Management</Link>
+        </li>
+      </ul>
     </PostLayout>
   )
 }
