@@ -57,4 +57,18 @@ export const myStructure = (S) =>
             .schemaType('philosophyPage')
             .documentId('philosophySingleton')
         ),
+      S.listItem()
+        .title('Case Studies Page')
+        .child(
+          S.document()
+            .schemaType('caseStudiesPage')
+            .documentId('caseStudiesSingleton')
+        ),
+      S.listItem()
+        .title('Steps to Success Page')
+        .child(
+          S.document()
+            .schemaType('stepsToSuccessPage')
+            .documentId('stepsToSuccessSingleton')
+        ),
     ])

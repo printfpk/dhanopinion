@@ -10,5 +10,7 @@ import simpleStrategyPage from './simpleStrategyPage'
 import philosophyPage from './philosophyPage'
 import homePage from './homePage'
 import informationCentrePage from './informationCentrePage'
+import caseStudiesPage from './caseStudiesPage'
+import stepsToSuccessPage from './stepsToSuccessPage'
 
-export const schemaTypes = [post, author, category, blockContent, page, siteSettings, formBlock, easyWinsPage, simpleStrategyPage, philosophyPage, homePage, informationCentrePage]
+export const schemaTypes = [post, author, category, blockContent, page, siteSettings, formBlock, easyWinsPage, simpleStrategyPage, philosophyPage, homePage, informationCentrePage, caseStudiesPage, stepsToSuccessPage]

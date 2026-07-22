@@ -2,51 +2,7 @@ import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-mo
 import { Link } from 'react-router-dom'
 import { HoverFlip, RevealChar } from '../components/Animations'
 import { useRef, useState, useEffect } from 'react'
-
-const steps = [
-  {
-    num: "01",
-    title: "Debt Check",
-    desc: "Before investing, it is important to evaluate your debt situation. Paying high interest on debt while expecting lower returns from investments is counterproductive.",
-    icon: "fa-solid fa-clipboard-check",
-    link: "/steps/step-1-debt-check"
-  },
-  {
-    num: "02",
-    title: "Allocation between Equity and Debt",
-    desc: "OK! You have cleared the first hurdle of the debt check and decided that you are ready to invest. Your portfolio should balance equity (stocks, mutual funds) and debt (bonds, fixed income, government schemes). But how much to invest in debt and how much in equity is a personal choice.",
-    icon: "fa-solid fa-chart-pie",
-    link: "/steps/step-2-allocation-equity-debt"
-  },
-  {
-    num: "03",
-    title: "Emergency Funds",
-    desc: "An unplanned pulling out from an investment can cause severe damage to the portfolio in several ways: Liquidating equity investments in a downward spiral can impair the returns and limit the potential to bounce back during an upswing. Liquidating debt investments can invite penalties and lower than assured returns.",
-    icon: "fa-solid fa-shield-halved",
-    link: "/steps/step-3-emergency-funds"
-  },
-  {
-    num: "04",
-    title: "Investing in Equity (Stocks / Mutual Funds)",
-    desc: "We recommend exposure to equity through mutual funds, not direct stock picking. This can be done either through equity mutual funds or the NPS (National Pension System) scheme.",
-    icon: "fa-solid fa-arrow-trend-up",
-    link: "/steps/step-4-investing-in-equity"
-  },
-  {
-    num: "05",
-    title: "Investing in Debt (Fixed Income)",
-    desc: "Prioritize government schemes for fixed income investing. NPS can serve the need for both equity as well as fixed income investing since it follows an age-based allocation system.",
-    icon: "fa-solid fa-building-columns",
-    link: "/steps/step-5-investing-in-debt"
-  },
-  {
-    num: "06",
-    title: "Ongoing",
-    desc: "Ensure that tax implications are factored in, at the time of investment, on the income that is generated, and on liquidation or encashment. Review allocation and investments periodically, but at least annually, and rebalance.",
-    icon: "fa-solid fa-rotate",
-    link: "/steps/step-6-ongoing"
-  }
-]
+import { client } from '../sanityClient'
 
 /* ─── Single Step Card with scroll-driven reveal ─── */
 function StepCard({ step, index, totalSteps }) {
@@ -434,6 +390,33 @@ function TimelineSpine({ containerRef }) {
 export default function StepsToInvestingSuccess() {
   const timelineRef = useRef(null)
   const sectionRef = useRef(null)
+  const [steps, setSteps] = useState([])
+  const [pageTitle, setPageTitle] = useState('Steps to Success')
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    client.fetch(`*[_type == "stepsToSuccessPage"][0]{
+      title,
+      steps[] {
+        num,
+        title,
+        desc,
+        icon,
+        link
+      }
+    }`).then(data => {
+      if (data) {
+        if (data.title) setPageTitle(data.title)
+        if (data.steps) setSteps(data.steps)
+      }
+      setLoading(false)
+    }).catch(err => {
+      console.error(err)
+      setLoading(false)
+    })
+  }, [])
+
+  if (loading) return null;
 
   return (
     <>
@@ -449,7 +432,7 @@ export default function StepsToInvestingSuccess() {
         <div style={{ position: 'absolute', top: '10%', left: '20%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,168,83,0.05) 0%, transparent 70%)', pointerEvents: 'none', filter: 'blur(80px)', zIndex: 0 }} />
         <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
           <div className="tc mb-0">
-            <RevealChar as="h1" text="Steps to Success" className="t-mega mb-6" style={{ lineHeight: 0.95 }} />
+            <RevealChar as="h1" text={pageTitle} className="t-mega mb-6" style={{ lineHeight: 0.95 }} />
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

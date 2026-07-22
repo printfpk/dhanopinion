@@ -1,39 +1,39 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { RevealChar } from '../components/Animations'
-
-const cases = [
-  {
-    id: 'case-1',
-    title: 'Case 1',
-    desc: 'Rajeev Agarwal is 30 years old and is married to Aarti who is 29. They have a daughter who is two years old. Rajeev is an engineer employed with a multinational firm and his annual salary is Rs 15 lakhs.',
-    age: 30,
-    equity: 40,
-    risk: 'Average'
-  },
-  {
-    id: 'case-2',
-    title: 'Case 2',
-    desc: 'Sunil, an MNC senior manager has just got promoted as Chief Marketing Officer. He is 47, and his wife Anita, 45 is a homemaker. They have two school going children, a son 14 and a daughter 12.',
-    age: 47,
-    equity: 60,
-    risk: 'High'
-  },
-  {
-    id: 'case-3',
-    title: 'Case 3',
-    desc: 'Jyoti Sharma is 92 years old. She is widowed. She has a pension of 75,000 per year adjusted for inflation. She owns a house which she used to live in and is now rented and generates a rent of 30,000 per month.',
-    age: 92,
-    equity: 10,
-    risk: 'Low'
-  }
-]
+import { client } from '../sanityClient'
 
 export default function CaseStudies() {
   const [minAge, setMinAge] = useState(0)
   const [minEquity, setMinEquity] = useState(0)
   const [risk, setRisk] = useState('Risk Taking Ability')
+  const [cases, setCases] = useState([])
+  const [pageTitle, setPageTitle] = useState('Case Studies')
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    client.fetch(`*[_type == "caseStudiesPage"][0]{
+      title,
+      cases[] {
+        id,
+        title,
+        desc,
+        age,
+        equity,
+        risk
+      }
+    }`).then(data => {
+      if (data) {
+        if (data.title) setPageTitle(data.title)
+        if (data.cases) setCases(data.cases)
+      }
+      setLoading(false)
+    }).catch(err => {
+      console.error(err)
+      setLoading(false)
+    })
+  }, [])
 
   const handleReset = () => {
     setMinAge(0)
@@ -48,12 +48,14 @@ export default function CaseStudies() {
     return true
   })
 
+  if (loading) return null;
+
   return (
     <>
       <section className="sec" style={{ background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
         <div className="wrap pt-8 pb-8">
 
-          <RevealChar as="h1" text="Case Studies" className="t-mega mb-5" />
+          <RevealChar as="h1" text={pageTitle} className="t-mega mb-5" />
         </div>
       </section>
 
