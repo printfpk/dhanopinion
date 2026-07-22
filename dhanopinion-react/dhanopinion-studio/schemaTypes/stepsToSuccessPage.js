@@ -21,7 +21,12 @@ export default {
             { name: 'title', title: 'Title', type: 'string' },
             { name: 'desc', title: 'Description', type: 'text' },
             { name: 'icon', title: 'FontAwesome Icon Class', type: 'string' },
-            { name: 'link', title: 'Link (URL path)', type: 'string' }
+            { name: 'link', title: 'Link (URL path)', type: 'string' },
+            {
+              name: 'content',
+              title: 'Full Article Content',
+              type: 'blockContent'
+            }
           ]
         }
       ]

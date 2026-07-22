@@ -42,13 +42,7 @@ import Post_senior_citizen_saving_scheme from './pages/posts/Post_senior_citizen
 import Post_public_provident_fund from './pages/posts/Post_public_provident_fund'
 import Post_bank_fixed_deposits from './pages/posts/Post_bank_fixed_deposits'
 import Post_equity_linked_saving_scheme from './pages/posts/Post_equity_linked_saving_scheme'
-
-import Step1_DebtCheck from './pages/steps/Step1_DebtCheck'
-import Step2_AllocationEquityDebt from './pages/steps/Step2_AllocationEquityDebt'
-import Step3_EmergencyFunds from './pages/steps/Step3_EmergencyFunds'
-import Step4_InvestingInEquity from './pages/steps/Step4_InvestingInEquity'
-import Step5_InvestingInDebt from './pages/steps/Step5_InvestingInDebt'
-import Step6_OngoingReview from './pages/steps/Step6_OngoingReview'
+import DynamicStep from './pages/DynamicStep'
 
 function App() {
   useEffect(() => {
@@ -128,13 +122,8 @@ function App() {
         <Route path="2023/10/02/bank-fixed-deposits/*" element={<Post_bank_fixed_deposits />} />
         <Route path="2023/10/03/equity-linked-saving-scheme/*" element={<Post_equity_linked_saving_scheme />} />
 
-        {/* Step detail pages */}
-        <Route path="steps/step-1-debt-check" element={<Step1_DebtCheck />} />
-        <Route path="steps/step-2-allocation-equity-debt" element={<Step2_AllocationEquityDebt />} />
-        <Route path="steps/step-3-emergency-funds" element={<Step3_EmergencyFunds />} />
-        <Route path="steps/step-4-investing-in-equity" element={<Step4_InvestingInEquity />} />
-        <Route path="steps/step-5-investing-in-debt" element={<Step5_InvestingInDebt />} />
-        <Route path="steps/step-6-ongoing" element={<Step6_OngoingReview />} />
+        {/* Dynamic Step detail pages */}
+        <Route path="steps/:stepSlug" element={<DynamicStep />} />
       </Route>
     </Routes>
   )
