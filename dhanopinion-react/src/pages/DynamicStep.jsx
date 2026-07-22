@@ -97,7 +97,7 @@ export default function DynamicStep() {
     },
     block: {
       normal: ({ children }) => <p className="t-body mb-5">{children}</p>,
-      h2: ({ children }) => <h2 className="mb-4" style={{ color: 'var(--gold)' }}>{children}</h2>,
+      h2: ({ children }) => <h2 className="mb-4" style={{ color: 'var(--pure)' }}>{children}</h2>,
       h3: ({ children }) => <h3 className="mb-3">{children}</h3>,
       blockquote: ({ children }) => (
         <div style={{ background: 'rgba(212,168,83,0.06)', border: '1px solid rgba(212,168,83,0.2)', borderRadius: '12px', padding: '24px', marginBottom: '24px' }}>
@@ -112,6 +112,16 @@ export default function DynamicStep() {
     listItem: {
       bullet: ({ children }) => <li className="t-body" style={{ marginBottom: '12px' }}>{children}</li>,
       number: ({ children }) => <li className="t-body" style={{ marginBottom: '12px' }}>{children}</li>
+    },
+    marks: {
+      link: ({ children, value }) => {
+        const rel = !value.href.startsWith('/') ? 'noreferrer noopener' : undefined
+        return (
+          <a href={value.href} rel={rel} style={{ color: 'var(--gold)', textDecoration: 'underline' }}>
+            {children}
+          </a>
+        )
+      }
     }
   }
 

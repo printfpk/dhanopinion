@@ -271,7 +271,7 @@ function StepCard({ step, index, totalSteps }) {
             {step.link && (
               <motion.div variants={childVariants}>
                 <Link
-                  to={step.link}
+                  to={step.link.startsWith('/') ? step.link : `/steps/${step.link.replace(/^steps\//, '')}`}
                   className="btn btn-ghost btn-sm"
                   style={{
                     borderColor: 'rgba(212,168,83,0.4)',

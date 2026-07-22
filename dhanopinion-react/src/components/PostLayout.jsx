@@ -57,7 +57,7 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHe
       </section>
       )}
 
-      <section className="post-content-sec" style={{ background: 'var(--void)', paddingTop: hideHeader ? '2rem' : '2rem', paddingBottom: 'var(--sp-9)' }}>
+      <section className="post-content-sec" style={{ background: 'var(--void)', paddingTop: hideHeader ? '2rem' : '0rem', paddingBottom: 'var(--sp-9)' }}>
         <div className="wrap-narrow">
           <motion.article
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}

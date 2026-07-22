@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import EasyWins from './pages/EasyWins'
@@ -83,6 +83,7 @@ function App() {
         <Route path="information-centre" element={<InformationCentre />} />
         <Route path="information-centre/" element={<InformationCentre />} />
         <Route path="steps-to-investing-success" element={<StepsToInvestingSuccess />} />
+        <Route path="steps-to-investing-success/*" element={<Navigate to="/steps-to-investing-success" replace />} />
         <Route path="steps-to-investing-success/" element={<StepsToInvestingSuccess />} />
         <Route path="about-us" element={<AboutUs />} />
         <Route path="about-us/" element={<AboutUs />} />

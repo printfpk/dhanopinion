@@ -226,7 +226,6 @@ export default function Home() {
 						style={{ position: "relative", zIndex: 1, width: "100%" }}
 					>
 						<div
-							className="home-hero-flex"
 							style={{
 								display: "flex",
 								flexWrap: "wrap",
@@ -238,7 +237,6 @@ export default function Home() {
 						>
 							{/* ── LEFT: text ── */}
 							<motion.div
-								className="home-hero-left"
 								initial="hidden"
 								animate="visible"
 								variants={{
@@ -248,7 +246,7 @@ export default function Home() {
 										transition: { staggerChildren: 0.1, delayChildren: 0.1 },
 									}
 								}}
-								style={{ flex: "1 1 450px" }}
+								style={{ flex: "1 1 min(100%, 450px)" }}
 							>
 								{/* Staggered text animation with blur */}
 								<h1
@@ -257,13 +255,13 @@ export default function Home() {
 										fontSize: "clamp(40px, 5vw, 72px)",
 										fontWeight: 300,
 										fontFamily: "var(--font-heading)",
-										lineHeight: 1.05,
+										lineHeight: 1.2,
 										color: "var(--pure)",
 										marginBottom: "0px",
 										letterSpacing: "-0.01em",
 									}}
 								>
-									<div style={{ overflow: "hidden", paddingBottom: "10px" }}>
+									<div style={{ overflow: "hidden", paddingBottom: "10px", paddingTop: "5px" }}>
 										<motion.span
 											variants={{
 												hidden: { y: "100%", opacity: 0 },
@@ -296,7 +294,6 @@ export default function Home() {
 
 							{/* ── RIGHT: We Focus On — Premium Card ── */}
 							<motion.div
-								className="home-hero-right"
 								initial={{ opacity: 0, x: 50 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ duration: 1.1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -323,7 +320,6 @@ export default function Home() {
 								{focusPills.map((text, i) => (
 									<motion.div
 										key={i}
-										className="home-hero-pill"
 										initial={{ opacity: 0, y: 20 }}
 										animate={{ opacity: 1, y: 0 }}
 										transition={{ delay: 0.55 + i * 0.15, duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
@@ -349,7 +345,8 @@ export default function Home() {
 							</motion.div>
 						</div>
 
-					<div className="home-starting-points" style={{ paddingTop: "40px", paddingBottom: "20px", width: "100%" }}>
+						{/* ══════ STARTING POINTS (MOVED TO BOTTOM OF HERO) ══════ */}
+						<div style={{ paddingTop: "40px", paddingBottom: "20px", width: "100%" }}>
 							<RevealChar
 								as="h2"
 								text="Choose your starting point"
@@ -580,7 +577,7 @@ export default function Home() {
 				}}
 			>
 				<div className="wrap">
-				<div className="g-2 home-audience-grid" style={{ alignItems: "center", gap: "4rem" }}>
+					<div className="g-2" style={{ alignItems: "center", gap: "4rem" }}>
 						{/* Left: Content */}
 						<div>
 
