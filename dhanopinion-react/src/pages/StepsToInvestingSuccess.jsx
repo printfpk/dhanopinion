@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { HoverFlip, RevealChar } from '../components/Animations'
 import { useRef, useState, useEffect } from 'react'
 import { client } from '../sanityClient'
+import { PortableText } from '@portabletext/react'
 
 /* ─── Single Step Card with scroll-driven reveal ─── */
 function StepCard({ step, index, totalSteps }) {
@@ -392,11 +393,13 @@ export default function StepsToInvestingSuccess() {
   const sectionRef = useRef(null)
   const [steps, setSteps] = useState([])
   const [pageTitle, setPageTitle] = useState('Steps to Success')
+  const [introText, setIntroText] = useState(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     client.fetch(`*[_type == "stepsToSuccessPage"][0]{
       title,
+      introText,
       steps[] {
         num,
         title,
@@ -407,6 +410,7 @@ export default function StepsToInvestingSuccess() {
     }`).then(data => {
       if (data) {
         if (data.title) setPageTitle(data.title)
+        if (data.introText) setIntroText(data.introText)
         if (data.steps) setSteps(data.steps)
       }
       setLoading(false)
@@ -440,11 +444,21 @@ export default function StepsToInvestingSuccess() {
               className="t-body mb-0"
               style={{ maxWidth: 800, margin: '0 auto', textAlign: 'left', lineHeight: 1.8 }}
             >
-              <p className="mb-4">Dear Investor,</p>
-              <p className="mb-4">Thank you for your interest in Dhanopinion's investment advisory service. On this page you will find a set of steps that you can go through in order to discover the most suitable investment avenues for yourself. This service uses the new income tax regime for all decisions and illustrations.</p>
-              <p className="mb-4">Should you wish to seek a confidential, paid consulting with one of our experts, kindly click the "Personalized Investment Consulting" button below. A personalised investment consulting service is expected to be launched in the future. At this time, you will be joining a wait-list.</p>
-              <p className="mb-4">We hope this advisory service provides you with the key inputs you need to move forward in your investment journey. Before proceeding, please read the Disclaimer and move forward only if you agree with the terms therein.</p>
-              <p className="mb-0">We wish you a successful investing journey!</p>
+              {introText ? (
+                <PortableText value={introText} components={{
+                  block: {
+                    normal: ({children}) => <p className="mb-4">{children}</p>
+                  }
+                }} />
+              ) : (
+                <>
+                  <p className="mb-4">Dear Investor,</p>
+                  <p className="mb-4">Thank you for your interest in Dhanopinion's investment advisory service. On this page you will find a set of steps that you can go through in order to discover the most suitable investment avenues for yourself. This service uses the new income tax regime for all decisions and illustrations.</p>
+                  <p className="mb-4">Should you wish to seek a confidential, paid consulting with one of our experts, kindly click the "Personalized Investment Consulting" button below. A personalised investment consulting service is expected to be launched in the future. At this time, you will be joining a wait-list.</p>
+                  <p className="mb-4">We hope this advisory service provides you with the key inputs you need to move forward in your investment journey. Before proceeding, please read the Disclaimer and move forward only if you agree with the terms therein.</p>
+                  <p className="mb-0">We wish you a successful investing journey!</p>
+                </>
+              )}
             </motion.div>
           </div>
 

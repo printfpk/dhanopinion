@@ -10,6 +10,12 @@ export default {
       initialValue: 'Steps to Investing Success'
     },
     {
+      name: 'introText',
+      title: 'Introductory Text',
+      type: 'blockContent',
+      description: 'The introductory paragraph shown at the top of the page.'
+    },
+    {
       name: 'steps',
       title: 'Steps',
       type: 'array',

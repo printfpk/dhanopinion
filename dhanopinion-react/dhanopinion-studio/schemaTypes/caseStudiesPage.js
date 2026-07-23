@@ -34,8 +34,7 @@ export default {
             {
               name: 'content',
               title: 'Full Content',
-              type: 'array',
-              of: [{ type: 'block' }]
+              type: 'blockContent'
             }
           ]
         }
