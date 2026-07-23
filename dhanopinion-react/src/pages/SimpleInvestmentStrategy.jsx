@@ -41,7 +41,7 @@ export default function SimpleInvestmentStrategy() {
 
   return (
     <>
-      <section className="sec" style={{ background: 'var(--black)' }}>
+      <section id="strategy-hero" className="sec" style={{ background: 'var(--black)' }}>
         <div className="wrap">
           <div className="g-2" style={{ alignItems: 'center' }}>
             <motion.div initial="hidden" animate="visible" variants={staggerContainer}>

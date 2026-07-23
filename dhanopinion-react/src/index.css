@@ -96,7 +96,7 @@ table td:first-child {
 	--menu-bg: rgba(0, 0, 0, 0.97);
 
 	/* ── Specific Section Variables ── */
-	--hero-grad: linear-gradient(135deg, rgba(8, 8, 8, 0.9) 0%, rgba(14, 48, 48, 0.4) 100%);
+	--hero-grad: linear-gradient(135deg, rgba(8, 8, 8, 0.4) 0%, rgba(14, 48, 48, 0.1) 100%);
 	--hero-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
 	--hero-glass-border: rgba(255, 255, 255, 0.1);
 	--hero-glass-strong: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
@@ -104,7 +104,7 @@ table td:first-child {
 	--hero-orb-1: radial-gradient(circle, rgba(131, 231, 238, 0.15) 0%, transparent 60%);
 	--hero-orb-2: radial-gradient(circle, rgba(138, 84, 199, 0.15) 0%, transparent 60%);
 	--hero-text-grad: linear-gradient(90deg, #a78bfa 0%, #60a5fa 100%);
-	--video-blend: luminosity;
+	--video-blend: screen;
 	--video-opacity: 0.7;
 
 	/* Adaptive variables for inline styles */
@@ -125,6 +125,7 @@ table td:first-child {
 
 	--ghost-bg: rgba(255, 255, 255, 0.05);
 	--ghost-border: rgba(255, 255, 255, 0.1);
+	--ghost-num-stroke: rgba(255, 255, 255, 0.4);
 
 	/* ── Shadows ── */
 	--shadow-section: 0 -24px 64px rgba(0, 0, 0, 0.8);
@@ -207,6 +208,7 @@ table td:first-child {
 
 	--ghost-bg: rgba(0, 0, 0, 0.05);
 	--ghost-border: rgba(0, 0, 0, 0.1);
+	--ghost-num-stroke: rgba(0, 0, 0, 0.4);
 
 	/* ── Shadows ── */
 	--shadow-section: 0 -24px 64px rgba(0, 0, 0, 0.04);

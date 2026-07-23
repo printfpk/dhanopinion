@@ -28,6 +28,7 @@ export default function EasyWins() {
       <div style={{ position: 'relative', overflowX: 'hidden' }}>
         {/* ══════ EASY WINS HERO ══════ */}
         <section
+          id="easy-wins-hero"
           className="sec"
           style={{
             background: "var(--charcoal)",

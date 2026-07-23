@@ -449,6 +449,7 @@ export default function Home() {
 
 			{/* ══════ SCOPE ══════ */}
 			<section
+				id="scope-section"
 				className="sec"
 				style={{
 					background: "var(--teal)",
@@ -476,6 +477,7 @@ export default function Home() {
 
 			{/* ══════ WHAT YOU CAN EXPECT ══════ */}
 			<section
+				id="expect-section"
 				className="sec"
 				style={{
 					background: "var(--black)",
@@ -523,6 +525,7 @@ export default function Home() {
 
 			{/* ══════ WHAT YOU SHOULD NOT EXPECT ══════ */}
 			<section
+				id="not-expect-section"
 				className="sec"
 				style={{
 					background: "var(--teal)",
@@ -570,6 +573,7 @@ export default function Home() {
 
 			{/* ══════ WHO IS IT FOR ══════ */}
 			<section
+				id="audience-section"
 				className="sec"
 				style={{
 					background: "var(--black)",
@@ -633,7 +637,7 @@ export default function Home() {
 
 
 			{/* ══════ CTA — Waitlist ══════ */}
-			<section className="teal-band" style={{ "--wave-fill": "var(--black)" }}>
+			<section id="cta-section" className="teal-band" style={{ "--wave-fill": "var(--black)" }}>
 				<div className="wrap tc">
 
 					<RevealChar

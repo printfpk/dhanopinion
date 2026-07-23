@@ -185,8 +185,8 @@ function StepCard({ step, index, totalSteps }) {
               left: 'auto',
               fontSize: 'clamp(80px, 12vw, 160px)',
               fontWeight: 900,
-              color: 'transparent',
-              WebkitTextStroke: '1px var(--hairline)',
+              color: 'var(--ghost-bg)',
+              WebkitTextStroke: '2px var(--ghost-num-stroke)',
               fontFamily: 'var(--font-heading)',
               lineHeight: 1,
               pointerEvents: 'none',
@@ -421,7 +421,7 @@ export default function StepsToInvestingSuccess() {
   return (
     <>
       {/* ── Intro ── */}
-      <section className="sec" style={{
+      <section id="steps-intro" className="sec" style={{
         background: 'var(--void)',
         paddingTop: 'clamp(40px, 5vw, 60px)',
         paddingBottom: 'clamp(30px, 4vw, 50px)',
@@ -467,7 +467,7 @@ export default function StepsToInvestingSuccess() {
       </section>
 
       {/* ── Vertical Timeline ── */}
-      <section ref={sectionRef} style={{
+      <section id="steps-timeline" ref={sectionRef} style={{
         background: 'var(--black)',
         position: 'relative',
         overflow: 'hidden',

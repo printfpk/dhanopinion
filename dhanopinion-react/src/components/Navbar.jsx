@@ -6,6 +6,7 @@ import { useTheme } from './ThemeContext'
 import { useContext } from 'react'
 import { ArticlesContext } from './ArticlesContext'
 import { filterArticles } from '../utils/searchUtils'
+import { globalSearchIndex } from '../data/searchIndex'
 
 const links = [
   { label: 'Easy Wins', to: '/easy-wins' },
@@ -26,7 +27,19 @@ export default function Navbar() {
 
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return []
-    return filterArticles(articles, { keyword: searchQuery })
+    
+    const lowerQuery = searchQuery.toLowerCase()
+    
+    // Filter static global sections
+    const staticResults = globalSearchIndex.filter(item => 
+      item.title.toLowerCase().includes(lowerQuery) || 
+      item.content.toLowerCase().includes(lowerQuery)
+    )
+
+    // Filter articles
+    const articleResults = filterArticles(articles, { keyword: searchQuery })
+
+    return [...staticResults, ...articleResults]
   }, [searchQuery, articles])
 
   return (
@@ -175,7 +188,7 @@ export default function Navbar() {
               </button>
               <input
                 type="text" autoFocus
-                placeholder="Search articles..."
+                placeholder="Search everything..."
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 style={{

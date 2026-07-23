@@ -52,14 +52,14 @@ export default function CaseStudies() {
 
   return (
     <>
-      <section className="sec" style={{ background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
+      <section id="case-studies-hero" className="sec" style={{ background: 'var(--black)', borderBottom: '1px solid var(--hairline)' }}>
         <div className="wrap pt-8 pb-8">
 
           <RevealChar as="h1" text={pageTitle} className="t-mega mb-5" />
         </div>
       </section>
 
-      <section className="sec" style={{ background: 'var(--void)' }}>
+      <section id="case-studies-list" className="sec" style={{ background: 'var(--void)' }}>
         <div className="wrap" style={{ display: 'flex', gap: '4rem', alignItems: 'flex-start' }}>
           
           {/* Sidebar */}

@@ -5,13 +5,22 @@ import Footer from './Footer'
 import GsapGlobalAnimator from './GsapGlobalAnimator'
 
 export default function Layout() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   
   useEffect(() => {
-    // 1. Scroll to top instantly on route change
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-    document.documentElement.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-  }, [pathname])
+    // 1. Scroll to hash if present, otherwise top
+    if (hash) {
+      setTimeout(() => {
+        const element = document.getElementById(hash.replace('#', ''))
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100) // slight delay to ensure render
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+      document.documentElement.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+    }
+  }, [pathname, hash])
 
   useEffect(() => {
     // 2. Make all external website links open in a new tab dynamically

@@ -56,14 +56,14 @@ export default function InformationCentre() {
 
   return (
     <>
-      <section style={{ background: 'var(--black)', borderBottom: '1px solid var(--hairline)', padding: 'var(--sp-6) 0 var(--sp-4) 0' }}>
+      <section id="info-centre-hero" style={{ background: 'var(--black)', borderBottom: '1px solid var(--hairline)', padding: 'var(--sp-6) 0 var(--sp-4) 0' }}>
         <div className="wrap">
           <RevealChar as="h1" text={pageData.title} className="t-mega" />
         </div>
       </section>
 
       {/* Main Container mirroring the dark blue layout of the screenshot */}
-      <section className="sec" style={{ background: 'var(--void)' }}>
+      <section id="info-centre-list" className="sec" style={{ background: 'var(--void)' }}>
         <div className="wrap info-centre-wrap" style={{ display: 'flex', gap: '4rem', alignItems: 'flex-start' }}>
 
           {/* Sidebar */}

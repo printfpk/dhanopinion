@@ -45,7 +45,7 @@ export default function InvestmentPhilosophy() {
 
   return (
     <>
-      <section className="sec" style={{ background: 'var(--black)' }}>
+      <section id="philosophy-hero" className="sec" style={{ background: 'var(--black)' }}>
         <div className="wrap">
           <div className="g-2" style={{ alignItems: 'center' }}>
             <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
