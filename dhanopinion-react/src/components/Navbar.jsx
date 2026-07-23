@@ -2,8 +2,10 @@ import { useState, useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HoverFlip } from './Animations'
-import { allArticles } from '../data/articles'
 import { useTheme } from './ThemeContext'
+import { useContext } from 'react'
+import { ArticlesContext } from './ArticlesContext'
+import { filterArticles } from '../utils/searchUtils'
 
 const links = [
   { label: 'Easy Wins', to: '/easy-wins' },
@@ -20,21 +22,12 @@ export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState('')
   const { pathname } = useLocation()
   const { theme, toggleTheme } = useTheme()
+  const { articles } = useContext(ArticlesContext)
 
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return []
-    const query = searchQuery.toLowerCase()
-    return allArticles.filter(a => {
-      const matchTitle = a.title?.toLowerCase().includes(query);
-      const matchCategory = Array.isArray(a.category)
-        ? a.category.some(c => c.toLowerCase().includes(query))
-        : typeof a.category === 'string'
-          ? a.category.toLowerCase().includes(query)
-          : false;
-      const matchText = a.textContent?.toLowerCase().includes(query);
-      return matchTitle || matchCategory || matchText;
-    }).slice(0, 5)
-  }, [searchQuery])
+    return filterArticles(articles, { keyword: searchQuery })
+  }, [searchQuery, articles])
 
   return (
     <>
@@ -190,7 +183,7 @@ export default function Navbar() {
                   color: 'var(--pure)', fontSize: 32, outline: 'none', padding: '16px 0', fontWeight: 300
                 }}
               />
-              <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 16, maxHeight: '60vh', overflowY: 'auto', paddingRight: '8px' }}>
                 {searchResults.map(result => (
                   <Link
                     key={result.id} to={result.to}

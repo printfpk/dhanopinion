@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import DatePicker from 'react-datepicker'
@@ -6,8 +6,8 @@ import 'react-datepicker/dist/react-datepicker.css'
 import './datepicker.css'
 import { RevealChar } from '../components/Animations'
 import { client } from '../sanityClient'
-import { allArticles } from '../data/articles'
-
+import { ArticlesContext } from '../components/ArticlesContext'
+import { filterArticles } from '../utils/searchUtils'
 export default function InformationCentre() {
   const [keyword, setKeyword] = useState('')
   const [category, setCategory] = useState('Category...')
@@ -20,32 +20,7 @@ export default function InformationCentre() {
     searchPlaceholder: 'Input Keyword...',
     noResultsText: 'No articles match your filters.'
   })
-  const [articles, setArticles] = useState([])
-
-  const ARTICLE_ORDER = [
-    { title: 'There is always some risk',                                                              date: 'August 31, 2025' },
-    { title: 'Diversification reduces risk',                                                           date: 'November 29, 2025' },
-    { title: 'Compounding can deliver exponential growth',                                             date: 'March 25, 2026' },
-    { title: 'Inflation, Real Value and the Money Illusion',                                           date: 'March 26, 2026' },
-    { title: 'Asset Allocation',                                                                       date: 'March 27, 2026' },
-    { title: 'Defining your investment horizon can lead to better planning',                           date: 'March 29, 2026' },
-    { title: 'Equity - Risk and Return profile',                                                  date: 'March 30, 2025' },
-    { title: 'Fixed Income \u2013 Risk and Return profile',                                            date: 'March 31, 2026' },
-    { title: 'Active and Passive Investment Management',                                               date: 'April 1, 2026' },
-    { title: 'Index Investing Strategy',                                                               date: 'April 2, 2026' },
-    { title: 'Competitive Financial Markets and the implications for investment strategy',              date: 'April 3, 2026' },
-    { title: 'Keep the cost of investing low',                                                         date: 'April 7, 2026' },
-    { title: 'Taxes and their impact on investment outcomes',                                          date: 'April 8, 2026' },
-    { title: 'When investing in a Mutual Fund, choose a Direct MF over a Regular MF',                 date: 'April 9, 2026' },
-    { title: 'A liquid mutual fund is better for short-term needs than a bank savings account',        date: 'April 10, 2026' },
-    { title: 'National Pension System (NPS)',                                                          date: 'April 11, 2026' },
-    { title: 'Bank Fixed Deposits',                                                               date: 'April 12, 2026' },
-    { title: 'Government Bonds',                                                                       date: 'April 13, 2026' },
-    { title: 'Government Savings Schemes',                                                             date: 'April 14, 2026' },
-    { title: 'Senior Citizen Saving Scheme (SCSS)',                                                    date: 'April 23, 2026' },
-    { title: 'Public Provident Fund',                                                            date: 'May 23, 2026' },
-    { title: 'Equity Linked Saving Scheme (ELSS)',                                                     date: 'July 20, 2026' },
-  ]
+  const { articles } = useContext(ArticlesContext)
 
   useEffect(() => {
     // Fetch Page Data (Titles etc)
@@ -54,48 +29,6 @@ export default function InformationCentre() {
         if (res) {
           setPageData(prev => ({ ...prev, ...res }))
         }
-      })
-      .catch(console.error)
-
-    // Fetch all articles, then apply custom sort order + hardcoded dates
-    client.fetch(`*[_type == "post"] {
-      _id,
-      title,
-      publishedAt,
-      "category": categories[]->title,
-      "to": slug.current,
-      "textContent": pt::text(body)
-    }`).then(res => {
-        const formatted = res.map(p => {
-          const titleLower = (p.title || '').toLowerCase()
-          const match = ARTICLE_ORDER.find(o => o.title.toLowerCase() === titleLower)
-          return {
-            id: p._id,
-            title: p.title || 'Untitled',
-            // Use hardcoded date if available, else fall back to Sanity date
-            date: match
-              ? match.date
-              : p.publishedAt
-                ? new Date(p.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
-                : '',
-            rawDate: p.publishedAt,
-            category: p.category || [],
-            to: p.to ? `/post/${p.to}` : '#',
-            textContent: p.textContent || ''
-          }
-        })
-
-        // Sort by custom order, unknowns go to end sorted by date
-        const sorted = [...formatted].sort((a, b) => {
-          const ai = ARTICLE_ORDER.findIndex(o => o.title.toLowerCase() === a.title.toLowerCase())
-          const bi = ARTICLE_ORDER.findIndex(o => o.title.toLowerCase() === b.title.toLowerCase())
-          if (ai !== -1 && bi !== -1) return ai - bi
-          if (ai !== -1) return -1
-          if (bi !== -1) return 1
-          return (a.rawDate || '').localeCompare(b.rawDate || '')
-        })
-
-        setArticles(sorted)
       })
       .catch(console.error)
   }, [])
@@ -111,28 +44,7 @@ export default function InformationCentre() {
   };
 
   const filtered = useMemo(() => {
-    return articles.filter(a => {
-      if (keyword) {
-        const lowerKw = keyword.toLowerCase();
-        const matchesTitle = a.title.toLowerCase().includes(lowerKw);
-        const matchesContent = a.textContent ? a.textContent.toLowerCase().includes(lowerKw) : false;
-        if (!matchesTitle && !matchesContent) return false;
-      }
-      if (category !== 'Category...' && (!a.category || !a.category.includes(category))) return false;
-      
-      if (startDate && endDate) {
-        const articleDate = new Date(a.rawDate || a.date);
-        // Normalize time for comparison
-        articleDate.setHours(0, 0, 0, 0);
-        const start = new Date(startDate);
-        start.setHours(0, 0, 0, 0);
-        const end = new Date(endDate);
-        end.setHours(23, 59, 59, 999);
-        
-        if (articleDate < start || articleDate > end) return false;
-      }
-      return true;
-    });
+    return filterArticles(articles, { keyword, category, startDate, endDate });
   }, [keyword, category, startDate, endDate, articles])
 
   const categories = [
