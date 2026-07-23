@@ -6,9 +6,7 @@ import EasyWins from './pages/EasyWins'
 import SimpleInvestmentStrategy from './pages/SimpleInvestmentStrategy'
 import InvestmentPhilosophy from './pages/InvestmentPhilosophy'
 import CaseStudies from './pages/CaseStudies'
-import CaseStudy1 from './pages/posts/CaseStudy1'
-import CaseStudy2 from './pages/posts/CaseStudy2'
-import CaseStudy3 from './pages/posts/CaseStudy3'
+import DynamicCaseStudy from './pages/DynamicCaseStudy'
 import InformationCentre from './pages/InformationCentre'
 import StepsToInvestingSuccess from './pages/StepsToInvestingSuccess'
 import AboutUs from './pages/AboutUs'
@@ -77,9 +75,7 @@ function App() {
         <Route path="investment-philosophy/" element={<InvestmentPhilosophy />} />
         <Route path="case-studies" element={<CaseStudies />} />
         <Route path="case-studies/" element={<CaseStudies />} />
-        <Route path="case_study/case-1/*" element={<CaseStudy1 />} />
-        <Route path="case_study/case-2/*" element={<CaseStudy2 />} />
-        <Route path="case_study/case-3/*" element={<CaseStudy3 />} />
+        <Route path="case_study/:id/*" element={<DynamicCaseStudy />} />
         <Route path="information-centre" element={<InformationCentre />} />
         <Route path="information-centre/" element={<InformationCentre />} />
         <Route path="steps-to-investing-success" element={<StepsToInvestingSuccess />} />

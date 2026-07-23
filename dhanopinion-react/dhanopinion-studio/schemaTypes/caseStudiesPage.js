@@ -30,6 +30,12 @@ export default {
                 list: ['Low', 'Average', 'High'],
                 layout: 'radio'
               }
+            },
+            {
+              name: 'content',
+              title: 'Full Content',
+              type: 'array',
+              of: [{ type: 'block' }]
             }
           ]
         }
