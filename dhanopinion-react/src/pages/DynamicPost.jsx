@@ -4,7 +4,7 @@ import { PortableText } from '@portabletext/react'
 import { client, urlFor } from '../sanityClient'
 import PostLayout from '../components/PostLayout'
 import { motion } from 'framer-motion'
-import { AnimatedParagraph } from '../components/Animations'
+import { AnimatedParagraph, AnimatedBlock } from '../components/Animations'
 import PageLoader from '../components/PageLoader'
 
 export default function DynamicPost() {
@@ -184,17 +184,26 @@ export default function DynamicPost() {
       image: ImageComponent,
     },
     block: {
-      h1: ({children}) => <h1 style={{ marginTop: '2rem', marginBottom: '1rem' }}>{children}</h1>,
-      h2: ({children}) => <h2 style={{ marginTop: '2rem', marginBottom: '1rem' }}>{children}</h2>,
-      h3: ({children}) => <h3 style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>{children}</h3>,
-      h4: ({children}) => <h4 style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>{children}</h4>,
-      h5: ({children}) => <h5 style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>{children}</h5>,
-      h6: ({children}) => <h6 style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>{children}</h6>,
+      h1: ({children}) => <AnimatedBlock as="h1" style={{ marginTop: '2rem', marginBottom: '1rem' }}>{children}</AnimatedBlock>,
+      h2: ({children}) => <AnimatedBlock as="h2" style={{ marginTop: '2rem', marginBottom: '1rem' }}>{children}</AnimatedBlock>,
+      h3: ({children}) => <AnimatedBlock as="h3" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>{children}</AnimatedBlock>,
+      h4: ({children}) => <AnimatedBlock as="h4" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>{children}</AnimatedBlock>,
+      h5: ({children}) => <AnimatedBlock as="h5" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>{children}</AnimatedBlock>,
+      h6: ({children}) => <AnimatedBlock as="h6" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>{children}</AnimatedBlock>,
+      blockquote: ({children}) => <AnimatedBlock as="blockquote">{children}</AnimatedBlock>,
       normal: ({children}) => (
         <AnimatedParagraph>
           {children}
         </AnimatedParagraph>
       ),
+    },
+    list: {
+      bullet: ({children}) => <ul style={{ marginBottom: '1.5rem', paddingLeft: '1.5rem' }}>{children}</ul>,
+      number: ({children}) => <ol style={{ marginBottom: '1.5rem', paddingLeft: '1.5rem' }}>{children}</ol>,
+    },
+    listItem: {
+      bullet: ({children}) => <AnimatedBlock as="li">{children}</AnimatedBlock>,
+      number: ({children}) => <AnimatedBlock as="li">{children}</AnimatedBlock>,
     }
   }
 

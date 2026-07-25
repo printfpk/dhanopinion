@@ -47,17 +47,6 @@ export const RevealChar = ({ text, highlight = "", highlightStyle, className, st
   if (!safeText) return null
   const words = safeText.split(' ');
 
-  const isExcluded = typeof window !== 'undefined' && window.location.pathname.includes('there-is-always-some-risk');
-
-  if (isExcluded) {
-    const Component = as;
-    return (
-      <Component className={className} style={style}>
-        {text}
-      </Component>
-    );
-  }
-
   // Word-level animation: much faster, no per-char overhead
   if (mode === 'word') {
     const containerVariants = {
@@ -312,72 +301,95 @@ export const TypewriterText = ({ text, delay = 0, style, className }) => {
   );
 };
 
-export const AnimatedParagraph = ({ children, style, className }) => {
+export const AnimatedBlock = ({ children, style, className, as: Component = 'div' }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <Component className={className} style={style}>
+        {children}
+      </Component>
+    </motion.div>
+  );
+};
+
+export const AnimatedParagraph = ({ children, style, className, as: Component = 'p' }) => {
   const textRef = useRef(null);
+  const splitRef = useRef(null);
   const initialized = useRef(false);
 
-  const isExcluded = typeof window !== 'undefined' && window.location.pathname.includes('there-is-always-some-risk');
-
   useEffect(() => {
-    if (isExcluded) return;
     if (!textRef.current) return;
 
-    // Create a ScrollTrigger that fires right before the paragraph enters the viewport
-    const trigger = ScrollTrigger.create({
-      trigger: textRef.current,
-      start: 'top 95%', // Fire when it's almost in view
-      once: true,
-      onEnter: () => {
-        if (initialized.current) return;
-        initialized.current = true;
-
-        // Split text strictly by visual lines ONLY when it enters the viewport.
-        // This completely eliminates the massive page-load lag!
+    const prepareDOM = () => {
+      if (initialized.current) return;
+      initialized.current = true;
+      
+      try {
         const split = new SplitType(textRef.current, { types: 'lines' });
+        splitRef.current = split;
         
-        // Wrap each line in an overflow-hidden wrapper for a true "pop up" mask effect
         split.lines.forEach(line => {
           const wrapper = document.createElement('div');
           wrapper.style.overflow = 'hidden';
           wrapper.style.display = 'block'; 
+          wrapper.style.width = 'fit-content';
+          line.style.width = 'fit-content';
           line.parentNode.insertBefore(wrapper, line);
           wrapper.appendChild(line);
         });
         
-        // Make parent visible now that lines are masked
+        gsap.set(split.lines, { y: '100%', opacity: 0, force3D: true });
         gsap.set(textRef.current, { opacity: 1 });
+      } catch (err) {
+        gsap.set(textRef.current, { opacity: 1 });
+      }
+    };
 
-        // Animate the lines sliding up and fading in
-        gsap.fromTo(
-          split.lines,
-          { y: '100%', opacity: 0 },
-          {
+    // Prepare DOM in background shortly after mount to avoid scroll jank
+    const timer = setTimeout(() => {
+      prepareDOM();
+      ScrollTrigger.refresh();
+    }, 600);
+
+    const animTrigger = ScrollTrigger.create({
+      trigger: textRef.current,
+      start: 'top 90%', 
+      once: true,
+      onEnter: () => {
+        if (!initialized.current) {
+          clearTimeout(timer);
+          prepareDOM();
+        }
+        
+        if (splitRef.current && splitRef.current.lines && splitRef.current.lines.length > 0) {
+          gsap.to(splitRef.current.lines, {
             y: '0%',
             opacity: 1,
-            duration: 1.2,
-            stagger: 0.08,
+            duration: 1.0,
+            stagger: 0.05,
             ease: 'power4.out',
-          }
-        );
+            force3D: true
+          });
+        } else {
+          gsap.to(textRef.current, { opacity: 1, duration: 1.0 });
+        }
       }
     });
 
     return () => {
-      trigger.kill();
+      clearTimeout(timer);
+      animTrigger.kill();
+      if (splitRef.current) splitRef.current.revert();
     };
-  }, [children, isExcluded]);
-
-  if (isExcluded) {
-    return (
-      <p className={className} style={{...style, display: 'block'}}>
-        {children}
-      </p>
-    );
-  }
+  }, [children]);
 
   return (
-    <p ref={textRef} className={className} style={{...style, display: 'block', opacity: 0}}>
+    <Component ref={textRef} className={className} style={{...style, display: 'block', opacity: 0}}>
       {children}
-    </p>
+    </Component>
   );
 };

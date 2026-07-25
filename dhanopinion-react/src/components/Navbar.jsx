@@ -209,7 +209,9 @@ export default function Navbar() {
                     onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
                   >
                     <div style={{ fontSize: 12, color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 4 }}>
-                      {Array.isArray(result.category) ? result.category.join(', ') : result.category}
+                      {result.to?.startsWith('/post/') 
+                        ? 'Information Centre' 
+                        : (Array.isArray(result.category) ? result.category.join(', ') : result.category)}
                     </div>
                     <div style={{ fontSize: 18, color: 'var(--pure)', fontWeight: 500 }}>{result.title}</div>
                   </Link>

@@ -98,7 +98,7 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHe
           font-size: 17px; 
           font-weight: 400;
           line-height: 1.8; 
-          color: var(--smoke); 
+          color: var(--pure); 
           overflow-x: hidden; 
           max-width: 100vw; 
         }
@@ -161,40 +161,35 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHe
         
         /* Hover underline only — no color change */
         .post-content .line {
-          border-bottom: 1px solid transparent;
-          padding-bottom: 1px;
+          border-bottom: 2px solid transparent;
+          padding-bottom: 2px;
           transition: border-color 0.3s ease;
           width: fit-content;
         }
         .post-content p:not(.post-date):hover .line {
-          border-color: var(--underline-hover);
-          color: var(--pure);
-        }
-        .post-content p:not(.post-date):hover {
-          color: var(--pure);
+          border-color: rgba(128, 128, 128, 0.4);
         }
         /* Fallback for paragraphs without SplitType .line children */
         .post-content p:not(.post-date):not(:has(.line)) {
           text-decoration: underline;
           text-decoration-color: transparent;
           text-underline-offset: 5px;
-          text-decoration-thickness: 1px;
+          text-decoration-thickness: 2px;
           transition: text-decoration-color 0.3s ease, color 0.3s ease;
         }
         .post-content p:not(.post-date):not(:has(.line)):hover {
-          text-decoration-color: var(--underline-hover);
-          color: var(--pure);
+          text-decoration-color: rgba(128, 128, 128, 0.4);
         }
         /* List items */
         .post-content li {
           text-decoration: underline;
           text-decoration-color: transparent;
           text-underline-offset: 5px;
-          text-decoration-thickness: 1px;
+          text-decoration-thickness: 2px;
           transition: text-decoration-color 0.3s ease;
         }
         .post-content li:hover {
-          text-decoration-color: var(--underline-hover);
+          text-decoration-color: rgba(128, 128, 128, 0.4);
         }
         .post-content strong { color: var(--pure); font-weight: 600; }
         .post-content a { color: var(--gold); text-decoration: underline; text-decoration-color: rgba(212,168,83,0.3); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
