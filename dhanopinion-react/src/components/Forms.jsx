@@ -241,3 +241,128 @@ export function FeedbackForm() {
     </motion.div>
   )
 }
+
+export function DynamicForm({ data }) {
+  const { title, subtitle, submitButtonText, accessKey, destinationEmail, fields = [] } = data;
+  const initialData = {};
+  fields.forEach(f => { initialData[f.name] = ''; });
+  const [formData, setFormData] = useState(initialData);
+  const [status, setStatus] = useState('idle');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('submitting');
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey || "45d867a9-e12a-4f89-964d-560ed247d05a",
+          subject: `New Submission: ${title || 'Custom Form'}`,
+          ...formData
+        }),
+      });
+      const result = await response.json();
+      if (result.success) {
+        setStatus('success');
+        setFormData(initialData);
+      } else {
+        setStatus('error');
+      }
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (error) {
+      console.error("Error!", error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
+  };
+
+  return (
+    <motion.div {...f()} style={{ margin: '40px 0' }}>
+      {(title || subtitle) && (
+        <div style={{ marginBottom: '32px' }}>
+          {title && <RevealChar as="h2" text={title} className="t-mega mb-6" delay={0.1} />}
+          {subtitle && <p className="t-body" style={{ whiteSpace: 'pre-wrap' }}>{subtitle}</p>}
+        </div>
+      )}
+      <div style={{ background: 'rgba(255,255,255,0.02)', borderRadius: '24px', padding: '40px', border: '1px solid rgba(255,255,255,0.05)' }}>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          {fields.map(field => {
+            if (field.inputType === 'radio') {
+              return (
+                <div key={field.name} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  <label style={{ color: 'var(--pure)', fontSize: '14px', fontWeight: 500 }}>
+                    {field.label} {field.required && <span style={{ color: 'var(--gold)' }}>*</span>}
+                  </label>
+                  <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
+                    {(field.options || []).map(opt => (
+                      <label key={opt} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '15px' }}>
+                        <input type="radio" name={field.name} value={opt} checked={formData[field.name] === opt} onChange={handleChange} required={field.required} style={{ accentColor: 'var(--gold)', width: '16px', height: '16px' }} />
+                        {opt}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+            if (field.inputType === 'textarea') {
+               return (
+                <div key={field.name} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label htmlFor={field.name} style={{ color: 'var(--pure)', fontSize: '14px', fontWeight: 500 }}>
+                    {field.label} {field.required && <span style={{ color: 'var(--gold)' }}>*</span>}
+                  </label>
+                  <motion.textarea {...luxuryInputAnim} id={field.name} name={field.name} value={formData[field.name]} onChange={handleChange} rows="5" placeholder={field.placeholder || ''} style={{ ...inputStyle, resize: 'vertical' }} onFocus={handleFocus} onBlur={handleBlur} required={field.required} />
+                </div>
+               );
+            }
+            return (
+              <div key={field.name} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label htmlFor={field.name} style={{ color: 'var(--pure)', fontSize: '14px', fontWeight: 500 }}>
+                  {field.label} {field.required && <span style={{ color: 'var(--gold)' }}>*</span>}
+                </label>
+                <motion.input {...luxuryInputAnim} type={field.inputType} id={field.name} name={field.name} value={formData[field.name]} onChange={handleChange} placeholder={field.placeholder || ''} style={inputStyle} onFocus={handleFocus} onBlur={handleBlur} required={field.required} {...(field.inputType === 'tel' ? { pattern: "[0-9]{10}", title: "Please enter exactly 10 digits" } : {})} />
+              </div>
+            );
+          })}
+          
+          <motion.button {...luxuryBtnAnim} type="submit" className="btn" style={{ width: '100%', padding: '16px', background: 'var(--pure)', color: 'var(--void)', fontWeight: 600, border: 'none', borderRadius: '9999px', cursor: 'pointer', transition: 'background 0.3s', marginTop: '8px' }}>
+            {status === 'submitting' ? 'Submitting...' : (submitButtonText || 'Submit')}
+          </motion.button>
+          
+          <AnimatePresence>
+            {status === 'success' && (
+              <motion.div {...luxuryToastAnim} style={{ padding: '16px', background: 'rgba(76, 175, 80, 0.05)', border: '1px solid rgba(76, 175, 80, 0.2)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderRadius: '8px', color: '#4caf50', textAlign: 'center', fontWeight: 500, letterSpacing: '0.02em', marginTop: '16px' }}>
+                Form submitted successfully!
+              </motion.div>
+            )}
+            {status === 'error' && (
+              <motion.div {...luxuryToastAnim} style={{ padding: '16px', background: 'rgba(244, 67, 54, 0.1)', border: '1px solid rgba(244, 67, 54, 0.3)', borderRadius: '8px', color: '#f44336', textAlign: 'center', fontWeight: 500, marginTop: '16px' }}>
+                Something went wrong. Please try again later.
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </form>
+      </div>
+      
+      {destinationEmail && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 20 }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          <a href={`mailto:${destinationEmail}`} style={{ fontSize: 15, textDecoration: 'none', transition: 'color 0.2s', color: 'var(--smoke)' }}
+            onMouseOver={e => e.target.style.color = 'var(--gold)'}
+            onMouseOut={e => e.target.style.color = 'var(--smoke)'}
+          >
+            {destinationEmail}
+          </a>
+        </div>
+      )}
+    </motion.div>
+  );
+}

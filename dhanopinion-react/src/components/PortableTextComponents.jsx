@@ -1,8 +1,11 @@
-import { ContactForm, FeedbackForm } from './Forms'
+import { ContactForm, FeedbackForm, DynamicForm } from './Forms'
 
 export const PortableTextComponents = {
   types: {
     formBlock: ({ value }) => {
+      if (value.fields && value.fields.length > 0) {
+        return <DynamicForm data={value} />
+      }
       if (value.formType === 'contact') {
         return <ContactForm />
       }

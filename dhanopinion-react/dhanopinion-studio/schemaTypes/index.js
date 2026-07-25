@@ -5,6 +5,7 @@ import author from './author'
 import page from './page'
 import siteSettings from './siteSettings'
 import formBlock from './formBlock'
+import formField from './formField'
 import easyWinsPage from './easyWinsPage'
 import simpleStrategyPage from './simpleStrategyPage'
 import philosophyPage from './philosophyPage'
@@ -13,4 +14,4 @@ import informationCentrePage from './informationCentrePage'
 import caseStudiesPage from './caseStudiesPage'
 import stepsToSuccessPage from './stepsToSuccessPage'
 
-export const schemaTypes = [post, author, category, blockContent, page, siteSettings, formBlock, easyWinsPage, simpleStrategyPage, philosophyPage, homePage, informationCentrePage, caseStudiesPage, stepsToSuccessPage]
+export const schemaTypes = [post, author, category, blockContent, page, siteSettings, formField, formBlock, easyWinsPage, simpleStrategyPage, philosophyPage, homePage, informationCentrePage, caseStudiesPage, stepsToSuccessPage]
