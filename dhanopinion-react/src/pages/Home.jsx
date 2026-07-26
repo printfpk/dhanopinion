@@ -249,7 +249,10 @@ export default function Home() {
 								style={{ flex: "1 1 min(100%, 450px)" }}
 							>
 								{/* Staggered text animation with blur */}
-								<h1
+								<RevealChar
+									as="h1"
+									text={heroTitle}
+									delay={0.1}
 									className="no-split"
 									style={{
 										fontSize: "clamp(40px, 5vw, 72px)",
@@ -260,25 +263,11 @@ export default function Home() {
 										marginBottom: "0px",
 										letterSpacing: "-0.01em",
 									}}
-								>
-									<div style={{ overflow: "hidden", paddingBottom: "10px", paddingTop: "5px" }}>
-										<motion.span
-											variants={{
-												hidden: { y: "100%", opacity: 0 },
-												visible: { y: 0, opacity: 1, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
-											}}
-											style={{ display: "inline-block" }}
-										>
-											{heroTitle}
-										</motion.span>
-									</div>
-								</h1>
+								/>
 
-								<motion.p
-									initial={{ opacity: 0, y: 16 }}
-									animate={{ opacity: 1, y: 0 }}
-									transition={{ delay: 0.45, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-									className="no-split"
+								<AnimatedParagraph
+									text={heroSubtitle}
+									delay={0.45}
 									style={{
 										fontSize: "18px",
 										lineHeight: 1.7,
@@ -287,9 +276,7 @@ export default function Home() {
 										fontWeight: 400,
 										margin: "12px 0 0 0",
 									}}
-								>
-									{heroSubtitle}
-								</motion.p>
+								/>
 							</motion.div>
 
 							{/* ── RIGHT: We Focus On — Premium Card ── */}
@@ -465,13 +452,12 @@ export default function Home() {
 						style={{ justifyContent: "center" }}
 						delay={0}
 					/>
-					<motion.p
-						{...fade(0)}
-						className="t-body tc no-split"
+					<p
+						className="t-body tc"
 						style={{ maxWidth: 680, margin: "0 auto" }}
 					>
 						{scopeText}
-					</motion.p>
+					</p>
 				</div>
 			</section>
 
@@ -496,9 +482,8 @@ export default function Home() {
 						</div>
 						<div>
 							{expectationsData.map((b, i) => (
-								<motion.div
+								<div
 									key={i}
-									{...fadeX(20, i * 0.07 + 0.1)}
 									className="expect-row"
 									style={{
 										padding: "20px 0",
@@ -510,13 +495,13 @@ export default function Home() {
 											{b.mark || "→"}
 										</span>
 										<div>
-											<span className="expect-row-heading no-split" style={{ color: "var(--mist)", fontSize: 15 }}>
+											<h4 className="expect-row-heading" style={{ color: "var(--mist)", fontSize: 15, margin: 0, marginBottom: 4, fontWeight: 600 }}>
 												{b.heading}
-											</span>
-											<p className="expect-row-desc no-split">{b.desc}</p>
+											</h4>
+											<p className="expect-row-desc">{b.desc}</p>
 										</div>
 									</div>
-								</motion.div>
+								</div>
 							))}
 						</div>
 					</div>
@@ -546,9 +531,8 @@ export default function Home() {
 						</div>
 						<div>
 							{notExpectationsData.map((b, i) => (
-								<motion.div
+								<div
 									key={i}
-									{...fadeX(20, i * 0.07 + 0.1)}
 									className="expect-row"
 									style={{
 										padding: "20px 0",
@@ -558,13 +542,13 @@ export default function Home() {
 									<div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
 										<span style={{ color: "var(--ash)", fontSize: 14, paddingTop: 3, flexShrink: 0 }}>✕</span>
 										<div>
-											<span className="expect-row-heading no-split" style={{ color: "var(--smoke)", fontSize: 15 }}>
+											<h4 className="expect-row-heading" style={{ color: "var(--smoke)", fontSize: 15, margin: 0, marginBottom: 4, fontWeight: 600 }}>
 												{b.heading}
-											</span>
-											<p className="expect-row-desc no-split">{b.desc}</p>
+											</h4>
+											<p className="expect-row-desc">{b.desc}</p>
 										</div>
 									</div>
-								</motion.div>
+								</div>
 							))}
 						</div>
 					</div>
@@ -592,7 +576,7 @@ export default function Home() {
 								delay={0}
 							/>
 							{audienceParagraphsData.map((p, i) => (
-								<p key={i} className={`t-body no-split ${i !== audienceParagraphsData.length - 1 ? 'mb-5' : ''}`} style={{ maxWidth: 560 }}>
+								<p key={i} className={`t-body ${i !== audienceParagraphsData.length - 1 ? 'mb-5' : ''}`} style={{ maxWidth: 560 }}>
 									{p}
 								</p>
 							))}
@@ -637,7 +621,7 @@ export default function Home() {
 
 
 			{/* ══════ CTA — Waitlist ══════ */}
-			<section id="cta-section" className="teal-band" style={{ "--wave-fill": "var(--black)" }}>
+			<section id="cta-section" className="teal-band sec" style={{ "--wave-fill": "var(--black)" }}>
 				<div className="wrap tc">
 
 					<RevealChar
@@ -648,7 +632,6 @@ export default function Home() {
 						delay={0}
 					/>
 					<p
-						className="no-split"
 						style={{
 							fontSize: 16,
 							color: "var(--smoke)",

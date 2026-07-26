@@ -441,22 +441,22 @@ export default function StepsToInvestingSuccess() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="t-body mb-0"
+              className="mb-0"
               style={{ maxWidth: 800, margin: '0 auto', textAlign: 'left', lineHeight: 1.8 }}
             >
               {introText ? (
                 <PortableText value={introText} components={{
                   block: {
-                    normal: ({children}) => <p className="mb-4">{children}</p>
+                    normal: ({children}) => <p className="t-body mb-4">{children}</p>
                   }
                 }} />
               ) : (
                 <>
-                  <p className="mb-4">Dear Investor,</p>
-                  <p className="mb-4">Thank you for your interest in Dhanopinion's investment advisory service. On this page you will find a set of steps that you can go through in order to discover the most suitable investment avenues for yourself. This service uses the new income tax regime for all decisions and illustrations.</p>
-                  <p className="mb-4">Should you wish to seek a confidential, paid consulting with one of our experts, kindly click the "Personalized Investment Consulting" button below. A personalised investment consulting service is expected to be launched in the future. At this time, you will be joining a wait-list.</p>
-                  <p className="mb-4">We hope this advisory service provides you with the key inputs you need to move forward in your investment journey. Before proceeding, please read the Disclaimer and move forward only if you agree with the terms therein.</p>
-                  <p className="mb-0">We wish you a successful investing journey!</p>
+                  <p className="t-body mb-4">Dear Investor,</p>
+                  <p className="t-body mb-4">Thank you for your interest in Dhanopinion's investment advisory service. On this page you will find a set of steps that you can go through in order to discover the most suitable investment avenues for yourself. This service uses the new income tax regime for all decisions and illustrations.</p>
+                  <p className="t-body mb-4">Should you wish to seek a confidential, paid consulting with one of our experts, kindly click the "Personalized Investment Consulting" button below. A personalised investment consulting service is expected to be launched in the future. At this time, you will be joining a wait-list.</p>
+                  <p className="t-body mb-4">We hope this advisory service provides you with the key inputs you need to move forward in your investment journey. Before proceeding, please read the Disclaimer and move forward only if you agree with the terms therein.</p>
+                  <p className="t-body mb-0">We wish you a successful investing journey!</p>
                 </>
               )}
             </motion.div>

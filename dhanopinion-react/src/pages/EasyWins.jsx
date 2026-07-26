@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { HoverFlip, RevealChar } from '../components/Animations'
+import { HoverFlip, RevealChar, AnimatedParagraph } from '../components/Animations'
 import { SpreadCards } from '../components/SpreadCards'
 import { useState, useEffect } from 'react'
 import { client } from '../sanityClient'
@@ -49,14 +49,11 @@ export default function EasyWins() {
               }}
             >
               {/* LEFT: Text Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: true, margin: "-100px" }}
-                style={{ flex: "1 1 min(100%, 500px)" }}
-              >
-                <h1
+              <div style={{ flex: "1 1 min(100%, 500px)" }}>
+                <RevealChar
+                  as="h1"
+                  text={data?.title || "Easy Wins"}
+                  className="no-split"
                   style={{
                     fontSize: "clamp(48px, 6vw, 72px)",
                     fontWeight: 300,
@@ -66,9 +63,7 @@ export default function EasyWins() {
                     marginBottom: "32px",
                     letterSpacing: "-0.01em"
                   }}
-                >
-                  {data?.title || "Easy Wins"}
-                </h1>
+                />
                 <p
                   style={{
                     fontSize: "17px",
@@ -91,27 +86,34 @@ export default function EasyWins() {
                 >
                   {data?.introParagraph2 || "The Easy Wins are different in that these are opportunities for benefits without any significant associated downside. These are actions that you can take where we are very confident that you will be better off for taking these actions, whether markets go up or down."}
                 </p>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    document.getElementById('cards-section')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  style={{
-                    background: "var(--pure)",
-                    color: "var(--black)",
-                    border: "none",
-                    padding: "16px 36px",
-                    borderRadius: "8px",
-                    fontSize: "16px",
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    boxShadow: "none",
-                  }}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  viewport={{ once: true, margin: "-100px" }}
                 >
-                  Know More
-                </motion.button>
-              </motion.div>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => {
+                      document.getElementById('cards-section')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    style={{
+                      background: "var(--pure)",
+                      color: "var(--black)",
+                      border: "none",
+                      padding: "16px 36px",
+                      borderRadius: "8px",
+                      fontSize: "16px",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      boxShadow: "none",
+                    }}
+                  >
+                    Know More
+                  </motion.button>
+                </motion.div>
+              </div>
 
               {/* RIGHT: Rupee Image */}
               <motion.div

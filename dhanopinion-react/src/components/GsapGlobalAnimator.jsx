@@ -34,8 +34,8 @@ export default function GsapGlobalAnimator() {
           {
             y: 0,
             opacity: 1,
-            stagger: 0.06,
-            duration: 0.55,
+            stagger: 0.12,
+            duration: 0.85,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: p,
