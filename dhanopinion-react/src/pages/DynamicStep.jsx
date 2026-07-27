@@ -96,7 +96,7 @@ export default function DynamicStep() {
       }
     },
     block: {
-      normal: ({ children }) => <p className="t-body mb-5">{children}</p>,
+      normal: ({ children }) => <p className="mb-5">{children}</p>,
       h2: ({ children }) => <h2 className="mb-4" style={{ color: 'var(--pure)' }}>{children}</h2>,
       h3: ({ children }) => <h3 className="mb-3">{children}</h3>,
       blockquote: ({ children }) => (
@@ -110,8 +110,8 @@ export default function DynamicStep() {
       number: ({ children }) => <ol style={{ paddingLeft: '20px', marginBottom: '24px' }}>{children}</ol>
     },
     listItem: {
-      bullet: ({ children }) => <li className="t-body" style={{ marginBottom: '12px' }}>{children}</li>,
-      number: ({ children }) => <li className="t-body" style={{ marginBottom: '12px' }}>{children}</li>
+      bullet: ({ children }) => <li style={{ marginBottom: '12px' }}>{children}</li>,
+      number: ({ children }) => <li style={{ marginBottom: '12px' }}>{children}</li>
     },
     marks: {
       link: ({ children, value }) => {

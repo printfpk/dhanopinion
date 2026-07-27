@@ -365,6 +365,16 @@ img {
 	color: var(--pure);
 }
 
+p:not(.post-content p) {
+	transition: color 0.3s ease, -webkit-text-stroke 0.2s ease;
+	-webkit-text-stroke: 0px transparent;
+}
+
+p:not(.post-content p):hover {
+	-webkit-text-stroke: 0.3px currentColor;
+	color: var(--pure);
+}
+
 /* ── Legacy Elementor Support ── */
 .elementor-widget-text-editor p,
 .elementor-widget-text-editor li {

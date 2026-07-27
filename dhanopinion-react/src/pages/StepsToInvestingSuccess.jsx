@@ -447,7 +447,7 @@ export default function StepsToInvestingSuccess() {
               {introText ? (
                 <PortableText value={introText} components={{
                   block: {
-                    normal: ({children}) => <p className="t-body mb-4">{children}</p>
+                    normal: ({ children }) => <p className="t-body mb-4">{children}</p>
                   }
                 }} />
               ) : (

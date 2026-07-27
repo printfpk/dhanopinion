@@ -159,36 +159,15 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHe
         .post-content ul, .post-content ol { margin-bottom: 1.5em; padding-left: 1.5em; }
         .post-content li { margin-bottom: 0.5em; }
         
-        /* Hover underline only — no color change */
-        .post-content .line {
-          border-bottom: 2px solid transparent;
-          padding-bottom: 2px;
-          transition: border-color 0.3s ease;
-          width: fit-content;
-        }
-        .post-content p:not(.post-date):hover .line {
-          border-color: rgba(128, 128, 128, 0.4);
-        }
-        /* Fallback for paragraphs without SplitType .line children */
-        .post-content p:not(.post-date):not(:has(.line)) {
+        /* Consistent global hover underline for information articles */
+        .post-content p:not(.post-date), .post-content li, .post-content .line {
           text-decoration: underline;
           text-decoration-color: transparent;
           text-underline-offset: 5px;
-          text-decoration-thickness: 2px;
+          text-decoration-thickness: 1.6px;
           transition: text-decoration-color 0.3s ease, color 0.3s ease;
         }
-        .post-content p:not(.post-date):not(:has(.line)):hover {
-          text-decoration-color: rgba(128, 128, 128, 0.4);
-        }
-        /* List items */
-        .post-content li {
-          text-decoration: underline;
-          text-decoration-color: transparent;
-          text-underline-offset: 5px;
-          text-decoration-thickness: 2px;
-          transition: text-decoration-color 0.3s ease;
-        }
-        .post-content li:hover {
+        .post-content p:not(.post-date):hover, .post-content li:hover, .post-content p:not(.post-date):hover .line {
           text-decoration-color: rgba(128, 128, 128, 0.4);
         }
         .post-content strong { color: var(--pure); font-weight: 600; }
