@@ -284,7 +284,7 @@ export default function Home() {
 								initial={{ opacity: 0, x: 50 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ duration: 1.1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-								style={{ flex: "1 1 420px", display: "flex", flexDirection: "column", alignItems: "stretch", gap: "10px", marginTop: "80px" }}
+								style={{ flex: "1 1 420px", display: "flex", flexDirection: "column", alignItems: "stretch", gap: "10px", marginTop: "40px" }}
 							>
 								{/* ── We focus on: label ── */}
 								<motion.div
@@ -333,7 +333,7 @@ export default function Home() {
 						</div>
 
 						{/* ══════ STARTING POINTS (MOVED TO BOTTOM OF HERO) ══════ */}
-						<div style={{ paddingTop: "40px", paddingBottom: "20px", width: "100%" }}>
+						<div style={{ paddingTop: "0px", paddingBottom: "20px", width: "100%" }}>
 							<RevealChar
 								as="h2"
 								text="Choose your starting point"
