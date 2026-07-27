@@ -98,7 +98,7 @@ export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHe
           font-size: 17px; 
           font-weight: 400;
           line-height: 1.8; 
-          color: var(--pure); 
+          color: var(--smoke); 
           overflow-x: hidden; 
           max-width: 100vw; 
         }
