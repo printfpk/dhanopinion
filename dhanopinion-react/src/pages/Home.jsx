@@ -333,7 +333,7 @@ export default function Home() {
 						</div>
 
 						{/* ══════ STARTING POINTS (MOVED TO BOTTOM OF HERO) ══════ */}
-						<div style={{ paddingTop: "0px", paddingBottom: "20px", width: "100%" }}>
+						<div className="home-starting-point-wrap">
 							<RevealChar
 								as="h2"
 								text="Choose your starting point"

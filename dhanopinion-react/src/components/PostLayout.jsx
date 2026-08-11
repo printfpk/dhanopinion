@@ -2,13 +2,40 @@ import { useEffect } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { HoverFlip, RevealChar } from './Animations'
+import { Helmet } from 'react-helmet-async'
 
 export default function PostLayout({ title, preTitle, prevLink, nextLink, hideHeader = false, children }) {
   const { pathname } = useLocation()
   useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  const siteUrl = 'https://dhanopinion.com'
+  const postUrl = `${siteUrl}${pathname}`
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "url": postUrl,
+    "author": {
+      "@type": "Organization",
+      "name": "Dhanopinion"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Dhanopinion",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/wp-content/uploads/2023/07/finflow-favicon-2.png`
+      }
+    }
+  }
 
   return (
     <>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(articleSchema)}
+        </script>
+      </Helmet>
       {/* Post Header — large centered title like reference site */}
       {!hideHeader && (
         <section style={{

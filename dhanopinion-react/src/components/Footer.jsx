@@ -15,14 +15,7 @@ export default function Footer() {
 			}}
 		>
 			<div className="wrap">
-				<div
-					style={{
-						display: "grid",
-						gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-						gap: "64px",
-						marginBottom: 64,
-					}}
-				>
+				<div className="footer-layout-grid">
 					{/* Brand Section */}
 					<div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
 						<Link to="/" className="footer-logo-link" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', position: 'relative', width: '330px', height: '80px', overflow: 'hidden', flexShrink: 0, marginLeft: '-16px', marginTop: '-12px' }}>

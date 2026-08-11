@@ -61,17 +61,17 @@ export default function CaseStudies() {
 
       <section id="case-studies-list" className="sec" style={{ background: 'var(--void)' }}>
         <div className="wrap" style={{ display: 'flex', gap: '4rem', alignItems: 'flex-start' }}>
-          
+
           {/* Sidebar */}
           <div className="filters-sidebar" style={{ width: '300px', flexShrink: 0, padding: '2rem', background: 'var(--iron)', borderRadius: '12px', position: 'sticky', top: '100px' }}>
             <h3 style={{ color: 'var(--pure)', marginBottom: '2rem', fontSize: '18px', fontWeight: 300, fontFamily: 'var(--font-heading)' }}>Filters</h3>
-            
+
             <div style={{ marginBottom: '2rem' }}>
               <label style={{ display: 'block', color: 'var(--gold)', marginBottom: '1rem', fontSize: '14px' }}>Age</label>
-              <input 
-                type="range" 
-                min="0" max="100" 
-                value={minAge} 
+              <input
+                type="range"
+                min="0" max="100"
+                value={minAge}
                 onChange={e => setMinAge(Number(e.target.value))}
                 style={{ width: '100%', accentColor: 'var(--pure)' }}
               />
@@ -82,10 +82,10 @@ export default function CaseStudies() {
 
             <div style={{ marginBottom: '2rem' }}>
               <label style={{ display: 'block', color: 'var(--gold)', marginBottom: '1rem', fontSize: '14px' }}>Percentage equity exposure</label>
-              <input 
-                type="range" 
-                min="0" max="100" 
-                value={minEquity} 
+              <input
+                type="range"
+                min="0" max="100"
+                value={minEquity}
                 onChange={e => setMinEquity(Number(e.target.value))}
                 style={{ width: '100%', accentColor: 'var(--pure)' }}
               />
@@ -96,18 +96,18 @@ export default function CaseStudies() {
 
             <div style={{ marginBottom: '2rem' }}>
               <label style={{ display: 'block', color: 'var(--gold)', marginBottom: '1rem', fontSize: '14px' }}>Risk Taking Ability</label>
-              <select 
-                value={risk} 
+              <select
+                value={risk}
                 onChange={e => setRisk(e.target.value)}
                 style={{ width: '100%', padding: '0.75rem', background: 'var(--pure)', border: 'none', borderRadius: '4px', fontSize: '14px', outline: 'none', cursor: 'pointer', color: 'var(--black)' }}
               >
-                <option>Risk Taking Ability</option>
-                <option>Low</option>
-                <option>High</option>
+                <option value="Risk Taking Ability" hidden>Risk Taking Ability</option>
+                <option value="Low">Low</option>
+                <option value="High">High</option>
               </select>
             </div>
 
-            <button 
+            <button
               onClick={handleReset}
               style={{ width: '100%', padding: '0.75rem', background: 'var(--pure)', color: 'var(--black)', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 500, fontSize: '14px', transition: 'opacity 0.2s' }}
               onMouseOver={e => e.currentTarget.style.opacity = 0.8}
@@ -128,7 +128,7 @@ export default function CaseStudies() {
                 transition={{ duration: 0.2 }}
               >
                 {filtered.map((c, i) => (
-                  <div 
+                  <div
                     key={c.id}
                     style={{ borderBottom: '1px solid var(--hairline)', paddingBottom: '2rem', marginBottom: '2rem' }}
                   >

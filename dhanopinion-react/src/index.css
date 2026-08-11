@@ -911,7 +911,7 @@ p:not(.post-content p):hover {
 
 	/* Footer grid: tighten gap on mobile */
 	.site-footer .wrap>div:first-child {
-		gap: 32px !important;
+		row-gap: 4px !important;
 	}
 
 	/* ── Home Hero ── */
@@ -1150,4 +1150,55 @@ p:not(.post-content p):hover {
 	opacity: 0.7;
 	letter-spacing: 0.05em;
 	text-transform: uppercase;
+}
+
+.home-starting-point-wrap {
+	padding-top: 0px;
+	padding-bottom: 20px;
+	width: 100%;
+}
+
+@media (max-width: 768px) {
+	.home-starting-point-wrap {
+		padding-top: 24px !important;
+	}
+}
+
+.easy-wins-card {
+	text-decoration: none;
+	color: inherit;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	min-height: 240px;
+	padding: 36px 28px 28px;
+	align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+	.easy-wins-card {
+		min-height: auto !important;
+		padding: 24px 20px 24px !important;
+		max-width: 92% !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+	.easy-wins-card .card-desc {
+		text-wrap: pretty;
+		white-space: normal !important;
+	}
+}
+
+.footer-layout-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 64px;
+	margin-bottom: 64px;
+}
+
+@media (max-width: 1024px) {
+	.footer-layout-grid {
+		gap: 4px !important;
+		margin-bottom: 40px !important;
+	}
 }

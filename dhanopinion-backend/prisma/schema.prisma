@@ -1,0 +1,89 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Category {
+  id          String  @id
+  title       String
+  description String?
+  
+  posts       Post[]  @relation("PostCategories")
+}
+
+model Author {
+  id    String  @id
+  name  String
+  slug  String?
+  image Json?
+  bio   Json?
+  
+  posts Post[]
+}
+
+model Post {
+  id          String    @id
+  title       String
+  slug        String?
+  mainImage   Json?
+  publishedAt DateTime?
+  body        Json?
+  
+  authorId    String?
+  author      Author?   @relation(fields: [authorId], references: [id])
+  
+  categories  Category[] @relation("PostCategories")
+}
+
+// Single pages stored as unstructured JSON because Sanity Block Content
+// is complex and often changes, making full relational mapping overkill.
+model HomePage {
+  id    String @id
+  data  Json
+}
+
+model SiteSettings {
+  id    String @id
+  data  Json
+}
+
+model EasyWinsPage {
+  id    String @id
+  data  Json
+}
+
+model CaseStudiesPage {
+  id    String @id
+  data  Json
+}
+
+model PhilosophyPage {
+  id    String @id
+  data  Json
+}
+
+model InformationCentrePage {
+  id    String @id
+  data  Json
+}
+
+model SimpleStrategyPage {
+  id    String @id
+  data  Json
+}
+
+model StepsToSuccessPage {
+  id    String @id
+  data  Json
+}
+
+model GenericPage {
+  id    String @id
+  data  Json
+}

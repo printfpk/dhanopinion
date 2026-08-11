@@ -4,9 +4,36 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import GsapGlobalAnimator from './GsapGlobalAnimator'
 
+import { Helmet } from 'react-helmet-async'
+
 export default function Layout() {
   const { pathname, hash } = useLocation()
-  
+  const siteUrl = 'https://dhanopinion.com'
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Dhanopinion",
+    "url": siteUrl,
+    "logo": `${siteUrl}/wp-content/uploads/2023/07/finflow-favicon-2.png`
+  }
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": siteUrl,
+    "name": "Dhanopinion",
+    "description": "Simplify Investing",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${siteUrl}/information-centre?q={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+
   useEffect(() => {
     // 1. Scroll to hash if present, otherwise top
     if (hash) {
@@ -42,6 +69,16 @@ export default function Layout() {
 
   return (
     <>
+      <Helmet>
+        <link rel="alternate" hreflang="x-default" href={`${siteUrl}${pathname}`} />
+        <link rel="alternate" hreflang="en" href={`${siteUrl}${pathname}`} />
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(websiteSchema)}
+        </script>
+      </Helmet>
       <GsapGlobalAnimator />
       <Navbar />
       {/* paddingTop matches single-row navbar height: 72px */}
