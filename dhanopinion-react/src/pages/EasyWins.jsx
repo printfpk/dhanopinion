@@ -151,9 +151,9 @@ export default function EasyWins() {
               cols={4}
               className="g-4"
               renderCard={(item) => (
-                <Link to={item.to} className="card starting-card easy-wins-card" target="_blank" rel="noopener noreferrer">
-                  <h3 className="t-h3" style={{ marginBottom: 8, color: '#1a1714' }}>{item.title}</h3>
-                  <p className="card-desc" style={{ flex: 1, opacity: 0.9, fontSize: 14, lineHeight: 1.65, color: '#5a4f45', margin: '10px 0 0' }}>{item.desc}</p>
+                <Link to={item.to} className="card starting-card easy-wins-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }} target="_blank" rel="noopener noreferrer">
+                  <h3 className="t-h3" style={{ height: '52px', marginBottom: 8, color: '#1a1714', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{item.title}</h3>
+                  <p className="card-desc" style={{ height: '70px', opacity: 0.9, fontSize: 14, lineHeight: 1.65, color: '#5a4f45', margin: '10px 0 0', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{item.desc}</p>
                   <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--orange)', marginTop: 24 }}><HoverFlip text="READ MORE →" /></span>
                 </Link>
               )}

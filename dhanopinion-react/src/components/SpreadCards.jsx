@@ -20,36 +20,36 @@ export function SpreadCards({ items, renderCard, cols = 4, className = "g-4" }) 
       {items.map((item, i) => {
         const col = i % cols
         const row = Math.floor(i / cols)
-        
+
         const colDiff = midCol - col
         const rowDiff = midRow - row
-        
+
         const xOffset = `calc(${colDiff * 100}% + ${colDiff * 24}px)`
         const yOffsetBase = `calc(${rowDiff * 100}% + ${rowDiff * 24}px)`
-        
+
         return (
-          <motion.div 
-            key={i} 
-            initial={isDesktop ? { 
-              x: xOffset, 
-              y: `calc(${yOffsetBase} + ${Math.abs(colDiff) * 20}px)`, 
-              rotate: colDiff * -10, 
-              opacity: 0 
+          <motion.div
+            key={i}
+            initial={isDesktop ? {
+              x: xOffset,
+              y: `calc(${yOffsetBase} + ${Math.abs(colDiff) * 20}px)`,
+              rotate: colDiff * -10,
+              opacity: 0
             } : { opacity: 0, y: 50 }}
-            animate={{ 
-              x: "0%", 
-              y: "0px", 
-              rotate: 0, 
-              opacity: 1 
+            animate={{
+              x: "0%",
+              y: "0px",
+              rotate: 0,
+              opacity: 1
             }}
-            transition={{ 
-              duration: 1.2, 
-              delay: 0.2 + i * 0.1, 
-              type: "spring", 
-              bounce: 0.4 
+            transition={{
+              duration: 1.2,
+              delay: 0.2 + i * 0.1,
+              type: "spring",
+              bounce: 0.4
             }}
-            style={{ 
-              zIndex: items.length - Math.ceil(Math.abs(colDiff) + Math.abs(rowDiff)) 
+            style={{
+              zIndex: items.length - Math.ceil(Math.abs(colDiff) + Math.abs(rowDiff))
             }}
             whileHover={{ y: -8, transition: { duration: 0.3 } }}
           >
