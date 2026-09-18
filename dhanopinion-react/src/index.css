@@ -688,6 +688,34 @@ p:not(.post-content p):hover {
 	}
 }
 
+.g-swipe {
+	display: flex;
+	gap: var(--sp-5);
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	padding-bottom: 24px;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+}
+.g-swipe::-webkit-scrollbar {
+	display: none;
+}
+.g-swipe > * {
+	flex: 0 0 calc(28% - var(--sp-5));
+	scroll-snap-align: start;
+	min-width: 0;
+}
+@media (max-width: 1024px) {
+	.g-swipe > * {
+		flex: 0 0 calc(42% - var(--sp-5));
+	}
+}
+@media (max-width: 768px) {
+	.g-swipe > * {
+		flex: 0 0 calc(85% - var(--sp-5));
+	}
+}
+
 @media (min-width: 1024px) {
 	.g-3 {
 		grid-template-columns: repeat(3, 1fr);

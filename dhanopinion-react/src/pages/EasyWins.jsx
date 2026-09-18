@@ -146,10 +146,27 @@ export default function EasyWins() {
 
         <section id="cards-section" className="sec" style={{ background: 'var(--bg-pure)', position: 'relative', zIndex: 1, boxShadow: 'var(--shadow-hard-2)' }}>
           <div className="wrap">
-            <SpreadCards
-              items={data?.cards?.length > 0 ? data.cards : wins}
-              cols={4}
-              className="g-4"
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 16, paddingRight: 4 }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, fontWeight: 700, letterSpacing: '.15em', color: 'var(--mist)', textTransform: 'uppercase' }}>
+                Swipe to view more
+                <motion.span
+                  animate={{ x: [0, 6, 0] }}
+                  transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{ fontSize: 14, color: 'var(--orange)' }}
+                >
+                  →
+                </motion.span>
+              </div>
+            </motion.div>
+              <SpreadCards
+                items={data?.cards?.length > 0 ? data.cards : wins}
+                cols={4}
+                className="g-swipe"
               renderCard={(item) => (
                 <Link to={item.to} className="card starting-card easy-wins-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }} target="_blank" rel="noopener noreferrer">
                   <h3 className="t-h3" style={{ height: '52px', marginBottom: 8, color: '#1a1714', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{item.title}</h3>
