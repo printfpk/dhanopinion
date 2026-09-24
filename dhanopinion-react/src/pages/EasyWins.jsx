@@ -164,6 +164,7 @@ export default function EasyWins() {
               </div>
             </motion.div>
               <SpreadCards
+                id="easy-wins-carousel"
                 items={data?.cards?.length > 0 ? data.cards : wins}
                 cols={4}
                 className="g-swipe"
@@ -175,6 +176,70 @@ export default function EasyWins() {
                 </Link>
               )}
             />
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 40 }}
+            >
+              <motion.button
+                initial="initial"
+                whileHover="hover"
+                whileTap="hover"
+                style={{
+                  background: '#000',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: 48,
+                  height: 48,
+                  fontSize: 20,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingBottom: 2
+                }}
+                variants={{
+                  initial: { backgroundColor: '#000', scale: 1 },
+                  hover: { backgroundColor: 'var(--orange)', scale: 1.05 }
+                }}
+                onClick={() => document.getElementById('easy-wins-carousel')?.scrollBy({ left: -320, behavior: 'smooth' })}
+              >
+                <motion.span variants={{ initial: { x: 0 }, hover: { x: -4 } }} transition={{ type: 'spring', stiffness: 400, damping: 10 }}>
+                  ←
+                </motion.span>
+              </motion.button>
+              <motion.button
+                initial="initial"
+                whileHover="hover"
+                whileTap="hover"
+                style={{
+                  background: '#000',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: 48,
+                  height: 48,
+                  fontSize: 20,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingBottom: 2
+                }}
+                variants={{
+                  initial: { backgroundColor: '#000', scale: 1 },
+                  hover: { backgroundColor: 'var(--orange)', scale: 1.05 }
+                }}
+                onClick={() => document.getElementById('easy-wins-carousel')?.scrollBy({ left: 320, behavior: 'smooth' })}
+              >
+                <motion.span variants={{ initial: { x: 0 }, hover: { x: 4 } }} transition={{ type: 'spring', stiffness: 400, damping: 10 }}>
+                  →
+                </motion.span>
+              </motion.button>
+            </motion.div>
           </div>
         </section>
       </div>

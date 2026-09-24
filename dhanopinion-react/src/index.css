@@ -701,13 +701,13 @@ p:not(.post-content p):hover {
 	display: none;
 }
 .g-swipe > * {
-	flex: 0 0 calc(28% - var(--sp-5));
+	flex: 0 0 calc(25% - (var(--sp-5) * 3 / 4));
 	scroll-snap-align: start;
 	min-width: 0;
 }
 @media (max-width: 1024px) {
 	.g-swipe > * {
-		flex: 0 0 calc(42% - var(--sp-5));
+		flex: 0 0 calc(33.333% - (var(--sp-5) * 2 / 3));
 	}
 }
 @media (max-width: 768px) {

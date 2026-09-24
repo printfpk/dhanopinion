@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
-export function SpreadCards({ items, renderCard, cols = 4, className = "g-4" }) {
+export function SpreadCards({ items, renderCard, cols = 4, className = "g-4", id }) {
   const [isDesktop, setIsDesktop] = useState(true)
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export function SpreadCards({ items, renderCard, cols = 4, className = "g-4" }) 
   const midRow = (numRows - 1) / 2
 
   return (
-    <div className={className} style={{ perspective: 1000 }}>
+    <div id={id} className={className} style={{ perspective: 1000 }}>
       {items.map((item, i) => {
         const col = i % cols
         const row = Math.floor(i / cols)
