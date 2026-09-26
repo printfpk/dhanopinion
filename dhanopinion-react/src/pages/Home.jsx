@@ -232,7 +232,7 @@ export default function Home() {
 								gap: "1.5rem",
 								alignItems: "flex-start",
 								padding: "10px 0 0px", /* Removed bottom padding */
-								marginTop: "0"
+								marginTop: "-25px"
 							}}
 						>
 							{/* ── LEFT: text ── */}
@@ -333,7 +333,7 @@ export default function Home() {
 						</div>
 
 						{/* ══════ STARTING POINTS (MOVED TO BOTTOM OF HERO) ══════ */}
-						<div className="home-starting-point-wrap">
+						<div className="home-starting-point-wrap" style={{ paddingTop: "20px" }}>
 							<RevealChar
 								as="h2"
 								text="Choose your starting point"

@@ -27,12 +27,12 @@ export default function Navbar() {
 
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return []
-    
+
     const lowerQuery = searchQuery.toLowerCase()
-    
+
     // Filter static global sections
-    const staticResults = globalSearchIndex.filter(item => 
-      item.title.toLowerCase().includes(lowerQuery) || 
+    const staticResults = globalSearchIndex.filter(item =>
+      item.title.toLowerCase().includes(lowerQuery) ||
       item.content.toLowerCase().includes(lowerQuery)
     )
 
@@ -49,17 +49,18 @@ export default function Navbar() {
         backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
         borderBottom: '1px solid var(--hairline)',
         boxShadow: 'var(--shadow-nav)',
-        width: '100%'
+        width: '100%',
+        overflow: 'hidden'
       }}>
         {/* Single row: Logo + Desktop Nav + Icons */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', margin: '0 auto', maxWidth: 1400, height: 72 }}>
           {/* Logo */}
-          <Link to="/" className="nav-logo-link" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', position: 'relative', width: '300px', height: '68px', overflow: 'hidden', flexShrink: 0 }}>
+          <Link to="/" className="nav-logo-link" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', position: 'relative', width: '300px', height: '68px', flexShrink: 0 }}>
             <img
               className="nav-logo-img"
               src={theme === 'dark' ? '/assets/images/dhan-logo-dark.png' : '/assets/images/dhan-logo-light.png'}
               alt="Dhan Opinion"
-              style={{ position: 'absolute', top: '50%', left: '0', transform: 'translateY(-48%)', width: '300px', height: 'auto' }}
+              style={{ position: 'absolute', top: '50%', left: '0', transform: 'translateY(-48%)', width: '300px', height: 'auto', clipPath: 'inset(0 10px 0 10px)' }}
             />
           </Link>
 
@@ -209,8 +210,8 @@ export default function Navbar() {
                     onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
                   >
                     <div style={{ fontSize: 12, color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 4 }}>
-                      {result.to?.startsWith('/post/') 
-                        ? 'Information Centre' 
+                      {result.to?.startsWith('/post/')
+                        ? 'Information Centre'
                         : (Array.isArray(result.category) ? result.category.join(', ') : result.category)}
                     </div>
                     <div style={{ fontSize: 18, color: 'var(--pure)', fontWeight: 500 }}>{result.title}</div>
