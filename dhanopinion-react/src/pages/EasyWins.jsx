@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { HoverFlip, RevealChar, AnimatedParagraph } from '../components/Animations'
 import { SpreadCards } from '../components/SpreadCards'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { client } from '../sanityClient'
+import useEmblaCarousel from 'embla-carousel-react'
 
 const f = (d = 0) => ({ initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.15 }, transition: { duration: 0.7, delay: d, ease: [0.16, 1, 0.3, 1] } })
 
@@ -22,6 +23,16 @@ export default function EasyWins() {
       .then(res => setData(res))
       .catch(console.error)
   }, [])
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, dragFree: true, align: 'start' })
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev()
+  }, [emblaApi])
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
+  }, [emblaApi])
 
   return (
     <>
@@ -146,38 +157,22 @@ export default function EasyWins() {
 
         <section id="cards-section" className="sec" style={{ background: 'var(--bg-pure)', position: 'relative', zIndex: 1, boxShadow: 'var(--shadow-hard-2)' }}>
           <div className="wrap">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 16, paddingRight: 4 }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, fontWeight: 700, letterSpacing: '.15em', color: 'var(--mist)', textTransform: 'uppercase' }}>
-                Swipe to view more
-                <motion.span
-                  animate={{ x: [0, 6, 0] }}
-                  transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
-                  style={{ fontSize: 14, color: 'var(--orange)' }}
-                >
-                  →
-                </motion.span>
+
+            <div className="embla" ref={emblaRef} style={{ overflow: 'hidden', paddingBottom: '24px' }}>
+              <div className="embla__container" style={{ display: 'flex', marginLeft: 'calc(var(--sp-5) * -1)' }}>
+                {[...(data?.cards?.length > 0 ? data.cards : wins), ...(data?.cards?.length > 0 ? data.cards : wins)].map((item, index) => (
+                  <div key={index} className="embla__slide" style={{ minWidth: '0' }}>
+                    <Link to={item.to} className="card starting-card easy-wins-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }} target="_blank" rel="noopener noreferrer">
+                      <h3 className="t-h3" style={{ height: '52px', marginBottom: 8, color: '#1a1714', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{item.title}</h3>
+                      <p className="card-desc" style={{ height: '70px', opacity: 0.9, fontSize: 14, lineHeight: 1.65, color: '#5a4f45', margin: '10px 0 0', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{item.desc}</p>
+                      <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--orange)', marginTop: 24 }}><HoverFlip text="READ MORE →" /></span>
+                    </Link>
+                  </div>
+                ))}
               </div>
-            </motion.div>
-              <SpreadCards
-                id="easy-wins-carousel"
-                items={data?.cards?.length > 0 ? data.cards : wins}
-                cols={4}
-                className="g-swipe"
-              renderCard={(item) => (
-                <Link to={item.to} className="card starting-card easy-wins-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }} target="_blank" rel="noopener noreferrer">
-                  <h3 className="t-h3" style={{ height: '52px', marginBottom: 8, color: '#1a1714', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{item.title}</h3>
-                  <p className="card-desc" style={{ height: '70px', opacity: 0.9, fontSize: 14, lineHeight: 1.65, color: '#5a4f45', margin: '10px 0 0', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{item.desc}</p>
-                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--orange)', marginTop: 24 }}><HoverFlip text="READ MORE →" /></span>
-                </Link>
-              )}
-            />
-            
-            <motion.div 
+            </div>
+
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -205,7 +200,7 @@ export default function EasyWins() {
                   initial: { backgroundColor: '#000', scale: 1 },
                   hover: { backgroundColor: 'var(--orange)', scale: 1.05 }
                 }}
-                onClick={() => document.getElementById('easy-wins-carousel')?.scrollBy({ left: -320, behavior: 'smooth' })}
+                onClick={scrollPrev}
               >
                 <motion.span variants={{ initial: { x: 0 }, hover: { x: -4 } }} transition={{ type: 'spring', stiffness: 400, damping: 10 }}>
                   ←
@@ -233,7 +228,7 @@ export default function EasyWins() {
                   initial: { backgroundColor: '#000', scale: 1 },
                   hover: { backgroundColor: 'var(--orange)', scale: 1.05 }
                 }}
-                onClick={() => document.getElementById('easy-wins-carousel')?.scrollBy({ left: 320, behavior: 'smooth' })}
+                onClick={scrollNext}
               >
                 <motion.span variants={{ initial: { x: 0 }, hover: { x: 4 } }} transition={{ type: 'spring', stiffness: 400, damping: 10 }}>
                   →

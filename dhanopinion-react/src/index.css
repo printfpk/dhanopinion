@@ -705,15 +705,40 @@ p:not(.post-content p):hover {
 	scroll-snap-align: start;
 	min-width: 0;
 }
+.embla__slide {
+	flex: 0 0 25%;
+	min-width: 0;
+	padding-left: var(--sp-5);
+}
 @media (max-width: 1024px) {
 	.g-swipe > * {
 		flex: 0 0 calc(33.333% - (var(--sp-5) * 2 / 3));
+	}
+	.embla__slide {
+		flex: 0 0 33.333%;
 	}
 }
 @media (max-width: 768px) {
 	.g-swipe > * {
 		flex: 0 0 calc(85% - var(--sp-5));
 	}
+	.embla__slide {
+		flex: 0 0 85%;
+	}
+	.home-hero-inner {
+		padding-top: 0px;
+		margin-top: -20px;
+	}
+	.we-focus-on-container {
+		margin-top: 10px;
+	}
+}
+
+.home-hero-inner {
+	padding-top: 20px;
+}
+.we-focus-on-container {
+	margin-top: 40px;
 }
 
 @media (min-width: 1024px) {

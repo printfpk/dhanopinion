@@ -226,13 +226,12 @@ export default function Home() {
 						style={{ position: "relative", zIndex: 1, width: "100%" }}
 					>
 						<div
+							className="home-hero-inner"
 							style={{
 								display: "flex",
 								flexWrap: "wrap",
 								gap: "1.5rem",
 								alignItems: "flex-start",
-								padding: "10px 0 0px", /* Removed bottom padding */
-								marginTop: "-25px"
 							}}
 						>
 							{/* ── LEFT: text ── */}
@@ -284,7 +283,8 @@ export default function Home() {
 								initial={{ opacity: 0, x: 50 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ duration: 1.1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-								style={{ flex: "1 1 420px", display: "flex", flexDirection: "column", alignItems: "stretch", gap: "10px", marginTop: "40px" }}
+								className="we-focus-on-container"
+								style={{ flex: "1 1 420px", display: "flex", flexDirection: "column", alignItems: "stretch", gap: "10px" }}
 							>
 								{/* ── We focus on: label ── */}
 								<motion.div
